@@ -1,25 +1,25 @@
 //
-//  hdFirstViewController.m
+//  hdSecondViewController.m
 //  hDubNative
 //
 //  Created by Jamie McClymont on 4/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
-#import "hdFirstViewController.h"
+#import "hdHomeworkViewController.h"
 
-@interface hdFirstViewController ()
+@interface hdHomeworkViewController ()
 
 @end
 
-@implementation hdFirstViewController
+@implementation hdHomeworkViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-		self.title = NSLocalizedString(@"First", @"First");
-		self.tabBarItem.image = [UIImage imageNamed:@"first"];
+		self.title = NSLocalizedString(@"Second", @"Second");
+		self.tabBarItem.image = [UIImage imageNamed:@"homework"];
     }
     return self;
 }

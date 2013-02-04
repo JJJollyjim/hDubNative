@@ -1,5 +1,5 @@
 //
-//  hdFirstViewController.h
+//  hdSecondViewController.h
 //  hDubNative
 //
 //  Created by Jamie McClymont on 4/02/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface hdFirstViewController : UIViewController
+@interface hdHomeworkViewController : UIViewController
 
 @end

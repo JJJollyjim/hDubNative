@@ -8,9 +8,9 @@
 
 #import "hdAppDelegate.h"
 
-#import "hdFirstViewController.h"
-
-#import "hdSecondViewController.h"
+#import "hdTimetableViewController.h"
+#import "hdHomeworkViewController.h"
+#import "hdSettingsViewController.h"
 
 @implementation hdAppDelegate
 
@@ -18,16 +18,14 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-	UIViewController *viewController1, *viewController2;
-	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-	    viewController1 = [[hdFirstViewController alloc] initWithNibName:@"hdFirstViewController_iPhone" bundle:nil];
-	    viewController2 = [[hdSecondViewController alloc] initWithNibName:@"hdSecondViewController_iPhone" bundle:nil];
-	} else {
-	    viewController1 = [[hdFirstViewController alloc] initWithNibName:@"hdFirstViewController_iPad" bundle:nil];
-	    viewController2 = [[hdSecondViewController alloc] initWithNibName:@"hdSecondViewController_iPad" bundle:nil];
-	}
+	UIViewController *viewControllerTimetable, *viewControllerHomework, *viewControllerSettings;
+
+  viewControllerTimetable = [[hdTimetableViewController alloc] initWithNibName:@"hdFirstViewController" bundle:nil];
+  viewControllerHomework = [[hdHomeworkViewController alloc] initWithNibName:@"hdSecondViewController" bundle:nil];
+  viewControllerSettings = [[hdSettingsViewController alloc] initWithNibName:@"hdSettingsViewController" bundle:nil];
+	
 	self.tabBarController = [[UITabBarController alloc] init];
-	self.tabBarController.viewControllers = @[viewController1, viewController2];
+	self.tabBarController.viewControllers = @[viewControllerTimetable, viewControllerHomework, viewControllerSettings];
 	self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

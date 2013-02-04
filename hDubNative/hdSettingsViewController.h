@@ -1,5 +1,5 @@
 //
-//  hdSecondViewController.h
+//  hdSettingsViewController.h
 //  hDubNative
 //
 //  Created by Jamie McClymont on 4/02/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface hdSecondViewController : UIViewController
+@interface hdSettingsViewController : UIViewController
 
 @end

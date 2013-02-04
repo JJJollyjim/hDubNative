@@ -16,16 +16,15 @@
 		CD1E89E816BF884A00EF853C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89E716BF884A00EF853C /* Default.png */; };
 		CD1E89EA16BF884A00EF853C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89E916BF884A00EF853C /* Default@2x.png */; };
 		CD1E89EC16BF884A00EF853C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89EB16BF884A00EF853C /* Default-568h@2x.png */; };
-		CD1E89EF16BF884A00EF853C /* hdFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E89EE16BF884A00EF853C /* hdFirstViewController.m */; };
-		CD1E89F116BF884A00EF853C /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89F016BF884A00EF853C /* first.png */; };
-		CD1E89F316BF884A00EF853C /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89F216BF884A00EF853C /* first@2x.png */; };
-		CD1E89F616BF884A00EF853C /* hdSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E89F516BF884A00EF853C /* hdSecondViewController.m */; };
-		CD1E89F816BF884A00EF853C /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89F716BF884A00EF853C /* second.png */; };
-		CD1E89FA16BF884A00EF853C /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89F916BF884A00EF853C /* second@2x.png */; };
-		CD1E89FD16BF884A00EF853C /* hdFirstViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89FB16BF884A00EF853C /* hdFirstViewController_iPhone.xib */; };
-		CD1E8A0016BF884A00EF853C /* hdFirstViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89FE16BF884A00EF853C /* hdFirstViewController_iPad.xib */; };
-		CD1E8A0316BF884A00EF853C /* hdSecondViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A0116BF884A00EF853C /* hdSecondViewController_iPhone.xib */; };
-		CD1E8A0616BF884A00EF853C /* hdSecondViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A0416BF884A00EF853C /* hdSecondViewController_iPad.xib */; };
+		CD1E89EF16BF884A00EF853C /* hdTimetableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E89EE16BF884A00EF853C /* hdTimetableViewController.m */; };
+		CD1E89F616BF884A00EF853C /* hdHomeworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E89F516BF884A00EF853C /* hdHomeworkViewController.m */; };
+		CD1E89FD16BF884A00EF853C /* hdTimetableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89FB16BF884A00EF853C /* hdTimetableViewController.xib */; };
+		CD1E8A0316BF884A00EF853C /* hdHomeworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A0116BF884A00EF853C /* hdHomeworkViewController.xib */; };
+		CD1E8A0F16BF88CC00EF853C /* hdSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E8A0D16BF88CC00EF853C /* hdSettingsViewController.m */; };
+		CD1E8A1016BF88CC00EF853C /* hdSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A0E16BF88CC00EF853C /* hdSettingsViewController.xib */; };
+		CD1E8A1516BF89E900EF853C /* timetable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1216BF89E900EF853C /* timetable@2x.png */; };
+		CD1E8A1616BF89E900EF853C /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1316BF89E900EF853C /* settings@2x.png */; };
+		CD1E8A1716BF89E900EF853C /* homework@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1416BF89E900EF853C /* homework@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,18 +41,18 @@
 		CD1E89E716BF884A00EF853C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		CD1E89E916BF884A00EF853C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		CD1E89EB16BF884A00EF853C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		CD1E89ED16BF884A00EF853C /* hdFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hdFirstViewController.h; sourceTree = "<group>"; };
-		CD1E89EE16BF884A00EF853C /* hdFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hdFirstViewController.m; sourceTree = "<group>"; };
-		CD1E89F016BF884A00EF853C /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		CD1E89F216BF884A00EF853C /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		CD1E89F416BF884A00EF853C /* hdSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hdSecondViewController.h; sourceTree = "<group>"; };
-		CD1E89F516BF884A00EF853C /* hdSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hdSecondViewController.m; sourceTree = "<group>"; };
-		CD1E89F716BF884A00EF853C /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		CD1E89F916BF884A00EF853C /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		CD1E89FC16BF884A00EF853C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/hdFirstViewController_iPhone.xib; sourceTree = "<group>"; };
-		CD1E89FF16BF884A00EF853C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/hdFirstViewController_iPad.xib; sourceTree = "<group>"; };
-		CD1E8A0216BF884A00EF853C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/hdSecondViewController_iPhone.xib; sourceTree = "<group>"; };
-		CD1E8A0516BF884A00EF853C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/hdSecondViewController_iPad.xib; sourceTree = "<group>"; };
+		CD1E89ED16BF884A00EF853C /* hdTimetableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hdTimetableViewController.h; sourceTree = "<group>"; };
+		CD1E89EE16BF884A00EF853C /* hdTimetableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hdTimetableViewController.m; sourceTree = "<group>"; };
+		CD1E89F416BF884A00EF853C /* hdHomeworkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hdHomeworkViewController.h; sourceTree = "<group>"; };
+		CD1E89F516BF884A00EF853C /* hdHomeworkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkViewController.m; sourceTree = "<group>"; };
+		CD1E89FC16BF884A00EF853C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/hdTimetableViewController.xib; sourceTree = "<group>"; };
+		CD1E8A0216BF884A00EF853C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/hdHomeworkViewController.xib; sourceTree = "<group>"; };
+		CD1E8A0C16BF88CC00EF853C /* hdSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdSettingsViewController.h; sourceTree = "<group>"; };
+		CD1E8A0D16BF88CC00EF853C /* hdSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdSettingsViewController.m; sourceTree = "<group>"; };
+		CD1E8A0E16BF88CC00EF853C /* hdSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = hdSettingsViewController.xib; sourceTree = "<group>"; };
+		CD1E8A1216BF89E900EF853C /* timetable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timetable@2x.png"; sourceTree = "<group>"; };
+		CD1E8A1316BF89E900EF853C /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		CD1E8A1416BF89E900EF853C /* homework@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homework@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,20 +99,13 @@
 		CD1E89DB16BF884A00EF853C /* hDubNative */ = {
 			isa = PBXGroup;
 			children = (
+				CD1E8A1116BF892A00EF853C /* ViewControllers */,
 				CD1E89E416BF884A00EF853C /* hdAppDelegate.h */,
 				CD1E89E516BF884A00EF853C /* hdAppDelegate.m */,
-				CD1E89ED16BF884A00EF853C /* hdFirstViewController.h */,
-				CD1E89EE16BF884A00EF853C /* hdFirstViewController.m */,
-				CD1E89F016BF884A00EF853C /* first.png */,
-				CD1E89F216BF884A00EF853C /* first@2x.png */,
-				CD1E89F416BF884A00EF853C /* hdSecondViewController.h */,
-				CD1E89F516BF884A00EF853C /* hdSecondViewController.m */,
-				CD1E89F716BF884A00EF853C /* second.png */,
-				CD1E89F916BF884A00EF853C /* second@2x.png */,
-				CD1E89FB16BF884A00EF853C /* hdFirstViewController_iPhone.xib */,
-				CD1E89FE16BF884A00EF853C /* hdFirstViewController_iPad.xib */,
-				CD1E8A0116BF884A00EF853C /* hdSecondViewController_iPhone.xib */,
-				CD1E8A0416BF884A00EF853C /* hdSecondViewController_iPad.xib */,
+				CD1E8A1816BF89EF00EF853C /* TabBarIcons */,
+				CD1E8A0E16BF88CC00EF853C /* hdSettingsViewController.xib */,
+				CD1E89FB16BF884A00EF853C /* hdTimetableViewController.xib */,
+				CD1E8A0116BF884A00EF853C /* hdHomeworkViewController.xib */,
 				CD1E89DC16BF884A00EF853C /* Supporting Files */,
 			);
 			path = hDubNative;
@@ -131,6 +123,29 @@
 				CD1E89EB16BF884A00EF853C /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD1E8A1116BF892A00EF853C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				CD1E89ED16BF884A00EF853C /* hdTimetableViewController.h */,
+				CD1E89EE16BF884A00EF853C /* hdTimetableViewController.m */,
+				CD1E89F416BF884A00EF853C /* hdHomeworkViewController.h */,
+				CD1E89F516BF884A00EF853C /* hdHomeworkViewController.m */,
+				CD1E8A0C16BF88CC00EF853C /* hdSettingsViewController.h */,
+				CD1E8A0D16BF88CC00EF853C /* hdSettingsViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CD1E8A1816BF89EF00EF853C /* TabBarIcons */ = {
+			isa = PBXGroup;
+			children = (
+				CD1E8A1216BF89E900EF853C /* timetable@2x.png */,
+				CD1E8A1316BF89E900EF853C /* settings@2x.png */,
+				CD1E8A1416BF89E900EF853C /* homework@2x.png */,
+			);
+			name = TabBarIcons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,14 +204,12 @@
 				CD1E89E816BF884A00EF853C /* Default.png in Resources */,
 				CD1E89EA16BF884A00EF853C /* Default@2x.png in Resources */,
 				CD1E89EC16BF884A00EF853C /* Default-568h@2x.png in Resources */,
-				CD1E89F116BF884A00EF853C /* first.png in Resources */,
-				CD1E89F316BF884A00EF853C /* first@2x.png in Resources */,
-				CD1E89F816BF884A00EF853C /* second.png in Resources */,
-				CD1E89FA16BF884A00EF853C /* second@2x.png in Resources */,
-				CD1E89FD16BF884A00EF853C /* hdFirstViewController_iPhone.xib in Resources */,
-				CD1E8A0016BF884A00EF853C /* hdFirstViewController_iPad.xib in Resources */,
-				CD1E8A0316BF884A00EF853C /* hdSecondViewController_iPhone.xib in Resources */,
-				CD1E8A0616BF884A00EF853C /* hdSecondViewController_iPad.xib in Resources */,
+				CD1E89FD16BF884A00EF853C /* hdTimetableViewController.xib in Resources */,
+				CD1E8A0316BF884A00EF853C /* hdHomeworkViewController.xib in Resources */,
+				CD1E8A1016BF88CC00EF853C /* hdSettingsViewController.xib in Resources */,
+				CD1E8A1516BF89E900EF853C /* timetable@2x.png in Resources */,
+				CD1E8A1616BF89E900EF853C /* settings@2x.png in Resources */,
+				CD1E8A1716BF89E900EF853C /* homework@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,8 +222,9 @@
 			files = (
 				CD1E89E216BF884A00EF853C /* main.m in Sources */,
 				CD1E89E616BF884A00EF853C /* hdAppDelegate.m in Sources */,
-				CD1E89EF16BF884A00EF853C /* hdFirstViewController.m in Sources */,
-				CD1E89F616BF884A00EF853C /* hdSecondViewController.m in Sources */,
+				CD1E89EF16BF884A00EF853C /* hdTimetableViewController.m in Sources */,
+				CD1E89F616BF884A00EF853C /* hdHomeworkViewController.m in Sources */,
+				CD1E8A0F16BF88CC00EF853C /* hdSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,36 +239,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		CD1E89FB16BF884A00EF853C /* hdFirstViewController_iPhone.xib */ = {
+		CD1E89FB16BF884A00EF853C /* hdTimetableViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CD1E89FC16BF884A00EF853C /* en */,
 			);
-			name = hdFirstViewController_iPhone.xib;
+			name = hdTimetableViewController.xib;
 			sourceTree = "<group>";
 		};
-		CD1E89FE16BF884A00EF853C /* hdFirstViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD1E89FF16BF884A00EF853C /* en */,
-			);
-			name = hdFirstViewController_iPad.xib;
-			sourceTree = "<group>";
-		};
-		CD1E8A0116BF884A00EF853C /* hdSecondViewController_iPhone.xib */ = {
+		CD1E8A0116BF884A00EF853C /* hdHomeworkViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CD1E8A0216BF884A00EF853C /* en */,
 			);
-			name = hdSecondViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		CD1E8A0416BF884A00EF853C /* hdSecondViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD1E8A0516BF884A00EF853C /* en */,
-			);
-			name = hdSecondViewController_iPad.xib;
+			name = hdHomeworkViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

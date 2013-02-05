@@ -39,13 +39,17 @@
 	return nil;
 }
 
-- (void) downloadURL:(NSURL *)url withMethod:(NSString *)method {
+- (void) downloadURL:(NSURL *)url withMethod:(NSString *)method parameters:(NSString *)parameters {
+	// withMethod: "GET", "POST"
+	
+	// parameters: "key1=val1&key2=val2
+	
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: url
 																												 cachePolicy: NSURLRequestUseProtocolCachePolicy
 																										 timeoutInterval: 30];
 	request.HTTPMethod = method;
 	
-	NSString *post = @"test=abcd";
+	NSString *post = parameters;
 	NSData *postData = [post dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO];
 	NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
 	[request addValue:postLength forHTTPHeaderField:@"Content-Length"];

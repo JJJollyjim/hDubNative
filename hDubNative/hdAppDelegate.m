@@ -11,17 +11,22 @@
 #import "hdTimetableViewController.h"
 #import "hdHomeworkViewController.h"
 #import "hdSettingsViewController.h"
+#import "hdHTTPDelegate.h"
+#import "hdHTTPWrapper.h"
 
 @implementation hdAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	hdHTTPDelegate *delegate = [[hdHTTPDelegate alloc] init];
+	[delegate downloadURL:[NSURL URLWithString:@"http://hdubapp.com/test/gptest.php"] withMethod:@"POST"];
+	
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 	UIViewController *viewControllerTimetable, *viewControllerHomework, *viewControllerSettings;
 
-  viewControllerTimetable = [[hdTimetableViewController alloc] initWithNibName:@"hdFirstViewController" bundle:nil];
-  viewControllerHomework = [[hdHomeworkViewController alloc] initWithNibName:@"hdSecondViewController" bundle:nil];
+  viewControllerTimetable = [[hdTimetableViewController alloc] initWithNibName:@"hdTimetableViewController" bundle:nil];
+  viewControllerHomework = [[hdHomeworkViewController alloc] initWithNibName:@"hdHomeworkViewController" bundle:nil];
   viewControllerSettings = [[hdSettingsViewController alloc] initWithNibName:@"hdSettingsViewController" bundle:nil];
 	
 	self.tabBarController = [[UITabBarController alloc] init];

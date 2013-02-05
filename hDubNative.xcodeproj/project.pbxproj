@@ -13,9 +13,6 @@
 		CD1E89E016BF884A00EF853C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89DE16BF884A00EF853C /* InfoPlist.strings */; };
 		CD1E89E216BF884A00EF853C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E89E116BF884A00EF853C /* main.m */; };
 		CD1E89E616BF884A00EF853C /* hdAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E89E516BF884A00EF853C /* hdAppDelegate.m */; };
-		CD1E89E816BF884A00EF853C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89E716BF884A00EF853C /* Default.png */; };
-		CD1E89EA16BF884A00EF853C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89E916BF884A00EF853C /* Default@2x.png */; };
-		CD1E89EC16BF884A00EF853C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89EB16BF884A00EF853C /* Default-568h@2x.png */; };
 		CD1E89EF16BF884A00EF853C /* hdTimetableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E89EE16BF884A00EF853C /* hdTimetableViewController.m */; };
 		CD1E89F616BF884A00EF853C /* hdHomeworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E89F516BF884A00EF853C /* hdHomeworkViewController.m */; };
 		CD1E89FD16BF884A00EF853C /* hdTimetableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89FB16BF884A00EF853C /* hdTimetableViewController.xib */; };
@@ -25,6 +22,18 @@
 		CD1E8A1516BF89E900EF853C /* timetable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1216BF89E900EF853C /* timetable@2x.png */; };
 		CD1E8A1616BF89E900EF853C /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1316BF89E900EF853C /* settings@2x.png */; };
 		CD1E8A1716BF89E900EF853C /* homework@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1416BF89E900EF853C /* homework@2x.png */; };
+		CD1E8A1A16BF8D0500EF853C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1916BF8D0500EF853C /* Default.png */; };
+		CD1E8A1C16BF8D0900EF853C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1B16BF8D0900EF853C /* Default@2x.png */; };
+		CD1E8A1E16BF8D0B00EF853C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1D16BF8D0B00EF853C /* Default-568h@2x.png */; };
+		CD1E8A2016BF8D2900EF853C /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1F16BF8D2900EF853C /* Default-Portrait~ipad.png */; };
+		CD1E8A2216BF8D2C00EF853C /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2116BF8D2C00EF853C /* Default-Portrait@2x~ipad.png */; };
+		CD1E8A2616BF8FBE00EF853C /* IconiPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2516BF8FBD00EF853C /* IconiPhone.png */; };
+		CD1E8A2816BF8FC200EF853C /* IconiPhoneR.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2716BF8FC200EF853C /* IconiPhoneR.png */; };
+		CD1E8A2A16BF8FC900EF853C /* IconiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2916BF8FC800EF853C /* IconiPad.png */; };
+		CD1E8A2C16BF8FCB00EF853C /* IconiPadR.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2B16BF8FCB00EF853C /* IconiPadR.png */; };
+		CD32C05116C0C2AB00AA0569 /* hdHTTPWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C05016C0C2AB00AA0569 /* hdHTTPWrapper.m */; };
+		CD32C05416C0C2CC00AA0569 /* hdHTTPDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C05316C0C2CC00AA0569 /* hdHTTPDelegate.m */; };
+		CD4937B416BF93BC0010FFD6 /* hdJsonWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD4937B316BF93BC0010FFD6 /* hdJsonWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,9 +47,6 @@
 		CD1E89E316BF884A00EF853C /* hDubNative-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hDubNative-Prefix.pch"; sourceTree = "<group>"; };
 		CD1E89E416BF884A00EF853C /* hdAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hdAppDelegate.h; sourceTree = "<group>"; };
 		CD1E89E516BF884A00EF853C /* hdAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hdAppDelegate.m; sourceTree = "<group>"; };
-		CD1E89E716BF884A00EF853C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		CD1E89E916BF884A00EF853C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		CD1E89EB16BF884A00EF853C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CD1E89ED16BF884A00EF853C /* hdTimetableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hdTimetableViewController.h; sourceTree = "<group>"; };
 		CD1E89EE16BF884A00EF853C /* hdTimetableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hdTimetableViewController.m; sourceTree = "<group>"; };
 		CD1E89F416BF884A00EF853C /* hdHomeworkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hdHomeworkViewController.h; sourceTree = "<group>"; };
@@ -53,6 +59,21 @@
 		CD1E8A1216BF89E900EF853C /* timetable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timetable@2x.png"; sourceTree = "<group>"; };
 		CD1E8A1316BF89E900EF853C /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		CD1E8A1416BF89E900EF853C /* homework@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homework@2x.png"; sourceTree = "<group>"; };
+		CD1E8A1916BF8D0500EF853C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		CD1E8A1B16BF8D0900EF853C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		CD1E8A1D16BF8D0B00EF853C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CD1E8A1F16BF8D2900EF853C /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		CD1E8A2116BF8D2C00EF853C /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		CD1E8A2516BF8FBD00EF853C /* IconiPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPhone.png; sourceTree = "<group>"; };
+		CD1E8A2716BF8FC200EF853C /* IconiPhoneR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPhoneR.png; sourceTree = "<group>"; };
+		CD1E8A2916BF8FC800EF853C /* IconiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPad.png; sourceTree = "<group>"; };
+		CD1E8A2B16BF8FCB00EF853C /* IconiPadR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPadR.png; sourceTree = "<group>"; };
+		CD32C04F16C0C2AB00AA0569 /* hdHTTPWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHTTPWrapper.h; sourceTree = "<group>"; };
+		CD32C05016C0C2AB00AA0569 /* hdHTTPWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHTTPWrapper.m; sourceTree = "<group>"; };
+		CD32C05216C0C2CB00AA0569 /* hdHTTPDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHTTPDelegate.h; sourceTree = "<group>"; };
+		CD32C05316C0C2CC00AA0569 /* hdHTTPDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHTTPDelegate.m; sourceTree = "<group>"; };
+		CD4937B216BF93BC0010FFD6 /* hdJsonWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdJsonWrapper.h; sourceTree = "<group>"; };
+		CD4937B316BF93BC0010FFD6 /* hdJsonWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdJsonWrapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +93,10 @@
 		CD1E89C916BF884A00EF853C = {
 			isa = PBXGroup;
 			children = (
+				CD1E8A2B16BF8FCB00EF853C /* IconiPadR.png */,
+				CD1E8A2916BF8FC800EF853C /* IconiPad.png */,
+				CD1E8A2716BF8FC200EF853C /* IconiPhoneR.png */,
+				CD1E8A2516BF8FBD00EF853C /* IconiPhone.png */,
 				CD1E89DB16BF884A00EF853C /* hDubNative */,
 				CD1E89D416BF884A00EF853C /* Frameworks */,
 				CD1E89D316BF884A00EF853C /* Products */,
@@ -102,10 +127,10 @@
 				CD1E8A1116BF892A00EF853C /* ViewControllers */,
 				CD1E89E416BF884A00EF853C /* hdAppDelegate.h */,
 				CD1E89E516BF884A00EF853C /* hdAppDelegate.m */,
+				CD32C05516C0C2D800AA0569 /* Server Communication */,
 				CD1E8A1816BF89EF00EF853C /* TabBarIcons */,
-				CD1E8A0E16BF88CC00EF853C /* hdSettingsViewController.xib */,
-				CD1E89FB16BF884A00EF853C /* hdTimetableViewController.xib */,
-				CD1E8A0116BF884A00EF853C /* hdHomeworkViewController.xib */,
+				CD1E8A2416BF8F4C00EF853C /* XIBs */,
+				CD1E8A2316BF8F3500EF853C /* Splashscreens */,
 				CD1E89DC16BF884A00EF853C /* Supporting Files */,
 			);
 			path = hDubNative;
@@ -118,9 +143,6 @@
 				CD1E89DE16BF884A00EF853C /* InfoPlist.strings */,
 				CD1E89E116BF884A00EF853C /* main.m */,
 				CD1E89E316BF884A00EF853C /* hDubNative-Prefix.pch */,
-				CD1E89E716BF884A00EF853C /* Default.png */,
-				CD1E89E916BF884A00EF853C /* Default@2x.png */,
-				CD1E89EB16BF884A00EF853C /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -146,6 +168,42 @@
 				CD1E8A1416BF89E900EF853C /* homework@2x.png */,
 			);
 			name = TabBarIcons;
+			sourceTree = "<group>";
+		};
+		CD1E8A2316BF8F3500EF853C /* Splashscreens */ = {
+			isa = PBXGroup;
+			children = (
+				CD1E8A2116BF8D2C00EF853C /* Default-Portrait@2x~ipad.png */,
+				CD1E8A1F16BF8D2900EF853C /* Default-Portrait~ipad.png */,
+				CD1E8A1D16BF8D0B00EF853C /* Default-568h@2x.png */,
+				CD1E8A1B16BF8D0900EF853C /* Default@2x.png */,
+				CD1E8A1916BF8D0500EF853C /* Default.png */,
+			);
+			name = Splashscreens;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		CD1E8A2416BF8F4C00EF853C /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				CD1E8A0E16BF88CC00EF853C /* hdSettingsViewController.xib */,
+				CD1E89FB16BF884A00EF853C /* hdTimetableViewController.xib */,
+				CD1E8A0116BF884A00EF853C /* hdHomeworkViewController.xib */,
+			);
+			name = XIBs;
+			sourceTree = "<group>";
+		};
+		CD32C05516C0C2D800AA0569 /* Server Communication */ = {
+			isa = PBXGroup;
+			children = (
+				CD32C05216C0C2CB00AA0569 /* hdHTTPDelegate.h */,
+				CD32C05316C0C2CC00AA0569 /* hdHTTPDelegate.m */,
+				CD32C04F16C0C2AB00AA0569 /* hdHTTPWrapper.h */,
+				CD32C05016C0C2AB00AA0569 /* hdHTTPWrapper.m */,
+				CD4937B216BF93BC0010FFD6 /* hdJsonWrapper.h */,
+				CD4937B316BF93BC0010FFD6 /* hdJsonWrapper.m */,
+			);
+			name = "Server Communication";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,15 +259,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD1E89E016BF884A00EF853C /* InfoPlist.strings in Resources */,
-				CD1E89E816BF884A00EF853C /* Default.png in Resources */,
-				CD1E89EA16BF884A00EF853C /* Default@2x.png in Resources */,
-				CD1E89EC16BF884A00EF853C /* Default-568h@2x.png in Resources */,
 				CD1E89FD16BF884A00EF853C /* hdTimetableViewController.xib in Resources */,
 				CD1E8A0316BF884A00EF853C /* hdHomeworkViewController.xib in Resources */,
 				CD1E8A1016BF88CC00EF853C /* hdSettingsViewController.xib in Resources */,
 				CD1E8A1516BF89E900EF853C /* timetable@2x.png in Resources */,
 				CD1E8A1616BF89E900EF853C /* settings@2x.png in Resources */,
 				CD1E8A1716BF89E900EF853C /* homework@2x.png in Resources */,
+				CD1E8A1A16BF8D0500EF853C /* Default.png in Resources */,
+				CD1E8A1C16BF8D0900EF853C /* Default@2x.png in Resources */,
+				CD1E8A1E16BF8D0B00EF853C /* Default-568h@2x.png in Resources */,
+				CD1E8A2016BF8D2900EF853C /* Default-Portrait~ipad.png in Resources */,
+				CD1E8A2216BF8D2C00EF853C /* Default-Portrait@2x~ipad.png in Resources */,
+				CD1E8A2616BF8FBE00EF853C /* IconiPhone.png in Resources */,
+				CD1E8A2816BF8FC200EF853C /* IconiPhoneR.png in Resources */,
+				CD1E8A2A16BF8FC900EF853C /* IconiPad.png in Resources */,
+				CD1E8A2C16BF8FCB00EF853C /* IconiPadR.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +289,9 @@
 				CD1E89EF16BF884A00EF853C /* hdTimetableViewController.m in Sources */,
 				CD1E89F616BF884A00EF853C /* hdHomeworkViewController.m in Sources */,
 				CD1E8A0F16BF88CC00EF853C /* hdSettingsViewController.m in Sources */,
+				CD4937B416BF93BC0010FFD6 /* hdJsonWrapper.m in Sources */,
+				CD32C05116C0C2AB00AA0569 /* hdHTTPWrapper.m in Sources */,
+				CD32C05416C0C2CC00AA0569 /* hdHTTPDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +424,7 @@
 				CD1E8A0B16BF884A00EF853C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

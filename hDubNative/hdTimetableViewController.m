@@ -18,7 +18,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-		self.title = NSLocalizedString(@"First", @"First");
+		self.title = NSLocalizedString(@"Timetable", @"Timetable");
 		self.tabBarItem.image = [UIImage imageNamed:@"timetable"];
     }
     return self;

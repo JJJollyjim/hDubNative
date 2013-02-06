@@ -36,6 +36,8 @@
 		CD32C06316C1C6EF00AA0569 /* hdDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C06216C1C6EE00AA0569 /* hdDataStore.m */; };
 		CD32C06F16C1F1FF00AA0569 /* hdStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C06E16C1F1FF00AA0569 /* hdStudent.m */; };
 		CD32C07416C2094200AA0569 /* hdApiWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C07316C2094200AA0569 /* hdApiWrapper.m */; };
+		CD32C07716C21D4800AA0569 /* hdTimetableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C07616C21D4800AA0569 /* hdTimetableDataSource.m */; };
+		CD32C07B16C22B9C00AA0569 /* hdTimetableParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C07A16C22B9C00AA0569 /* hdTimetableParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,10 @@
 		CD32C07016C1F5CA00AA0569 /* hDubNative-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "hDubNative-Info.plist"; sourceTree = "<group>"; };
 		CD32C07216C2094200AA0569 /* hdApiWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdApiWrapper.h; sourceTree = "<group>"; };
 		CD32C07316C2094200AA0569 /* hdApiWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdApiWrapper.m; sourceTree = "<group>"; };
+		CD32C07516C21D4800AA0569 /* hdTimetableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdTimetableDataSource.h; sourceTree = "<group>"; };
+		CD32C07616C21D4800AA0569 /* hdTimetableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdTimetableDataSource.m; sourceTree = "<group>"; };
+		CD32C07916C22B9B00AA0569 /* hdTimetableParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdTimetableParser.h; sourceTree = "<group>"; };
+		CD32C07A16C22B9C00AA0569 /* hdTimetableParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdTimetableParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,8 +156,7 @@
 		CD1E8A1116BF892A00EF853C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CD1E89ED16BF884A00EF853C /* hdTimetableViewController.h */,
-				CD1E89EE16BF884A00EF853C /* hdTimetableViewController.m */,
+				CD32C07816C21D5100AA0569 /* Timetable */,
 				CD1E89F416BF884A00EF853C /* hdHomeworkViewController.h */,
 				CD1E89F516BF884A00EF853C /* hdHomeworkViewController.m */,
 				CD1E8A0C16BF88CC00EF853C /* hdSettingsViewController.h */,
@@ -266,6 +271,19 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
+		CD32C07816C21D5100AA0569 /* Timetable */ = {
+			isa = PBXGroup;
+			children = (
+				CD1E89ED16BF884A00EF853C /* hdTimetableViewController.h */,
+				CD1E89EE16BF884A00EF853C /* hdTimetableViewController.m */,
+				CD32C07516C21D4800AA0569 /* hdTimetableDataSource.h */,
+				CD32C07616C21D4800AA0569 /* hdTimetableDataSource.m */,
+				CD32C07916C22B9B00AA0569 /* hdTimetableParser.h */,
+				CD32C07A16C22B9C00AA0569 /* hdTimetableParser.m */,
+			);
+			name = Timetable;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -354,6 +372,8 @@
 				CD32C06316C1C6EF00AA0569 /* hdDataStore.m in Sources */,
 				CD32C06F16C1F1FF00AA0569 /* hdStudent.m in Sources */,
 				CD32C07416C2094200AA0569 /* hdApiWrapper.m in Sources */,
+				CD32C07716C21D4800AA0569 /* hdTimetableDataSource.m in Sources */,
+				CD32C07B16C22B9C00AA0569 /* hdTimetableParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

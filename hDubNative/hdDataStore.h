@@ -12,6 +12,8 @@
 	NSUserDefaults *defaults;
 }
 
++ (id)sharedStore;
+
 - (BOOL)userLoggedIn;
 - (void)setUserLoggedIn:(BOOL)userLoggedIn;
 

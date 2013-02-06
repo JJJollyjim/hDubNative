@@ -14,45 +14,63 @@
 
 @implementation hdStudent
 
+static hdStudent *sharedStudent;
+
++ (void)initialize
+{
+	static BOOL initialized = NO;
+	if(!initialized)
+	{
+		initialized = YES;
+		sharedStudent = [[hdStudent alloc] init];
+	}
+}
+
++ (hdStudent *)sharedStudent {
+	return sharedStudent;
+}
+
+- (id)init {
+	self = [super init];
+	_store = [hdDataStore sharedStore];
+	return self;
+}
+
 - (void)loginNewUser:(int)sid
 						password:(int)pass
 						callback:(void (^) (BOOL, NSString *))callback {
-	if (/*!_store.userLoggedIn*/YES) {
-		[hdApiWrapper checkLogin:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
-			if (!success) {
-				callback(NO, errorMsg);
-			} else {
-				[hdApiWrapper indexerWithUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
-					if (!success) {
-						callback(NO, errorMsg);
-					} else {
-						[hdApiWrapper downloadTimetableForUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
-							if (!success) {
-								callback(NO, errorMsg);
-							} else {
-								// errorMsg contains response when there was no error!
-								_timetable = errorMsg;
-								[hdApiWrapper downloadHomeworkForUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
-									if (!success) {
-										callback(NO, errorMsg);
-									} else {
-										_homework = errorMsg;
-										NSLog(@"SUCCESS!!!");
-										_store.userLoggedIn = YES;
-										_store.userId = sid;
-										_store.pass = pass;
-										_store.homeworkJson = _homework;
-										_store.timetableJson = _timetable;
-										callback(YES, nil);
-									}
-								}];
-							}
-						}];
-					}
-				}];
-			}
-		}];
-	}
+	[hdApiWrapper checkLogin:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
+		if (!success) {
+			callback(NO, errorMsg);
+		} else {
+			[hdApiWrapper indexerWithUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
+				if (!success) {
+					callback(NO, errorMsg);
+				} else {
+					[hdApiWrapper downloadTimetableForUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
+						if (!success) {
+							callback(NO, errorMsg);
+						} else {
+							// errorMsg contains response when there was no error!
+							_store.timetableJson = errorMsg;
+							[hdApiWrapper downloadHomeworkForUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
+								if (!success) {
+									callback(NO, errorMsg);
+								} else {
+									_store.homeworkJson = errorMsg;
+									NSLog(@"SUCCESS!!!");
+									_store.userLoggedIn = YES;
+									_store.userId = sid;
+									_store.pass = pass;
+									callback(YES, nil);
+								}
+							}];
+						}
+					}];
+				}
+			}];
+		}
+	}];
 }
 
 @end

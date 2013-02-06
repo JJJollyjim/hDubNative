@@ -10,13 +10,9 @@
 
 #import "hdHTTPWrapper.h"
 
-@interface hdTimetableViewController ()
-
-@end
-
 @implementation hdTimetableViewController
 
-@synthesize textView;
+@synthesize timetableTableView, titleNavigationBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,31 +26,14 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	
-	
-	/*hdHTTPWrapper *wrapper = [[hdHTTPWrapper alloc] init];
-	
-	[wrapper getTimetableForUser:9079
-															password:9391
-															 success:^void (NSString *response) {
-																 NSLog(@"Response: %@", response);
-																 textView.text = response;
-															 }
-																 error:^void (NSString *errorMsg) {
-																	 NSLog(@"Error Callback! %@", errorMsg);
-																	 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error!"
-																																								message:errorMsg
-																																							 delegate:nil
-																																			cancelButtonTitle:@"Close"
-																																			otherButtonTitles:nil];
-																	 [av show];
-																 }];*/
 }
 
 							
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
+	dataSource = [[hdTimetableDataSource alloc] init];
+	timetableTableView.dataSource = dataSource;
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

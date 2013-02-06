@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "hdTimetableDataSource.h"
 
-@interface hdTimetableViewController : UIViewController
+@interface hdTimetableViewController : UIViewController {
+	hdTimetableDataSource *dataSource;
+}
 
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UITableView *timetableTableView;
+@property (weak, nonatomic) IBOutlet UINavigationBar *titleNavigationBar;
 
 @end

@@ -10,6 +10,14 @@
 
 @implementation hdDataStore
 
++ (id)sharedStore {
+	static hdDataStore *sharedStore;
+	if (!sharedStore) {
+		sharedStore = [[hdDataStore alloc] init];
+	}
+	return sharedStore;
+}
+
 - (id)init {
 	self = [super init];
 	

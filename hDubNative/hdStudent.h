@@ -15,4 +15,8 @@
 	NSString *_homework, *_timetable;
 }
 
+- (void)loginNewUser:(int)sid
+						password:(int)pass
+						callback:(void (^) (BOOL, NSString *))callback;
+
 @end

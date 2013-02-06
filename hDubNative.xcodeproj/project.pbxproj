@@ -35,6 +35,7 @@
 		CD32C05F16C11B0500AA0569 /* hdJsonWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C05E16C11B0500AA0569 /* hdJsonWrapper.m */; };
 		CD32C06316C1C6EF00AA0569 /* hdDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C06216C1C6EE00AA0569 /* hdDataStore.m */; };
 		CD32C06F16C1F1FF00AA0569 /* hdStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C06E16C1F1FF00AA0569 /* hdStudent.m */; };
+		CD32C07416C2094200AA0569 /* hdApiWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C07316C2094200AA0569 /* hdApiWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,8 @@
 		CD32C06D16C1F1FF00AA0569 /* hdStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdStudent.h; sourceTree = "<group>"; };
 		CD32C06E16C1F1FF00AA0569 /* hdStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdStudent.m; sourceTree = "<group>"; };
 		CD32C07016C1F5CA00AA0569 /* hDubNative-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "hDubNative-Info.plist"; sourceTree = "<group>"; };
+		CD32C07216C2094200AA0569 /* hdApiWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdApiWrapper.h; sourceTree = "<group>"; };
+		CD32C07316C2094200AA0569 /* hdApiWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdApiWrapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +196,8 @@
 		CD32C05516C0C2D800AA0569 /* Server Communication */ = {
 			isa = PBXGroup;
 			children = (
+				CD32C07216C2094200AA0569 /* hdApiWrapper.h */,
+				CD32C07316C2094200AA0569 /* hdApiWrapper.m */,
 				CD32C06016C11B0B00AA0569 /* JSON */,
 				CD32C04F16C0C2AB00AA0569 /* hdHTTPWrapper.h */,
 				CD32C05016C0C2AB00AA0569 /* hdHTTPWrapper.m */,
@@ -348,6 +353,7 @@
 				CD32C05F16C11B0500AA0569 /* hdJsonWrapper.m in Sources */,
 				CD32C06316C1C6EF00AA0569 /* hdDataStore.m in Sources */,
 				CD32C06F16C1F1FF00AA0569 /* hdStudent.m in Sources */,
+				CD32C07416C2094200AA0569 /* hdApiWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

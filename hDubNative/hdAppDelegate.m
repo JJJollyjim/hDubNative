@@ -11,7 +11,8 @@
 #import "hdTimetableViewController.h"
 #import "hdHomeworkViewController.h"
 #import "hdSettingsViewController.h"
-#import "hdHTTPWrapper.h"
+#import "hdStudent.h"
+#import "hdJsonWrapper.h"
 
 @implementation hdAppDelegate
 
@@ -27,6 +28,15 @@
 																 error:^void (NSString *errorMsg) {
 																	 NSLog(@"Error Callback! %@", errorMsg);
 																 }];*/
+	
+	hdStudent *student = [[hdStudent alloc] init];
+	[student loginNewUser:9079 password:9391 callback:^(BOOL success, NSString *errorMsg) {
+		if (success) {
+			NSLog(@"It worked!");
+		} else {
+			NSLog(@"%@", errorMsg);
+		}
+	}];
 	
 	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

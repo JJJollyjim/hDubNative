@@ -24,7 +24,7 @@
 	errorCallback = error;
 	
 	[self downloadURL:[NSURL URLWithString:
-												 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/userAuth.php?sid=%i&pass=%i", sid, pass]]
+												 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/userAuth.php?sid=%i&pass=%i&ios=true", sid, pass]]
 						 withMethod:@"GET"
 						 parameters:nil];
 }
@@ -37,7 +37,7 @@
 	errorCallback = error;
 	
 	[self downloadURL:[NSURL URLWithString:
-										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/indexer.php?sid=%i&pass=%i&do_error=Err8", sid, pass]]
+										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/indexer.php?sid=%i&pass=%i&ios=true", sid, pass]]
 				 withMethod:@"GET"
 				 parameters:nil];
 }
@@ -50,7 +50,7 @@
 	errorCallback = error;
 	
 	[self downloadURL:[NSURL URLWithString:
-										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/genClassList.php?sid=%i&pass=%i", sid, pass]]
+										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/genClassList.php?sid=%i&pass=%i&ios=true", sid, pass]]
 				 withMethod:@"GET"
 				 parameters:nil];
 }
@@ -65,7 +65,7 @@
 	[self downloadURL:[NSURL URLWithString:
 										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/stringdown.php"]]
 				 withMethod:@"POST"
-				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%i", sid, pass]];
+				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%i&ios=true", sid, pass]];
 }
 
 - (void)uploadFullHomeworkForUser:(int)sid
@@ -85,7 +85,7 @@
 	[self downloadURL:[NSURL URLWithString:
 										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/stringup.php"]]
 				 withMethod:@"POST"
-				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%i&str=%@", sid, pass, escapedString]];
+				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%i&str=%@&ios=true", sid, pass, escapedString]];
 }
 
 - (void)syncForUser:(int)sid
@@ -100,7 +100,7 @@
 	[self downloadURL:[NSURL URLWithString:
 										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/sync.php"]]
 				 withMethod:@"POST"
-				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%i&higheid=%i&events=%@", sid, pass, higheid, events]];
+				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%i&higheid=%i&events=%@&ios=true", sid, pass, higheid, events]];
 }
 
 

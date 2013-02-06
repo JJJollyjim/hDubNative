@@ -17,9 +17,12 @@
 
 + (id)getObj:(NSString *)json {
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-	return [NSJSONSerialization JSONObjectWithData:data
-																				 options:(NSJSONReadingAllowFragments | NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves)
-																					 error:nil];
+	NSError *error;
+	id obj = [NSJSONSerialization JSONObjectWithData:data
+																				 options:0
+																					 error:&error];
+	NSLog(@"ERROR: %@", error.localizedDescription);
+	return obj;
 }
 
 @end

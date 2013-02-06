@@ -11,17 +11,33 @@
 #import "hdTimetableViewController.h"
 #import "hdHomeworkViewController.h"
 #import "hdSettingsViewController.h"
-#import "hdHTTPDelegate.h"
 #import "hdHTTPWrapper.h"
+#import "hdTimetable.h"
 
 @implementation hdAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	hdHTTPDelegate *delegate = [[hdHTTPDelegate alloc] init];
-	[delegate downloadURL:[NSURL URLWithString:@"http://hdubapp.com/test/gptest.php"] withMethod:@"POST"];
+	/*hdHTTPWrapper *wrapper = [[hdHTTPWrapper alloc] init];
 	
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	[wrapper downloadFullHomeworkForUser:9079
+															password:9391
+															 success:^void (NSString *response) {
+																 NSLog(@"Response: %@", response);
+															 }
+																 error:^void (NSString *errorMsg) {
+																	 NSLog(@"Error Callback! %@", errorMsg);
+																 }];*/
+	
+	 hdTimetable *timetable = [[hdTimetable alloc] initWithStudentId:9079
+																													andPassword:9391
+																													 success:^void (NSString *response) {
+																														 NSLog(@"Response: %@", response);
+																													 }
+																														 error:^void (NSString *errorMsg) {
+																															 NSLog(@"Error Callback! %@", errorMsg);
+																														 }];
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 	UIViewController *viewControllerTimetable, *viewControllerHomework, *viewControllerSettings;
 

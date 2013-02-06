@@ -7,12 +7,15 @@
 //
 
 #import "hdHomeworkViewController.h"
+#import "hdHTTPWrapper.h"
 
 @interface hdHomeworkViewController ()
 
 @end
 
 @implementation hdHomeworkViewController
+
+@synthesize textView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +31,29 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	
+	
+	/*hdHTTPWrapper *wrapper = [[hdHTTPWrapper alloc] init];
+	
+	[wrapper downloadFullHomeworkForUser:9079
+															password:9391
+															 success:^void (NSString *response) {
+																 NSLog(@"Response: %@", response);
+																 textView.text = response;
+															 }
+																 error:^void (NSString *errorMsg) {
+																	 NSLog(@"Error Callback! %@", errorMsg);
+																	 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error!"
+																																								message:errorMsg
+																																							 delegate:nil
+																																			cancelButtonTitle:@"Close"
+																																			otherButtonTitles:nil];
+																	 [av show];
+																 }];*/
 }
 
 - (void)didReceiveMemoryWarning

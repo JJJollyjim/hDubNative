@@ -10,4 +10,6 @@
 
 @interface hdTimetableViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
 @end

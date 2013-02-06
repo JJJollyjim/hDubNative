@@ -40,6 +40,7 @@
 		CD32C07B16C22B9C00AA0569 /* hdTimetableParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C07A16C22B9C00AA0569 /* hdTimetableParser.m */; };
 		CD32C07F16C2338900AA0569 /* hdLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C07D16C2338900AA0569 /* hdLoginViewController.m */; };
 		CD32C08016C2338900AA0569 /* hdLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD32C07E16C2338900AA0569 /* hdLoginViewController.xib */; };
+		CD54F86416C253BE00529769 /* hdTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD54F86316C253BE00529769 /* hdTabViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,8 @@
 		CD32C07C16C2338800AA0569 /* hdLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdLoginViewController.h; sourceTree = "<group>"; };
 		CD32C07D16C2338900AA0569 /* hdLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdLoginViewController.m; sourceTree = "<group>"; };
 		CD32C07E16C2338900AA0569 /* hdLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = hdLoginViewController.xib; sourceTree = "<group>"; };
+		CD54F86216C253BE00529769 /* hdTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdTabViewController.h; sourceTree = "<group>"; };
+		CD54F86316C253BE00529769 /* hdTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdTabViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +164,8 @@
 		CD1E8A1116BF892A00EF853C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CD54F86216C253BE00529769 /* hdTabViewController.h */,
+				CD54F86316C253BE00529769 /* hdTabViewController.m */,
 				CD32C07C16C2338800AA0569 /* hdLoginViewController.h */,
 				CD32C07D16C2338900AA0569 /* hdLoginViewController.m */,
 				CD32C07E16C2338900AA0569 /* hdLoginViewController.xib */,
@@ -384,6 +389,7 @@
 				CD32C07716C21D4800AA0569 /* hdTimetableDataSource.m in Sources */,
 				CD32C07B16C22B9C00AA0569 /* hdTimetableParser.m in Sources */,
 				CD32C07F16C2338900AA0569 /* hdLoginViewController.m in Sources */,
+				CD54F86416C253BE00529769 /* hdTabViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

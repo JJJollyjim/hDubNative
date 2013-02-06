@@ -12,6 +12,7 @@
 #import "hdHomeworkViewController.h"
 #import "hdSettingsViewController.h"
 #import "hdLoginViewController.h"
+#import "hdTabViewController.h"
 #import "hdStudent.h"
 #import "hdJsonWrapper.h"
 
@@ -21,16 +22,16 @@
 {	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-	UIViewController *viewControllerTimetable, *viewControllerHomework, *viewControllerSettings, *viewControllerLogin;
+	UIViewController *viewControllerTimetable, *viewControllerHomework, *viewControllerSettings;
 
   viewControllerTimetable = [[hdTimetableViewController alloc] initWithNibName:@"hdTimetableViewController" bundle:nil];
   viewControllerHomework = [[hdHomeworkViewController alloc] initWithNibName:@"hdHomeworkViewController" bundle:nil];
   viewControllerSettings = [[hdSettingsViewController alloc] initWithNibName:@"hdSettingsViewController" bundle:nil];
-	viewControllerLogin = [[hdLoginViewController alloc] initWithNibName:@"hdLoginViewController" bundle:nil];
 	
-	self.tabBarController = [[UITabBarController alloc] init];
+	self.tabBarController = [[hdTabViewController alloc] init];
 	self.tabBarController.viewControllers = @[viewControllerTimetable, viewControllerHomework, viewControllerSettings];
-	self.window.rootViewController = viewControllerLogin;/*self.tabBarController;*/
+	
+	self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
 }

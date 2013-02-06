@@ -32,7 +32,6 @@
 		CD1E8A2A16BF8FC900EF853C /* IconiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2916BF8FC800EF853C /* IconiPad.png */; };
 		CD1E8A2C16BF8FCB00EF853C /* IconiPadR.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2B16BF8FCB00EF853C /* IconiPadR.png */; };
 		CD32C05116C0C2AB00AA0569 /* hdHTTPWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C05016C0C2AB00AA0569 /* hdHTTPWrapper.m */; };
-		CD32C05C16C1116700AA0569 /* hdTimetable.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C05B16C1116700AA0569 /* hdTimetable.m */; };
 		CD32C05F16C11B0500AA0569 /* hdJsonWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C05E16C11B0500AA0569 /* hdJsonWrapper.m */; };
 		CD32C06316C1C6EF00AA0569 /* hdDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C06216C1C6EE00AA0569 /* hdDataStore.m */; };
 		CD32C06F16C1F1FF00AA0569 /* hdStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C06E16C1F1FF00AA0569 /* hdStudent.m */; };
@@ -43,7 +42,6 @@
 		CD1E89D516BF884A00EF853C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CD1E89D716BF884A00EF853C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CD1E89D916BF884A00EF853C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		CD1E89DD16BF884A00EF853C /* hDubNative-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "hDubNative-Info.plist"; sourceTree = "<group>"; };
 		CD1E89DF16BF884A00EF853C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CD1E89E116BF884A00EF853C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CD1E89E316BF884A00EF853C /* hDubNative-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hDubNative-Prefix.pch"; sourceTree = "<group>"; };
@@ -72,14 +70,13 @@
 		CD1E8A2B16BF8FCB00EF853C /* IconiPadR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPadR.png; sourceTree = "<group>"; };
 		CD32C04F16C0C2AB00AA0569 /* hdHTTPWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHTTPWrapper.h; sourceTree = "<group>"; };
 		CD32C05016C0C2AB00AA0569 /* hdHTTPWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHTTPWrapper.m; sourceTree = "<group>"; };
-		CD32C05A16C1116700AA0569 /* hdTimetable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdTimetable.h; sourceTree = "<group>"; };
-		CD32C05B16C1116700AA0569 /* hdTimetable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdTimetable.m; sourceTree = "<group>"; };
 		CD32C05D16C11B0500AA0569 /* hdJsonWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdJsonWrapper.h; sourceTree = "<group>"; };
 		CD32C05E16C11B0500AA0569 /* hdJsonWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdJsonWrapper.m; sourceTree = "<group>"; };
 		CD32C06116C1C6EE00AA0569 /* hdDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdDataStore.h; sourceTree = "<group>"; };
 		CD32C06216C1C6EE00AA0569 /* hdDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdDataStore.m; sourceTree = "<group>"; };
 		CD32C06D16C1F1FF00AA0569 /* hdStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdStudent.h; sourceTree = "<group>"; };
 		CD32C06E16C1F1FF00AA0569 /* hdStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdStudent.m; sourceTree = "<group>"; };
+		CD32C07016C1F5CA00AA0569 /* hDubNative-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "hDubNative-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +136,7 @@
 		CD1E89DC16BF884A00EF853C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CD1E89DD16BF884A00EF853C /* hDubNative-Info.plist */,
+				CD32C07016C1F5CA00AA0569 /* hDubNative-Info.plist */,
 				CD1E89DE16BF884A00EF853C /* InfoPlist.strings */,
 				CD1E89E116BF884A00EF853C /* main.m */,
 				CD1E89E316BF884A00EF853C /* hDubNative-Prefix.pch */,
@@ -203,15 +200,6 @@
 			name = "Server Communication";
 			sourceTree = "<group>";
 		};
-		CD32C05916C1106300AA0569 /* Timetable Wrappers */ = {
-			isa = PBXGroup;
-			children = (
-				CD32C05A16C1116700AA0569 /* hdTimetable.h */,
-				CD32C05B16C1116700AA0569 /* hdTimetable.m */,
-			);
-			name = "Timetable Wrappers";
-			sourceTree = "<group>";
-		};
 		CD32C06016C11B0B00AA0569 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,7 +223,6 @@
 			children = (
 				CD32C05516C0C2D800AA0569 /* Server Communication */,
 				CD32C06416C1C6F400AA0569 /* NSUserDefaults */,
-				CD32C05916C1106300AA0569 /* Timetable Wrappers */,
 				CD32C06D16C1F1FF00AA0569 /* hdStudent.h */,
 				CD32C06E16C1F1FF00AA0569 /* hdStudent.m */,
 			);
@@ -358,7 +345,6 @@
 				CD1E89F616BF884A00EF853C /* hdHomeworkViewController.m in Sources */,
 				CD1E8A0F16BF88CC00EF853C /* hdSettingsViewController.m in Sources */,
 				CD32C05116C0C2AB00AA0569 /* hdHTTPWrapper.m in Sources */,
-				CD32C05C16C1116700AA0569 /* hdTimetable.m in Sources */,
 				CD32C05F16C11B0500AA0569 /* hdJsonWrapper.m in Sources */,
 				CD32C06316C1C6EF00AA0569 /* hdDataStore.m in Sources */,
 				CD32C06F16C1F1FF00AA0569 /* hdStudent.m in Sources */,

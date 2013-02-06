@@ -16,7 +16,7 @@
 	defaults = [NSUserDefaults standardUserDefaults];
 	
 	[defaults registerDefaults:@{
-	 @"logged_in" : NO,
+	 @"logged_in" : @NO,
 	 @"sid" : @0,
 	 @"pass" : @0,
 	 @"eid" : @0,

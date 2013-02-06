@@ -12,7 +12,6 @@
 #import "hdHomeworkViewController.h"
 #import "hdSettingsViewController.h"
 #import "hdHTTPWrapper.h"
-#import "hdTimetable.h"
 
 @implementation hdAppDelegate
 
@@ -29,14 +28,7 @@
 																	 NSLog(@"Error Callback! %@", errorMsg);
 																 }];*/
 	
-	 hdTimetable *timetable = [[hdTimetable alloc] initWithStudentId:9079
-																													andPassword:9391
-																													 success:^void (NSString *response) {
-																														 NSLog(@"Response: %@", response);
-																													 }
-																														 error:^void (NSString *errorMsg) {
-																															 NSLog(@"Error Callback! %@", errorMsg);
-																														 }];
+	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
 	UIViewController *viewControllerTimetable, *viewControllerHomework, *viewControllerSettings;

@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "hdDataStore.h"
 
 @interface hdStudent : NSObject {
 	int _uid, _pass;
+	hdDataStore *_store;
+	NSString *_homework, *_timetable;
 }
 
 @end

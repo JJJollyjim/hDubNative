@@ -10,4 +10,6 @@
 
 @interface hdTimetableParser : NSObject
 
++ (NSString *)getSubjectForDay:(NSDate *)date period:(int)period rootObj:(NSDictionary *)obj;
+
 @end

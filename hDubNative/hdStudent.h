@@ -17,6 +17,7 @@
 
 - (void)loginNewUser:(int)sid
 						password:(int)pass
-						callback:(void (^) (BOOL, NSString *))callback;
+						callback:(void (^) (BOOL, NSString *))callback
+				 progressbar:(UIProgressView *)progressbar;
 
 @end

@@ -11,44 +11,26 @@
 #import "hdTimetableViewController.h"
 #import "hdHomeworkViewController.h"
 #import "hdSettingsViewController.h"
+#import "hdLoginViewController.h"
 #import "hdStudent.h"
 #import "hdJsonWrapper.h"
 
 @implementation hdAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-	/*hdHTTPWrapper *wrapper = [[hdHTTPWrapper alloc] init];
-	
-	[wrapper downloadFullHomeworkForUser:9079
-															password:9391
-															 success:^void (NSString *response) {
-																 NSLog(@"Response: %@", response);
-															 }
-																 error:^void (NSString *errorMsg) {
-																	 NSLog(@"Error Callback! %@", errorMsg);
-																 }];*/
-	
-	[[hdStudent sharedStudent] loginNewUser:9079 password:9391 callback:^(BOOL success, NSString *errorMsg) {
-		if (success) {
-			NSLog(@"It worked!");
-		} else {
-			NSLog(@"%@", errorMsg);
-		}
-	}];
-	
-	
+{	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-	UIViewController *viewControllerTimetable, *viewControllerHomework, *viewControllerSettings;
+	UIViewController *viewControllerTimetable, *viewControllerHomework, *viewControllerSettings, *viewControllerLogin;
 
   viewControllerTimetable = [[hdTimetableViewController alloc] initWithNibName:@"hdTimetableViewController" bundle:nil];
   viewControllerHomework = [[hdHomeworkViewController alloc] initWithNibName:@"hdHomeworkViewController" bundle:nil];
   viewControllerSettings = [[hdSettingsViewController alloc] initWithNibName:@"hdSettingsViewController" bundle:nil];
+	viewControllerLogin = [[hdLoginViewController alloc] initWithNibName:@"hdLoginViewController" bundle:nil];
 	
 	self.tabBarController = [[UITabBarController alloc] init];
 	self.tabBarController.viewControllers = @[viewControllerTimetable, viewControllerHomework, viewControllerSettings];
-	self.window.rootViewController = self.tabBarController;
+	self.window.rootViewController = viewControllerLogin;/*self.tabBarController;*/
     [self.window makeKeyAndVisible];
     return YES;
 }

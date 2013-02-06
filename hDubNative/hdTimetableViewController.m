@@ -16,12 +16,12 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 		self.title = NSLocalizedString(@"Timetable", @"Timetable");
 		self.tabBarItem.image = [UIImage imageNamed:@"timetable"];
-    }
-    return self;
+	}
+	return self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

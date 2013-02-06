@@ -9,6 +9,7 @@
 #import "hdTimetableDataSource.h"
 #import "hdStudent.h"
 #import "hdJsonWrapper.h"
+#import "hdTimetableParser.h"
 
 @implementation hdTimetableDataSource
 
@@ -33,7 +34,6 @@
 	sharedStore = [hdDataStore sharedStore];
 	timetableRootObject = [hdJsonWrapper getObj:sharedStore.timetableJson];
 	
-	
 	return self;
 }
 
@@ -47,7 +47,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
 				 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return nil;
+	NSString *subject = [hdTimetableParser getSubjectForDay:[NSDate date] period:indexPath.row rootObj:timetableRootObject];
+	
+	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+	cell.textLabel.text = subject;
+	
+	return cell;
 }
 
 @end

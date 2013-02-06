@@ -38,22 +38,27 @@ static hdStudent *sharedStudent;
 
 - (void)loginNewUser:(int)sid
 						password:(int)pass
-						callback:(void (^) (BOOL, NSString *))callback {
+						callback:(void (^) (BOOL, NSString *))callback
+				 progressbar:(UIProgressView *)progressbar {
 	[hdApiWrapper checkLogin:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
+		progressbar.progress = 0.1;
 		if (!success) {
 			callback(NO, errorMsg);
 		} else {
 			[hdApiWrapper indexerWithUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
+				progressbar.progress = 0.6;
 				if (!success) {
 					callback(NO, errorMsg);
 				} else {
-					[hdApiWrapper downloadTimetableForUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
+					[hdApiWrapper downloadTimetableForUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg){
+						progressbar.progress = 0.85;
 						if (!success) {
 							callback(NO, errorMsg);
 						} else {
 							// errorMsg contains response when there was no error!
 							_store.timetableJson = errorMsg;
 							[hdApiWrapper downloadHomeworkForUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
+								progressbar.progress = 1.0;
 								if (!success) {
 									callback(NO, errorMsg);
 								} else {

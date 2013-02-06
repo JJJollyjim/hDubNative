@@ -10,8 +10,12 @@
 
 @implementation hdTimetableParser
 
-+ (NSString *)getSubjectForDay:(NSDate *)date period:(int)period {
-	
++ (NSString *)getSubjectForDay:(NSDate *)date period:(int)period rootObj:(NSDictionary *)obj {
+	NSDateFormatter *f = [[NSDateFormatter alloc] init];
+	f.dateFormat = @"yyyy-MM-dd";
+	f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-US"];
+	NSString *dateStr = [f stringFromDate:[NSDate date]];
+	return (NSString *)[[[obj valueForKey:dateStr] valueForKey:[NSString stringWithFormat:@"%i", period]] valueForKey:@"name"];
 }
 
 @end

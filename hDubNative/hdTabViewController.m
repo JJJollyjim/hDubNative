@@ -7,6 +7,7 @@
 //
 
 #import "hdTabViewController.h"
+#import "hdDataStore.h"
 
 @interface hdTabViewController ()
 
@@ -24,22 +25,28 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-	loginViewController = [[hdLoginViewController alloc] initWithNibName:@"hdLoginViewController" bundle:nil];
-	loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-	loginViewController.modalPresentationStyle = UIModalPresentationFormSheet;
-	[self presentViewController:loginViewController animated:YES completion:nil];
+	[self presentLoginViewControllerIfRequired];
+}
+
+- (void)presentLoginViewControllerIfRequired {
+	if (![hdDataStore sharedStore].userLoggedIn) {
+		loginViewController = [[hdLoginViewController alloc] initWithNibName:@"hdLoginViewController" bundle:nil];
+		loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+		loginViewController.modalPresentationStyle = UIModalPresentationFormSheet;
+		[self presentViewController:loginViewController animated:YES completion:nil];
+	}
 }
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	[super didReceiveMemoryWarning];
+	// Dispose of any resources that can be recreated.
 }
 
 @end

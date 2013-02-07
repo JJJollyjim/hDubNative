@@ -19,7 +19,6 @@
 	[httpRequest authenticateUser:sid
 											 password:pass
 												success:^void (NSString *response) {
-													NSLog(@"Response: %@", response);
 													if ([response isEqual:@"yay"]) {
 														callback(YES, nil);
 													} else {
@@ -43,7 +42,6 @@
 	[httpRequest indexerWithUserId:sid
 												password:pass
 												 success:^void (NSString *response) {
-													 NSLog(@"Response: %@", response);
 													 NSDictionary *jsonObj = [hdJsonWrapper getObj:response];
 													 if ([jsonObj valueForKey:@"success"] != nil) {
 														 callback(YES, nil);
@@ -77,7 +75,6 @@
 	[httpRequest getTimetableForUser:sid
 													password:pass
 													 success:^void (NSString *response) {
-														 NSLog(@"Response: %@", response);
 														 NSDictionary *jsonObj = [hdJsonWrapper getObj:response];
 														 if (jsonObj != nil) {
 															 // response = timetable json
@@ -111,7 +108,6 @@
 	[httpRequest downloadFullHomeworkForUser:sid
 																	password:pass
 																	 success:^void (NSString *response) {
-																		 NSLog(@"Response: %@", response);
 																		 NSDictionary *jsonObj = [hdJsonWrapper getObj:response];
 																		 if ([jsonObj valueForKey:@"error"] == nil) {
 																			 callback(YES, response);
@@ -148,7 +144,6 @@
 																password:pass
 														homeworkJson:homework
 																 success:^void (NSString *response) {
-																	 NSLog(@"Response: %@", response);
 																	 NSDictionary *jsonObj = [hdJsonWrapper getObj:response];
 																	 if ([jsonObj valueForKey:@"success"] != nil) {
 																		 callback(YES, response);
@@ -187,7 +182,6 @@
 									 higheid:0
 										events:nil
 									 success:^void (NSString *response) {
-										 NSLog(@"Response: %@", response);
 										 NSDictionary *jsonObj = [hdJsonWrapper getObj:response];
 										 if ([jsonObj valueForKey:@"success"] != nil) {
 											 callback(YES, response);

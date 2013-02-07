@@ -13,4 +13,6 @@
 	hdLoginViewController *loginViewController;
 }
 
+- (void)presentLoginViewControllerIfRequired;
+
 @end

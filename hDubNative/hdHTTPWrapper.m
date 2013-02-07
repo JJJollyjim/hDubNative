@@ -109,23 +109,19 @@
 	//Only called if redirecting
 	receivedData.length = 0;
 	receivedLength = 0;
-	NSLog(@"URL = %@", response.URL);
 }
 
 - (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
 	[receivedData appendData:data];
 	receivedLength += data.length;
-	NSLog(@"Received %i bytes of data.", data.length);
 }
 
 - (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	receivedData = nil;
 	errorCallback([error localizedDescription]);
-	NSLog(@"HTTP ERROR! %@", [error localizedDescription]);
 }
 
 - (void) connectionDidFinishLoading: (NSURLConnection *)connection {
-	NSLog(@"Download finished!");
 	char *response = (char *)receivedData.mutableBytes;
 	response[receivedLength] = '\0';
 	NSString *responseString = [[NSString alloc] initWithCString:response encoding:NSUTF8StringEncoding];
@@ -154,15 +150,12 @@
 		[request setHTTPBody:postData];
 	}
 	
-	NSLog(@"Starting download!");
 	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	
 	if(connection) {
 		receivedData = [NSMutableData data];
 		receivedLength = 0;
-		NSLog(@"Download started!");
 	} else {
-		NSLog(@"Connection failed!");
 		errorCallback(@"Connection failed!");
 	}
 }

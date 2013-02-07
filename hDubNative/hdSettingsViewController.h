@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "hdDataStore.h"
 
 @interface hdSettingsViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UILabel *sidLabel;
+@property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+
+- (IBAction)logout:(id)sender;
 
 @end

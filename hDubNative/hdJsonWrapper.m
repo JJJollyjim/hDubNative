@@ -21,7 +21,6 @@
 	id obj = [NSJSONSerialization JSONObjectWithData:data
 																				 options:0
 																					 error:&error];
-	NSLog(@"ERROR: %@", error.localizedDescription);
 	return obj;
 }
 

@@ -10,7 +10,7 @@
 
 @implementation hdDataStore
 
-+ (id)sharedStore {
++ (hdDataStore *)sharedStore {
 	static hdDataStore *sharedStore;
 	if (!sharedStore) {
 		sharedStore = [[hdDataStore alloc] init];
@@ -25,8 +25,8 @@
 	
 	[defaults registerDefaults:@{
 	 @"logged_in" : @NO,
-	 @"sid" : @0,
-	 @"pass" : @0,
+	 @"sid" : @-1,
+	 @"pass" : @-0,
 	 @"eid" : @0,
 	 @"timetable" : @"",
 	 @"homework" : @""}];

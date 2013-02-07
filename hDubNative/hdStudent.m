@@ -39,31 +39,34 @@ static hdStudent *sharedStudent;
 - (void)loginNewUser:(int)sid
 						password:(int)pass
 						callback:(void (^) (BOOL, NSString *))callback
-				 progressbar:(UIProgressView *)progressbar {
+		progressCallback:(void (^) (float, NSString *))progressCallback {
+	progressCallback(0.0, @"Logging in…");
 	[hdApiWrapper checkLogin:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
-		progressbar.progress = 0.1;
+		progressCallback(0.1, @"Connecting to WGC…");
 		if (!success) {
 			callback(NO, errorMsg);
 		} else {
 			[hdApiWrapper indexerWithUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
-				progressbar.progress = 0.6;
+				progressCallback(0.6, @"Downloading timetable…");
+				//[NSThread sleepForTimeInterval:1];
 				if (!success) {
 					callback(NO, errorMsg);
 				} else {
 					[hdApiWrapper downloadTimetableForUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg){
-						progressbar.progress = 0.85;
+						progressCallback(0.85, @"Downloading homework…");
+						[NSThread sleepForTimeInterval:1];
 						if (!success) {
 							callback(NO, errorMsg);
 						} else {
 							// errorMsg contains response when there was no error!
 							_store.timetableJson = errorMsg;
 							[hdApiWrapper downloadHomeworkForUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg) {
-								progressbar.progress = 1.0;
+								progressCallback(1.0, @"Finished…");
+								[NSThread sleepForTimeInterval:1];
 								if (!success) {
 									callback(NO, errorMsg);
 								} else {
 									_store.homeworkJson = errorMsg;
-									NSLog(@"SUCCESS!!!");
 									_store.userLoggedIn = YES;
 									_store.userId = sid;
 									_store.pass = pass;

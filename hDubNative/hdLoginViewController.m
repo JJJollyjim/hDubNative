@@ -34,7 +34,6 @@ passwordTextField, loginActivityIndicatorView, loginProgressView;
 	[hdStudent initialize];
 	[loginProgressView setProgress:0.0];
 	loginProgressView.hidden = NO;
-	[loginButton setTitle:@"Logging in..." forState:UIControlStateDisabled];
 	loginButton.enabled = NO;
 	loginButton.alpha = 0.5;
 	[usernameTextField resignFirstResponder];
@@ -52,11 +51,13 @@ passwordTextField, loginActivityIndicatorView, loginProgressView;
 																	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:error delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil];
 																	[av show];
 																} else {
-																	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"hDub" message:@"Success!" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil];
-																	[av show];
+																	[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 																}
 															}
-															progressbar:loginProgressView];
+															progressCallback:^(float progress, NSString *status) {
+																loginProgressView.progress = progress;
+																[loginButton setTitle:status forState:UIControlStateDisabled];
+															}];
 }
 
 - (void)didReceiveMemoryWarning

@@ -11,13 +11,14 @@
 
 @interface hdStudent : NSObject {
 	hdDataStore *_store;
+	NSString *timetableJson;
 }
 
 + (hdStudent *)sharedStudent;
 
 - (void)loginNewUser:(int)sid
 						password:(int)pass
-						callback:(void (^) (BOOL, NSString *))callback
+						callback:(void (^) (BOOL, NSString *, NSString *))callback
 		progressCallback:(void (^) (float, NSString *))progressCallback;
 
 @end

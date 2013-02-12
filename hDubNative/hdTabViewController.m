@@ -8,10 +8,7 @@
 
 #import "hdTabViewController.h"
 #import "hdDataStore.h"
-
-@interface hdTabViewController ()
-
-@end
+#import "hdTimetableTableViewController.h"
 
 @implementation hdTabViewController
 
@@ -37,10 +34,16 @@
 	}
 }
 
+- (void)updateSubviews {
+	UINavigationController *navController = (UINavigationController *)self.viewControllers[0];
+	hdTimetableTableViewController *tttvc = (hdTimetableTableViewController *)navController.viewControllers[0];
+	[tttvc viewDidAppear:YES];
+}
+
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view.
+	self.tabBar.tintColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:1.0f];
 }
 
 - (void)didReceiveMemoryWarning

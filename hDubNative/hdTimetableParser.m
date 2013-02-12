@@ -14,8 +14,19 @@
 	NSDateFormatter *f = [[NSDateFormatter alloc] init];
 	f.dateFormat = @"yyyy-MM-dd";
 	f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-US"];
+	NSString *dateStr = [f stringFromDate:date];
+	NSDictionary *timetableDay = [obj valueForKey:dateStr];
+	NSString *periodStr = [NSString stringWithFormat:@"%i", period + 1];
+	return (NSString *)[[timetableDay valueForKey:periodStr] valueForKey:@"name"];
+}
+
++ (BOOL)schoolOnDay:(NSDate *)date rootObj:(NSDictionary *)obj {
+	NSDateFormatter *f = [[NSDateFormatter alloc] init];
+	f.dateFormat = @"yyyy-MM-dd";
+	f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-US"];
 	NSString *dateStr = [f stringFromDate:[NSDate date]];
-	return (NSString *)[[[obj valueForKey:dateStr] valueForKey:[NSString stringWithFormat:@"%i", period]] valueForKey:@"name"];
+	NSDictionary *timetableDay = [obj valueForKey:dateStr];
+	return timetableDay != nil;
 }
 
 @end

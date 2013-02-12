@@ -7,13 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 #import "hdDataStore.h"
 
-@interface hdSettingsViewController : UIViewController
+@interface hdSettingsViewController : UIViewController <UIAlertViewDelegate, MFMailComposeViewControllerDelegate> {
+	NSString *bugReport;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *sidLabel;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property (weak, nonatomic) IBOutlet UIButton *reloadTimetableButton;
 
 - (IBAction)logout:(id)sender;
+- (IBAction)reloadTimetable:(id)sender;
+- (IBAction)openKwiiusWebsite:(id)sender;
+- (IBAction)sendEmail:(id)sender;
 
 @end

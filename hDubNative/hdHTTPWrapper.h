@@ -11,6 +11,7 @@
 @interface hdHTTPWrapper : NSObject <NSURLConnectionDelegate> {
 	NSMutableData *receivedData;
 	int receivedLength;
+	int statusCode;
 	void (^successCallback) (NSString *response);
 	void (^errorCallback) (NSString *errorMsg);
 }
@@ -47,5 +48,7 @@
 						 events:(NSString *)events
 						success:(void (^) (NSString *))success
 							error:(void (^) (NSString *))error;
+
+- (int)getLastStatusCode;
 
 @end

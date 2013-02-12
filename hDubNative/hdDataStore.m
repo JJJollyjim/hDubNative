@@ -34,6 +34,10 @@
 	return self;
 }
 
+- (void)synchronize {
+	[defaults synchronize];
+}
+
 - (BOOL)userLoggedIn {
 	return [defaults boolForKey:@"logged_in"];
 }

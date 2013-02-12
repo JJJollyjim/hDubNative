@@ -13,12 +13,8 @@
 		CD1E89E016BF884A00EF853C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89DE16BF884A00EF853C /* InfoPlist.strings */; };
 		CD1E89E216BF884A00EF853C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E89E116BF884A00EF853C /* main.m */; };
 		CD1E89E616BF884A00EF853C /* hdAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E89E516BF884A00EF853C /* hdAppDelegate.m */; };
-		CD1E89EF16BF884A00EF853C /* hdTimetableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E89EE16BF884A00EF853C /* hdTimetableViewController.m */; };
 		CD1E89F616BF884A00EF853C /* hdHomeworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E89F516BF884A00EF853C /* hdHomeworkViewController.m */; };
-		CD1E89FD16BF884A00EF853C /* hdTimetableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1E89FB16BF884A00EF853C /* hdTimetableViewController.xib */; };
-		CD1E8A0316BF884A00EF853C /* hdHomeworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A0116BF884A00EF853C /* hdHomeworkViewController.xib */; };
 		CD1E8A0F16BF88CC00EF853C /* hdSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1E8A0D16BF88CC00EF853C /* hdSettingsViewController.m */; };
-		CD1E8A1016BF88CC00EF853C /* hdSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A0E16BF88CC00EF853C /* hdSettingsViewController.xib */; };
 		CD1E8A1516BF89E900EF853C /* timetable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1216BF89E900EF853C /* timetable@2x.png */; };
 		CD1E8A1616BF89E900EF853C /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1316BF89E900EF853C /* settings@2x.png */; };
 		CD1E8A1716BF89E900EF853C /* homework@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1416BF89E900EF853C /* homework@2x.png */; };
@@ -36,11 +32,21 @@
 		CD32C06316C1C6EF00AA0569 /* hdDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C06216C1C6EE00AA0569 /* hdDataStore.m */; };
 		CD32C06F16C1F1FF00AA0569 /* hdStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C06E16C1F1FF00AA0569 /* hdStudent.m */; };
 		CD32C07416C2094200AA0569 /* hdApiWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C07316C2094200AA0569 /* hdApiWrapper.m */; };
-		CD32C07716C21D4800AA0569 /* hdTimetableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C07616C21D4800AA0569 /* hdTimetableDataSource.m */; };
 		CD32C07B16C22B9C00AA0569 /* hdTimetableParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C07A16C22B9C00AA0569 /* hdTimetableParser.m */; };
 		CD32C07F16C2338900AA0569 /* hdLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C07D16C2338900AA0569 /* hdLoginViewController.m */; };
 		CD32C08016C2338900AA0569 /* hdLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD32C07E16C2338900AA0569 /* hdLoginViewController.xib */; };
 		CD54F86416C253BE00529769 /* hdTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD54F86316C253BE00529769 /* hdTabViewController.m */; };
+		CD685A7816C6358200DD4013 /* hdDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CD685A7716C6358200DD4013 /* hdDateUtils.m */; };
+		CD694E4B16C3A9E2006264DC /* hdTimetableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD694E4A16C3A9E1006264DC /* hdTimetableTableViewController.m */; };
+		CD694E4D16C4A471006264DC /* Storyboard-iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD694E4C16C4A470006264DC /* Storyboard-iPhone.storyboard */; };
+		CD694E5116C4A7AD006264DC /* homework.png in Resources */ = {isa = PBXBuildFile; fileRef = CD694E4E16C4A7AD006264DC /* homework.png */; };
+		CD694E5216C4A7AD006264DC /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = CD694E4F16C4A7AD006264DC /* settings.png */; };
+		CD694E5316C4A7AD006264DC /* timetable.png in Resources */ = {isa = PBXBuildFile; fileRef = CD694E5016C4A7AD006264DC /* timetable.png */; };
+		CD6E918216C7353200BCDCFB /* hdTimetableDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E918116C7353200BCDCFB /* hdTimetableDatePickerViewController.m */; };
+		CD6E918416C769FB00BCDCFB /* Kwiius Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6E918316C769FB00BCDCFB /* Kwiius Logo.png */; };
+		CD6E918616C783B000BCDCFB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6E918516C783B000BCDCFB /* MessageUI.framework */; };
+		CD6E918916C799F800BCDCFB /* hdButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E918816C799F800BCDCFB /* hdButton.m */; };
+		CD6E918B16C79D7300BCDCFB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6E918A16C79D7300BCDCFB /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,15 +59,10 @@
 		CD1E89E316BF884A00EF853C /* hDubNative-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "hDubNative-Prefix.pch"; sourceTree = "<group>"; };
 		CD1E89E416BF884A00EF853C /* hdAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hdAppDelegate.h; sourceTree = "<group>"; };
 		CD1E89E516BF884A00EF853C /* hdAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hdAppDelegate.m; sourceTree = "<group>"; };
-		CD1E89ED16BF884A00EF853C /* hdTimetableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hdTimetableViewController.h; sourceTree = "<group>"; };
-		CD1E89EE16BF884A00EF853C /* hdTimetableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hdTimetableViewController.m; sourceTree = "<group>"; };
 		CD1E89F416BF884A00EF853C /* hdHomeworkViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hdHomeworkViewController.h; sourceTree = "<group>"; };
 		CD1E89F516BF884A00EF853C /* hdHomeworkViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkViewController.m; sourceTree = "<group>"; };
-		CD1E89FC16BF884A00EF853C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/hdTimetableViewController.xib; sourceTree = "<group>"; };
-		CD1E8A0216BF884A00EF853C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/hdHomeworkViewController.xib; sourceTree = "<group>"; };
 		CD1E8A0C16BF88CC00EF853C /* hdSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdSettingsViewController.h; sourceTree = "<group>"; };
 		CD1E8A0D16BF88CC00EF853C /* hdSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdSettingsViewController.m; sourceTree = "<group>"; };
-		CD1E8A0E16BF88CC00EF853C /* hdSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = hdSettingsViewController.xib; sourceTree = "<group>"; };
 		CD1E8A1216BF89E900EF853C /* timetable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timetable@2x.png"; sourceTree = "<group>"; };
 		CD1E8A1316BF89E900EF853C /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		CD1E8A1416BF89E900EF853C /* homework@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homework@2x.png"; sourceTree = "<group>"; };
@@ -84,9 +85,7 @@
 		CD32C06E16C1F1FF00AA0569 /* hdStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdStudent.m; sourceTree = "<group>"; };
 		CD32C07016C1F5CA00AA0569 /* hDubNative-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "hDubNative-Info.plist"; sourceTree = "<group>"; };
 		CD32C07216C2094200AA0569 /* hdApiWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdApiWrapper.h; sourceTree = "<group>"; };
-		CD32C07316C2094200AA0569 /* hdApiWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdApiWrapper.m; sourceTree = "<group>"; };
-		CD32C07516C21D4800AA0569 /* hdTimetableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdTimetableDataSource.h; sourceTree = "<group>"; };
-		CD32C07616C21D4800AA0569 /* hdTimetableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdTimetableDataSource.m; sourceTree = "<group>"; };
+		CD32C07316C2094200AA0569 /* hdApiWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = hdApiWrapper.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		CD32C07916C22B9B00AA0569 /* hdTimetableParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdTimetableParser.h; sourceTree = "<group>"; };
 		CD32C07A16C22B9C00AA0569 /* hdTimetableParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdTimetableParser.m; sourceTree = "<group>"; };
 		CD32C07C16C2338800AA0569 /* hdLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdLoginViewController.h; sourceTree = "<group>"; };
@@ -94,6 +93,21 @@
 		CD32C07E16C2338900AA0569 /* hdLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = hdLoginViewController.xib; sourceTree = "<group>"; };
 		CD54F86216C253BE00529769 /* hdTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdTabViewController.h; sourceTree = "<group>"; };
 		CD54F86316C253BE00529769 /* hdTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdTabViewController.m; sourceTree = "<group>"; };
+		CD685A7616C6358200DD4013 /* hdDateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdDateUtils.h; sourceTree = "<group>"; };
+		CD685A7716C6358200DD4013 /* hdDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdDateUtils.m; sourceTree = "<group>"; };
+		CD694E4916C3A9E1006264DC /* hdTimetableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdTimetableTableViewController.h; sourceTree = "<group>"; };
+		CD694E4A16C3A9E1006264DC /* hdTimetableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdTimetableTableViewController.m; sourceTree = "<group>"; };
+		CD694E4C16C4A470006264DC /* Storyboard-iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Storyboard-iPhone.storyboard"; sourceTree = "<group>"; };
+		CD694E4E16C4A7AD006264DC /* homework.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homework.png; sourceTree = "<group>"; };
+		CD694E4F16C4A7AD006264DC /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		CD694E5016C4A7AD006264DC /* timetable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timetable.png; sourceTree = "<group>"; };
+		CD6E918016C7353200BCDCFB /* hdTimetableDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdTimetableDatePickerViewController.h; sourceTree = "<group>"; };
+		CD6E918116C7353200BCDCFB /* hdTimetableDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdTimetableDatePickerViewController.m; sourceTree = "<group>"; };
+		CD6E918316C769FB00BCDCFB /* Kwiius Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kwiius Logo.png"; sourceTree = "<group>"; };
+		CD6E918516C783B000BCDCFB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		CD6E918716C799F800BCDCFB /* hdButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdButton.h; sourceTree = "<group>"; };
+		CD6E918816C799F800BCDCFB /* hdButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdButton.m; sourceTree = "<group>"; };
+		CD6E918A16C79D7300BCDCFB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +115,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6E918B16C79D7300BCDCFB /* QuartzCore.framework in Frameworks */,
+				CD6E918616C783B000BCDCFB /* MessageUI.framework in Frameworks */,
 				CD1E89D616BF884A00EF853C /* UIKit.framework in Frameworks */,
 				CD1E89D816BF884A00EF853C /* Foundation.framework in Frameworks */,
 				CD1E89DA16BF884A00EF853C /* CoreGraphics.framework in Frameworks */,
@@ -113,6 +129,8 @@
 		CD1E89C916BF884A00EF853C = {
 			isa = PBXGroup;
 			children = (
+				CD6E918A16C79D7300BCDCFB /* QuartzCore.framework */,
+				CD6E918516C783B000BCDCFB /* MessageUI.framework */,
 				CD1E89DB16BF884A00EF853C /* hDub */,
 				CD1E89D416BF884A00EF853C /* Frameworks */,
 				CD1E89D316BF884A00EF853C /* Products */,
@@ -164,16 +182,13 @@
 		CD1E8A1116BF892A00EF853C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CD54F86216C253BE00529769 /* hdTabViewController.h */,
-				CD54F86316C253BE00529769 /* hdTabViewController.m */,
-				CD32C07C16C2338800AA0569 /* hdLoginViewController.h */,
-				CD32C07D16C2338900AA0569 /* hdLoginViewController.m */,
-				CD32C07E16C2338900AA0569 /* hdLoginViewController.xib */,
+				CD6E918716C799F800BCDCFB /* hdButton.h */,
+				CD6E918816C799F800BCDCFB /* hdButton.m */,
+				CD685A7316C5F09F00DD4013 /* TabView */,
+				CD685A7216C5F09600DD4013 /* Login */,
 				CD32C07816C21D5100AA0569 /* Timetable */,
-				CD1E89F416BF884A00EF853C /* hdHomeworkViewController.h */,
-				CD1E89F516BF884A00EF853C /* hdHomeworkViewController.m */,
-				CD1E8A0C16BF88CC00EF853C /* hdSettingsViewController.h */,
-				CD1E8A0D16BF88CC00EF853C /* hdSettingsViewController.m */,
+				CD685A7416C5F0AD00DD4013 /* Homework */,
+				CD685A7516C5F0B500DD4013 /* Settings */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -181,6 +196,9 @@
 		CD1E8A1816BF89EF00EF853C /* TabBarIcons */ = {
 			isa = PBXGroup;
 			children = (
+				CD694E4E16C4A7AD006264DC /* homework.png */,
+				CD694E4F16C4A7AD006264DC /* settings.png */,
+				CD694E5016C4A7AD006264DC /* timetable.png */,
 				CD1E8A1216BF89E900EF853C /* timetable@2x.png */,
 				CD1E8A1316BF89E900EF853C /* settings@2x.png */,
 				CD1E8A1416BF89E900EF853C /* homework@2x.png */,
@@ -199,16 +217,6 @@
 			);
 			name = Splashscreens;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		CD1E8A2416BF8F4C00EF853C /* XIBs */ = {
-			isa = PBXGroup;
-			children = (
-				CD1E8A0E16BF88CC00EF853C /* hdSettingsViewController.xib */,
-				CD1E89FB16BF884A00EF853C /* hdTimetableViewController.xib */,
-				CD1E8A0116BF884A00EF853C /* hdHomeworkViewController.xib */,
-			);
-			name = XIBs;
 			sourceTree = "<group>";
 		};
 		CD32C05516C0C2D800AA0569 /* Server Communication */ = {
@@ -267,6 +275,7 @@
 		CD32C06B16C1F12300AA0569 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CD6E918316C769FB00BCDCFB /* Kwiius Logo.png */,
 				CD32C06A16C1F0D700AA0569 /* Icons */,
 				CD1E8A1816BF89EF00EF853C /* TabBarIcons */,
 				CD1E8A2316BF8F3500EF853C /* Splashscreens */,
@@ -277,9 +286,9 @@
 		CD32C06C16C1F13600AA0569 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				CD694E4C16C4A470006264DC /* Storyboard-iPhone.storyboard */,
 				CD32C06B16C1F12300AA0569 /* Images */,
 				CD1E8A1116BF892A00EF853C /* ViewControllers */,
-				CD1E8A2416BF8F4C00EF853C /* XIBs */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -287,14 +296,53 @@
 		CD32C07816C21D5100AA0569 /* Timetable */ = {
 			isa = PBXGroup;
 			children = (
-				CD1E89ED16BF884A00EF853C /* hdTimetableViewController.h */,
-				CD1E89EE16BF884A00EF853C /* hdTimetableViewController.m */,
-				CD32C07516C21D4800AA0569 /* hdTimetableDataSource.h */,
-				CD32C07616C21D4800AA0569 /* hdTimetableDataSource.m */,
+				CD6E918016C7353200BCDCFB /* hdTimetableDatePickerViewController.h */,
+				CD6E918116C7353200BCDCFB /* hdTimetableDatePickerViewController.m */,
+				CD694E4916C3A9E1006264DC /* hdTimetableTableViewController.h */,
+				CD694E4A16C3A9E1006264DC /* hdTimetableTableViewController.m */,
+				CD685A7616C6358200DD4013 /* hdDateUtils.h */,
+				CD685A7716C6358200DD4013 /* hdDateUtils.m */,
 				CD32C07916C22B9B00AA0569 /* hdTimetableParser.h */,
 				CD32C07A16C22B9C00AA0569 /* hdTimetableParser.m */,
 			);
 			name = Timetable;
+			sourceTree = "<group>";
+		};
+		CD685A7216C5F09600DD4013 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CD32C07C16C2338800AA0569 /* hdLoginViewController.h */,
+				CD32C07D16C2338900AA0569 /* hdLoginViewController.m */,
+				CD32C07E16C2338900AA0569 /* hdLoginViewController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		CD685A7316C5F09F00DD4013 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				CD54F86216C253BE00529769 /* hdTabViewController.h */,
+				CD54F86316C253BE00529769 /* hdTabViewController.m */,
+			);
+			name = TabView;
+			sourceTree = "<group>";
+		};
+		CD685A7416C5F0AD00DD4013 /* Homework */ = {
+			isa = PBXGroup;
+			children = (
+				CD1E89F416BF884A00EF853C /* hdHomeworkViewController.h */,
+				CD1E89F516BF884A00EF853C /* hdHomeworkViewController.m */,
+			);
+			name = Homework;
+			sourceTree = "<group>";
+		};
+		CD685A7516C5F0B500DD4013 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CD1E8A0C16BF88CC00EF853C /* hdSettingsViewController.h */,
+				CD1E8A0D16BF88CC00EF853C /* hdSettingsViewController.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,9 +398,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD1E89E016BF884A00EF853C /* InfoPlist.strings in Resources */,
-				CD1E89FD16BF884A00EF853C /* hdTimetableViewController.xib in Resources */,
-				CD1E8A0316BF884A00EF853C /* hdHomeworkViewController.xib in Resources */,
-				CD1E8A1016BF88CC00EF853C /* hdSettingsViewController.xib in Resources */,
 				CD1E8A1516BF89E900EF853C /* timetable@2x.png in Resources */,
 				CD1E8A1616BF89E900EF853C /* settings@2x.png in Resources */,
 				CD1E8A1716BF89E900EF853C /* homework@2x.png in Resources */,
@@ -366,6 +411,11 @@
 				CD1E8A2A16BF8FC900EF853C /* IconiPad.png in Resources */,
 				CD1E8A2C16BF8FCB00EF853C /* IconiPadR.png in Resources */,
 				CD32C08016C2338900AA0569 /* hdLoginViewController.xib in Resources */,
+				CD694E4D16C4A471006264DC /* Storyboard-iPhone.storyboard in Resources */,
+				CD694E5116C4A7AD006264DC /* homework.png in Resources */,
+				CD694E5216C4A7AD006264DC /* settings.png in Resources */,
+				CD694E5316C4A7AD006264DC /* timetable.png in Resources */,
+				CD6E918416C769FB00BCDCFB /* Kwiius Logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,7 +428,6 @@
 			files = (
 				CD1E89E216BF884A00EF853C /* main.m in Sources */,
 				CD1E89E616BF884A00EF853C /* hdAppDelegate.m in Sources */,
-				CD1E89EF16BF884A00EF853C /* hdTimetableViewController.m in Sources */,
 				CD1E89F616BF884A00EF853C /* hdHomeworkViewController.m in Sources */,
 				CD1E8A0F16BF88CC00EF853C /* hdSettingsViewController.m in Sources */,
 				CD32C05116C0C2AB00AA0569 /* hdHTTPWrapper.m in Sources */,
@@ -386,10 +435,13 @@
 				CD32C06316C1C6EF00AA0569 /* hdDataStore.m in Sources */,
 				CD32C06F16C1F1FF00AA0569 /* hdStudent.m in Sources */,
 				CD32C07416C2094200AA0569 /* hdApiWrapper.m in Sources */,
-				CD32C07716C21D4800AA0569 /* hdTimetableDataSource.m in Sources */,
 				CD32C07B16C22B9C00AA0569 /* hdTimetableParser.m in Sources */,
 				CD32C07F16C2338900AA0569 /* hdLoginViewController.m in Sources */,
 				CD54F86416C253BE00529769 /* hdTabViewController.m in Sources */,
+				CD694E4B16C3A9E2006264DC /* hdTimetableTableViewController.m in Sources */,
+				CD685A7816C6358200DD4013 /* hdDateUtils.m in Sources */,
+				CD6E918216C7353200BCDCFB /* hdTimetableDatePickerViewController.m in Sources */,
+				CD6E918916C799F800BCDCFB /* hdButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,22 +454,6 @@
 				CD1E89DF16BF884A00EF853C /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		CD1E89FB16BF884A00EF853C /* hdTimetableViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD1E89FC16BF884A00EF853C /* en */,
-			);
-			name = hdTimetableViewController.xib;
-			sourceTree = "<group>";
-		};
-		CD1E8A0116BF884A00EF853C /* hdHomeworkViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD1E8A0216BF884A00EF853C /* en */,
-			);
-			name = hdHomeworkViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -448,9 +484,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -473,9 +509,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos6.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -487,6 +523,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "hDubNative/hDubNative-Prefix.pch";
 				INFOPLIST_FILE = "hDubNative/hDubNative-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -498,6 +535,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "hDubNative/hDubNative-Prefix.pch";
 				INFOPLIST_FILE = "hDubNative/hDubNative-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

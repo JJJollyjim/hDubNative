@@ -8,6 +8,7 @@
 
 #import "hdSettingsViewController.h"
 #import "hdTabViewController.h"
+#import "hdStudent.h"
 
 @implementation hdSettingsViewController
 
@@ -45,4 +46,77 @@
 	[hdTabVC presentLoginViewControllerIfRequired];
 }
 
+- (IBAction)reloadTimetable:(id)sender {
+	self.reloadTimetableButton.enabled = NO;
+	self.reloadTimetableButton.alpha = 0.5;
+	self.logoutButton.enabled = NO;
+	self.logoutButton.alpha = 0.5;
+	[[hdStudent sharedStudent] loginNewUser:[hdDataStore sharedStore].userId password:[hdDataStore sharedStore].pass callback:^(BOOL success, NSString *response, NSString *report) {
+		self.reloadTimetableButton.enabled = YES;
+		self.reloadTimetableButton.alpha = 1.0;
+		self.logoutButton.enabled = YES;
+		self.logoutButton.alpha = 1.0;
+		
+		if (!success) {
+			bugReport = report;
+			UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"hDub" message:response delegate:self cancelButtonTitle:@"Close" otherButtonTitles:@"Send Bug Report", nil];
+			[av show];
+		} else {
+			[hdDataStore sharedStore].timetableJson = response;
+			UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"hDub" message:@"Timetable and homework updated!" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil];
+			[av show];
+		}
+	} progressCallback:^(float progress, NSString *progressString) {
+		[self.reloadTimetableButton setTitle:progressString forState:UIControlStateDisabled];
+	}];
+}
+
+- (IBAction)openKwiiusWebsite:(id)sender {
+	NSURL *url = [[NSURL alloc] initWithString:@"http://kwiius.com"];
+	[[UIApplication sharedApplication] openURL:url];
+}
+
+#pragma mark - Email
+
+- (IBAction)sendEmail:(id)sender {
+	if (![MFMailComposeViewController canSendMail]) {
+		UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"hDub" message:@"No email accounts have been configured." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil];
+		[av show];
+	} else {
+		MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+		mailer.mailComposeDelegate = self;
+		[mailer setSubject:@"hDub Feedback"];
+		[mailer setToRecipients:@[@"toby@kwiius.com"]];
+		[self presentModalViewController:mailer animated:YES];
+	}
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == 1) {
+		// Send error report
+		[self sendBugReport:bugReport];
+	}
+}
+
+- (void)sendBugReport:(NSString *)report {
+	if (![MFMailComposeViewController canSendMail]) {
+		UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"hDub" message:@"No email accounts have been configured." delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil];
+		[av show];
+	} else {
+		MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+		mailer.mailComposeDelegate = self;
+		[mailer setMessageBody:report isHTML:NO];
+		[mailer setSubject:@"hDub Bug Report (iOS)"];
+		[mailer setToRecipients:@[@"toby@kwiius.com"]];
+		[self presentModalViewController:mailer animated:YES];
+	}
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+	[self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)viewDidUnload {
+    [super viewDidUnload];
+}
 @end

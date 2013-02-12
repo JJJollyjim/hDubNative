@@ -14,6 +14,8 @@
 
 + (hdDataStore *)sharedStore;
 
+- (void)synchronize;
+
 - (BOOL)userLoggedIn;
 - (void)setUserLoggedIn:(BOOL)userLoggedIn;
 

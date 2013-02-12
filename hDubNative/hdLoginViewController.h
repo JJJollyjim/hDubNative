@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 #import "hdStudent.h"
 
-@interface hdLoginViewController : UIViewController
+@interface hdLoginViewController : UIViewController <UIAlertViewDelegate, MFMailComposeViewControllerDelegate> {
+	NSString *bugReport;
+}
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;

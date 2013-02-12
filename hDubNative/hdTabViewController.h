@@ -14,5 +14,6 @@
 }
 
 - (void)presentLoginViewControllerIfRequired;
+- (void)updateSubviews;
 
 @end

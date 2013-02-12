@@ -12,27 +12,27 @@
 
 + (void)checkLogin:(int)sid
 							pass:(int)pass
-					callback:(void (^) (BOOL, NSString *))callback;
+					callback:(void (^) (BOOL, NSString *, NSString *))callback;
 
 + (void)indexerWithUser:(int)sid
 									 pass:(int)pass
-							 callback:(void (^) (BOOL, NSString *))callback;
+							 callback:(void (^) (BOOL, NSString *, NSString *))callback;
 
 + (void)downloadTimetableForUser:(int)sid
 														pass:(int)pass
-												callback:(void (^) (BOOL, NSString *))callback;
+												callback:(void (^) (BOOL, NSString *, NSString *))callback;
 
 + (void)downloadHomeworkForUser:(int)sid
 													 pass:(int)pass
-											 callback:(void (^) (BOOL, NSString *))callback;
+											 callback:(void (^) (BOOL, NSString *, NSString *))callback;
 
 + (void)uploadHomeworkForUser:(int)sid
 												 pass:(int)pass
 										 homework:(NSString *)homework
-										 callback:(void (^) (BOOL, NSString *))callback;
+										 callback:(void (^) (BOOL, NSString *, NSString *))callback;
 
 + (void)syncHomeworkForUser:(int)sid
 											 pass:(int)pass
-									 callback:(void (^) (BOOL, NSString *))callback;
+									 callback:(void (^) (BOOL, NSString *, NSString *))callback;
 
 @end

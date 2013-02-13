@@ -72,7 +72,7 @@
 - (IBAction)swipeToNextDay:(id)sender {
 	NSTimeInterval ti = 86400;
 	dateShown = [dateShown dateByAddingTimeInterval:ti];
-	[self updateTimetableWithAnimationLeft];
+	[self updateTimetableWithAnimationLeft:nil];
 }
 
 - (IBAction)swipeToPreviousDay:(id)sender {
@@ -85,7 +85,7 @@
 			break;
 		}
 	}
-	[self updateTimetableWithAnimationRight];
+	[self updateTimetableWithAnimationRight:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -188,7 +188,10 @@
 	[self.tableView reloadData];
 }
 
-- (void)updateTimetableWithAnimationLeft {
+- (void)updateTimetableWithAnimationLeft:(NSDate *)date {
+	if (date != nil) {
+		dateShown = date;
+	}
 	NSString *oldTitle = self.title;
 	[(UITableView *)self.view reloadRowsAtIndexPaths:
 	 @[
@@ -203,7 +206,10 @@
 	[self replaceDateWithFadeAnimation:oldTitle];
 }
 
-- (void)updateTimetableWithAnimationRight {
+- (void)updateTimetableWithAnimationRight:(NSDate *)date {
+	if (date != nil) {
+		dateShown = date;
+	}
 	NSString *oldTitle = self.title;
 	[(UITableView *)self.view reloadRowsAtIndexPaths:
 	 @[
@@ -219,25 +225,22 @@
 }
 
 - (void)replaceDateWithFadeAnimation:(NSString *)originalTitle {
-	UINavigationBar* bar = [[UINavigationBar alloc] initWithFrame:CGRectMake(100, 20, 568, 44)];
+	__block UINavigationBar* bar = [[UINavigationBar alloc] initWithFrame:CGRectMake(100, 20, 10000, 44)];
 	bar.tintColor = [UIColor colorWithRed:135/255.0f green:10/255.0f blue:0.0f alpha:1.0f];
 	[self.navigationController.view addSubview:bar];
 	
 	UINavigationItem* anItem = [[UINavigationItem alloc] initWithTitle:originalTitle];
-	//UIBarButtonItem* leftItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:nil action:nil];
-	//UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:nil action:nil];
-	//anItem.leftBarButtonItem = leftItem;
-	//anItem.rightBarButtonItem = rightItem;
 	bar.items = [NSArray arrayWithObject:anItem];
 	
 	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:1];
+	[UIView setAnimationDuration:0.5];
 	[[[bar subviews] objectAtIndex:0] setAlpha:0];
 	[[[bar subviews] objectAtIndex:1] setAlpha:0];
-	//[[[bar subviews] objectAtIndex:2] setAlpha:0];
 	[UIView commitAnimations];
 	
-	
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+    bar = nil;
+	});
 }
 
 - (void)viewDidUnload {

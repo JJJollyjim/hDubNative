@@ -34,6 +34,12 @@
 	// Dispose of any resources that can be recreated.
 }
 
+- (IBAction)selectedNewDate:(id)sender {
+	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+		[timetableViewController updateTimetableWithAnimationLeft:self.datePicker.date];
+	}
+}
+
 - (IBAction)changeDate:(id)sender {
 	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
 		UIPopoverController *popoverViewController = [timetableViewController getPopoverController];

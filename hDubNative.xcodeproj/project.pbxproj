@@ -45,8 +45,17 @@
 		CD6E918216C7353200BCDCFB /* hdTimetableDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E918116C7353200BCDCFB /* hdTimetableDatePickerViewController.m */; };
 		CD6E918416C769FB00BCDCFB /* Kwiius Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CD6E918316C769FB00BCDCFB /* Kwiius Logo.png */; };
 		CD6E918616C783B000BCDCFB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6E918516C783B000BCDCFB /* MessageUI.framework */; };
-		CD6E918916C799F800BCDCFB /* hdButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6E918816C799F800BCDCFB /* hdButton.m */; };
 		CD6E918B16C79D7300BCDCFB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6E918A16C79D7300BCDCFB /* QuartzCore.framework */; };
+		CD8C424316CB7AB4007B2186 /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8C423B16CB7AB4007B2186 /* blueButton.png */; };
+		CD8C424416CB7AB4007B2186 /* blueButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8C423C16CB7AB4007B2186 /* blueButton@2x.png */; };
+		CD8C424516CB7AB4007B2186 /* blueButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8C423D16CB7AB4007B2186 /* blueButtonHighlight.png */; };
+		CD8C424616CB7AB4007B2186 /* blueButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8C423E16CB7AB4007B2186 /* blueButtonHighlight@2x.png */; };
+		CD8C424716CB7AB4007B2186 /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8C423F16CB7AB4007B2186 /* whiteButton.png */; };
+		CD8C424816CB7AB4007B2186 /* whiteButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8C424016CB7AB4007B2186 /* whiteButton@2x.png */; };
+		CD8C424916CB7AB4007B2186 /* whiteButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8C424116CB7AB4007B2186 /* whiteButtonHighlight.png */; };
+		CD8C424A16CB7AB4007B2186 /* whiteButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8C424216CB7AB4007B2186 /* whiteButtonHighlight@2x.png */; };
+		CD8C424E16CB7BB3007B2186 /* hdBlueButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8C424D16CB7BB3007B2186 /* hdBlueButton.m */; };
+		CD8C425116CB7E28007B2186 /* hdWhiteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8C425016CB7E28007B2186 /* hdWhiteButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,9 +114,19 @@
 		CD6E918116C7353200BCDCFB /* hdTimetableDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdTimetableDatePickerViewController.m; sourceTree = "<group>"; };
 		CD6E918316C769FB00BCDCFB /* Kwiius Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Kwiius Logo.png"; sourceTree = "<group>"; };
 		CD6E918516C783B000BCDCFB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		CD6E918716C799F800BCDCFB /* hdButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdButton.h; sourceTree = "<group>"; };
-		CD6E918816C799F800BCDCFB /* hdButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdButton.m; sourceTree = "<group>"; };
 		CD6E918A16C79D7300BCDCFB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CD8C423B16CB7AB4007B2186 /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
+		CD8C423C16CB7AB4007B2186 /* blueButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueButton@2x.png"; sourceTree = "<group>"; };
+		CD8C423D16CB7AB4007B2186 /* blueButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButtonHighlight.png; sourceTree = "<group>"; };
+		CD8C423E16CB7AB4007B2186 /* blueButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueButtonHighlight@2x.png"; sourceTree = "<group>"; };
+		CD8C423F16CB7AB4007B2186 /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
+		CD8C424016CB7AB4007B2186 /* whiteButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteButton@2x.png"; sourceTree = "<group>"; };
+		CD8C424116CB7AB4007B2186 /* whiteButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButtonHighlight.png; sourceTree = "<group>"; };
+		CD8C424216CB7AB4007B2186 /* whiteButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteButtonHighlight@2x.png"; sourceTree = "<group>"; };
+		CD8C424C16CB7BB3007B2186 /* hdBlueButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdBlueButton.h; sourceTree = "<group>"; };
+		CD8C424D16CB7BB3007B2186 /* hdBlueButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdBlueButton.m; sourceTree = "<group>"; };
+		CD8C424F16CB7E27007B2186 /* hdWhiteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdWhiteButton.h; sourceTree = "<group>"; };
+		CD8C425016CB7E28007B2186 /* hdWhiteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdWhiteButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,8 +201,10 @@
 		CD1E8A1116BF892A00EF853C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CD6E918716C799F800BCDCFB /* hdButton.h */,
-				CD6E918816C799F800BCDCFB /* hdButton.m */,
+				CD8C424F16CB7E27007B2186 /* hdWhiteButton.h */,
+				CD8C425016CB7E28007B2186 /* hdWhiteButton.m */,
+				CD8C424C16CB7BB3007B2186 /* hdBlueButton.h */,
+				CD8C424D16CB7BB3007B2186 /* hdBlueButton.m */,
 				CD685A7316C5F09F00DD4013 /* TabView */,
 				CD685A7216C5F09600DD4013 /* Login */,
 				CD32C07816C21D5100AA0569 /* Timetable */,
@@ -275,6 +296,7 @@
 		CD32C06B16C1F12300AA0569 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CD8C424B16CB7B56007B2186 /* Buttons */,
 				CD6E918316C769FB00BCDCFB /* Kwiius Logo.png */,
 				CD32C06A16C1F0D700AA0569 /* Icons */,
 				CD1E8A1816BF89EF00EF853C /* TabBarIcons */,
@@ -343,6 +365,21 @@
 				CD1E8A0D16BF88CC00EF853C /* hdSettingsViewController.m */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		CD8C424B16CB7B56007B2186 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				CD8C423B16CB7AB4007B2186 /* blueButton.png */,
+				CD8C423C16CB7AB4007B2186 /* blueButton@2x.png */,
+				CD8C423D16CB7AB4007B2186 /* blueButtonHighlight.png */,
+				CD8C423E16CB7AB4007B2186 /* blueButtonHighlight@2x.png */,
+				CD8C423F16CB7AB4007B2186 /* whiteButton.png */,
+				CD8C424016CB7AB4007B2186 /* whiteButton@2x.png */,
+				CD8C424116CB7AB4007B2186 /* whiteButtonHighlight.png */,
+				CD8C424216CB7AB4007B2186 /* whiteButtonHighlight@2x.png */,
+			);
+			name = Buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,6 +453,14 @@
 				CD694E5216C4A7AD006264DC /* settings.png in Resources */,
 				CD694E5316C4A7AD006264DC /* timetable.png in Resources */,
 				CD6E918416C769FB00BCDCFB /* Kwiius Logo.png in Resources */,
+				CD8C424316CB7AB4007B2186 /* blueButton.png in Resources */,
+				CD8C424416CB7AB4007B2186 /* blueButton@2x.png in Resources */,
+				CD8C424516CB7AB4007B2186 /* blueButtonHighlight.png in Resources */,
+				CD8C424616CB7AB4007B2186 /* blueButtonHighlight@2x.png in Resources */,
+				CD8C424716CB7AB4007B2186 /* whiteButton.png in Resources */,
+				CD8C424816CB7AB4007B2186 /* whiteButton@2x.png in Resources */,
+				CD8C424916CB7AB4007B2186 /* whiteButtonHighlight.png in Resources */,
+				CD8C424A16CB7AB4007B2186 /* whiteButtonHighlight@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,7 +486,8 @@
 				CD694E4B16C3A9E2006264DC /* hdTimetableTableViewController.m in Sources */,
 				CD685A7816C6358200DD4013 /* hdDateUtils.m in Sources */,
 				CD6E918216C7353200BCDCFB /* hdTimetableDatePickerViewController.m in Sources */,
-				CD6E918916C799F800BCDCFB /* hdButton.m in Sources */,
+				CD8C424E16CB7BB3007B2186 /* hdBlueButton.m in Sources */,
+				CD8C425116CB7E28007B2186 /* hdWhiteButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

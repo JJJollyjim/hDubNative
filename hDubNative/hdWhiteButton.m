@@ -1,0 +1,43 @@
+//
+//  hdWhiteButton.m
+//  hDubNative
+//
+//  Created by Jamie McClymont on 13/02/13.
+//  Copyright (c) 2013 Kwiius. All rights reserved.
+//
+
+#import "hdWhiteButton.h"
+
+@implementation hdWhiteButton
+
+- (id)initWithFrame:(CGRect)frame
+{
+	self = [super initWithFrame:frame];
+	if (self) {
+		UIImage *buttonImage = [[UIImage imageNamed:@"whiteButton.png"]
+														resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+		UIImage *buttonImageHighlight = [[UIImage imageNamed:@"whiteButtonHighlight.png"]
+																		 resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+		// Set the background for any states you plan to use
+		[self setBackgroundImage:buttonImage forState:UIControlStateNormal];
+		[self setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+	}
+	return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+	self = [super initWithCoder:aDecoder];
+	if (self) {
+		UIImage *buttonImage = [[UIImage imageNamed:@"whiteButton.png"]
+														resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+		UIImage *buttonImageHighlight = [[UIImage imageNamed:@"whiteButtonHighlight.png"]
+																		 resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+		// Set the background for any states you plan to use
+		[self setBackgroundImage:buttonImage forState:UIControlStateNormal];
+		[self setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+	}
+	return self;
+}
+
+
+@end

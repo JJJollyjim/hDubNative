@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 - (IBAction)changeDate:(id)sender;
+- (IBAction)selectedNewDate:(id)sender;
 - (void)setTimetableViewController:(id)timetableVC;
 
 @end

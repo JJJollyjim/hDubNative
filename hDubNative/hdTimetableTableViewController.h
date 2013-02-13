@@ -27,5 +27,7 @@
 - (UIPopoverController *)getPopoverController;
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController;
 - (IBAction)updateTimetable:(id)sender;
+- (void)updateTimetableWithAnimationLeft:(NSDate *)date;
+- (void)updateTimetableWithAnimationRight:(NSDate *)date;
 
 @end

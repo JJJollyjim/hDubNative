@@ -20,6 +20,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	if ([[[UIDevice currentDevice] systemVersion] floatValue] < 6.0) {
+		[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
+	}
+	
 	[[hdDataStore sharedStore] synchronize];
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	

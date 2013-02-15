@@ -74,10 +74,12 @@
 }
 
 - (NSString *)homeworkJson {
+	[defaults synchronize];
 	return [defaults stringForKey:@"homework"];
 }
 - (void)setHomeworkJson:(NSString *)json {
 	[defaults setObject:json forKey:@"homework"];
+	[defaults synchronize];
 }
 
 @end

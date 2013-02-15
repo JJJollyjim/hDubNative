@@ -48,31 +48,31 @@ static hdStudent *sharedStudent;
 		} else {
 			[hdApiWrapper indexerWithUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg, NSString *devError) {
 				progressCallback(0.6, @"Downloading timetable…");
-				//[NSThread sleepForTimeInterval:1];
+				[NSThread sleepForTimeInterval:1];
 				if (!success) {
 					callback(NO, errorMsg, [self createDetailedDevErrorReport:devError apiMethod:@"indexer"]);
 				} else {
 					[hdApiWrapper downloadTimetableForUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg, NSString *devError) {
 						progressCallback(0.85, @"Downloading homework…");
-						//[NSThread sleepForTimeInterval:1];
+						[NSThread sleepForTimeInterval:1];
 						if (!success) {
 							callback(NO, errorMsg, [self createDetailedDevErrorReport:devError apiMethod:@"genClassList"]);
 						} else {
 							// errorMsg contains response when there was no error!
 							timetableJson = errorMsg;
 							[hdApiWrapper downloadHomeworkForUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg, NSString *devError) {
-								progressCallback(1.0, @"Finished…");
-								//[NSThread sleepForTimeInterval:1];
+								progressCallback(1.0, @"Finishing…");
+								[NSThread sleepForTimeInterval:1];
 								if (!success) {
 									callback(NO, errorMsg, [self createDetailedDevErrorReport:devError apiMethod:@"stringdown"]);
 								} else {
-									_store.homeworkJson = errorMsg;
 									_store.userLoggedIn = YES;
 									_store.userId = sid;
-									_store.pass = pass;
 									_store.timetableJson = timetableJson;
+									_store.pass = pass;
+									_store.homeworkJson = errorMsg;
 									[_store synchronize];
-									callback(YES, nil, nil);
+									[self performSelector:@selector(callCallback:) withObject:callback afterDelay:0.1];
 								}
 							}];
 						}
@@ -81,6 +81,10 @@ static hdStudent *sharedStudent;
 			}];
 		}
 	}];
+}
+
+- (void)callCallback:(void (^) (BOOL, NSString *, NSString *))callback {
+	callback(YES, nil, nil);
 }
 
 - (NSString *)createDetailedDevErrorReport:(NSString *)report apiMethod:(NSString *)apiMethod {

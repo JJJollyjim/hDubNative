@@ -62,7 +62,6 @@
 			UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"hDub" message:response delegate:self cancelButtonTitle:@"Close" otherButtonTitles:@"Send Bug Report", nil];
 			[av show];
 		} else {
-			[hdDataStore sharedStore].timetableJson = response;
 			UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"hDub" message:@"Timetable and homework updated!" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil];
 			[av show];
 		}

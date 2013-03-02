@@ -2,7 +2,7 @@
 //  hdApiWrapper.m
 //  hDubNative
 //
-//  Created by Jamie McClymont on 6/02/13.
+//  Created by printfn on 6/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
@@ -25,13 +25,29 @@
 														if ([response isEqual:@"nay"]) {
 															callback(NO, @"Invalid Student ID Number or Login Code!", @"Authentication response: Nay");
 														} else {
-															callback(NO, @"An error occured logging you in. Please try again later.", [NSString stringWithFormat:@"No/invalid data received: %@\nstatus code: %i", response, [httpRequest getLastStatusCode]]);
+															callback(NO, @"An error occured logging you in. Please try again later.", [NSString stringWithFormat:@"No/invalid data received: %@\n  status code: %i", response, [httpRequest getLastStatusCode]]);
 														}
 													}
 												}
 													error:^void (NSString *errorMsg) {
 														callback(NO, @"An error has occured during authentication. Please check your internet connection or try again later.", @"Network error.");
 													}];
+}
+
++ (void)getMessage:(int)sid
+							pass:(int)pass
+	 fromLoginScreen:(BOOL)login
+					callback:(void (^) (BOOL, NSString *, NSString *))callback {
+	hdHTTPWrapper *httpRequest = [[hdHTTPWrapper alloc] init];
+	[httpRequest getMessage:sid
+								 password:pass
+					fromLoginScreen:login
+									success:^void (NSString *response) {
+										callback(YES, response, nil);
+									}
+										error:^void (NSString *errorMsg) {
+											callback(NO, @"An error has occured during authentication. Please check your internet connection or try again later.", @"Network error.");
+										}];
 }
 
 
@@ -47,7 +63,7 @@
 														 callback(YES, nil, nil);
 													 } else {
 														 NSString *errorStr = (NSString *)[jsonObj valueForKey:@"error"];
-														 NSString *errorReport = [NSString stringWithFormat:@"errorStr: %@\nstatusCode: %i", errorStr, [httpRequest getLastStatusCode]];
+														 NSString *errorReport = [NSString stringWithFormat:@"errorStr: %@\n  statusCode: %i", errorStr, [httpRequest getLastStatusCode]];
 														 if (errorStr == nil) {
 															 callback(NO, @"A server error has occured. Please try again later.", errorReport);
 														 }
@@ -55,9 +71,9 @@
 															 callback(YES, nil, nil);
 														 } else if ([errorStr isEqual:@"Err2"] || [errorStr isEqual:@"Err3"] || [errorStr isEqual:@"Err4"] || [errorStr isEqual:@"Err5"] || [errorStr isEqual:@"Err6"] || [errorStr isEqual:@"Err10"] || [errorStr isEqual:@"Err11"] || [errorStr isEqual:@"Err12"]) {
 															 callback(NO, @"A database error has occured. Please try again later.", errorReport);
-														 } else if ([errorStr isEqual:@"Err7"] || [errorStr isEqual:@"Err9"] || [errorStr isEqual:@"Err15"]) {
+														 } else if ([errorStr isEqual:@"Err7"] || [errorStr isEqual:@"Err15"]) {
 															 callback(NO, @"An authentication error has occured. Please try again later.", errorStr);
-														 } else if ([errorStr isEqual:@"Err8"]) {
+														 } else if ([errorStr isEqual:@"Err8"] || [errorStr isEqual:@"Err9"]) {
 															 callback(NO, @"A server error has occured. Please try again later.", errorReport);
 														 } else {
 															 callback(NO, @"A server error has occured. Please try again later.", errorReport);
@@ -82,7 +98,7 @@
 															 callback(YES, response, nil);
 														 } else {
 															 NSString *errorStr = response;
-															 NSString *errorReport = [NSString stringWithFormat:@"errorStr: %@\nstatusCode: %i", errorStr, [httpRequest getLastStatusCode]];
+															 NSString *errorReport = [NSString stringWithFormat:@"errorStr: %@\n  statusCode: %i", errorStr, [httpRequest getLastStatusCode]];
 															 if (errorStr == nil) {
 																 callback(NO, @"A server error has occured. Please try again later.", errorReport);
 															 }
@@ -115,7 +131,7 @@
 																			 callback(YES, response, nil);
 																		 } else {
 																			 NSString *errorStr = (NSString *)[jsonObj valueForKey:@"error"];
-																			 NSString *errorReport = [NSString stringWithFormat:@"errorStr: %@\nstatusCode: %i", errorStr, [httpRequest getLastStatusCode]];
+																			 NSString *errorReport = [NSString stringWithFormat:@"errorStr: %@\n  statusCode: %i", errorStr, [httpRequest getLastStatusCode]];
 																			 if (errorStr == nil) {
 																				 callback(NO, @"A server error has occured. Please try again later.", errorReport);
 																			 }
@@ -152,7 +168,7 @@
 																		 callback(YES, response, nil);
 																	 } else {
 																		 NSString *errorStr = (NSString *)[jsonObj valueForKey:@"error"];
-																		 NSString *errorReport = [NSString stringWithFormat:@"errorStr: %@\nstatusCode: %i", errorStr, [httpRequest getLastStatusCode]];
+																		 NSString *errorReport = [NSString stringWithFormat:@"errorStr: %@\n  statusCode: %i", errorStr, [httpRequest getLastStatusCode]];
 																		 if (errorStr == nil) {
 																			 callback(NO, @"A server error has occured. Please try again later.", errorReport);
 																		 }
@@ -179,19 +195,21 @@
 
 + (void)syncHomeworkForUser:(int)sid
 											 pass:(int)pass
+										higheid:(int)eid
+										 events:(NSString *)events
 									 callback:(void (^) (BOOL, NSString *, NSString *))callback {
 	hdHTTPWrapper *httpRequest = [[hdHTTPWrapper alloc] init];
 	[httpRequest syncForUser:sid
 									password:pass
-									 higheid:0
-										events:nil
+									 higheid:eid
+										events:events
 									 success:^void (NSString *response) {
 										 NSDictionary *jsonObj = [hdJsonWrapper getObj:response];
 										 if ([jsonObj valueForKey:@"success"] != nil) {
 											 callback(YES, response, nil);
 										 } else {
 											 NSString *errorStr = (NSString *)[jsonObj valueForKey:@"error"];
-											 NSString *errorReport = [NSString stringWithFormat:@"errorStr: %@\nstatusCode: %i", errorStr, [httpRequest getLastStatusCode]];
+											 NSString *errorReport = [NSString stringWithFormat:@"errorStr: %@\n  statusCode: %i", errorStr, [httpRequest getLastStatusCode]];
 											 if (errorStr == nil) {
 												 callback(NO, @"A server error has occured. Please try again later.", errorReport);
 											 }

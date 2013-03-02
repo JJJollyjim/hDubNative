@@ -2,7 +2,7 @@
 //  hdAppDelegate.m
 //  hDubNative
 //
-//  Created by Jamie McClymont on 4/02/13.
+//  Created by printfn on 4/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 #import "hdTabViewController.h"
 #import "hdStudent.h"
 #import "hdJsonWrapper.h"
+#import "hdNotificationApi.h"
 
 @implementation hdAppDelegate
 
@@ -25,6 +26,10 @@
 	}
 	
 	[[hdDataStore sharedStore] synchronize];
+	
+	[hdNotificationApi setOnLoginScreen:NO];
+	[hdNotificationApi startPolling];
+	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard-iPhone" bundle:[NSBundle mainBundle]];

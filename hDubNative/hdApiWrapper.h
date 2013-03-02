@@ -2,7 +2,7 @@
 //  hdApiWrapper.h
 //  hDubNative
 //
-//  Created by Jamie McClymont on 6/02/13.
+//  Created by printfn on 6/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
@@ -12,6 +12,11 @@
 
 + (void)checkLogin:(int)sid
 							pass:(int)pass
+					callback:(void (^) (BOOL, NSString *, NSString *))callback;
+
++ (void)getMessage:(int)sid
+							pass:(int)pass
+	 fromLoginScreen:(BOOL)login
 					callback:(void (^) (BOOL, NSString *, NSString *))callback;
 
 + (void)indexerWithUser:(int)sid
@@ -33,6 +38,8 @@
 
 + (void)syncHomeworkForUser:(int)sid
 											 pass:(int)pass
+										higheid:(int)eid
+										 events:(NSString *)events
 									 callback:(void (^) (BOOL, NSString *, NSString *))callback;
 
 @end

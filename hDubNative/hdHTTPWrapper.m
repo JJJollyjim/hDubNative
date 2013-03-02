@@ -2,7 +2,7 @@
 //  hdHTTPWrapper.m
 //  hDubNative
 //
-//  Created by Jamie McClymont on 5/02/13.
+//  Created by printfn on 5/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
@@ -23,10 +23,24 @@
 	successCallback = success;
 	errorCallback = error;
 	
+	NSString *url = [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/userAuth.php?sid=%i&pass=%04i&os=ios&vnum=2.0", sid, pass];
+	[self downloadURL:[NSURL URLWithString:url]
+				 withMethod:@"GET"
+				 parameters:nil];
+}
+
+- (void)getMessage:(int)sid
+					password:(int)pass
+	 fromLoginScreen:(BOOL)login
+					 success:(void (^) (NSString *))success
+						 error:(void (^) (NSString *))error {
+	successCallback = success;
+	errorCallback = error;
+	
 	[self downloadURL:[NSURL URLWithString:
-												 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/userAuth.php?sid=%i&pass=%i&os=ios&vnum=2.0", sid, pass]]
-						 withMethod:@"GET"
-						 parameters:nil];
+										 [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/message.php"]]
+				 withMethod:@"POST"
+				 parameters:[[NSString alloc] initWithFormat:@"login=%@&sid=%i&pass=%04i&os=ios&vnum=2.0", login == YES ? @"true" : @"false", sid, pass]];
 }
 
 - (void)indexerWithUserId:(int)sid
@@ -37,7 +51,7 @@
 	errorCallback = error;
 	
 	[self downloadURL:[NSURL URLWithString:
-										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/indexer.php?sid=%i&pass=%i&os=ios&vnum=2.0", sid, pass]]
+										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/indexer.php?sid=%i&pass=%04i&os=ios&vnum=2.0", sid, pass]]
 				 withMethod:@"GET"
 				 parameters:nil];
 }
@@ -50,7 +64,7 @@
 	errorCallback = error;
 	
 	[self downloadURL:[NSURL URLWithString:
-										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/genClassList.php?sid=%i&pass=%i&os=ios&vnum=2.0", sid, pass]]
+										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/genClassList.php?sid=%i&pass=%04i&os=ios&vnum=2.0", sid, pass]]
 				 withMethod:@"GET"
 				 parameters:nil];
 }
@@ -65,7 +79,7 @@
 	[self downloadURL:[NSURL URLWithString:
 										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/stringdown.php"]]
 				 withMethod:@"POST"
-				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%i&os=ios&vnum=2.0&newjson=yes", sid, pass]];
+				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&os=ios&vnum=2.0&newjson=yes", sid, pass]];
 }
 
 - (void)uploadFullHomeworkForUser:(int)sid
@@ -85,7 +99,7 @@
 	[self downloadURL:[NSURL URLWithString:
 										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/stringup.php"]]
 				 withMethod:@"POST"
-				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%i&str=%@&os=ios&vnum=2.0", sid, pass, escapedString]];
+				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&str=%@&os=ios&vnum=2.0", sid, pass, escapedString]];
 }
 
 - (void)syncForUser:(int)sid
@@ -100,7 +114,7 @@
 	[self downloadURL:[NSURL URLWithString:
 										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/sync.php"]]
 				 withMethod:@"POST"
-				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%i&higheid=%i&events=%@&os=ios&vnum=2.0", sid, pass, higheid, events]];
+				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&higheid=%i&events=%@&os=ios&vnum=2.0", sid, pass, higheid, events]];
 }
 
 
@@ -153,7 +167,7 @@
 	
 	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	
-	if(connection) {
+	if (connection) {
 		receivedData = [NSMutableData data];
 		receivedLength = 0;
 	} else {

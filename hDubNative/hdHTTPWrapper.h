@@ -2,7 +2,7 @@
 //  hdHTTPWrapper.h
 //  hDubNative
 //
-//  Created by Jamie McClymont on 5/02/13.
+//  Created by printfn on 5/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
@@ -20,6 +20,12 @@
 								password:(int)pass
 								 success:(void (^) (NSString *))success
 									 error:(void (^) (NSString *))error;
+
+- (void)getMessage:(int)sid
+					password:(int)pass
+	 fromLoginScreen:(BOOL)login
+					 success:(void (^) (NSString *))success
+						 error:(void (^) (NSString *))error;
 
 - (void)indexerWithUserId:(int)sid
 								 password:(int)pass

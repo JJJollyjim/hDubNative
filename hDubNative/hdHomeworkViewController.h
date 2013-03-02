@@ -1,15 +1,13 @@
 //
-//  hdSecondViewController.h
+//  hdHomeworkViewController.h
 //  hDubNative
 //
-//  Created by Jamie McClymont on 4/02/13.
+//  Created by printfn on 16/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface hdHomeworkViewController : UIViewController
-
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@interface hdHomeworkViewController : UITableViewController
 
 @end

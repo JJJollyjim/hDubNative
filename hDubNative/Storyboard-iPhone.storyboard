@@ -6,30 +6,67 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Hd Homework View Controller - Homework-->
-        <scene sceneID="5SF-QZ-oys">
+        <!--Navigation Controller - Homework-->
+        <scene sceneID="8Nu-wU-z1y">
             <objects>
-                <viewController id="I90-Vv-chx" customClass="hdHomeworkViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3h3-oD-H95">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" id="QYA-FC-EFP">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.52941176470588236" green="0.039215686274509803" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <items>
-                                    <navigationItem title="Homework" id="YrN-2L-Ryg"/>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Homework" image="homework.png" id="Jei-qW-F0x"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uFE-0e-yEP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="2l4-Bg-znD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Homework" image="homework.png" id="iTW-RS-qEc"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="stn-Ht-mco">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ktw-1G-tuv" kind="relationship" relationship="rootViewController" id="NLb-iX-YT3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SN8-xn-JDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="6"/>
+            <point key="canvasLocation" x="-30" y="33"/>
+        </scene>
+        <!--Hd Homework View Controller-->
+        <scene sceneID="inM-6W-Opz">
+            <objects>
+                <tableViewController id="ktw-1G-tuv" customClass="hdHomeworkViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vM9-3j-W5r">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="hdHomeworkCell" textLabel="1gV-y5-TAe" detailTextLabel="iOG-bL-4sC" style="IBUITableViewCellStyleSubtitle" id="tGt-KP-0LP">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Homework" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1gV-y5-TAe">
+                                            <rect key="frame" x="10" y="2" width="93" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="English (Period 3)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iOG-bL-4sC">
+                                            <rect key="frame" x="10" y="24" width="112" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ktw-1G-tuv" id="TNr-nz-3JS"/>
+                            <outlet property="delegate" destination="ktw-1G-tuv" id="kpX-91-eIJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="9bQ-Y8-bgt"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YbR-KY-g6P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="437" y="33"/>
         </scene>
         <!--Hd Settings View Controller - Settings-->
         <scene sceneID="IZm-Qm-srb">
@@ -214,11 +251,11 @@
                                 <date key="date" timeIntervalSinceReferenceDate="382149932.05555803">
                                     <!--2013-02-10 00:45:32 +0000-->
                                 </date>
-                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
-                                    <!--1970-01-01 11:00:00 +0000-->
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="378727200">
+                                    <!--2013-01-01 10:00:00 +0000-->
                                 </date>
-                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
-                                    <!--2037-12-31 11:00:00 +0000-->
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="410094000">
+                                    <!--2013-12-30 11:00:00 +0000-->
                                 </date>
                                 <timeZone key="timeZone" name="America/Los_Angeles">
                                     <data key="data">
@@ -290,7 +327,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </tabBar>
                     <connections>
                         <segue destination="WqR-ze-MKq" kind="relationship" relationship="viewControllers" id="2TQ-f8-a8s"/>
-                        <segue destination="I90-Vv-chx" kind="relationship" relationship="viewControllers" id="kMj-fA-uge"/>
+                        <segue destination="2l4-Bg-znD" kind="relationship" relationship="viewControllers" id="MNS-Xk-p5k"/>
                         <segue destination="bba-Db-6fG" kind="relationship" relationship="viewControllers" id="jTQ-cf-KCU"/>
                     </connections>
                 </tabBarController>
@@ -305,48 +342,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="settings.png" width="26" height="24"/>
         <image name="timetable.png" width="23" height="25"/>
     </resources>
-    <classes>
-        <class className="hdHomeworkViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="textView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="hdSettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdSettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="logout:"/>
-                <relationship kind="action" name="openKwiiusWebsite:"/>
-                <relationship kind="action" name="reloadTimetable:"/>
-                <relationship kind="action" name="sendEmail:"/>
-                <relationship kind="outlet" name="logoutButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="reloadTimetableButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sidLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="hdTabViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTabViewController.h"/>
-        </class>
-        <class className="hdTimetableDatePickerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTimetableDatePickerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changeDate:"/>
-                <relationship kind="action" name="selectedNewDate:"/>
-                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="hdTimetableTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTimetableTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showDatePicker:"/>
-                <relationship kind="action" name="updateTimetable:"/>
-            </relationships>
-        </class>
-        <class className="hdWhiteButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdWhiteButton.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

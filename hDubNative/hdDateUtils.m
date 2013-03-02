@@ -2,7 +2,7 @@
 //  hdDateUtils.m
 //  hDubNative
 //
-//  Created by Jamie McClymont on 9/02/13.
+//  Created by printfn on 9/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
@@ -24,8 +24,8 @@
 
 + (NSString *)formatDate:(NSDate *)date {
 	NSTimeInterval timeInterval =
-	  [[self dateAtMidnight:date] timeIntervalSinceReferenceDate]
-	  - [[self dateAtMidnight:[NSDate date]] timeIntervalSinceReferenceDate];
+	[[self dateAtMidnight:date] timeIntervalSinceReferenceDate]
+	- [[self dateAtMidnight:[NSDate date]] timeIntervalSinceReferenceDate];
 	int numOfDays = timeInterval / 86400;
 	
 	if (numOfDays == 0)

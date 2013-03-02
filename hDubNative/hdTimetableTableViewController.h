@@ -2,7 +2,7 @@
 //  hdTimetableTableViewController.h
 //  hDubNative
 //
-//  Created by Jamie McClymont on 7/02/13.
+//  Created by printfn on 7/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 

@@ -17,6 +17,7 @@
 	NSMutableArray *homeworkTasksByClass;
 	NSMutableDictionary *dayToIndexMap;
 	NSMutableDictionary *dayIndexToIndexMap;
+	NSMutableDictionary *dayIndexToHomeworkCountOnDayMap;
 	int higheid;
 	int totalHomeworkCount;
 	int totalDayCount;
@@ -26,5 +27,6 @@
 - (int)numberOfCellsInSection:(int)section;
 - (hdHomeworkTask *)getHomeworkTaskForSection:(int)dayIndex id:(int)hwidx;
 - (NSString *)getTableSectionHeadingForDayId:(int)dayIndex;
+- (BOOL)deleteCellAtDayIndex:(int)dayIndex id:(int)hwidx;
 
 @end

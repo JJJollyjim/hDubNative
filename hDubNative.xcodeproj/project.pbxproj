@@ -45,6 +45,8 @@
 		CD5F6AB516CE370600D7EEBD /* LoginIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5F6AB316CE370600D7EEBD /* LoginIcon@2x.png */; };
 		CD5F6AC816CEED1F00D7EEBD /* hdNotificationApi.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F6AC716CEED1F00D7EEBD /* hdNotificationApi.m */; };
 		CD5F6ACB16CF7EAB00D7EEBD /* hdHomeworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F6ACA16CF7EAB00D7EEBD /* hdHomeworkViewController.m */; };
+		CD62780716E2D481003D3C8F /* hdRedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD62780616E2D481003D3C8F /* hdRedButton.m */; };
+		CD62780A16E2D9F2003D3C8F /* hdHomeworkEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD62780916E2D9F2003D3C8F /* hdHomeworkEditViewController.m */; };
 		CD685A7816C6358200DD4013 /* hdDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CD685A7716C6358200DD4013 /* hdDateUtils.m */; };
 		CD694E4B16C3A9E2006264DC /* hdTimetableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD694E4A16C3A9E1006264DC /* hdTimetableTableViewController.m */; };
 		CD694E4D16C4A471006264DC /* Storyboard-iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD694E4C16C4A470006264DC /* Storyboard-iPhone.storyboard */; };
@@ -65,6 +67,7 @@
 		CD8C424A16CB7AB4007B2186 /* whiteButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD8C424216CB7AB4007B2186 /* whiteButtonHighlight@2x.png */; };
 		CD8C424E16CB7BB3007B2186 /* hdBlueButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8C424D16CB7BB3007B2186 /* hdBlueButton.m */; };
 		CD8C425116CB7E28007B2186 /* hdWhiteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8C425016CB7E28007B2186 /* hdWhiteButton.m */; };
+		CDAF246F16E2CF4F003CF9F5 /* hdHomeworkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */; };
 		CDF1BB9016D71E2700A10129 /* hdHomeworkTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF1BB8F16D71E2700A10129 /* hdHomeworkTask.m */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +127,10 @@
 		CD5F6AC716CEED1F00D7EEBD /* hdNotificationApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdNotificationApi.m; sourceTree = "<group>"; };
 		CD5F6AC916CF7EAB00D7EEBD /* hdHomeworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkViewController.h; sourceTree = "<group>"; };
 		CD5F6ACA16CF7EAB00D7EEBD /* hdHomeworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkViewController.m; sourceTree = "<group>"; };
+		CD62780516E2D481003D3C8F /* hdRedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdRedButton.h; sourceTree = "<group>"; };
+		CD62780616E2D481003D3C8F /* hdRedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdRedButton.m; sourceTree = "<group>"; };
+		CD62780816E2D9F2003D3C8F /* hdHomeworkEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkEditViewController.h; sourceTree = "<group>"; };
+		CD62780916E2D9F2003D3C8F /* hdHomeworkEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkEditViewController.m; sourceTree = "<group>"; };
 		CD685A7616C6358200DD4013 /* hdDateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdDateUtils.h; sourceTree = "<group>"; };
 		CD685A7716C6358200DD4013 /* hdDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdDateUtils.m; sourceTree = "<group>"; };
 		CD694E4916C3A9E1006264DC /* hdTimetableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdTimetableTableViewController.h; sourceTree = "<group>"; };
@@ -149,6 +156,8 @@
 		CD8C424D16CB7BB3007B2186 /* hdBlueButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdBlueButton.m; sourceTree = "<group>"; };
 		CD8C424F16CB7E27007B2186 /* hdWhiteButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdWhiteButton.h; sourceTree = "<group>"; };
 		CD8C425016CB7E28007B2186 /* hdWhiteButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdWhiteButton.m; sourceTree = "<group>"; };
+		CDAF246D16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkDetailViewController.h; sourceTree = "<group>"; };
+		CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkDetailViewController.m; sourceTree = "<group>"; };
 		CDCBAE8216CF904500064D0A /* hdHomeworkTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkTask.h; sourceTree = "<group>"; };
 		CDF1BB8F16D71E2700A10129 /* hdHomeworkTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkTask.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,6 +238,8 @@
 				CD8C425016CB7E28007B2186 /* hdWhiteButton.m */,
 				CD8C424C16CB7BB3007B2186 /* hdBlueButton.h */,
 				CD8C424D16CB7BB3007B2186 /* hdBlueButton.m */,
+				CD62780516E2D481003D3C8F /* hdRedButton.h */,
+				CD62780616E2D481003D3C8F /* hdRedButton.m */,
 				CD685A7316C5F09F00DD4013 /* TabView */,
 				CD685A7216C5F09600DD4013 /* Login */,
 				CD32C07816C21D5100AA0569 /* Timetable */,
@@ -408,6 +419,10 @@
 		CD685A7416C5F0AD00DD4013 /* Homework */ = {
 			isa = PBXGroup;
 			children = (
+				CD62780816E2D9F2003D3C8F /* hdHomeworkEditViewController.h */,
+				CD62780916E2D9F2003D3C8F /* hdHomeworkEditViewController.m */,
+				CDAF246D16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.h */,
+				CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */,
 				CD5F6AC916CF7EAB00D7EEBD /* hdHomeworkViewController.h */,
 				CD5F6ACA16CF7EAB00D7EEBD /* hdHomeworkViewController.m */,
 				CD5489BB16D5D91200AC291F /* hdHomeworkDataStore.h */,
@@ -560,6 +575,9 @@
 				CD5489BA16D5D37B00AC291F /* hdHomeworkManager.m in Sources */,
 				CD5489BD16D5D91200AC291F /* hdHomeworkDataStore.m in Sources */,
 				CDF1BB9016D71E2700A10129 /* hdHomeworkTask.m in Sources */,
+				CDAF246F16E2CF4F003CF9F5 /* hdHomeworkDetailViewController.m in Sources */,
+				CD62780716E2D481003D3C8F /* hdRedButton.m in Sources */,
+				CD62780A16E2D9F2003D3C8F /* hdHomeworkEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

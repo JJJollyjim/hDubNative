@@ -102,14 +102,18 @@ passwordTextField, loginActivityIndicatorView, loginProgressView, messageTextVie
 	[hdNotificationApi updateNow];
 }
 
+BOOL currentlyLoggingIn = NO;
 - (IBAction)login:(id)sender {
+	if (currentlyLoggingIn)
+		return;
+	currentlyLoggingIn = YES;
 	loginActivityIndicatorView.hidden = NO;
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	[hdStudent initialize];
 	[loginProgressView setProgress:0.0];
 	loginProgressView.hidden = NO;
-	loginButton.enabled = NO;
-	loginButton.alpha = 0.5;
+	//loginButton.enabled = NO;
+	loginButton.alpha = 0;
 	[usernameTextField resignFirstResponder];
 	[passwordTextField resignFirstResponder];
 	[[hdStudent sharedStudent] loginNewUser:usernameTextField.text.integerValue
@@ -121,6 +125,7 @@ passwordTextField, loginActivityIndicatorView, loginProgressView, messageTextVie
 																loginProgressView.hidden = YES;
 																loginButton.enabled = YES;
 																loginButton.alpha = 1.0;
+																currentlyLoggingIn = NO;
 																if (!success) {
 																	bugReport = devError;
 																	UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error" message:error delegate:self cancelButtonTitle:@"Close" otherButtonTitles:@"Report Error", nil];
@@ -134,7 +139,7 @@ passwordTextField, loginActivityIndicatorView, loginProgressView, messageTextVie
 															}
 															progressCallback:^(float progress, NSString *status) {
 																loginProgressView.progress = progress;
-																[loginButton setTitle:status forState:UIControlStateDisabled];
+																[loginButton setTitle:status forState:UIControlStateNormal];
 															}];
 }
 

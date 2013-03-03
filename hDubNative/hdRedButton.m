@@ -1,14 +1,15 @@
 //
-//  hdWhiteButton.m
+//  hdRedButton.m
 //  hDubNative
 //
-//  Created by printfn on 13/02/13.
+//  Created by Jamie McClymont on 3/03/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
-#import "hdWhiteButton.h"
+#import "hdRedButton.h"
 
-@implementation hdWhiteButton
+@implementation hdRedButton
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -37,12 +38,11 @@
 	[self setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
 	
 	[self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-	[self setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
-	[self setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+	[self setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
+	[self setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
 	[self setTitleColor:[UIColor blackColor] forState:UIControlStateDisabled];
 	
 	[self setBackgroundColor:[UIColor clearColor]];
 }
-
 
 @end

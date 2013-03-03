@@ -10,7 +10,9 @@
 
 @implementation hdTimetableParser
 
+static NSDictionary *lastRootDictionary;
 + (NSString *)getSubjectForDay:(NSDate *)date period:(int)period rootObj:(NSDictionary *)obj {
+	lastRootDictionary = obj;
 	NSDateFormatter *f = [[NSDateFormatter alloc] init];
 	f.dateFormat = @"yyyy-MM-dd";
 	f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-US"];
@@ -18,6 +20,10 @@
 	NSDictionary *timetableDay = [obj valueForKey:dateStr];
 	NSString *periodStr = [NSString stringWithFormat:@"%i", period + 1];
 	return (NSString *)[[timetableDay valueForKey:periodStr] valueForKey:@"name"];
+}
+
++ (NSString *)getSubjectForDay:(NSDate *)date period:(int)period {
+	return [self getSubjectForDay:date period:period rootObj:lastRootDictionary];
 }
 
 + (BOOL)schoolOnDay:(NSDate *)date rootObj:(NSDictionary *)obj {

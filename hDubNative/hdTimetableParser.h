@@ -11,6 +11,7 @@
 @interface hdTimetableParser : NSObject
 
 + (NSString *)getSubjectForDay:(NSDate *)date period:(int)period rootObj:(NSDictionary *)obj;
++ (NSString *)getSubjectForDay:(NSDate *)date period:(int)period;
 + (BOOL)schoolOnDay:(NSDate *)date rootObj:(NSDictionary *)obj;
 
 @end

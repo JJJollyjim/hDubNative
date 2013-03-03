@@ -10,6 +10,8 @@
 
 @implementation hdHomeworkTask
 
+@synthesize date, details, hwid, name, period, subject;
+
 + (NSString *)generateUUID {
 	CFUUIDRef uuid = CFUUIDCreate(NULL);
 	NSString *uuidStr = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);

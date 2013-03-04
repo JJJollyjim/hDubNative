@@ -98,7 +98,8 @@
 		[dayIndexToIndexMap setObject:[NSNumber numberWithInt:homeworkTaskIndex] forKey:[NSNumber numberWithInt:dayIndex]];
 		homeworkTaskIndex++;
 	}
-	totalDayCount++;
+	if (homeworkTasksByDay.count != 0)
+		totalDayCount++;
 	[dayIndexToHomeworkCountOnDayMap setObject:[NSNumber numberWithInt:currentHomeworkCountForCurrentDayIndex]
 																			forKey:[NSNumber numberWithInt:totalDayCount - 1]];
 	if (priorTotalDayCount != totalDayCount)

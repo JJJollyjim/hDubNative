@@ -117,6 +117,19 @@
 				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&higheid=%i&events=%@&os=ios&vnum=2.0", sid, pass, higheid, events]];
 }
 
+- (void)loginWithUser:(int)sid
+						 password:(int)pass
+							success:(void (^) (NSString *))success
+								error:(void (^) (NSString *))error {
+	successCallback = success;
+	errorCallback = error;
+	
+	[self downloadURL:[NSURL URLWithString:
+										 [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/login.php"]]
+				 withMethod:@"POST"
+				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&os=ios&vnum=2.0", sid, pass]];
+}
+
 
 
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

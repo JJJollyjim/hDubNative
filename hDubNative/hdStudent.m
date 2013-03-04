@@ -38,63 +38,55 @@ static hdStudent *sharedStudent;
 	return self;
 }
 
+/*
+ {
+   data: {
+     name: Jessica Fenton
+     form: 11JG
+     year: 12
+   },
+   high_eid: 56,
+   homework: {
+     01-01-2001: ...
+   },
+   timetable: {
+     // Same format, but also with room+teacher
+   }
+ }
+ */
+
 - (void)loginNewUser:(int)sid
 						password:(int)pass
-						callback:(void (^) (BOOL, NSString *, NSString *))callback
-		progressCallback:(void (^) (float, NSString *))progressCallback {
-	progressCallback(0.0, @"Authenticating…");
-	[hdApiWrapper checkLogin:sid pass:pass callback:^(BOOL success, NSString *errorMsg, NSString *devError) {
-		progressCallback(0.1, @"Transferring ones and zeroes…");
+						callback:(void (^) (BOOL, NSString *, NSString *))callback {
+	NSDate *dateBeforeRequest = [NSDate date];
+	[hdApiWrapper loginWithSid:sid pass:pass callback:^(BOOL success, NSString *errorMsg, NSString *errorReport) {
 		if (!success) {
-			callback(NO, errorMsg, [self createDetailedDevErrorReport:devError errorMsg:errorMsg apiMethod:@"userAuth" sid:sid]);
+			callback(NO, errorMsg, [self createDetailedDevErrorReport:errorReport errorMsg:errorMsg apiMethod:@"login" sid:sid startTime:dateBeforeRequest]);
 		} else {
-			[hdApiWrapper indexerWithUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg, NSString *devError) {
-				progressCallback(0.6, @"Downloading timetable…");
-				[NSThread sleepForTimeInterval:1];
-				if (!success) {
-					callback(NO, errorMsg, [self createDetailedDevErrorReport:devError errorMsg:errorMsg apiMethod:@"indexer" sid:sid]);
-				} else {
-					[hdApiWrapper downloadTimetableForUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg, NSString *devError) {
-						progressCallback(0.85, @"Downloading homework…");
-						[NSThread sleepForTimeInterval:1];
-						if (!success) {
-							callback(NO, errorMsg, [self createDetailedDevErrorReport:devError errorMsg:errorMsg apiMethod:@"genClassList" sid:sid]);
-						} else {
-							// errorMsg contains response when there was no error!
-							timetableJson = errorMsg;
-							[hdApiWrapper downloadHomeworkForUser:sid pass:pass callback:^(BOOL success, NSString *errorMsg, NSString *devError) {
-								progressCallback(1.0, @"Finishing…");
-								[NSThread sleepForTimeInterval:1];
-								if (!success) {
-									callback(NO, errorMsg, [self createDetailedDevErrorReport:devError errorMsg:errorMsg apiMethod:@"stringdown" sid:sid]);
-								} else {
-									_store.userLoggedIn = YES;
-									_store.userId = sid;
-									_store.timetableJson = timetableJson;
-									_store.pass = pass;
-									_store.homeworkJson = errorMsg;
-									[_store synchronize];
-									[self performSelector:@selector(callCallback:) withObject:callback afterDelay:0.1];
-								}
-							}];
-						}
-					}];
-				}
-			}];
+			// errorMsg = response when there was no error
+			NSDictionary *jsonObj = [hdJsonWrapper getObj:errorMsg];
+			_store.userLoggedIn = YES;
+			_store.userId = sid;
+			_store.pass = pass;
+			_store.higheid = ((NSString *)[jsonObj objectForKey:@"high_eid"]).integerValue;
+			_store.homeworkJson = [hdJsonWrapper getJson:[jsonObj objectForKey:@"homework"]];
+			_store.timetableJson = [hdJsonWrapper getJson:[jsonObj objectForKey:@"timetable"]];
+			NSDictionary *details = [jsonObj objectForKey:@"data"];
+			_store.name = [details objectForKey:@"name"];
+			_store.form = [details objectForKey:@"form"];
+			_store.year = ((NSString *)[details objectForKey:@"year"]).integerValue;
+			[_store synchronize];
+			callback(YES, nil, nil);
 		}
 	}];
 }
 
-- (void)callCallback:(void (^) (BOOL, NSString *, NSString *))callback {
-	callback(YES, nil, nil);
-}
-
-- (NSString *)createDetailedDevErrorReport:(NSString *)report errorMsg:(NSString *)errorMsg apiMethod:(NSString *)apiMethod sid:(int)sid {
+- (NSString *)createDetailedDevErrorReport:(NSString *)report errorMsg:(NSString *)errorMsg apiMethod:(NSString *)apiMethod sid:(int)sid startTime:(NSDate *)startTime {
 	NSDateFormatter *f = [[NSDateFormatter alloc] init];
 	f.timeStyle = NSDateFormatterFullStyle;
 	f.dateStyle = NSDateFormatterFullStyle;
 	f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_NZ"];
-	return [NSString stringWithFormat:@"Put any extra details here:\n\n\n\n\n--- BEGIN ERROR REPORT ---\n\nERROR MESSAGE:\n  %@\n\nAPPLICATION:\n  hDubNative (iOS)\n  Version 2.0\n\nHTTP:\n  %@\n  apiMethod: %@\n  userId: %i\n\nLOCAL STORAGE:\n  userLoggedIn: %d\n\nSYSTEM INFO:\n  systemVersion: %@\n  device: %@\n  time: %@\n\n--- END OF ERROR REPORT ---",
+	return [NSString stringWithFormat:@"Put any extra details here:\n\n\n\n\n--- BEGIN ERROR REPORT ---\n\nERROR MESSAGE:\n  %@\n\nAPPLICATION:\n  hDubNative (iOS)\n  Version 2.0\n\nHTTP:\n  %@\n  apiMethod: %@\n  userId: %i\n  duration:%f\n\nLOCAL STORAGE:\n  userLoggedIn: %d\n\nSYSTEM INFO:\n  systemVersion: %@\n  device: %@\n  time: %@\n\n--- END OF ERROR REPORT ---",
 					errorMsg,
 					
 					report,
@@ -102,6 +94,7 @@ static hdStudent *sharedStudent;
 					apiMethod,
 					
 					sid,
+					[[NSDate date] timeIntervalSinceDate:startTime],
 					[hdDataStore sharedStore].userLoggedIn,
 					
 					[UIDevice currentDevice].systemVersion,

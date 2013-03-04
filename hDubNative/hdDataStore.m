@@ -59,6 +59,25 @@
 	[defaults setInteger:pass forKey:@"pass"];
 }
 
+- (NSString *)name {
+	return [defaults stringForKey:@"name"];
+}
+- (void)setName:(NSString *)name {
+	[defaults setObject:name forKey:@"name"];
+}
+- (NSString *)form {
+	return [defaults stringForKey:@"form"];
+}
+- (void)setForm:(NSString *)form {
+	[defaults setObject:form forKey:@"form"];
+}
+- (int)year {
+	return [defaults integerForKey:@"year"];
+}
+- (void)setYear:(int)year {
+	[defaults setInteger:year forKey:@"year"];
+}
+
 - (int)higheid {
 	return [defaults integerForKey:@"eid"];
 }

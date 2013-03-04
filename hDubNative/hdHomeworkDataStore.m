@@ -31,9 +31,8 @@
 
 - (void)initializeHomeworkData {
 	NSString *homeworkJson = [sharedStore homeworkJson];
-	NSDictionary *parsedDict = [hdJsonWrapper getObj:homeworkJson];
-	higheid = ((NSString *)[parsedDict objectForKey:@"higheid"]).integerValue;
-	NSDictionary *homeworkRootDictionary = [parsedDict objectForKey:@"hw"];
+	NSDictionary *homeworkRootDictionary = [hdJsonWrapper getObj:homeworkJson];
+	higheid = [sharedStore higheid];
 	homeworkTasksByDay = [[NSMutableArray alloc] initWithArray:[self createFlatHomeworkTable:homeworkRootDictionary]];
 	dayIndexToIndexMap = [[NSMutableDictionary alloc] init];
 	dayIndexToHomeworkCountOnDayMap = [[NSMutableDictionary alloc] init];
@@ -127,8 +126,8 @@
 				task.details = details;
 				task.hwid = hwid;
 				task.period = period.integerValue;
-				task.subject = [hdTimetableParser getSubjectForDay:task.date period:task.period - 1];
 				[task setDateWithJsonDateStr:date];
+				task.subject = [hdTimetableParser getSubjectForDay:task.date period:task.period - 1];
 				[result addObject:task];
 				totalHomeworkCount++;
 			}

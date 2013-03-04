@@ -25,6 +25,15 @@
 - (int)pass;
 - (void)setPass:(int)pass;
 
+- (NSString *)name;
+- (void)setName:(NSString *)name;
+
+- (NSString *)form;
+- (void)setForm:(NSString *)form;
+
+- (int)year;
+- (void)setYear:(int)year;
+
 - (int)higheid;
 - (void)setHigheid:(int)eid;
 

@@ -110,7 +110,6 @@ BOOL currentlyLoggingIn = NO;
 	loginActivityIndicatorView.hidden = NO;
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	[hdStudent initialize];
-	[loginProgressView setProgress:0.0];
 	loginProgressView.hidden = NO;
 	//loginButton.enabled = NO;
 	loginButton.alpha = 0;
@@ -136,10 +135,6 @@ BOOL currentlyLoggingIn = NO;
 																	[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 																	[(hdTabViewController *)self.presentingViewController updateSubviews];
 																}
-															}
-															progressCallback:^(float progress, NSString *status) {
-																loginProgressView.progress = progress;
-																[loginButton setTitle:status forState:UIControlStateNormal];
 															}];
 }
 

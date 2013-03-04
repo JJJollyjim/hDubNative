@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "hdHomeworkTask.h"
 
-@interface hdHomeworkDetailViewController : UIViewController
+@interface hdHomeworkDetailViewController : UIViewController <UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *homeworkTitle;
 @property (weak, nonatomic) IBOutlet UITableView *homeworkDataTableView;
 @property (weak, nonatomic) IBOutlet UITextView *homeworkDetailTextView;
+@property (weak, nonatomic) IBOutlet UILabel *noDetailsLabel;
 @property (nonatomic) hdHomeworkTask *homeworkTask;
 @property (nonatomic) id homeworkViewController;
 

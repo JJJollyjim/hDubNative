@@ -36,6 +36,10 @@
 										 homework:(NSString *)homework
 										 callback:(void (^) (BOOL, NSString *, NSString *))callback;
 
++ (void)loginWithSid:(int)sid
+								pass:(int)pass
+						callback:(void (^) (BOOL, NSString *, NSString *))callback;
+
 + (void)syncHomeworkForUser:(int)sid
 											 pass:(int)pass
 										higheid:(int)eid

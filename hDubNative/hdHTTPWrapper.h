@@ -55,6 +55,11 @@
 						success:(void (^) (NSString *))success
 							error:(void (^) (NSString *))error;
 
+- (void)loginWithUser:(int)sid
+						 password:(int)pass
+							success:(void (^) (NSString *))success
+								error:(void (^) (NSString *))error;
+
 - (int)getLastStatusCode;
 
 @end

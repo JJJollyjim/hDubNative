@@ -7,10 +7,11 @@
 //
 
 #import "hdHomeworkDetailViewController.h"
+#import "hdDateUtils.h"
 
 @implementation hdHomeworkDetailViewController
 
-@synthesize homeworkTask, homeworkTitle, homeworkDetailTextView, homeworkDataTableView, homeworkViewController;
+@synthesize homeworkTask, homeworkTitle, homeworkDetailTextView, homeworkDataTableView, homeworkViewController, noDetailsLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,11 +30,20 @@
 	UINavigationController *nav = self.navigationController;
 	UINavigationBar *navBar = nav.navigationBar;
 	navBar.tintColor = [UIColor colorWithRed:135/255.0f green:10/255.0f blue:0.0f alpha:1.0f];
+	homeworkDataTableView.dataSource = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	homeworkTitle.text = homeworkTask.name;
-	homeworkDetailTextView.text = homeworkTask.details;
+	if (homeworkTask.details == nil || [homeworkTask.details isEqualToString:@""]) {
+		noDetailsLabel.hidden = NO;
+		homeworkDetailTextView.hidden = YES;
+	} else {
+		noDetailsLabel.hidden = YES;
+		homeworkDetailTextView.hidden = NO;
+		homeworkDetailTextView.text = homeworkTask.details;
+	}
+	self.title = [NSString stringWithFormat:@"%@ Homework", homeworkTask.subject];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,4 +67,29 @@
 
 - (IBAction)deleteHomeworkTask:(id)sender {
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	static NSString *CellIdentifier = @"hdHomeworkDetailViewControllerCell";
+	UITableViewCell *cell = [homeworkDataTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	
+	if (cell == nil) {
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"hdHomeworkDetailViewControllerCell"];
+	}
+	
+	if (indexPath.row == 0) {
+		cell.textLabel.text = @"Subject";
+		cell.detailTextLabel.text = homeworkTask.subject;
+	} else {
+		cell.textLabel.text = @"Due";
+		cell.detailTextLabel.text = [NSString stringWithFormat:@"Period %i, %@", homeworkTask.period, [hdDateUtils formatDate:homeworkTask.date]];
+	}
+
+	
+	return cell;
+}
+
 @end

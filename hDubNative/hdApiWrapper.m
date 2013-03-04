@@ -232,4 +232,42 @@
 										 }];
 }
 
++ (void)loginWithSid:(int)sid
+								pass:(int)pass
+						callback:(void (^) (BOOL, NSString *, NSString *))callback {
+	hdHTTPWrapper *httpRequest = [[hdHTTPWrapper alloc] init];
+	[httpRequest loginWithUser:sid
+									password:pass
+									 success:^void (NSString *response) {
+										 [self handleErrorsInJson:response httpRequest:httpRequest callback:callback];
+									 }
+										 error:^void (NSString *errorMsg) {
+											 callback(NO, @"An error has occured. Please check your internet connection or try again later.", @"No/invalid data received!");
+										 }];
+}
+
++ (void)handleErrorsInJson:(NSString *)json
+							 httpRequest:(hdHTTPWrapper *)httpRequest
+									callback:(void (^) (BOOL, NSString *, NSString *))callback {
+	NSDictionary *jsonObj = [hdJsonWrapper getObj:json];
+	if ([jsonObj objectForKey:@"error"] != nil) {
+		// Handle errors
+		// auth, db, io, json, school, kamar
+		NSString *error = [jsonObj objectForKey:@"error"];
+		NSString *errorReport = [NSString stringWithFormat:@"json: {\"error\":\"%@\"}\n  statusCode: %i", error, [httpRequest getLastStatusCode]];
+		NSString *userError = @"A server error has occured. Please try again later.";
+		if ([error isEqualToString:@"auth"]) {
+			userError = @"Invalid Student ID Number or Login Code!";
+		} else if ([error isEqualToString:@"db"]||[error isEqualToString:@"io"]||[error isEqualToString:@"json"]) {
+			userError = @"A server error has occured. Please try again later.";
+		} else if ([error isEqualToString:@"school"]) {
+			userError = @"A server error has occured while trying to communicate with your school. Please try again later.";
+		} else if ([error isEqualToString:@"kamar"]) {
+			userError = @"There was a problem communicating with your school. Please try again later.";
+		}
+		callback(NO, userError, errorReport);
+	}
+	callback(YES, json, nil);
+}
+
 @end

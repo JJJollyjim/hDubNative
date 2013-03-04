@@ -51,6 +51,7 @@
 	self.reloadTimetableButton.alpha = 0.5;
 	self.logoutButton.enabled = NO;
 	self.logoutButton.alpha = 0.5;
+	[self.reloadTimetableButton setTitle:@"Reloading timetable…" forState:UIControlStateDisabled];
 	[[hdStudent sharedStudent] loginNewUser:[hdDataStore sharedStore].userId password:[hdDataStore sharedStore].pass callback:^(BOOL success, NSString *response, NSString *report) {
 		self.reloadTimetableButton.enabled = YES;
 		self.reloadTimetableButton.alpha = 1.0;
@@ -65,8 +66,6 @@
 			UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"hDub" message:@"Timetable and homework updated!" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil];
 			[av show];
 		}
-	} progressCallback:^(float progress, NSString *progressString) {
-		[self.reloadTimetableButton setTitle:progressString forState:UIControlStateDisabled];
 	}];
 }
 

@@ -16,44 +16,11 @@
 	void (^errorCallback) (NSString *errorMsg);
 }
 
-- (void)authenticateUser:(int)sid
-								password:(int)pass
-								 success:(void (^) (NSString *))success
-									 error:(void (^) (NSString *))error;
-
 - (void)getMessage:(int)sid
 					password:(int)pass
 	 fromLoginScreen:(BOOL)login
 					 success:(void (^) (NSString *))success
 						 error:(void (^) (NSString *))error;
-
-- (void)indexerWithUserId:(int)sid
-								 password:(int)pass
-									success:(void (^) (NSString *))success
-										error:(void (^) (NSString *))error;
-
-- (void)getTimetableForUser:(int)sid
-									 password:(int)pass
-										success:(void (^) (NSString *))success
-											error:(void (^) (NSString *))error;
-
-- (void)downloadFullHomeworkForUser:(int)sid
-													 password:(int)pass
-														success:(void (^) (NSString *))success
-															error:(void (^) (NSString *))error;
-
-- (void)uploadFullHomeworkForUser:(int)sid
-												 password:(int)pass
-										 homeworkJson:(NSString *)hw
-													success:(void (^) (NSString *))success
-														error:(void (^) (NSString *))error;
-
-- (void)syncForUser:(int)sid
-					 password:(int)pass
-						higheid:(int)higheid
-						 events:(NSString *)events
-						success:(void (^) (NSString *))success
-							error:(void (^) (NSString *))error;
 
 - (void)loginWithUser:(int)sid
 						 password:(int)pass

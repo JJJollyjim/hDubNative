@@ -102,9 +102,52 @@
 		totalDayCount++;
 	[dayIndexToHomeworkCountOnDayMap setObject:[NSNumber numberWithInt:currentHomeworkCountForCurrentDayIndex]
 																			forKey:[NSNumber numberWithInt:totalDayCount - 1]];
+	[self exportHomeworkTasksByDayToDisk];
 	if (priorTotalDayCount != totalDayCount)
 		return true;
 	return false;
+}
+
+- (void)exportHomeworkTasksByDayToDisk {
+	NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
+	for (hdHomeworkTask *task in homeworkTasksByDay) {
+		NSDateFormatter *f = [[NSDateFormatter alloc] init];
+		f.dateFormat = @"yyyy-MM-dd";
+		f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-US"];
+		f.timeZone = [NSTimeZone timeZoneWithName:@"NZST"];
+		NSString *key = [f stringFromDate:task.date];
+		if ([result objectForKey:key] == nil) {
+			NSMutableDictionary *homeworkTask = [[NSMutableDictionary alloc] init];
+			[homeworkTask setObject:task.name forKey:@"name"];
+			[homeworkTask setObject:task.hwid forKey:@"hwid"];
+			[homeworkTask setObject:task.details forKey:@"details"];
+			NSMutableArray *homeworkTasks = [[NSMutableArray alloc] init];
+			[homeworkTasks addObject:homeworkTask];
+			NSMutableDictionary *periods = [[NSMutableDictionary alloc] init];
+			[periods setObject:homeworkTasks forKey:[NSString stringWithFormat:@"%i", task.period]];
+			[result setObject:periods forKey:key];
+		} else {
+			NSMutableDictionary *homeworkTask = [[NSMutableDictionary alloc] init];
+			[homeworkTask setObject:task.name forKey:@"name"];
+			[homeworkTask setObject:task.hwid forKey:@"hwid"];
+			[homeworkTask setObject:task.details forKey:@"details"];
+			NSMutableArray *homeworkTasks = [[NSMutableArray alloc] init];
+			[homeworkTasks addObject:homeworkTask];
+			NSMutableDictionary *periods = [[NSMutableDictionary alloc] init];
+			[periods setObject:homeworkTasks forKey:[NSString stringWithFormat:@"%i", task.period]];
+			NSMutableDictionary *previousPeriods = [result objectForKey:key];
+			if ([previousPeriods objectForKey:[NSString stringWithFormat:@"%i", task.period]] == nil) {
+				[previousPeriods setObject:homeworkTasks forKey:[NSString stringWithFormat:@"%i", task.period]];
+			} else {
+				NSMutableArray *previousHomeworkTasks = [previousPeriods objectForKey:
+																								 [NSString stringWithFormat:@"%i", task.period]];
+				[previousHomeworkTasks addObject:homeworkTask];
+			}
+		}
+	}
+	NSString *jsonResult = [hdJsonWrapper getJson:result];
+	NSLog(@"%@", jsonResult);
+	[hdDataStore sharedStore].homeworkJson = jsonResult;
 }
 
 - (NSArray *)createFlatHomeworkTable:(NSDictionary *)homeworkRootDictionary {

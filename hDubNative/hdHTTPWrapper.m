@@ -16,19 +16,6 @@
 
 @implementation hdHTTPWrapper
 
-- (void)authenticateUser:(int)sid
-								password:(int)pass
-								 success:(void (^) (NSString *))success
-								 error:(void (^) (NSString *))error {
-	successCallback = success;
-	errorCallback = error;
-	
-	NSString *url = [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/userAuth.php?sid=%i&pass=%04i&os=ios&vnum=2.0", sid, pass];
-	[self downloadURL:[NSURL URLWithString:url]
-				 withMethod:@"GET"
-				 parameters:nil];
-}
-
 - (void)getMessage:(int)sid
 					password:(int)pass
 	 fromLoginScreen:(BOOL)login
@@ -40,81 +27,7 @@
 	[self downloadURL:[NSURL URLWithString:
 										 [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/message.php"]]
 				 withMethod:@"POST"
-				 parameters:[[NSString alloc] initWithFormat:@"login=%@&sid=%i&pass=%04i&os=ios&vnum=2.0", login == YES ? @"true" : @"false", sid, pass]];
-}
-
-- (void)indexerWithUserId:(int)sid
-								 password:(int)pass
-									success:(void (^) (NSString *))success
-										error:(void (^) (NSString *))error {
-	successCallback = success;
-	errorCallback = error;
-	
-	[self downloadURL:[NSURL URLWithString:
-										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/indexer.php?sid=%i&pass=%04i&os=ios&vnum=2.0", sid, pass]]
-				 withMethod:@"GET"
-				 parameters:nil];
-}
-
-- (void)getTimetableForUser:(int)sid
-									 password:(int)pass
-										success:(void (^) (NSString *))success
-											error:(void (^) (NSString *))error {
-	successCallback = success;
-	errorCallback = error;
-	
-	[self downloadURL:[NSURL URLWithString:
-										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/genClassList.php?sid=%i&pass=%04i&os=ios&vnum=2.0", sid, pass]]
-				 withMethod:@"GET"
-				 parameters:nil];
-}
-
-- (void)downloadFullHomeworkForUser:(int)sid
-													 password:(int)pass
-														success:(void (^) (NSString *))success
-															error:(void (^) (NSString *))error {
-	successCallback = success;
-	errorCallback = error;
-	
-	[self downloadURL:[NSURL URLWithString:
-										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/stringdown.php"]]
-				 withMethod:@"POST"
-				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&os=ios&vnum=2.0&newjson=yes", sid, pass]];
-}
-
-- (void)uploadFullHomeworkForUser:(int)sid
-												 password:(int)pass
-										 homeworkJson:(NSString *)hw
-													success:(void (^) (NSString *))success
-														error:(void (^) (NSString *))error {
-	successCallback = success;
-	errorCallback = error;
-	
-	NSString *escapedString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
-																																																	(__bridge CFStringRef)hw,
-																																																	NULL,
-																																																	CFSTR("!*'();:@&=+$,/?%#[]"),
-																																																	kCFStringEncodingUTF8));
-	
-	[self downloadURL:[NSURL URLWithString:
-										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/stringup.php"]]
-				 withMethod:@"POST"
-				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&str=%@&os=ios&vnum=2.0", sid, pass, escapedString]];
-}
-
-- (void)syncForUser:(int)sid
-					 password:(int)pass
-						higheid:(int)higheid
-						 events:(NSString *)events
-						success:(void (^) (NSString *))success
-							error:(void (^) (NSString *))error {
-	successCallback = success;
-	errorCallback = error;
-	
-	[self downloadURL:[NSURL URLWithString:
-										 [[NSString alloc] initWithFormat:@"http://hdubapp.com/ServerSideInDev/sync.php"]]
-				 withMethod:@"POST"
-				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&higheid=%i&events=%@&os=ios&vnum=2.0", sid, pass, higheid, events]];
+				 parameters:[[NSString alloc] initWithFormat:@"login=%@&sid=%i&pass=%04i&os=ios&version=2.0", login == YES ? @"true" : @"false", sid, pass]];
 }
 
 - (void)loginWithUser:(int)sid
@@ -127,12 +40,12 @@
 	[self downloadURL:[NSURL URLWithString:
 										 [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/login.php"]]
 				 withMethod:@"POST"
-				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&os=ios&vnum=2.0", sid, pass]];
+				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&os=ios&version=2.0", sid, pass]];
 }
 
 
 
-- (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
 	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
 	statusCode = httpResponse.statusCode;
 	receivedData.length = 0;

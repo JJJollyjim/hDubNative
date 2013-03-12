@@ -21,11 +21,9 @@
 
 - (id)init {
 	if (self = [super init]) {
-		NSLog(@"START");
-		sharedStore = [hdDataStore sharedStore];
+				sharedStore = [hdDataStore sharedStore];
 		[self initializeHomeworkData];
-		NSLog(@"END");
-	}
+			}
 	return self;
 }
 
@@ -62,7 +60,7 @@
 
 // true if sections got deleted
 - (BOOL)reloadHomeworkDataAfterChangesToHomeworkTasksByDay {
-	int priorTotalDayCount = totalDayCount;
+		int priorTotalDayCount = totalDayCount;
 	[dayToIndexMap removeAllObjects];
 	[dayIndexToIndexMap removeAllObjects];
 	[dayIndexToHomeworkCountOnDayMap removeAllObjects];
@@ -103,7 +101,7 @@
 	[dayIndexToHomeworkCountOnDayMap setObject:[NSNumber numberWithInt:currentHomeworkCountForCurrentDayIndex]
 																			forKey:[NSNumber numberWithInt:totalDayCount - 1]];
 	[self exportHomeworkTasksByDayToDisk];
-	if (priorTotalDayCount != totalDayCount)
+		if (priorTotalDayCount != totalDayCount)
 		return true;
 	return false;
 }
@@ -146,7 +144,6 @@
 		}
 	}
 	NSString *jsonResult = [hdJsonWrapper getJson:result];
-	NSLog(@"%@", jsonResult);
 	[hdDataStore sharedStore].homeworkJson = jsonResult;
 }
 
@@ -172,6 +169,8 @@
 				task.period = period.integerValue;
 				[task setDateWithJsonDateStr:date];
 				task.subject = [hdTimetableParser getSubjectForDay:task.date period:task.period - 1];
+				task.teacher = [hdTimetableParser getTeacherForDay:task.date period:task.period - 1];
+				task.room = [hdTimetableParser getRoomForDay:task.date period:task.period - 1];
 				[result addObject:task];
 				totalHomeworkCount++;
 			}

@@ -11,11 +11,16 @@
 @implementation hdTimetableParser
 
 static NSDictionary *lastRootDictionary;
-+ (NSString *)getSubjectForDay:(NSDate *)date period:(int)period rootObj:(NSDictionary *)obj {
-	lastRootDictionary = obj;
-	NSDateFormatter *f = [[NSDateFormatter alloc] init];
+static NSDateFormatter *f;
+
++ (void)initializeDateFormatter {
+	f = [[NSDateFormatter alloc] init];
 	f.dateFormat = @"yyyy-MM-dd";
 	f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-US"];
+}
+
++ (NSString *)getSubjectForDay:(NSDate *)date period:(int)period rootObj:(NSDictionary *)obj {
+	lastRootDictionary = obj;
 	NSString *dateStr = [f stringFromDate:date];
 	NSDictionary *timetableDay = [obj valueForKey:dateStr];
 	NSString *periodStr = [NSString stringWithFormat:@"%i", period + 1];
@@ -26,10 +31,31 @@ static NSDictionary *lastRootDictionary;
 	return [self getSubjectForDay:date period:period rootObj:lastRootDictionary];
 }
 
++ (NSString *)getRoomForDay:(NSDate *)date period:(int)period rootObj:(NSDictionary *)obj {
+	lastRootDictionary = obj;
+	NSString *dateStr = [f stringFromDate:date];
+	NSDictionary *timetableDay = [obj valueForKey:dateStr];
+	NSString *periodStr = [NSString stringWithFormat:@"%i", period + 1];
+	return (NSString *)[[timetableDay valueForKey:periodStr] valueForKey:@"room"];
+}
+
++ (NSString *)getRoomForDay:(NSDate *)date period:(int)period {
+	return [self getRoomForDay:date period:period rootObj:lastRootDictionary];
+}
+
++ (NSString *)getTeacherForDay:(NSDate *)date period:(int)period rootObj:(NSDictionary *)obj {
+	lastRootDictionary = obj;
+	NSString *dateStr = [f stringFromDate:date];
+	NSDictionary *timetableDay = [obj valueForKey:dateStr];
+	NSString *periodStr = [NSString stringWithFormat:@"%i", period + 1];
+	return (NSString *)[[timetableDay valueForKey:periodStr] valueForKey:@"teacher"];
+}
+
++ (NSString *)getTeacherForDay:(NSDate *)date period:(int)period {
+	return [self getTeacherForDay:date period:period rootObj:lastRootDictionary];
+}
+
 + (BOOL)schoolOnDay:(NSDate *)date rootObj:(NSDictionary *)obj {
-	NSDateFormatter *f = [[NSDateFormatter alloc] init];
-	f.dateFormat = @"yyyy-MM-dd";
-	f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-US"];
 	NSString *dateStr = [f stringFromDate:[NSDate date]];
 	NSDictionary *timetableDay = [obj valueForKey:dateStr];
 	return timetableDay != nil;

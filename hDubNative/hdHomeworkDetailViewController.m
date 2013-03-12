@@ -2,12 +2,14 @@
 //  hdHomeworkDetailViewController.m
 //  hDubNative
 //
-//  Created by Jamie McClymont on 3/03/13.
+//  Created by printfn on 3/03/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
 #import "hdHomeworkDetailViewController.h"
 #import "hdDateUtils.h"
+#import "hdHomeworkViewController.h"
+#import "hdHomeworkEditViewController.h"
 
 @implementation hdHomeworkDetailViewController
 
@@ -58,18 +60,49 @@
 	[super viewDidUnload];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"hdHomeworkEditViewControllerSegueFromDetailView"]) {
+		UINavigationController *navigationController = (UINavigationController *)segue.destinationViewController;
+		hdHomeworkEditViewController *editViewController = (hdHomeworkEditViewController *)navigationController.topViewController;
+		editViewController.homeworkTask = self.homeworkTask;
+		editViewController.previousViewController = self;
+	}
+}
+
 - (IBAction)done:(id)sender {
 	[homeworkViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)editHomeworkTask:(id)sender {
+- (IBAction)deleteHomeworkTask:(id)sender {
+	self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete homework?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
+	[self.actionSheet showFromRect:self.deleteButton.frame inView:self.view animated:YES];
 }
 
-- (IBAction)deleteHomeworkTask:(id)sender {
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == 0) {
+		[(hdHomeworkViewController *)homeworkViewController deleteHomeworkTaskWithSection:self.section dayIndex:self.dayIndex];
+		[homeworkViewController dismissViewControllerAnimated:YES completion:nil];
+	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return 2;
+	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+		if (homeworkTask.room.length == 0) {
+			homeworkDetailTextView.frame = CGRectMake(homeworkDetailTextView.frame.origin.x,
+																								homeworkDetailTextView.frame.origin.y - 44,
+																								homeworkDetailTextView.frame.size.width,
+																								homeworkDetailTextView.frame.size.height);
+			noDetailsLabel.frame = CGRectMake(noDetailsLabel.frame.origin.x,
+																				noDetailsLabel.frame.origin.y - 44,
+																				noDetailsLabel.frame.size.width,
+																				noDetailsLabel.frame.size.height);
+			return 3;
+		} else {
+			return 4;
+		}
+	} else {
+		return 2;
+	}
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -83,9 +116,15 @@
 	if (indexPath.row == 0) {
 		cell.textLabel.text = @"Subject";
 		cell.detailTextLabel.text = homeworkTask.subject;
-	} else {
+	} else if (indexPath.row == 1) {
 		cell.textLabel.text = @"Due";
 		cell.detailTextLabel.text = [NSString stringWithFormat:@"Period %i, %@", homeworkTask.period, [hdDateUtils formatDate:homeworkTask.date]];
+	} else if (indexPath.row == 2) {
+		cell.textLabel.text = @"Teacher";
+		cell.detailTextLabel.text = homeworkTask.teacher;
+	} else if (indexPath.row == 3) {
+		cell.textLabel.text = @"Room";
+		cell.detailTextLabel.text = homeworkTask.room;
 	}
 
 	

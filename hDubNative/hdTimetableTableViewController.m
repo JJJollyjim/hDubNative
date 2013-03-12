@@ -14,6 +14,8 @@
 
 @implementation hdTimetableTableViewController
 
+@synthesize bbi;
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
 	self = [super initWithCoder:aDecoder];
 	if (self) {
@@ -53,17 +55,6 @@
 	UINavigationBar *navBar = nav.navigationBar;
 	navBar.tintColor = [UIColor colorWithRed:135/255.0f green:10/255.0f blue:0.0f alpha:1.0f];
 	
-	dateViewControllerCurrentlyShowing = NO;
-	UIStoryboard *storyBoard = [self storyboard];
-	datePickerViewController = [storyBoard instantiateViewControllerWithIdentifier:@"hdTimetableDatePickerViewController"];
-	[datePickerViewController setTimetableViewController:self];
-	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-		datePickerPopover = [[UIPopoverController alloc] initWithContentViewController:datePickerViewController];
-		bbi = self.navigationItem.leftBarButtonItem;
-		datePickerPopover.popoverContentSize = CGSizeMake(320, 260);
-		datePickerPopover.delegate = self;
-	}
-	
 	[self updateTimetable:nil];
 	
 	[super viewDidLoad];
@@ -89,7 +80,6 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-	dateShown = [NSDate date];
 	[self updateTimetable:nil];
 }
 
@@ -101,31 +91,39 @@
 
 #pragma mark - Actions
 
+hdTimetableDatePickerViewController *cache = nil;
 - (IBAction)showDatePicker:(id)sender {
-	if (dateViewControllerCurrentlyShowing == NO) {
-		dateViewControllerCurrentlyShowing = YES;
-		if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
-			[self presentViewController:datePickerViewController animated:YES completion:nil];
-		} else {
-			[datePickerPopover presentPopoverFromBarButtonItem:bbi permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+	NSString *storyboardName = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone ? @"Storyboard-iPhone" : @"Storyboard-iPad";
+	if (cache == nil) {
+		cache = [[UIStoryboard storyboardWithName:storyboardName bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"DatePickerViewController"];
+		[cache setStartingDate:dateShown];
+		[cache setTimetableViewController:self];
+		if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+			datePickerPopover = [[UIPopoverController alloc] initWithContentViewController:cache];
+			datePickerPopover.delegate = self;
 		}
+	}
+	[cache setStartingDate:dateShown];
+	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+		[self presentModalViewController:cache animated:YES];
 	} else {
-		[datePickerPopover dismissPopoverAnimated:YES];
-		[self popoverControllerDidDismissPopover:datePickerPopover];
-		dateViewControllerCurrentlyShowing = NO;
+		[datePickerPopover presentPopoverFromBarButtonItem:bbi permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+	}
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"DatePickerSegue"]) {
+		hdTimetableDatePickerViewController *target = segue.destinationViewController;
+		[target setTimetableViewController:self];
+		[target setStartingDate:dateShown];
 	}
 }
 
 #pragma mark - UIPopoverControllerDelegate
 
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController {
-	dateViewControllerCurrentlyShowing = NO;
-	dateShown = [datePickerViewController datePicker].date;
+- (void)updateDateByDatePickerWithDate:(NSDate *)date {
+	dateShown = date;
 	[self updateTimetable:nil];
-}
-
-- (UIPopoverController *)getPopoverController {
-	return datePickerPopover;
 }
 
 #pragma mark - Table view data source

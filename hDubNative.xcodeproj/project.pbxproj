@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD0330DD16EAFB970043AA13 /* orangeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0330D916EAFB970043AA13 /* orangeButton.png */; };
+		CD0330DE16EAFB970043AA13 /* orangeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0330DA16EAFB970043AA13 /* orangeButton@2x.png */; };
+		CD0330DF16EAFB970043AA13 /* orangeButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0330DB16EAFB970043AA13 /* orangeButtonHighlight.png */; };
+		CD0330E016EAFB970043AA13 /* orangeButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0330DC16EAFB970043AA13 /* orangeButtonHighlight@2x.png */; };
+		CD0330E416EB20B20043AA13 /* hdHomeworkEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD0330E316EB20B20043AA13 /* hdHomeworkEditViewController.m */; };
 		CD1E89D616BF884A00EF853C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1E89D516BF884A00EF853C /* UIKit.framework */; };
 		CD1E89D816BF884A00EF853C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1E89D716BF884A00EF853C /* Foundation.framework */; };
 		CD1E89DA16BF884A00EF853C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1E89D916BF884A00EF853C /* CoreGraphics.framework */; };
@@ -26,6 +31,7 @@
 		CD1E8A2816BF8FC200EF853C /* IconiPhoneR.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2716BF8FC200EF853C /* IconiPhoneR.png */; };
 		CD1E8A2A16BF8FC900EF853C /* IconiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2916BF8FC800EF853C /* IconiPad.png */; };
 		CD1E8A2C16BF8FCB00EF853C /* IconiPadR.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2B16BF8FCB00EF853C /* IconiPadR.png */; };
+		CD1F4B2616E5A41900743967 /* Storyboard-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1F4B2516E5A41900743967 /* Storyboard-iPad.storyboard */; };
 		CD32C05116C0C2AB00AA0569 /* hdHTTPWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C05016C0C2AB00AA0569 /* hdHTTPWrapper.m */; };
 		CD32C05F16C11B0500AA0569 /* hdJsonWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C05E16C11B0500AA0569 /* hdJsonWrapper.m */; };
 		CD32C06316C1C6EF00AA0569 /* hdDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C06216C1C6EE00AA0569 /* hdDataStore.m */; };
@@ -46,7 +52,6 @@
 		CD5F6AC816CEED1F00D7EEBD /* hdNotificationApi.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F6AC716CEED1F00D7EEBD /* hdNotificationApi.m */; };
 		CD5F6ACB16CF7EAB00D7EEBD /* hdHomeworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F6ACA16CF7EAB00D7EEBD /* hdHomeworkViewController.m */; };
 		CD62780716E2D481003D3C8F /* hdRedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD62780616E2D481003D3C8F /* hdRedButton.m */; };
-		CD62780A16E2D9F2003D3C8F /* hdHomeworkEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD62780916E2D9F2003D3C8F /* hdHomeworkEditViewController.m */; };
 		CD685A7816C6358200DD4013 /* hdDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CD685A7716C6358200DD4013 /* hdDateUtils.m */; };
 		CD694E4B16C3A9E2006264DC /* hdTimetableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD694E4A16C3A9E1006264DC /* hdTimetableTableViewController.m */; };
 		CD694E4D16C4A471006264DC /* Storyboard-iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD694E4C16C4A470006264DC /* Storyboard-iPhone.storyboard */; };
@@ -72,6 +77,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD0330D916EAFB970043AA13 /* orangeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeButton.png; sourceTree = "<group>"; };
+		CD0330DA16EAFB970043AA13 /* orangeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orangeButton@2x.png"; sourceTree = "<group>"; };
+		CD0330DB16EAFB970043AA13 /* orangeButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeButtonHighlight.png; sourceTree = "<group>"; };
+		CD0330DC16EAFB970043AA13 /* orangeButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orangeButtonHighlight@2x.png"; sourceTree = "<group>"; };
+		CD0330E216EB20B20043AA13 /* hdHomeworkEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkEditViewController.h; sourceTree = "<group>"; };
+		CD0330E316EB20B20043AA13 /* hdHomeworkEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkEditViewController.m; sourceTree = "<group>"; };
 		CD1E89D216BF884A00EF853C /* hDubNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hDubNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1E89D516BF884A00EF853C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CD1E89D716BF884A00EF853C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -95,6 +106,7 @@
 		CD1E8A2716BF8FC200EF853C /* IconiPhoneR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPhoneR.png; sourceTree = "<group>"; };
 		CD1E8A2916BF8FC800EF853C /* IconiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPad.png; sourceTree = "<group>"; };
 		CD1E8A2B16BF8FCB00EF853C /* IconiPadR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPadR.png; sourceTree = "<group>"; };
+		CD1F4B2516E5A41900743967 /* Storyboard-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Storyboard-iPad.storyboard"; sourceTree = "<group>"; };
 		CD32C04F16C0C2AB00AA0569 /* hdHTTPWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHTTPWrapper.h; sourceTree = "<group>"; };
 		CD32C05016C0C2AB00AA0569 /* hdHTTPWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHTTPWrapper.m; sourceTree = "<group>"; };
 		CD32C05D16C11B0500AA0569 /* hdJsonWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdJsonWrapper.h; sourceTree = "<group>"; };
@@ -129,8 +141,6 @@
 		CD5F6ACA16CF7EAB00D7EEBD /* hdHomeworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkViewController.m; sourceTree = "<group>"; };
 		CD62780516E2D481003D3C8F /* hdRedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdRedButton.h; sourceTree = "<group>"; };
 		CD62780616E2D481003D3C8F /* hdRedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdRedButton.m; sourceTree = "<group>"; };
-		CD62780816E2D9F2003D3C8F /* hdHomeworkEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkEditViewController.h; sourceTree = "<group>"; };
-		CD62780916E2D9F2003D3C8F /* hdHomeworkEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkEditViewController.m; sourceTree = "<group>"; };
 		CD685A7616C6358200DD4013 /* hdDateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdDateUtils.h; sourceTree = "<group>"; };
 		CD685A7716C6358200DD4013 /* hdDateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdDateUtils.m; sourceTree = "<group>"; };
 		CD694E4916C3A9E1006264DC /* hdTimetableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdTimetableTableViewController.h; sourceTree = "<group>"; };
@@ -178,6 +188,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD0330E116EAFC150043AA13 /* Custom Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				CD8C424F16CB7E27007B2186 /* hdWhiteButton.h */,
+				CD8C425016CB7E28007B2186 /* hdWhiteButton.m */,
+				CD8C424C16CB7BB3007B2186 /* hdBlueButton.h */,
+				CD8C424D16CB7BB3007B2186 /* hdBlueButton.m */,
+				CD62780516E2D481003D3C8F /* hdRedButton.h */,
+				CD62780616E2D481003D3C8F /* hdRedButton.m */,
+			);
+			name = "Custom Buttons";
+			sourceTree = "<group>";
+		};
 		CD1E89C916BF884A00EF853C = {
 			isa = PBXGroup;
 			children = (
@@ -234,12 +257,7 @@
 		CD1E8A1116BF892A00EF853C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CD8C424F16CB7E27007B2186 /* hdWhiteButton.h */,
-				CD8C425016CB7E28007B2186 /* hdWhiteButton.m */,
-				CD8C424C16CB7BB3007B2186 /* hdBlueButton.h */,
-				CD8C424D16CB7BB3007B2186 /* hdBlueButton.m */,
-				CD62780516E2D481003D3C8F /* hdRedButton.h */,
-				CD62780616E2D481003D3C8F /* hdRedButton.m */,
+				CD0330E116EAFC150043AA13 /* Custom Buttons */,
 				CD685A7316C5F09F00DD4013 /* TabView */,
 				CD685A7216C5F09600DD4013 /* Login */,
 				CD32C07816C21D5100AA0569 /* Timetable */,
@@ -347,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				CD694E4C16C4A470006264DC /* Storyboard-iPhone.storyboard */,
+				CD1F4B2516E5A41900743967 /* Storyboard-iPad.storyboard */,
 				CD32C06B16C1F12300AA0569 /* Images */,
 				CD1E8A1116BF892A00EF853C /* ViewControllers */,
 			);
@@ -419,8 +438,8 @@
 		CD685A7416C5F0AD00DD4013 /* Homework */ = {
 			isa = PBXGroup;
 			children = (
-				CD62780816E2D9F2003D3C8F /* hdHomeworkEditViewController.h */,
-				CD62780916E2D9F2003D3C8F /* hdHomeworkEditViewController.m */,
+				CD0330E216EB20B20043AA13 /* hdHomeworkEditViewController.h */,
+				CD0330E316EB20B20043AA13 /* hdHomeworkEditViewController.m */,
 				CDAF246D16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.h */,
 				CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */,
 				CD5F6AC916CF7EAB00D7EEBD /* hdHomeworkViewController.h */,
@@ -447,6 +466,10 @@
 		CD8C424B16CB7B56007B2186 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				CD0330D916EAFB970043AA13 /* orangeButton.png */,
+				CD0330DA16EAFB970043AA13 /* orangeButton@2x.png */,
+				CD0330DB16EAFB970043AA13 /* orangeButtonHighlight.png */,
+				CD0330DC16EAFB970043AA13 /* orangeButtonHighlight@2x.png */,
 				CD8C423B16CB7AB4007B2186 /* blueButton.png */,
 				CD8C423C16CB7AB4007B2186 /* blueButton@2x.png */,
 				CD8C423D16CB7AB4007B2186 /* blueButtonHighlight.png */,
@@ -544,6 +567,11 @@
 				CD5F6AB116CE31ED00D7EEBD /* iPhoneLoginBG@2x.png in Resources */,
 				CD5F6AB416CE370600D7EEBD /* LoginIcon.png in Resources */,
 				CD5F6AB516CE370600D7EEBD /* LoginIcon@2x.png in Resources */,
+				CD1F4B2616E5A41900743967 /* Storyboard-iPad.storyboard in Resources */,
+				CD0330DD16EAFB970043AA13 /* orangeButton.png in Resources */,
+				CD0330DE16EAFB970043AA13 /* orangeButton@2x.png in Resources */,
+				CD0330DF16EAFB970043AA13 /* orangeButtonHighlight.png in Resources */,
+				CD0330E016EAFB970043AA13 /* orangeButtonHighlight@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,7 +605,7 @@
 				CDF1BB9016D71E2700A10129 /* hdHomeworkTask.m in Sources */,
 				CDAF246F16E2CF4F003CF9F5 /* hdHomeworkDetailViewController.m in Sources */,
 				CD62780716E2D481003D3C8F /* hdRedButton.m in Sources */,
-				CD62780A16E2D9F2003D3C8F /* hdHomeworkEditViewController.m in Sources */,
+				CD0330E416EB20B20043AA13 /* hdHomeworkEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,7 +639,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -642,6 +670,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -656,6 +685,7 @@
 		CD1E8A0A16BF884A00EF853C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "hDubNative/hDubNative-Prefix.pch";
 				INFOPLIST_FILE = "hDubNative/hDubNative-Info.plist";
@@ -668,6 +698,7 @@
 		CD1E8A0B16BF884A00EF853C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "hDubNative/hDubNative-Prefix.pch";
 				INFOPLIST_FILE = "hDubNative/hDubNative-Info.plist";

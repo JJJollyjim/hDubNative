@@ -16,6 +16,7 @@
 #import "hdStudent.h"
 #import "hdJsonWrapper.h"
 #import "hdNotificationApi.h"
+#import "hdTimetableParser.h"
 
 @implementation hdAppDelegate
 
@@ -26,13 +27,19 @@
 	}
 	
 	[[hdDataStore sharedStore] synchronize];
+	[hdTimetableParser initializeDateFormatter];
 	
 	[hdNotificationApi setOnLoginScreen:NO];
 	[hdNotificationApi startPolling];
 	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
-	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard-iPhone" bundle:[NSBundle mainBundle]];
+	UIStoryboard *storyboard;
+	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+		storyboard = [UIStoryboard storyboardWithName:@"Storyboard-iPhone" bundle:[NSBundle mainBundle]];
+	} else {
+		storyboard = [UIStoryboard storyboardWithName:@"Storyboard-iPad" bundle:[NSBundle mainBundle]];
+	}
 	UIViewController *vc =[storyboard instantiateInitialViewController];
 	
 	// Set root view controller and make windows visible

@@ -19,15 +19,15 @@
 	// DateViewController
 	UIPopoverController *datePickerPopover;
 	hdTimetableDatePickerViewController *datePickerViewController;
-	UIBarButtonItem *bbi;
 	BOOL dateViewControllerCurrentlyShowing;
 }
 
-- (IBAction)showDatePicker:(id)sender;
-- (UIPopoverController *)getPopoverController;
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *bbi;
+
 - (IBAction)updateTimetable:(id)sender;
 - (void)updateTimetableWithAnimationLeft:(NSDate *)date;
 - (void)updateTimetableWithAnimationRight:(NSDate *)date;
+- (void)updateDateByDatePickerWithDate:(NSDate *)date;
+- (IBAction)showDatePicker:(id)sender;
 
 @end

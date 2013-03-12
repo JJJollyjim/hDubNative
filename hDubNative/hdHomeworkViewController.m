@@ -68,6 +68,8 @@
 		hdHomeworkTask *homeworkTask = [self.parser getHomeworkTaskForSection:indexPath.section id:indexPath.row];
 		detailViewController.homeworkTask = homeworkTask;
 		detailViewController.homeworkViewController = self;
+		detailViewController.section = indexPath.section;
+		detailViewController.dayIndex = indexPath.row;
 	}
 }
 
@@ -111,6 +113,18 @@
 	return YES;
 }
 
+- (void)deleteHomeworkTaskWithSection:(int)section dayIndex:(int)dayIndex {
+	BOOL deletedSections = [self.parser deleteCellAtDayIndex:section id:dayIndex];
+	
+	[self.tableView beginUpdates];
+	if (deletedSections) {
+		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationLeft];
+	} else {
+		[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:dayIndex inSection:section]] withRowAnimation:UITableViewRowAnimationLeft];
+	}
+	[self.tableView endUpdates];
+}
+
  // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
@@ -121,9 +135,9 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 		
 		[tableView beginUpdates];
 		if (deletedSections) {
-			[tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+			[tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
 		} else {
-			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
 		}
 		[tableView endUpdates];
 	}
@@ -151,13 +165,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

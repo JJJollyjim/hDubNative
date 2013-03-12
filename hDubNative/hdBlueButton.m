@@ -36,10 +36,10 @@
 	[self setBackgroundImage:buttonImage forState:UIControlStateNormal];
 	[self setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
 	
-	[self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-	[self setTitleColor:[UIColor grayColor] forState:UIControlStateSelected];
-	[self setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-	[self setTitleColor:[UIColor blackColor] forState:UIControlStateDisabled];
+	[self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	[self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateSelected];
+	[self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+	[self setTitleColor:[UIColor grayColor] forState:UIControlStateDisabled];
 	
 	[self setBackgroundColor:[UIColor clearColor]];
 }

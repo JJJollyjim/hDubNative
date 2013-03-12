@@ -16,6 +16,8 @@
 @property (nonatomic) NSDate *date;
 @property (nonatomic) int period;
 @property (nonatomic) NSString *subject;
+@property (nonatomic) NSString *teacher;
+@property (nonatomic) NSString *room;
 
 + (NSString *)generateUUID;
 - (void)setDateWithJsonDateStr:(NSString *)str;

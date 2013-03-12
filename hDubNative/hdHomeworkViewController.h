@@ -10,4 +10,6 @@
 
 @interface hdHomeworkViewController : UITableViewController
 
+- (void)deleteHomeworkTaskWithSection:(int)section dayIndex:(int)dayIndex;
+
 @end

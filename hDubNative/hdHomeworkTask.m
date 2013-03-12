@@ -10,7 +10,7 @@
 
 @implementation hdHomeworkTask
 
-@synthesize date, details, hwid, name, period, subject;
+@synthesize date, details, hwid, name, period, subject, teacher, room;
 
 + (NSString *)generateUUID {
 	CFUUIDRef uuid = CFUUIDCreate(NULL);
@@ -19,11 +19,14 @@
 	return uuidStr;
 }
 
+NSDateFormatter *f = nil;
 - (void)setDateWithJsonDateStr:(NSString *)str {
-	NSDateFormatter *f = [[NSDateFormatter alloc] init];
-	f.dateFormat = @"yyyy-MM-dd";
-	f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-US"];
-	f.timeZone = [NSTimeZone timeZoneWithName:@"NZST"];
+	if (f == nil) {
+		f = [[NSDateFormatter alloc] init];
+		f.dateFormat = @"yyyy-MM-dd";
+		f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-US"];
+		f.timeZone = [NSTimeZone timeZoneWithName:@"NZST"];
+	}
 	NSDate *midnight = [f dateFromString:str];
 	self.date = [midnight dateByAddingTimeInterval:43200];
 }

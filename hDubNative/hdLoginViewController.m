@@ -73,6 +73,11 @@ passwordTextField, loginActivityIndicatorView, loginProgressView, messageTextVie
 																				self.loginButton.frame.size.width,
 																				self.loginButton.frame.size.height);
 		
+		self.loginActivityIndicatorView.frame = CGRectMake(self.loginActivityIndicatorView.frame.origin.x,
+																											 self.loginActivityIndicatorView.frame.origin.y + distance,
+																											 self.loginActivityIndicatorView.frame.size.width,
+																											 self.loginActivityIndicatorView.frame.size.height);
+		
 		self.usernameTextField.frame = CGRectMake(self.usernameTextField.frame.origin.x,
 																							self.usernameTextField.frame.origin.y + distance,
 																							self.usernameTextField.frame.size.width,

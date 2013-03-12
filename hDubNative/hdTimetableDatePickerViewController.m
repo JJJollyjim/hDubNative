@@ -23,9 +23,10 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-		descriptionLabel.hidden = YES;
-	}
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	self.datePicker.date = dateThatWillBeShownSoon;
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,24 +36,28 @@
 }
 
 - (IBAction)selectedNewDate:(id)sender {
-	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-		[timetableViewController updateTimetableWithAnimationLeft:self.datePicker.date];
-	}
+	[timetableViewController updateTimetableWithAnimationLeft:self.datePicker.date];
 }
 
 - (IBAction)changeDate:(id)sender {
-	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+	[timetableViewController updateDateByDatePickerWithDate:self.datePicker.date];
+	[timetableViewController dismissViewControllerAnimated:YES completion:nil];
+	/*if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
 		UIPopoverController *popoverViewController = [timetableViewController getPopoverController];
 		[popoverViewController dismissPopoverAnimated:YES];
 		[(hdTimetableTableViewController *)timetableViewController popoverControllerDidDismissPopover:popoverViewController];
 	} else {
 		[timetableViewController dismissModalViewControllerAnimated:YES];
 		[timetableViewController popoverControllerDidDismissPopover:nil];
-	}
+	}*/
 }
 
 - (void)setTimetableViewController:(id)timetableVC {
 	timetableViewController = timetableVC;
+}
+
+- (void)setStartingDate:(NSDate *)date {
+	dateThatWillBeShownSoon = date;
 }
 
 - (void)viewDidUnload {

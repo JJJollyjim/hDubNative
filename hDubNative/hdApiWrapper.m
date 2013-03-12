@@ -46,11 +46,11 @@
 							 httpRequest:(hdHTTPWrapper *)httpRequest
 									callback:(void (^) (BOOL, NSString *, NSString *))callback {
 	NSDictionary *jsonObj = [hdJsonWrapper getObj:json];
-	if ([jsonObj objectForKey:@"error"] != nil) {
+	if (jsonObj == nil || [jsonObj objectForKey:@"error"] != nil) {
 		// Handle errors
 		// auth, db, io, json, school, kamar
 		NSString *error = [jsonObj objectForKey:@"error"];
-		NSString *errorReport = [NSString stringWithFormat:@"json: {\"error\":\"%@\"}\n  statusCode: %i", error, [httpRequest getLastStatusCode]];
+		NSString *errorReport = [NSString stringWithFormat:@"json: {\"error_id\":\"%@\", \"error\":\"%@\"}\n  statusCode: %i", [jsonObj objectForKey:@"error_id"], error, [httpRequest getLastStatusCode]];
 		NSString *userError = @"A server error has occured. Please try again later.";
 		if ([error isEqualToString:@"auth"]) {
 			userError = @"Invalid Student ID Number or Login Code!";
@@ -62,8 +62,9 @@
 			userError = @"There was a problem communicating with your school. Please try again later.";
 		}
 		callback(NO, userError, errorReport);
+	} else {
+		callback(YES, json, nil);
 	}
-	callback(YES, json, nil);
 }
 
 @end

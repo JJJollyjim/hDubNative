@@ -12,7 +12,7 @@
 
 @implementation hdSettingsViewController
 
-@synthesize sidLabel, logoutButton;
+@synthesize sidLabel, logoutButton, nameLabel, formLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,14 +27,37 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	sidLabel.text = [NSString stringWithFormat:@"%i", [hdDataStore sharedStore].userId];
 	// Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	sidLabel.text = [NSString stringWithFormat:@"%i", [hdDataStore sharedStore].userId];
+	nameLabel.text = [hdDataStore sharedStore].name;
+	formLabel.text = [hdDataStore sharedStore].form;
+	[super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	[self becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
 {
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
+}
+
+- (BOOL)canBecomeFirstResponder {
+	return YES;
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event
+{
+	if (self.kwiiusButton.touchInside) {
+		NSURL *url = [[NSURL alloc] initWithString:@"http://www.youtube.com/watch?v=9bZkp7q19f0"];
+		[[UIApplication sharedApplication] openURL:url];
+	}
 }
 
 - (IBAction)logout:(id)sender {
@@ -51,7 +74,10 @@
 	self.reloadTimetableButton.alpha = 0.5;
 	self.logoutButton.enabled = NO;
 	self.logoutButton.alpha = 0.5;
-	[self.reloadTimetableButton setTitle:@"Reloading timetable…" forState:UIControlStateDisabled];
+	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
+		[self.reloadTimetableButton setTitle:@"Reloading timetable…" forState:UIControlStateDisabled];
+	else
+		[self.reloadTimetableButton setTitle:@"Reloading…" forState:UIControlStateDisabled];
 	[[hdStudent sharedStudent] loginNewUser:[hdDataStore sharedStore].userId password:[hdDataStore sharedStore].pass callback:^(BOOL success, NSString *response, NSString *report) {
 		self.reloadTimetableButton.enabled = YES;
 		self.reloadTimetableButton.alpha = 1.0;

@@ -32,7 +32,7 @@
 	NSDictionary *homeworkRootDictionary = [hdJsonWrapper getObj:homeworkJson];
 	higheid = [sharedStore higheid];
 	homeworkTasksByDay = [[NSMutableArray alloc] initWithArray:[self createFlatHomeworkTable:homeworkRootDictionary]];
-	dayIndexToIndexMap = [[NSMutableDictionary alloc] init];
+	dayIndexToHomeworkIndexMap = [[NSMutableDictionary alloc] init];
 	dayIndexToHomeworkCountOnDayMap = [[NSMutableDictionary alloc] init];
 	int dayIndex = 0;
 	int homeworkTaskIndex = 0;
@@ -51,7 +51,7 @@
 		}
 		currentHomeworkCountForCurrentDayIndex++;
 		lastDate = task.date;
-		[dayIndexToIndexMap setObject:[NSNumber numberWithInt:homeworkTaskIndex] forKey:[NSNumber numberWithInt:dayIndex]];
+		[dayIndexToHomeworkIndexMap setObject:[NSNumber numberWithInt:homeworkTaskIndex] forKey:[NSNumber numberWithInt:dayIndex]];
 		homeworkTaskIndex++;
 	}
 	[dayIndexToHomeworkCountOnDayMap setObject:[NSNumber numberWithInt:currentHomeworkCountForCurrentDayIndex]
@@ -60,9 +60,9 @@
 
 // true if sections got deleted
 - (BOOL)reloadHomeworkDataAfterChangesToHomeworkTasksByDay {
-		int priorTotalDayCount = totalDayCount;
-	[dayToIndexMap removeAllObjects];
-	[dayIndexToIndexMap removeAllObjects];
+	int priorTotalDayCount = totalDayCount;
+	[jsonDateStringToDayIndexMap removeAllObjects];
+	[dayIndexToHomeworkIndexMap removeAllObjects];
 	[dayIndexToHomeworkCountOnDayMap removeAllObjects];
 	int dayIndex = 0;
 	int homeworkTaskIndex = 0;
@@ -83,7 +83,7 @@
 				f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-US"];
 				f.timeZone = [NSTimeZone timeZoneWithName:@"NZST"];
 				NSString *jsonDateString = [f stringFromDate:task.date];
-				[dayToIndexMap setObject:jsonDateString forKey:[NSNumber numberWithInt:homeworkTaskIndex]];
+				[jsonDateStringToDayIndexMap setObject:jsonDateString forKey:[NSNumber numberWithInt:dayIndex]];
 				dayIndex++;
 				totalDayCount++;
 				currentHomeworkCountForCurrentDayIndex = 0;
@@ -93,7 +93,7 @@
 		}
 		currentHomeworkCountForCurrentDayIndex++;
 		lastDate = task.date;
-		[dayIndexToIndexMap setObject:[NSNumber numberWithInt:homeworkTaskIndex] forKey:[NSNumber numberWithInt:dayIndex]];
+		[dayIndexToHomeworkIndexMap setObject:[NSNumber numberWithInt:homeworkTaskIndex] forKey:[NSNumber numberWithInt:dayIndex]];
 		homeworkTaskIndex++;
 	}
 	if (homeworkTasksByDay.count != 0)
@@ -104,6 +104,68 @@
 		if (priorTotalDayCount != totalDayCount)
 		return true;
 	return false;
+}
+
+- (void)setHomeworkTask:(hdHomeworkTask *)task
+							tableView:(UITableView *)tableView
+								section:(int)section
+										row:(int)row {
+	for (hdHomeworkTask *homeworkTask in homeworkTasksByDay) {
+		if ([homeworkTask.hwid isEqualToString:task.hwid]) {
+			homeworkTask.name = task.name;
+			homeworkTask.details = task.details;
+			homeworkTask.date = task.date;
+			homeworkTask.period = task.period;
+			homeworkTask.subject = [hdTimetableParser getSubjectForDay:homeworkTask.date
+																													period:homeworkTask.period - 1];
+			homeworkTask.teacher = [hdTimetableParser getTeacherForDay:homeworkTask.date
+																													period:homeworkTask.period - 1];
+			homeworkTask.room = [hdTimetableParser getRoomForDay:homeworkTask.date
+																										period:homeworkTask.period - 1];
+			[self reloadHomeworkDataAfterChangesToHomeworkTasksByDay];
+			[tableView beginUpdates];
+			[tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:section]] withRowAnimation:UITableViewRowAnimationRight];
+			[tableView endUpdates];
+			return;
+		}
+	}
+	BOOL sameDayAsAnotherHomeworkTask = NO;
+  for (hdHomeworkTask *homeworkTask in homeworkTasksByDay) {
+	  if (abs(homeworkTask.date.timeIntervalSinceReferenceDate - task.date.timeIntervalSinceReferenceDate) <= (86400/4)) {
+			sameDayAsAnotherHomeworkTask = YES;
+			break;
+	  }
+  }
+	[homeworkTasksByDay addObject:task];
+	homeworkTasksByDay = [[NSMutableArray alloc] initWithArray:[homeworkTasksByDay sortedArrayUsingComparator:^NSComparisonResult(hdHomeworkTask *hw1, hdHomeworkTask *hw2) {
+		NSComparisonResult res = [[hw1 date] compare:[hw2 date]];
+		if (res == NSOrderedSame) {
+			if (hw1.period < hw2.period) {
+				return (NSComparisonResult)NSOrderedAscending;
+			} else if (hw1.period > hw2.period) {
+				return (NSComparisonResult)NSOrderedDescending;
+			} else {
+				res = [[hw1 name] compare:[hw2 name]];
+				if (res == NSOrderedSame) {
+					res = [[hw1 details] compare:[hw2 details]];
+					if (res == NSOrderedSame) {
+						res = [[hw1 hwid] compare:[hw2 hwid]];
+					}
+				}
+			}
+		}
+		return res;
+	}]];
+	[self reloadHomeworkDataAfterChangesToHomeworkTasksByDay];
+	[tableView beginUpdates];
+	if (!sameDayAsAnotherHomeworkTask) {
+		[tableView insertSections:[NSIndexSet indexSetWithIndex:section]
+						 withRowAnimation:UITableViewRowAnimationRight];
+	} else {
+		[tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:section]]
+										 withRowAnimation:UITableViewRowAnimationRight];
+	}
+  return;
 }
 
 - (void)exportHomeworkTasksByDayToDisk {
@@ -151,9 +213,9 @@
 	totalHomeworkCount = 0;
 	totalDayCount = 0;
 	NSMutableArray *result = [[NSMutableArray alloc] init];
-	dayToIndexMap = [[NSMutableDictionary alloc] init];
+	jsonDateStringToDayIndexMap = [[NSMutableDictionary alloc] init];
 	for (NSString *date in homeworkRootDictionary) {
-		[dayToIndexMap setObject:[NSNumber numberWithInt:totalDayCount] forKey:date];
+		[jsonDateStringToDayIndexMap setObject:[NSNumber numberWithInt:totalDayCount] forKey:date];
 		totalDayCount++;
 		NSDictionary *periods = [homeworkRootDictionary objectForKey:date];
 		for (NSString *period in periods) {
@@ -201,6 +263,35 @@
 	return totalDayCount;
 }
 
+- (int)sectionToScrollToWhenTableViewBecomesVisible {
+	int result = -1;
+	int accumulatedSectionIndex = 0;
+	NSDate *lastDate;
+	for (hdHomeworkTask *task in homeworkTasksByDay) {
+		if (task.date.timeIntervalSinceReferenceDate >= [[NSDate date] timeIntervalSinceReferenceDate]) {
+			result = accumulatedSectionIndex;
+			break;
+		} else {
+			if (abs(lastDate.timeIntervalSinceReferenceDate - [[task date] timeIntervalSinceReferenceDate]) > 86400/4) {
+				accumulatedSectionIndex++;
+			}
+		}
+		lastDate = task.date;
+	}
+	return result;
+}
+
+NSDateFormatter *df = nil;
+- (int)dayIndexForHomeworkTask:(hdHomeworkTask *)hw {
+	if (!df) {
+		df = [[NSDateFormatter alloc] init];
+		df.dateFormat = @"yyyy-MM-dd";
+		df.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-US"];
+		df.timeZone = [NSTimeZone timeZoneWithName:@"NZST"];
+	}
+	return ((NSNumber *)[jsonDateStringToDayIndexMap objectForKey:[df stringFromDate:hw.date]]).integerValue;
+}
+
 - (int)numberOfCellsInSection:(int)section {
 	int result = [(NSNumber *)[dayIndexToHomeworkCountOnDayMap objectForKey:[NSNumber numberWithInt:section]] integerValue];
 	return result;
@@ -209,13 +300,13 @@
 - (hdHomeworkTask *)getHomeworkTaskForSection:(int)dayIndex id:(int)hwidx {
 	int homeworkCount = [self numberOfCellsInSection:dayIndex];
 	int errorCorrectionOffset = homeworkCount - 1;
-	int dayOffset = [(NSNumber *)[dayIndexToIndexMap objectForKey:[NSNumber numberWithInt:dayIndex]] integerValue];
+	int dayOffset = [(NSNumber *)[dayIndexToHomeworkIndexMap objectForKey:[NSNumber numberWithInt:dayIndex]] integerValue];
 	int flatHomeworkTableIndex = dayOffset + hwidx - errorCorrectionOffset;
 	return [homeworkTasksByDay objectAtIndex:flatHomeworkTableIndex];
 }
 
 - (NSString *)getTableSectionHeadingForDayId:(int)dayIndex {
-	int dayOffset = [(NSNumber *)[dayIndexToIndexMap objectForKey:[NSNumber numberWithInt:dayIndex]] integerValue];
+	int dayOffset = [(NSNumber *)[dayIndexToHomeworkIndexMap objectForKey:[NSNumber numberWithInt:dayIndex]] integerValue];
 	hdHomeworkTask *firstHomeworkTaskAtDay = [homeworkTasksByDay objectAtIndex:dayOffset];
 	NSDate *date = firstHomeworkTaskAtDay.date;
 	return [hdHomeworkDataStore formatDate:date];

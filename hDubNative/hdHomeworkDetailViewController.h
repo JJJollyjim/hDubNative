@@ -18,13 +18,16 @@ UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *homeworkDetailTextView;
 @property (weak, nonatomic) IBOutlet UILabel *noDetailsLabel;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) hdHomeworkTask *homeworkTask;
 @property (nonatomic) int section;
 @property (nonatomic) int dayIndex;
 @property (nonatomic) id homeworkViewController;
 @property (nonatomic) UIActionSheet *actionSheet;
+@property (nonatomic) BOOL updated;
 
 - (IBAction)done:(id)sender;
 - (IBAction)deleteHomeworkTask:(id)sender;
+- (void)updateHomeworkTask:(hdHomeworkTask *)homeworkTask;
 
 @end

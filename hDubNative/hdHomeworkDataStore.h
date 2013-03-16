@@ -14,9 +14,8 @@
 @interface hdHomeworkDataStore : NSObject {
 	hdDataStore *sharedStore;
 	NSMutableArray *homeworkTasksByDay;
-	NSMutableArray *homeworkTasksByClass;
-	NSMutableDictionary *dayToIndexMap;
-	NSMutableDictionary *dayIndexToIndexMap;
+	NSMutableDictionary *jsonDateStringToDayIndexMap;
+	NSMutableDictionary *dayIndexToHomeworkIndexMap;
 	NSMutableDictionary *dayIndexToHomeworkCountOnDayMap;
 	int higheid;
 	int totalHomeworkCount;
@@ -28,5 +27,7 @@
 - (hdHomeworkTask *)getHomeworkTaskForSection:(int)dayIndex id:(int)hwidx;
 - (NSString *)getTableSectionHeadingForDayId:(int)dayIndex;
 - (BOOL)deleteCellAtDayIndex:(int)dayIndex id:(int)hwidx;
+- (void)setHomeworkTask:(hdHomeworkTask *)task tableView:(UITableView *)tableView section:(int)section row:(int)row;
+- (int)sectionToScrollToWhenTableViewBecomesVisible;
 
 @end

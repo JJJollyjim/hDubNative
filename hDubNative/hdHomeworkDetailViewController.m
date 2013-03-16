@@ -46,6 +46,12 @@
 		homeworkDetailTextView.text = homeworkTask.details;
 	}
 	self.title = [NSString stringWithFormat:@"%@ Homework", homeworkTask.subject];
+	[self.tableView reloadData];
+}
+
+- (void)updateHomeworkTask:(hdHomeworkTask *)ht {
+	self.updated = YES;
+	self.homeworkTask = ht;
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,14 +68,23 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:@"hdHomeworkEditViewControllerSegueFromDetailView"]) {
-		UINavigationController *navigationController = (UINavigationController *)segue.destinationViewController;
-		hdHomeworkEditViewController *editViewController = (hdHomeworkEditViewController *)navigationController.topViewController;
+		hdHomeworkEditViewController *editViewController;
+		if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+			UINavigationController *navigationController = (UINavigationController *)segue.destinationViewController;
+			editViewController = (hdHomeworkEditViewController *)navigationController.topViewController;
+		} else {
+			editViewController = (hdHomeworkEditViewController *)segue.destinationViewController;
+		}
 		editViewController.homeworkTask = self.homeworkTask;
 		editViewController.previousViewController = self;
 	}
 }
 
 - (IBAction)done:(id)sender {
+	if (self.updated == YES) {
+		[((hdHomeworkViewController *)self.homeworkViewController) setHomeworkTask:self.homeworkTask inSection:self.section row:self.dayIndex];
+		self.updated = NO;
+	}
 	[homeworkViewController dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -140,10 +140,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="editHomeworkTask:" destination="Kpk-7U-HsJ" eventType="touchUpInside" id="AWq-Go-0vr"/>
-                                    <segue destination="tLk-JJ-0Fh" kind="popover" popoverAnchorView="HNq-qp-ykE" id="7zI-ek-pAf">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="gET-tU-O7t" kind="push" identifier="hdHomeworkEditViewControllerSegueFromDetailView" id="J4m-7t-0Mc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vrA-HA-Yjc" customClass="hdRedButton">
@@ -185,47 +182,12 @@
                         <outlet property="homeworkDetailTextView" destination="Zrs-Po-yjG" id="RdE-tS-DfE"/>
                         <outlet property="homeworkTitle" destination="MYa-QP-AIt" id="5iU-QT-Z70"/>
                         <outlet property="noDetailsLabel" destination="Tsp-wV-MD0" id="iKS-3u-Tv3"/>
+                        <outlet property="tableView" destination="pLM-rd-Syc" id="Nvt-xC-ICl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cw-ET-6kb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1727" y="-575"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ZQz-5J-dLU">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="tLk-JJ-0Fh" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="pUC-g4-M90"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ERX-a5-vVX">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="CCR-lD-R35" kind="relationship" relationship="rootViewController" id="Kyw-Op-p0v"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5fX-EJ-ACQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2591" y="-575"/>
-        </scene>
-        <!--Hd Homework Edit View Controller - Edit Homework-->
-        <scene sceneID="5Em-b8-xIC">
-            <objects>
-                <viewController id="CCR-lD-R35" customClass="hdHomeworkEditViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="veQ-hd-heE">
-                        <rect key="frame" x="0.0" y="64" width="768" height="960"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Edit Homework" id="cDe-Rl-t8L">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2dh-9c-epp"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="nAH-Qy-dXf"/>
-                    </navigationItem>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RoI-QW-b1E" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3450" y="-575"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HWI-Ye-Bls">
@@ -535,6 +497,94 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZPb-eS-XLR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1230" y="562"/>
+        </scene>
+        <!--Hd Homework Edit View Controller - Edit Homework-->
+        <scene sceneID="Ev5-Or-SZL">
+            <objects>
+                <tableViewController id="gET-tU-O7t" customClass="hdHomeworkEditViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="FPW-XL-C4g">
+                        <rect key="frame" x="0.0" y="64" width="540" height="556"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="hdHomeworkEditViewControllerCell" textLabel="t1p-F3-Su3" detailTextLabel="0i8-lz-gmp" style="IBUITableViewCellStyleValue1" id="GuA-s0-gwg">
+                                <rect key="frame" x="0.0" y="54" width="540" height="45"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="31" y="1" width="458" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t1p-F3-Su3">
+                                            <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0i8-lz-gmp">
+                                            <rect key="frame" x="404" y="11" width="44" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="hdHomeworkEditViewControllerCellCheckbox" textLabel="drw-ZS-F8Q" detailTextLabel="8NJ-sR-Fyt" style="IBUITableViewCellStyleSubtitle" id="zd9-fd-2cJ">
+                                <rect key="frame" x="0.0" y="99" width="540" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="31" y="0.0" width="458" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="drw-ZS-F8Q">
+                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8NJ-sR-Fyt">
+                                            <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="gET-tU-O7t" id="pFL-nw-uFk"/>
+                            <outlet property="delegate" destination="gET-tU-O7t" id="vED-nM-T6a"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Edit Homework" id="698-BO-jfY">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SUO-N0-NoQ">
+                            <connections>
+                                <action selector="cancel:" destination="gET-tU-O7t" id="wMG-eL-HnE"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="LjQ-e6-vcC">
+                            <connections>
+                                <action selector="done:" destination="gET-tU-O7t" id="ySb-hs-mC5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="SUO-N0-NoQ" id="64C-pH-Mb2"/>
+                        <outlet property="doneButton" destination="LjQ-e6-vcC" id="7Rc-jW-GE5"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JZ0-pT-vgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2365" y="-585"/>
         </scene>
     </scenes>
     <resources>

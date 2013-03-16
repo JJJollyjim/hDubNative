@@ -17,14 +17,9 @@
 #import "hdTimetableParser.h"
 #import "hdHomeworkDetailViewController.h"
 
-@interface hdHomeworkViewController ()
-
-@property (nonatomic) NSString *homeworkJsonString;
-@property (nonatomic) hdHomeworkDataStore *parser;
-
-@end
-
 @implementation hdHomeworkViewController
+
+@synthesize homeworkJsonString, parser;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -48,6 +43,11 @@
 	self.homeworkJsonString = [hdDataStore sharedStore].homeworkJson;
 	self.parser = [[hdHomeworkDataStore alloc] init];
 	[self.tableView reloadData];
+	int sectionToScrollTo = [self.parser sectionToScrollToWhenTableViewBecomesVisible];
+	[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
+																														inSection:(sectionToScrollTo == -1 ? ([self.parser numberOfSectionsInTableView] - 1) : sectionToScrollTo)]
+												atScrollPosition:UITableViewScrollPositionTop
+																animated:NO];
 	[super viewWillAppear:animated];
 }
 
@@ -113,14 +113,20 @@
 	return YES;
 }
 
+- (void)setHomeworkTask:(hdHomeworkTask *)homeworkTask inSection:(int)section row:(int)row {
+	[self.parser setHomeworkTask:homeworkTask tableView:self.tableView section:section row:row];
+}
+
 - (void)deleteHomeworkTaskWithSection:(int)section dayIndex:(int)dayIndex {
 	BOOL deletedSections = [self.parser deleteCellAtDayIndex:section id:dayIndex];
 	
 	[self.tableView beginUpdates];
 	if (deletedSections) {
-		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationLeft];
+		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:section]
+									withRowAnimation:UITableViewRowAnimationLeft];
 	} else {
-		[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:dayIndex inSection:section]] withRowAnimation:UITableViewRowAnimationLeft];
+		[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:dayIndex inSection:section]]
+													withRowAnimation:UITableViewRowAnimationLeft];
 	}
 	[self.tableView endUpdates];
 }

@@ -7,6 +7,7 @@
 //
 
 #import "hdHomeworkEditViewController.h"
+#import "hdHomeworkDetailViewController.h"
 
 @implementation hdHomeworkEditViewController
 
@@ -39,11 +40,22 @@
 #pragma mark - Actions
 
 - (IBAction)done:(id)sender {
-	[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
+	hdHomeworkDetailViewController *pvc = (hdHomeworkDetailViewController *)self.previousViewController;
+	pvc.homeworkTask = _homeworkTask;
+	[pvc updateHomeworkTask:_homeworkTask];
+	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+		[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
+	} else {
+		[self.navigationController popViewControllerAnimated:YES];
+	}
 }
 
 - (IBAction)cancel:(id)sender {
-	[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
+	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+		[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
+	} else {
+		[self.navigationController popViewControllerAnimated:YES];
+	}
 }
 
 #pragma mark - Table view data source
@@ -78,24 +90,26 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 			for (int i = 0; i < 6; ++i) {
 				nothing();
 				NSString *lastSubject = [hdTimetableParser getSubjectForDay:_homeworkTask.date period:i-1];
-				NSString *subject = [hdTimetableParser getSubjectForDay:_homeworkTask.date period:i];
-				if (lastSubject != nil && [subject isEqualToString:lastSubject]) {
-					doublePeriodCount++;
-					doublePeriodCountNegative--;
+				BOOL incrementedI = NO;
+				while (true) {
+					NSString *subject = [hdTimetableParser getSubjectForDay:_homeworkTask.date period:i];
+					if (lastSubject != nil && [subject isEqualToString:lastSubject]) {
+						doublePeriodCount++;
+						doublePeriodCountNegative--;
+						++i;
+						incrementedI = YES;
+					} else {
+						break;
+					}
 				}
-				[periodToTableViewIndexMap setObject:[NSNumber numberWithInt:i+1+doublePeriodCountNegative] forKey:[NSNumber numberWithInt:i+1]];
+				if (incrementedI)
+					i--;
+				[periodToTableViewIndexMap setObject:[NSNumber numberWithInt:i+doublePeriodCount] forKey:[NSNumber numberWithInt:i+1]];
 				[tableViewIndexToDoublePeriodOffsetMap setObject:[NSNumber numberWithInt:i+doublePeriodCount] forKey:[NSNumber numberWithInt:i+1]];
-				[tableViewIndexToHeightMap setObject:[NSNumber numberWithInt:doublePeriodCount - lastOffsetValue] forKey:[NSNumber numberWithInt:i+1-doublePeriodCount+1]];
+				[tableViewIndexToHeightMap setObject:[NSNumber numberWithInt:doublePeriodCount - lastOffsetValue] forKey:[NSNumber numberWithInt:i-doublePeriodCount+1]];
 				doublePeriodCountNegative = doublePeriodCount;
 				lastOffsetValue = doublePeriodCount;
-				// 0 - 1
-				// 1 - 3
-				// 2 - 5
-				// 3 - 6
-				// 4 - 7
-				// 5 - 8
 			}
-			NSLog(@"%@", tableViewIndexToDoublePeriodOffsetMap);
 			return 7 - doublePeriodCount;
 	}
 	NSLog(@"ERROR!!!");
@@ -123,6 +137,10 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 	return t;
 }
 
+- (int)numberOfConsecutivePeriodsAtPeriodIndex:(int)idx {
+	return ((NSNumber *)[tableViewIndexToHeightMap objectForKey:[NSNumber numberWithInt:idx]]).integerValue + 1;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell;
@@ -138,7 +156,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 		cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		
 		if (cell == nil) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
 		}
 	}
 	
@@ -159,15 +177,48 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 			cell.detailTextLabel.text = [hdHomeworkEditViewController formatDate:self.homeworkTask.date];
 			break;
 		case 2:
+			nothing();
+			BOOL foundCorrectPeriod = NO;
 			if (indexPath.row == 0) {
 				cell.textLabel.text = @"All day";
+				cell.detailTextLabel.text = @"";
 			} else {
 				cell.textLabel.text = [hdTimetableParser getSubjectForDay:self.homeworkTask.date
 																													 period:((NSNumber *)([tableViewIndexToDoublePeriodOffsetMap objectForKey:
 																																	 [NSNumber numberWithInt:indexPath.row]])).integerValue];
+				int numberOfConsecutivePeriods = [self numberOfConsecutivePeriodsAtPeriodIndex:indexPath.row];
+				if (numberOfConsecutivePeriods == 6) {
+					cell.detailTextLabel.text = @"All day";
+				} else if (numberOfConsecutivePeriods == 1) {
+					int period = ((NSNumber *)[tableViewIndexToDoublePeriodOffsetMap objectForKey:
+																		 [NSNumber numberWithInt:indexPath.row + 1]]).integerValue;
+					cell.detailTextLabel.text = [NSString stringWithFormat:@"Period %i", period];
+					if (_homeworkTask.period == period) {
+						foundCorrectPeriod = YES;
+					}
+				} else if (numberOfConsecutivePeriods == 0) {
+					
+				} else {
+					int period = ((NSNumber *)[tableViewIndexToDoublePeriodOffsetMap objectForKey:
+																		 [NSNumber numberWithInt:indexPath.row]]).integerValue + 1;
+					if (_homeworkTask.period == period) {
+						foundCorrectPeriod = YES;
+					}
+					NSMutableString *subtitle = [[NSMutableString alloc] initWithFormat:@"%i", period];
+					for (int i = 1; i < numberOfConsecutivePeriods; ++i) {
+						period = ((NSNumber *)[tableViewIndexToDoublePeriodOffsetMap objectForKey:
+																	 [NSNumber numberWithInt:indexPath.row + i - 1]]).integerValue + i + 1;
+						if (_homeworkTask.period == period) {
+							foundCorrectPeriod = YES;
+						}
+						[subtitle appendFormat:@" & %i", period];
+					}
+					cell.detailTextLabel.text = [NSString stringWithFormat:@"Periods %@", subtitle];
+				}
 			}
-			if (indexPath.row == [self getTableViewIndexFromPeriod:_homeworkTask.period]) {
+			if (foundCorrectPeriod) {
 				cell.accessoryType = UITableViewCellAccessoryCheckmark;
+				selectedCell = cell;
 			} else {
 				cell.accessoryType = UITableViewCellAccessoryNone;
 			}
@@ -192,7 +243,8 @@ UITableViewCell *selectedCell;
 	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 	cell.accessoryType = UITableViewCellAccessoryCheckmark;
 	selectedCell = cell;
-	_homeworkTask.period = indexPath.row;
+	_homeworkTask.period = ((NSNumber *)([tableViewIndexToDoublePeriodOffsetMap objectForKey:
+																				[NSNumber numberWithInt:indexPath.row]])).integerValue + 1;
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

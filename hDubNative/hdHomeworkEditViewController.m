@@ -144,14 +144,14 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	UITableViewCell *cell;
-	if (indexPath.section != 2) {
+	if (indexPath.section == 1) {
 		static NSString *CellIdentifier = @"hdHomeworkEditViewControllerCell";
 		cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		
 		if (cell == nil) {
 			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
 		}
-	} else {
+	} else if (indexPath.section == 2) {
 		static NSString *CellIdentifier = @"hdHomeworkEditViewControllerCellCheckbox";
 		cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		
@@ -163,13 +163,27 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 	switch (indexPath.section) {
 		case 0:
 			switch (indexPath.row) {
-				case 0:
-					cell.textLabel.text = @"Name";
-					cell.detailTextLabel.text = self.homeworkTask.name;
+				case 0: {
+					cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"test"];
+					cell.accessoryType = UITableViewCellStyleDefault;
+					CGRect textRect = CGRectMake(10, 10, 280, 30);
+					UITextField *textField = [[UITextField alloc] initWithFrame:textRect];
+					textField.placeholder = @"Name";
+					textField.textColor = [UIColor colorWithRed:81.0/255.0 green:102.0/255.0 blue:145.0/255.0 alpha:1.0];
+					textField.text = self.homeworkTask.name;
+					[cell.contentView addSubview:textField];
 					break;
+				}
 				case 1:
-					cell.textLabel.text = @"Details";
-					cell.detailTextLabel.text = self.homeworkTask.details.length < 20 ? self.homeworkTask.details : [NSString stringWithFormat:@"%@…", [self.homeworkTask.details substringToIndex:20]];
+					cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"test"];
+					cell.accessoryType = UITableViewCellStyleDefault;
+					CGRect textRect = CGRectMake(10, 10, 280, 30);
+					UITextField *textField = [[UITextField alloc] initWithFrame:textRect];
+					textField.placeholder = @"Details";
+					textField.textColor = [UIColor colorWithRed:81.0/255.0 green:102.0/255.0 blue:145.0/255.0 alpha:1.0];
+					textField.text = self.homeworkTask.details;
+					[cell.contentView addSubview:textField];
+					break;
 			}
 			break;
 		case 1:
@@ -234,6 +248,15 @@ UITableViewCell *selectedCell;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (indexPath.section != 2) {
+		if (indexPath.section == 0) {
+			if (indexPath.row == 0) {
+				// Edit name
+			} else {
+				// Edit details
+			}
+		} else if (indexPath.section == 1) {
+			// Edit date
+		}
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 		return;
 	}

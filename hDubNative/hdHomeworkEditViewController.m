@@ -117,8 +117,16 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.section != 2)
+	if (indexPath.section != 2) {
+		if (indexPath.section == 0 && indexPath.row == 1)
+			if ([UIScreen mainScreen].bounds.size.height == 568.0) {
+				return 144.0;
+			} else {
+				return 104.0;
+			}
+			
 		return 44.0;
+	}
 	if (indexPath.row == 0) {
 		return 44;
 	}
@@ -175,14 +183,15 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 					break;
 				}
 				case 1:
-					cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"test"];
+					cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"test2"];
 					cell.accessoryType = UITableViewCellStyleDefault;
-					CGRect textRect = CGRectMake(10, 10, 280, 30);
-					UITextField *textField = [[UITextField alloc] initWithFrame:textRect];
-					textField.placeholder = @"Details";
-					textField.textColor = [UIColor colorWithRed:81.0/255.0 green:102.0/255.0 blue:145.0/255.0 alpha:1.0];
-					textField.text = self.homeworkTask.details;
-					[cell.contentView addSubview:textField];
+					CGRect textRect = CGRectMake(2, 2, 296, [UIScreen mainScreen].bounds.size.height == 568.0 ? 140 : 100);
+					UITextView *textView = [[UITextView alloc] initWithFrame:textRect];
+					textView.textColor = [UIColor colorWithRed:81.0/255.0 green:102.0/255.0 blue:145.0/255.0 alpha:1.0];
+					textView.font = [UIFont fontWithName:@"Arial" size:17];
+					textView.backgroundColor = [UIColor clearColor];
+					textView.text = self.homeworkTask.details;
+					[cell.contentView addSubview:textView];
 					break;
 			}
 			break;

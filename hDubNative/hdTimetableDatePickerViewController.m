@@ -36,7 +36,7 @@
 }
 
 - (IBAction)selectedNewDate:(id)sender {
-	[timetableViewController updateTimetableWithAnimationLeft:self.datePicker.date];
+	[timetableViewController updateTimetableWithAnimation:self.datePicker.date];
 }
 
 - (IBAction)changeDate:(id)sender {

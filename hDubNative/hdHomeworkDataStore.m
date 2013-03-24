@@ -157,6 +157,8 @@
 		return res;
 	}]];
 	[self reloadHomeworkDataAfterChangesToHomeworkTasksByDay];
+	[tableView reloadData];
+	return;
 	[tableView beginUpdates];
 	if (!sameDayAsAnotherHomeworkTask) {
 		[tableView insertSections:[NSIndexSet indexSetWithIndex:section]
@@ -264,7 +266,7 @@
 }
 
 - (int)sectionToScrollToWhenTableViewBecomesVisible {
-	int result = -1;
+	int result = 0;
 	int accumulatedSectionIndex = 0;
 	NSDate *lastDate;
 	for (hdHomeworkTask *task in homeworkTasksByDay) {
@@ -278,7 +280,7 @@
 		}
 		lastDate = task.date;
 	}
-	return result;
+	return result - 1;
 }
 
 NSDateFormatter *df = nil;

@@ -12,6 +12,7 @@
 	id timetableViewController;
 	__weak IBOutlet UILabel *descriptionLabel;
 	NSDate *dateThatWillBeShownSoon;
+	NSDate *lastDateSelected;
 }
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;

@@ -70,6 +70,8 @@ static hdStudent *sharedStudent;
 			_store.pass = pass;
 			_store.higheid = ((NSString *)[jsonObj objectForKey:@"high_eid"]).integerValue;
 			_store.homeworkJson = [hdJsonWrapper getJson:[jsonObj objectForKey:@"homework"]];
+			if ([_store.homeworkJson isEqualToString:@"[]"])
+				_store.homeworkJson = @"{}";
 			_store.timetableJson = [hdJsonWrapper getJson:[jsonObj objectForKey:@"timetable"]];
 			NSDictionary *details = [jsonObj objectForKey:@"data"];
 			_store.name = [details objectForKey:@"name"];

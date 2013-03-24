@@ -29,5 +29,6 @@
 - (void)updateTimetableWithAnimationRight:(NSDate *)date;
 - (void)updateDateByDatePickerWithDate:(NSDate *)date;
 - (IBAction)showDatePicker:(id)sender;
+- (void)updateTimetableWithAnimation:(NSDate *)date;
 
 @end

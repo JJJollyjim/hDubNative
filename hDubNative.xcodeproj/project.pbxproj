@@ -32,6 +32,7 @@
 		CD1E8A2A16BF8FC900EF853C /* IconiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2916BF8FC800EF853C /* IconiPad.png */; };
 		CD1E8A2C16BF8FCB00EF853C /* IconiPadR.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2B16BF8FCB00EF853C /* IconiPadR.png */; };
 		CD1F4B2616E5A41900743967 /* Storyboard-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1F4B2516E5A41900743967 /* Storyboard-iPad.storyboard */; };
+		CD24DC1116FD503E00D9E56D /* hdHomeworkDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD24DC1016FD503E00D9E56D /* hdHomeworkDatePickerViewController.m */; };
 		CD32C05116C0C2AB00AA0569 /* hdHTTPWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C05016C0C2AB00AA0569 /* hdHTTPWrapper.m */; };
 		CD32C05F16C11B0500AA0569 /* hdJsonWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C05E16C11B0500AA0569 /* hdJsonWrapper.m */; };
 		CD32C06316C1C6EF00AA0569 /* hdDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C06216C1C6EE00AA0569 /* hdDataStore.m */; };
@@ -107,6 +108,8 @@
 		CD1E8A2916BF8FC800EF853C /* IconiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPad.png; sourceTree = "<group>"; };
 		CD1E8A2B16BF8FCB00EF853C /* IconiPadR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPadR.png; sourceTree = "<group>"; };
 		CD1F4B2516E5A41900743967 /* Storyboard-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Storyboard-iPad.storyboard"; sourceTree = "<group>"; };
+		CD24DC0F16FD503E00D9E56D /* hdHomeworkDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkDatePickerViewController.h; sourceTree = "<group>"; };
+		CD24DC1016FD503E00D9E56D /* hdHomeworkDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkDatePickerViewController.m; sourceTree = "<group>"; };
 		CD32C04F16C0C2AB00AA0569 /* hdHTTPWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHTTPWrapper.h; sourceTree = "<group>"; };
 		CD32C05016C0C2AB00AA0569 /* hdHTTPWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHTTPWrapper.m; sourceTree = "<group>"; };
 		CD32C05D16C11B0500AA0569 /* hdJsonWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdJsonWrapper.h; sourceTree = "<group>"; };
@@ -438,6 +441,8 @@
 		CD685A7416C5F0AD00DD4013 /* Homework */ = {
 			isa = PBXGroup;
 			children = (
+				CD24DC0F16FD503E00D9E56D /* hdHomeworkDatePickerViewController.h */,
+				CD24DC1016FD503E00D9E56D /* hdHomeworkDatePickerViewController.m */,
 				CD0330E216EB20B20043AA13 /* hdHomeworkEditViewController.h */,
 				CD0330E316EB20B20043AA13 /* hdHomeworkEditViewController.m */,
 				CDAF246D16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.h */,
@@ -606,6 +611,7 @@
 				CDAF246F16E2CF4F003CF9F5 /* hdHomeworkDetailViewController.m in Sources */,
 				CD62780716E2D481003D3C8F /* hdRedButton.m in Sources */,
 				CD0330E416EB20B20043AA13 /* hdHomeworkEditViewController.m in Sources */,
+				CD24DC1116FD503E00D9E56D /* hdHomeworkDatePickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

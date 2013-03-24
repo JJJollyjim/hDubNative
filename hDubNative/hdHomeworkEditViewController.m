@@ -6,8 +6,10 @@
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
+#import "hdHomeworkViewController.h"
 #import "hdHomeworkEditViewController.h"
 #import "hdHomeworkDetailViewController.h"
+#import "hdHomeworkDatePickerViewController.h"
 
 @implementation hdHomeworkEditViewController
 
@@ -40,13 +42,21 @@
 #pragma mark - Actions
 
 - (IBAction)done:(id)sender {
-	hdHomeworkDetailViewController *pvc = (hdHomeworkDetailViewController *)self.previousViewController;
-	pvc.homeworkTask = _homeworkTask;
-	[pvc updateHomeworkTask:_homeworkTask];
-	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
-		[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
+	_homeworkTask.name = nameTextField.text;
+	_homeworkTask.details = detailsTextView.text;
+	if (!self.newHomeworkTask) {
+		hdHomeworkDetailViewController *pvc = (hdHomeworkDetailViewController *)self.previousViewController;
+		pvc.homeworkTask = _homeworkTask;
+		[pvc updateHomeworkTask:_homeworkTask];
+		if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+			[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
+		} else {
+			[self.navigationController popViewControllerAnimated:YES];
+		}
 	} else {
-		[self.navigationController popViewControllerAnimated:YES];
+		hdHomeworkViewController *pvc = (hdHomeworkViewController *)self.previousViewController;
+		[pvc setHomeworkTask:_homeworkTask inSection:0 row:0];
+		[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
 	}
 }
 
@@ -56,6 +66,36 @@
 	} else {
 		[self.navigationController popViewControllerAnimated:YES];
 	}
+}
+
+// Save date from datePickerViewController
+- (void)datePickerViewControllerSetDate:(NSDate *)date {
+	_homeworkTask.date = date;
+	
+	if (date.timeIntervalSinceReferenceDate > self.homeworkTask.date.timeIntervalSinceReferenceDate)
+		[self.tableView reloadRowsAtIndexPaths:
+		 @[
+		 [NSIndexPath indexPathForRow:1 inSection:2],
+		 [NSIndexPath indexPathForRow:2 inSection:2],
+		 [NSIndexPath indexPathForRow:3 inSection:2],
+		 [NSIndexPath indexPathForRow:4 inSection:2],
+		 [NSIndexPath indexPathForRow:5 inSection:2],
+		 [NSIndexPath indexPathForRow:6 inSection:2]
+		 ]
+													withRowAnimation:UITableViewRowAnimationLeft];
+	else if (date.timeIntervalSinceReferenceDate == self.homeworkTask.date.timeIntervalSinceReferenceDate)
+		return;
+	else
+		[self.tableView reloadRowsAtIndexPaths:
+		 @[
+		 [NSIndexPath indexPathForRow:1 inSection:2],
+		 [NSIndexPath indexPathForRow:2 inSection:2],
+		 [NSIndexPath indexPathForRow:3 inSection:2],
+		 [NSIndexPath indexPathForRow:4 inSection:2],
+		 [NSIndexPath indexPathForRow:5 inSection:2],
+		 [NSIndexPath indexPathForRow:6 inSection:2]
+		 ]
+													withRowAnimation:UITableViewRowAnimationRight];
 }
 
 #pragma mark - Table view data source
@@ -118,13 +158,13 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.section != 2) {
-		if (indexPath.section == 0 && indexPath.row == 1)
+		if (indexPath.section == 0 && indexPath.row == 1) {
 			if ([UIScreen mainScreen].bounds.size.height == 568.0) {
 				return 144.0;
 			} else {
 				return 104.0;
 			}
-			
+		}
 		return 44.0;
 	}
 	if (indexPath.row == 0) {
@@ -174,24 +214,24 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 				case 0: {
 					cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"test"];
 					cell.accessoryType = UITableViewCellStyleDefault;
-					CGRect textRect = CGRectMake(10, 10, 280, 30);
-					UITextField *textField = [[UITextField alloc] initWithFrame:textRect];
-					textField.placeholder = @"Name";
-					textField.textColor = [UIColor colorWithRed:81.0/255.0 green:102.0/255.0 blue:145.0/255.0 alpha:1.0];
-					textField.text = self.homeworkTask.name;
-					[cell.contentView addSubview:textField];
+					CGRect textRect = CGRectMake(10, 10, [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad ? 462 : 280, 30);
+					nameTextField = [[UITextField alloc] initWithFrame:textRect];
+					nameTextField.placeholder = @"Name";
+					nameTextField.textColor = [UIColor colorWithRed:81.0/255.0 green:102.0/255.0 blue:145.0/255.0 alpha:1.0];
+					nameTextField.text = self.homeworkTask.name;
+					[cell.contentView addSubview:nameTextField];
 					break;
 				}
 				case 1:
 					cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"test2"];
 					cell.accessoryType = UITableViewCellStyleDefault;
-					CGRect textRect = CGRectMake(2, 2, 296, [UIScreen mainScreen].bounds.size.height == 568.0 ? 140 : 100);
-					UITextView *textView = [[UITextView alloc] initWithFrame:textRect];
-					textView.textColor = [UIColor colorWithRed:81.0/255.0 green:102.0/255.0 blue:145.0/255.0 alpha:1.0];
-					textView.font = [UIFont fontWithName:@"Arial" size:17];
-					textView.backgroundColor = [UIColor clearColor];
-					textView.text = self.homeworkTask.details;
-					[cell.contentView addSubview:textView];
+					CGRect textRect = CGRectMake(2, 2, [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad ? 475 : 296, [UIScreen mainScreen].bounds.size.height == 568.0 ? 140 : 100);
+					detailsTextView = [[UITextView alloc] initWithFrame:textRect];
+					detailsTextView.textColor = [UIColor colorWithRed:81.0/255.0 green:102.0/255.0 blue:145.0/255.0 alpha:1.0];
+					detailsTextView.font = [UIFont fontWithName:@"Arial" size:17];
+					detailsTextView.backgroundColor = [UIColor clearColor];
+					detailsTextView.text = self.homeworkTask.details;
+					[cell.contentView addSubview:detailsTextView];
 					break;
 			}
 			break;
@@ -205,6 +245,9 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 			if (indexPath.row == 0) {
 				cell.textLabel.text = @"All day";
 				cell.detailTextLabel.text = @"";
+				if (_homeworkTask.period == 0) {
+					foundCorrectPeriod = YES;
+				}
 			} else {
 				cell.textLabel.text = [hdTimetableParser getSubjectForDay:self.homeworkTask.date
 																													 period:((NSNumber *)([tableViewIndexToDoublePeriodOffsetMap objectForKey:
@@ -215,6 +258,9 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 				} else if (numberOfConsecutivePeriods == 1) {
 					int period = ((NSNumber *)[tableViewIndexToDoublePeriodOffsetMap objectForKey:
 																		 [NSNumber numberWithInt:indexPath.row + 1]]).integerValue;
+					if (period == 0) {
+						period = 6;
+					}
 					cell.detailTextLabel.text = [NSString stringWithFormat:@"Period %i", period];
 					if (_homeworkTask.period == period) {
 						foundCorrectPeriod = YES;
@@ -257,14 +303,12 @@ UITableViewCell *selectedCell;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	if (indexPath.section != 2) {
-		if (indexPath.section == 0) {
-			if (indexPath.row == 0) {
-				// Edit name
-			} else {
-				// Edit details
-			}
-		} else if (indexPath.section == 1) {
+		if (indexPath.section == 1) {
 			// Edit date
+			hdHomeworkDatePickerViewController *dpvc = [self.storyboard instantiateViewControllerWithIdentifier:@"hdHomeworkDatePickerViewController"];
+			dpvc.editViewController = self;
+			popover = [[UIPopoverController alloc] initWithContentViewController:dpvc];
+			[popover presentPopoverFromRect:[self.tableView cellForRowAtIndexPath:indexPath].frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 		}
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 		return;

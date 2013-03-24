@@ -16,6 +16,8 @@
 #import "hdHomeworkDataStore.h"
 #import "hdTimetableParser.h"
 #import "hdHomeworkDetailViewController.h"
+#import "hdHomeworkEditViewController.h"
+#import "hdDateUtils.h"
 
 @implementation hdHomeworkViewController
 
@@ -33,7 +35,7 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	
+	self.tableView.scrollsToTop = NO;
 	UINavigationController *nav = self.navigationController;
 	UINavigationBar *navBar = nav.navigationBar;
 	navBar.tintColor = [UIColor colorWithRed:135/255.0f green:10/255.0f blue:0.0f alpha:1.0f];
@@ -44,10 +46,11 @@
 	self.parser = [[hdHomeworkDataStore alloc] init];
 	[self.tableView reloadData];
 	int sectionToScrollTo = [self.parser sectionToScrollToWhenTableViewBecomesVisible];
-	[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
-																														inSection:(sectionToScrollTo == -1 ? ([self.parser numberOfSectionsInTableView] - 1) : sectionToScrollTo)]
-												atScrollPosition:UITableViewScrollPositionTop
-																animated:NO];
+	if ([self.parser numberOfSectionsInTableView] != 0)
+		[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
+																															inSection:(sectionToScrollTo == -1 ? ([self.parser numberOfSectionsInTableView] - 1) : sectionToScrollTo)]
+													atScrollPosition:UITableViewScrollPositionTop
+																	 animated:NO];
 	[super viewWillAppear:animated];
 }
 
@@ -70,6 +73,22 @@
 		detailViewController.homeworkViewController = self;
 		detailViewController.section = indexPath.section;
 		detailViewController.dayIndex = indexPath.row;
+	} else if ([segue.identifier isEqualToString:@"hdHomeworkEditViewControllerSegueFromHomeworkViewController"]) {
+		// New homework task
+		hdHomeworkEditViewController *editViewController;
+		UINavigationController *navigationController = (UINavigationController *)segue.destinationViewController;
+		editViewController = (hdHomeworkEditViewController *)navigationController.topViewController;
+		editViewController.homeworkTask = [[hdHomeworkTask alloc] init];
+		NSTimeInterval ti = 86400;
+		for (;;) {
+			if ([hdDateUtils isWeekend:editViewController.homeworkTask.date] || [hdTimetableParser getSubjectForDay:editViewController.homeworkTask.date period:1] == nil) {
+				editViewController.homeworkTask.date = [editViewController.homeworkTask.date dateByAddingTimeInterval:ti];
+			} else {
+				break;
+			}
+		}
+		editViewController.previousViewController = self;
+		editViewController.newHomeworkTask = YES;
 	}
 }
 
@@ -97,7 +116,11 @@
 	
 	hdHomeworkTask *hw = [self.parser getHomeworkTaskForSection:indexPath.section id:indexPath.row];
 	cell.textLabel.text = hw.name;
-	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (Period %i)", hw.subject, hw.period];
+	if (hw.period == 0) {
+		cell.detailTextLabel.text = [NSString stringWithFormat:@"All day"];
+	} else {
+		cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (Period %i)", hw.subject, hw.period];
+	}
 	
 	return cell;
 }

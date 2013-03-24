@@ -63,6 +63,13 @@
 - (IBAction)swipeToNextDay:(id)sender {
 	NSTimeInterval ti = 86400;
 	dateShown = [dateShown dateByAddingTimeInterval:ti];
+	for (;;) {
+		if ([hdDateUtils isWeekend:dateShown] || [hdTimetableParser getSubjectForDay:dateShown period:1 rootObj:timetableRootObject] == nil) {
+			dateShown = [dateShown dateByAddingTimeInterval:ti];
+		} else {
+			break;
+		}
+	}
 	[self updateTimetableWithAnimationLeft:nil];
 }
 
@@ -70,7 +77,7 @@
 	NSTimeInterval ti = -86400;
 	dateShown = [dateShown dateByAddingTimeInterval:ti];
 	for (;;) {
-		if ([hdDateUtils isWeekend:dateShown]) {
+		if ([hdDateUtils isWeekend:dateShown] || [hdTimetableParser getSubjectForDay:dateShown period:1 rootObj:timetableRootObject] == nil) {
 			dateShown = [dateShown dateByAddingTimeInterval:ti];
 		} else {
 			break;
@@ -123,6 +130,14 @@ hdTimetableDatePickerViewController *cache = nil;
 
 - (void)updateDateByDatePickerWithDate:(NSDate *)date {
 	dateShown = date;
+	NSTimeInterval ti = 86400;
+	for (;;) {
+		if ([hdDateUtils isWeekend:dateShown] || [hdTimetableParser getSubjectForDay:dateShown period:1 rootObj:timetableRootObject] == nil) {
+			dateShown = [dateShown dateByAddingTimeInterval:ti];
+		} else {
+			break;
+		}
+	}
 	[self updateTimetable:nil];
 }
 
@@ -139,7 +154,7 @@ hdTimetableDatePickerViewController *cache = nil;
 		dateShown = [NSDate date];
 	}
 	for (;;) {
-		if ([hdDateUtils isWeekend:dateShown]) {
+		if ([hdDateUtils isWeekend:dateShown] || [hdTimetableParser getSubjectForDay:dateShown period:1 rootObj:timetableRootObject] == nil) {
 			dateShown = [dateShown dateByAddingTimeInterval:86400];
 		} else {
 			break;
@@ -186,9 +201,34 @@ hdTimetableDatePickerViewController *cache = nil;
 	[self.tableView reloadData];
 }
 
+- (void)updateTimetableWithAnimation:(NSDate *)date {
+	NSTimeInterval ti = 86400;
+	for (;;) {
+		if ([hdDateUtils isWeekend:date] || [hdTimetableParser getSubjectForDay:date period:1 rootObj:timetableRootObject] == nil) {
+			date = [date dateByAddingTimeInterval:ti];
+		} else {
+			break;
+		}
+	}
+	if (date.timeIntervalSinceReferenceDate > dateShown.timeIntervalSinceReferenceDate)
+		[self updateTimetableWithAnimationLeft:date];
+	else if (date.timeIntervalSinceReferenceDate == dateShown.timeIntervalSinceReferenceDate)
+		return;
+	else
+		[self updateTimetableWithAnimationRight:date];
+}
+
 - (void)updateTimetableWithAnimationLeft:(NSDate *)date {
 	if (date != nil) {
 		dateShown = date;
+	}
+	NSTimeInterval ti = 86400;
+	for (;;) {
+		if ([hdDateUtils isWeekend:dateShown] || [hdTimetableParser getSubjectForDay:dateShown period:1 rootObj:timetableRootObject] == nil) {
+			dateShown = [dateShown dateByAddingTimeInterval:ti];
+		} else {
+			break;
+		}
 	}
 	NSString *oldTitle = self.title;
 	[(UITableView *)self.view reloadRowsAtIndexPaths:

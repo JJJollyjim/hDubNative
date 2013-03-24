@@ -45,7 +45,7 @@
 		homeworkDetailTextView.hidden = NO;
 		homeworkDetailTextView.text = homeworkTask.details;
 	}
-	self.title = [NSString stringWithFormat:@"%@ Homework", homeworkTask.subject];
+	self.title = [NSString stringWithFormat:@"%@ Homework", homeworkTask.period == 0 ? @"All Day" : homeworkTask.subject];
 	[self.tableView reloadData];
 }
 
@@ -77,6 +77,7 @@
 		}
 		editViewController.homeworkTask = self.homeworkTask;
 		editViewController.previousViewController = self;
+		editViewController.newHomeworkTask = NO;
 	}
 }
 
@@ -102,6 +103,17 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+		if (homeworkTask.period == 0) {
+			homeworkDetailTextView.frame = CGRectMake(homeworkDetailTextView.frame.origin.x,
+																								homeworkDetailTextView.frame.origin.y - 88,
+																								homeworkDetailTextView.frame.size.width,
+																								homeworkDetailTextView.frame.size.height);
+			noDetailsLabel.frame = CGRectMake(noDetailsLabel.frame.origin.x,
+																				noDetailsLabel.frame.origin.y - 88,
+																				noDetailsLabel.frame.size.width,
+																				noDetailsLabel.frame.size.height);
+			return 2;
+		}
 		if (homeworkTask.room.length == 0) {
 			homeworkDetailTextView.frame = CGRectMake(homeworkDetailTextView.frame.origin.x,
 																								homeworkDetailTextView.frame.origin.y - 44,
@@ -130,10 +142,16 @@
 	
 	if (indexPath.row == 0) {
 		cell.textLabel.text = @"Subject";
-		cell.detailTextLabel.text = homeworkTask.subject;
+		if (homeworkTask.period == 0)
+			cell.detailTextLabel.text = @"All day";
+		else
+			cell.detailTextLabel.text = homeworkTask.subject;
 	} else if (indexPath.row == 1) {
 		cell.textLabel.text = @"Due";
-		cell.detailTextLabel.text = [NSString stringWithFormat:@"Period %i, %@", homeworkTask.period, [hdDateUtils formatDate:homeworkTask.date]];
+		if (homeworkTask.period == 0)
+			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [hdDateUtils formatDate:homeworkTask.date]];
+		else
+			cell.detailTextLabel.text = [NSString stringWithFormat:@"Period %i, %@", homeworkTask.period, [hdDateUtils formatDate:homeworkTask.date]];
 	} else if (indexPath.row == 2) {
 		cell.textLabel.text = @"Teacher";
 		cell.detailTextLabel.text = homeworkTask.teacher;

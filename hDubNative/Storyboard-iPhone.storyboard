@@ -66,7 +66,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Homework" id="9bQ-Y8-bgt">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cNM-py-L8d"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cNM-py-L8d">
+                            <connections>
+                                <segue destination="R1u-5V-7J5" kind="modal" identifier="hdHomeworkEditViewControllerSegueFromHomeworkViewController" id="awQ-Zc-K0g"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbR-KY-g6P" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKi-j4-0Z8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1487" y="223"/>
+            <point key="canvasLocation" x="1487" y="607"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xaK-nR-Dvx">
@@ -202,7 +206,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gtb-xV-XNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1941" y="211"/>
+            <point key="canvasLocation" x="2073" y="-149"/>
         </scene>
         <!--Hd Homework Edit View Controller - Edit Homework-->
         <scene sceneID="wso-gI-0Ro">
@@ -289,7 +293,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVF-9g-uUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2315" y="211"/>
+            <point key="canvasLocation" x="2499" y="-149"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QZN-cB-pyJ">
@@ -304,7 +308,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ztj-Fl-Wf6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="921" y="161"/>
+            <point key="canvasLocation" x="1017" y="607"/>
         </scene>
         <!--Hd Settings View Controller - Settings-->
         <scene sceneID="IZm-Qm-srb">
@@ -624,4 +628,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="awQ-Zc-K0g"/>
+    </inferredMetricsTieBreakers>
 </document>

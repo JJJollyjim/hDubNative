@@ -41,11 +41,15 @@
 }
 
 - (void)viewDidLoad {
+	if (!dateShown) {
+		dateShown = [NSDate date];
+	}
+	
 	UISwipeGestureRecognizer *swipeGestureObjectImg = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToNextDay:)];
 	swipeGestureObjectImg.numberOfTouchesRequired = 1;
 	swipeGestureObjectImg.direction = (UISwipeGestureRecognizerDirectionLeft);
 	[self.view addGestureRecognizer:swipeGestureObjectImg];
-	
+	 
 	UISwipeGestureRecognizer *swipeGestureRightObjectImg = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToPreviousDay:)];
 	swipeGestureRightObjectImg.numberOfTouchesRequired = 1;
 	swipeGestureRightObjectImg.direction = (UISwipeGestureRecognizerDirectionRight);
@@ -61,28 +65,13 @@
 }
 
 - (IBAction)swipeToNextDay:(id)sender {
-	NSTimeInterval ti = 86400;
-	dateShown = [dateShown dateByAddingTimeInterval:ti];
-	for (;;) {
-		if ([hdDateUtils isWeekend:dateShown] || [hdTimetableParser getSubjectForDay:dateShown period:1 rootObj:timetableRootObject] == nil) {
-			dateShown = [dateShown dateByAddingTimeInterval:ti];
-		} else {
-			break;
-		}
-	}
+	dateShown = [hdDateUtils correctDate:dateShown];
 	[self updateTimetableWithAnimationLeft:nil];
 }
 
 - (IBAction)swipeToPreviousDay:(id)sender {
-	NSTimeInterval ti = -86400;
-	dateShown = [dateShown dateByAddingTimeInterval:ti];
-	for (;;) {
-		if ([hdDateUtils isWeekend:dateShown] || [hdTimetableParser getSubjectForDay:dateShown period:1 rootObj:timetableRootObject] == nil) {
-			dateShown = [dateShown dateByAddingTimeInterval:ti];
-		} else {
-			break;
-		}
-	}
+	dateShown = [dateShown dateByAddingTimeInterval:86400];
+	dateShown = [hdDateUtils correctDate:dateShown];
 	[self updateTimetableWithAnimationRight:nil];
 }
 
@@ -130,14 +119,7 @@ hdTimetableDatePickerViewController *cache = nil;
 
 - (void)updateDateByDatePickerWithDate:(NSDate *)date {
 	dateShown = date;
-	NSTimeInterval ti = 86400;
-	for (;;) {
-		if ([hdDateUtils isWeekend:dateShown] || [hdTimetableParser getSubjectForDay:dateShown period:1 rootObj:timetableRootObject] == nil) {
-			dateShown = [dateShown dateByAddingTimeInterval:ti];
-		} else {
-			break;
-		}
-	}
+	dateShown = [hdDateUtils correctDate:dateShown];
 	[self updateTimetable:nil];
 }
 
@@ -150,17 +132,7 @@ hdTimetableDatePickerViewController *cache = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	if (!dateShown) {
-		dateShown = [NSDate date];
-	}
-	for (;;) {
-		if ([hdDateUtils isWeekend:dateShown] || [hdTimetableParser getSubjectForDay:dateShown period:1 rootObj:timetableRootObject] == nil) {
-			dateShown = [dateShown dateByAddingTimeInterval:86400];
-		} else {
-			break;
-		}
-	}
-	
+	dateShown = [hdDateUtils correctDate:dateShown];
 	self.title = [hdDateUtils formatDate:dateShown];
 	self.navigationController.title = @"Timetable";
 	
@@ -184,17 +156,6 @@ hdTimetableDatePickerViewController *cache = nil;
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	// Navigation logic may go here. Create and push another view controller.
-	/*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-	 // ...
-	 // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 */
-}
-
 - (IBAction)updateTimetable:(id)sender {
 	sharedStore = [hdDataStore sharedStore];
 	timetableRootObject = [hdJsonWrapper getObj:sharedStore.timetableJson];
@@ -202,14 +163,10 @@ hdTimetableDatePickerViewController *cache = nil;
 }
 
 - (void)updateTimetableWithAnimation:(NSDate *)date {
-	NSTimeInterval ti = 86400;
-	for (;;) {
-		if ([hdDateUtils isWeekend:date] || [hdTimetableParser getSubjectForDay:date period:1 rootObj:timetableRootObject] == nil) {
-			date = [date dateByAddingTimeInterval:ti];
-		} else {
-			break;
-		}
+	if (!dateShown) {
+		dateShown = [NSDate date];
 	}
+	dateShown = [hdDateUtils correctDate:dateShown];
 	if (date.timeIntervalSinceReferenceDate > dateShown.timeIntervalSinceReferenceDate)
 		[self updateTimetableWithAnimationLeft:date];
 	else if (date.timeIntervalSinceReferenceDate == dateShown.timeIntervalSinceReferenceDate)
@@ -222,14 +179,7 @@ hdTimetableDatePickerViewController *cache = nil;
 	if (date != nil) {
 		dateShown = date;
 	}
-	NSTimeInterval ti = 86400;
-	for (;;) {
-		if ([hdDateUtils isWeekend:dateShown] || [hdTimetableParser getSubjectForDay:dateShown period:1 rootObj:timetableRootObject] == nil) {
-			dateShown = [dateShown dateByAddingTimeInterval:ti];
-		} else {
-			break;
-		}
-	}
+	dateShown = [hdDateUtils correctDate:dateShown];
 	NSString *oldTitle = self.title;
 	[(UITableView *)self.view reloadRowsAtIndexPaths:
 	 @[
@@ -279,6 +229,12 @@ hdTimetableDatePickerViewController *cache = nil;
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
     bar = nil;
 	});
+}
+
+- (void)validateAndAdjustDate {
+	if (dateShown.timeIntervalSinceReferenceDate == lastValidatedDate.timeIntervalSinceReferenceDate && lastValidatedDate.timeIntervalSinceReferenceDate != 0) {
+		
+	}
 }
 
 - (void)viewDidUnload {

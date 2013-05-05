@@ -49,9 +49,14 @@
 	[self.tableView reloadData];
 }
 
+// Called when user if finished editing a homework task, just before view returns to this view
 - (void)updateHomeworkTask:(hdHomeworkTask *)ht {
 	self.updated = YES;
 	self.homeworkTask = ht;
+    self.homeworkTask.subject = [hdTimetableParser getSubjectForDay:self.homeworkTask.date period:self.homeworkTask.period - 1];
+    self.homeworkTask.room = [hdTimetableParser getRoomForDay:self.homeworkTask.date period:self.homeworkTask.period - 1];
+    self.homeworkTask.teacher = [hdTimetableParser getTeacherForDay:self.homeworkTask.date period:self.homeworkTask.period - 1];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,6 +86,7 @@
 	}
 }
 
+// User dismissed hdHomeworkDetailViewController
 - (IBAction)done:(id)sender {
 	if (self.updated == YES) {
 		[((hdHomeworkViewController *)self.homeworkViewController) setHomeworkTask:self.homeworkTask inSection:self.section row:self.dayIndex];
@@ -94,6 +100,7 @@
 	[self.actionSheet showFromRect:self.deleteButton.frame inView:self.view animated:YES];
 }
 
+// Action sheet containing only the delete button: homework task has been deleted
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	if (buttonIndex == 0) {
 		[(hdHomeworkViewController *)homeworkViewController deleteHomeworkTaskWithSection:self.section dayIndex:self.dayIndex];
@@ -102,27 +109,38 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        noDetailsLabel.frame = CGRectMake(232, 323, 76, 21);
+        homeworkDetailTextView.frame = CGRectMake(55, 299, 415, 186);
 		if (homeworkTask.period == 0) {
 			homeworkDetailTextView.frame = CGRectMake(homeworkDetailTextView.frame.origin.x,
-																								homeworkDetailTextView.frame.origin.y - 88,
-																								homeworkDetailTextView.frame.size.width,
-																								homeworkDetailTextView.frame.size.height);
+                                                      homeworkDetailTextView.frame.origin.y - 44,
+                                                      homeworkDetailTextView.frame.size.width,
+                                                      homeworkDetailTextView.frame.size.height);
 			noDetailsLabel.frame = CGRectMake(noDetailsLabel.frame.origin.x,
-																				noDetailsLabel.frame.origin.y - 88,
-																				noDetailsLabel.frame.size.width,
-																				noDetailsLabel.frame.size.height);
-			return 2;
+                                              noDetailsLabel.frame.origin.y - 44,
+                                              noDetailsLabel.frame.size.width,
+                                              noDetailsLabel.frame.size.height);
 		}
 		if (homeworkTask.room.length == 0) {
 			homeworkDetailTextView.frame = CGRectMake(homeworkDetailTextView.frame.origin.x,
-																								homeworkDetailTextView.frame.origin.y - 44,
-																								homeworkDetailTextView.frame.size.width,
-																								homeworkDetailTextView.frame.size.height);
+                                                      homeworkDetailTextView.frame.origin.y - 44,
+                                                      homeworkDetailTextView.frame.size.width,
+                                                      homeworkDetailTextView.frame.size.height);
 			noDetailsLabel.frame = CGRectMake(noDetailsLabel.frame.origin.x,
-																				noDetailsLabel.frame.origin.y - 44,
-																				noDetailsLabel.frame.size.width,
-																				noDetailsLabel.frame.size.height);
+                                              noDetailsLabel.frame.origin.y - 44,
+                                              noDetailsLabel.frame.size.width,
+                                              noDetailsLabel.frame.size.height);
+		}
+	} else {
+        noDetailsLabel.frame = CGRectMake(20, 167, 280, 21);
+        homeworkDetailTextView.frame = CGRectMake(20, 167, 280, 174);
+    }
+	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+		if (homeworkTask.period == 0) {
+			return 2;
+		}
+		if (homeworkTask.room.length == 0) {
 			return 3;
 		} else {
 			return 4;

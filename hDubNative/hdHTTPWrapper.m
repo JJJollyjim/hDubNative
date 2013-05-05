@@ -43,6 +43,34 @@
 				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&os=ios&version=2.0", sid, pass]];
 }
 
+- (void)syncWithUser:(int)sid
+            password:(int)pass
+             higheid:(int)higheid
+              events:(NSString *)events
+             success:(void (^) (NSString *))success
+               error:(void (^) (NSString *))error {
+	successCallback = success;
+	errorCallback = error;
+	
+	[self downloadURL:[NSURL URLWithString:
+                       [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/sync"]]
+           withMethod:@"POST"
+           parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&higheid=%i&events=%@&os=ios&version=2.0", sid, pass, higheid, events]];
+    
+    /*
+     
+     {
+       "new_events": {
+         "1": {
+           "type":"del",
+           "hwid":"091273"
+         }
+       },
+       "new_high_eid":"191"
+     }
+     
+     */
+}
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

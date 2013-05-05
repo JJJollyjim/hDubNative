@@ -40,8 +40,6 @@ static BOOL onLoginScreen;
 }
 
 - (void)sendNotification:(NSTimer *)theTimer {
-	/*[hdApiWrapper indexerWithUser:9079 pass:9391 callback:^(BOOL success, NSString *s1, NSString *s2) {
-			}];*/
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
 	[hdApiWrapper getMessage:[hdDataStore sharedStore].userId pass:[hdDataStore sharedStore].pass fromLoginScreen:![hdDataStore sharedStore].userLoggedIn callback:^(BOOL success, NSString *response, NSString *detailedError) {
 		if (success) {

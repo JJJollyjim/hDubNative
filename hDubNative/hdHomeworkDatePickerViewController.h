@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (nonatomic) id editViewController;
+@property (nonatomic) NSDate *dateToDisplay;
 
 - (IBAction)datePickerValueChanged:(id)sender;
 

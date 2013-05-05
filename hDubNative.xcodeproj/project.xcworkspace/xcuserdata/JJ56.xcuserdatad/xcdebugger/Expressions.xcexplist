@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[hdHomeworkDataStore reloadHomeworkDataAfterChangesToHomeworkTasksByDay]:hdHomeworkDataStore.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "totalHomeworkCount">
+            </PersistentString>
+            <PersistentString
+               value = "totalDayCount">
+            </PersistentString>
+            <PersistentString
+               value = "lastDate">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

@@ -15,6 +15,7 @@
 	hdDataStore *sharedStore;
 	NSDictionary *timetableRootObject;
 	NSDate *dateShown;
+	NSDate *lastValidatedDate;
 	
 	// DateViewController
 	UIPopoverController *datePickerPopover;

@@ -23,7 +23,7 @@
 	if (self = [super init]) {
 				sharedStore = [hdDataStore sharedStore];
 		[self initializeHomeworkData];
-			}
+    }
 	return self;
 }
 
@@ -102,14 +102,14 @@
 																			forKey:[NSNumber numberWithInt:totalDayCount - 1]];
 	[self exportHomeworkTasksByDayToDisk];
 		if (priorTotalDayCount != totalDayCount)
-		return true;
-	return false;
+		return YES;
+	return NO;
 }
 
 - (void)setHomeworkTask:(hdHomeworkTask *)task
-							tableView:(UITableView *)tableView
-								section:(int)section
-										row:(int)row {
+              tableView:(UITableView *)tableView
+                section:(int)section
+                    row:(int)row {
 	for (hdHomeworkTask *homeworkTask in homeworkTasksByDay) {
 		if ([homeworkTask.hwid isEqualToString:task.hwid]) {
 			homeworkTask.name = task.name;
@@ -117,25 +117,25 @@
 			homeworkTask.date = task.date;
 			homeworkTask.period = task.period;
 			homeworkTask.subject = [hdTimetableParser getSubjectForDay:homeworkTask.date
-																													period:homeworkTask.period - 1];
+                                                                period:homeworkTask.period - 1];
 			homeworkTask.teacher = [hdTimetableParser getTeacherForDay:homeworkTask.date
-																													period:homeworkTask.period - 1];
+                                                                period:homeworkTask.period - 1];
 			homeworkTask.room = [hdTimetableParser getRoomForDay:homeworkTask.date
-																										period:homeworkTask.period - 1];
+                                                          period:homeworkTask.period - 1];
 			[self reloadHomeworkDataAfterChangesToHomeworkTasksByDay];
-			[tableView beginUpdates];
-			[tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:section]] withRowAnimation:UITableViewRowAnimationRight];
-			[tableView endUpdates];
+			[self sortHomeworkTasksByDay]; 
+			[tableView reloadData];
+			[self exportHomeworkTasksByDayToDisk];
 			return;
 		}
 	}
 	BOOL sameDayAsAnotherHomeworkTask = NO;
-  for (hdHomeworkTask *homeworkTask in homeworkTasksByDay) {
-	  if (abs(homeworkTask.date.timeIntervalSinceReferenceDate - task.date.timeIntervalSinceReferenceDate) <= (86400/4)) {
+    for (hdHomeworkTask *homeworkTask in homeworkTasksByDay) {
+        if (abs(homeworkTask.date.timeIntervalSinceReferenceDate - task.date.timeIntervalSinceReferenceDate) <= (86400/4)) {
 			sameDayAsAnotherHomeworkTask = YES;
 			break;
-	  }
-  }
+        }
+    }
 	[homeworkTasksByDay addObject:task];
 	homeworkTasksByDay = [[NSMutableArray alloc] initWithArray:[homeworkTasksByDay sortedArrayUsingComparator:^NSComparisonResult(hdHomeworkTask *hw1, hdHomeworkTask *hw2) {
 		NSComparisonResult res = [[hw1 date] compare:[hw2 date]];
@@ -209,6 +209,28 @@
 	}
 	NSString *jsonResult = [hdJsonWrapper getJson:result];
 	[hdDataStore sharedStore].homeworkJson = jsonResult;
+}
+
+- (void)sortHomeworkTasksByDay {
+	homeworkTasksByDay = [NSMutableArray arrayWithArray:[homeworkTasksByDay sortedArrayUsingComparator:^NSComparisonResult(hdHomeworkTask *hw1, hdHomeworkTask *hw2) {
+		NSComparisonResult res = [[hw1 date] compare:[hw2 date]];
+		if (res == NSOrderedSame) {
+			if (hw1.period < hw2.period) {
+				return (NSComparisonResult)NSOrderedAscending;
+			} else if (hw1.period > hw2.period) {
+				return (NSComparisonResult)NSOrderedDescending;
+			} else {
+				res = [[hw1 name] compare:[hw2 name]];
+				if (res == NSOrderedSame) {
+					res = [[hw1 details] compare:[hw2 details]];
+					if (res == NSOrderedSame) {
+						res = [[hw1 hwid] compare:[hw2 hwid]];
+					}
+				}
+			}
+		}
+		return res;
+	}]];
 }
 
 - (NSArray *)createFlatHomeworkTable:(NSDictionary *)homeworkRootDictionary {
@@ -319,6 +341,17 @@ NSDateFormatter *df = nil;
 	hdHomeworkTask *hwtask = [self getHomeworkTaskForSection:dayIndex id:hwidx];
 	[homeworkTasksByDay removeObject:hwtask];
 	return [self reloadHomeworkDataAfterChangesToHomeworkTasksByDay];
+}
+
+- (void)deleteHomeworkTaskWithHwid:(NSString *)hwid {
+    hdHomeworkTask *taskToDelete = nil;
+    for (hdHomeworkTask *task in homeworkTasksByDay) {
+        if ([task.hwid isEqualToString:hwid]) {
+            taskToDelete = task;
+        }
+    }
+    [homeworkTasksByDay removeObject:taskToDelete];
+    [self reloadHomeworkDataAfterChangesToHomeworkTasksByDay];
 }
 
 - (NSArray *)sortHomeworkDictionaryByDates:(NSDictionary *)homeworkRootDictionary {

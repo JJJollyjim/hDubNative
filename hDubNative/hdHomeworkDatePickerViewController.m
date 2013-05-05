@@ -9,16 +9,17 @@
 #import "hdHomeworkDatePickerViewController.h"
 #import "hdHomeworkEditViewController.h"
 #import "hdDateUtils.h"
+#import "NSDate+DateComponents.h"
 
 @implementation hdHomeworkDatePickerViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+	if (self) {
+		// Custom initialization
+	}
+	return self;
 }
 
 - (void)viewDidLoad
@@ -33,20 +34,52 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidUnload {
-    [self setDatePicker:nil];
-    [super viewDidUnload];
+- (void)viewWillAppear:(BOOL)animated {
+    [self.datePicker setMinimumDate:[NSDate dateWithYear:2013 month:1 day:1]];
+    [self.datePicker setMaximumDate:[NSDate dateWithYear:2013 month:12 day:31]];
 }
 
-- (IBAction)datePickerValueChanged:(id)sender {
-	NSTimeInterval ti = 86400;
+- (void)viewDidAppear:(BOOL)animated {
+	[self.datePicker setDate:self.dateToDisplay animated:NO];
+}
+
+- (void)viewDidUnload {
+	[self setDatePicker:nil];
+	[super viewDidUnload];
+}
+
++ (NSDate *)correctDate:(NSDate *)date {
+	NSDate *prevDate = date;
+	int iterations = 0;
 	for (;;) {
-		if ([hdDateUtils isWeekend:self.datePicker.date] || [hdTimetableParser getSubjectForDay:self.datePicker.date period:1] == nil) {
-			[self.datePicker setDate:[self.datePicker.date dateByAddingTimeInterval:ti] animated:YES];
+		iterations++;
+		if ([hdDateUtils isWeekend:date] || [hdTimetableParser getSubjectForDay:date period:1] == nil) {
+			date = [date dateByAddingTimeInterval:86400];
+			if (iterations >= 366) {
+				date = prevDate;
+				iterations = 0;
+				for (;;) {
+					iterations++;
+					if ([hdDateUtils isWeekend:date] || [hdTimetableParser getSubjectForDay:date period:1] == nil) {
+						date = [date dateByAddingTimeInterval:-86400];
+						if (iterations >= 366) {
+							break;
+						}
+					} else {
+						break;
+					}
+				}
+				break;
+			}
 		} else {
 			break;
 		}
 	}
+	return date;
+}
+
+- (IBAction)datePickerValueChanged:(id)sender {
+    [self.datePicker setDate:[hdHomeworkDatePickerViewController correctDate:self.datePicker.date] animated:YES];
 	hdHomeworkEditViewController *editVC = (hdHomeworkEditViewController *)self.editViewController;
 	[editVC datePickerViewControllerSetDate:self.datePicker.date];
 }

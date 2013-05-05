@@ -13,9 +13,9 @@
 @implementation hdApiWrapper
 
 + (void)getMessage:(int)sid
-							pass:(int)pass
-	 fromLoginScreen:(BOOL)login
-					callback:(void (^) (BOOL, NSString *, NSString *))callback {
+              pass:(int)pass
+   fromLoginScreen:(BOOL)login
+          callback:(void (^) (BOOL, NSString *, NSString *))callback {
 	hdHTTPWrapper *httpRequest = [[hdHTTPWrapper alloc] init];
 	[httpRequest getMessage:sid
 								 password:pass
@@ -29,8 +29,8 @@
 }
 
 + (void)loginWithSid:(int)sid
-								pass:(int)pass
-						callback:(void (^) (BOOL, NSString *, NSString *))callback {
+                pass:(int)pass
+            callback:(void (^) (BOOL, NSString *, NSString *))callback {
 	hdHTTPWrapper *httpRequest = [[hdHTTPWrapper alloc] init];
 	[httpRequest loginWithUser:sid
 									password:pass
@@ -42,9 +42,41 @@
 										 }];
 }
 
+/*
+ 
+ {
+ "new_events": {
+ "1": {
+ "type":"del",
+ "hwid":"091273"
+ }
+ },
+ "new_high_eid":"191"
+ }
+ 
+ */
+
++ (void)syncWithUser:(int)sid
+            password:(int)pass
+             higheid:(int)higheid
+              events:(NSString *)events
+            callback:(void (^) (BOOL, NSString *, NSString *))callback {
+	hdHTTPWrapper *httpRequest = [[hdHTTPWrapper alloc] init];
+	[httpRequest syncWithUser:sid
+                     password:pass
+                      higheid:higheid
+                       events:events
+                      success:^void (NSString *response) {
+                          [self handleErrorsInJson:response httpRequest:httpRequest callback:callback];
+                      }
+                        error:^void (NSString *errorMsg) {
+                            callback(NO, @"An error has occured. Please check your internet connection or try again later.", @"No/invalid data received!");
+                        }];
+}
+
 + (void)handleErrorsInJson:(NSString *)json
-							 httpRequest:(hdHTTPWrapper *)httpRequest
-									callback:(void (^) (BOOL, NSString *, NSString *))callback {
+               httpRequest:(hdHTTPWrapper *)httpRequest
+                  callback:(void (^) (BOOL, NSString *, NSString *))callback {
 	NSDictionary *jsonObj = [hdJsonWrapper getObj:json];
 	if (jsonObj == nil || [jsonObj objectForKey:@"error"] != nil) {
 		// Handle errors

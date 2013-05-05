@@ -43,4 +43,7 @@
 - (NSString *)homeworkJson;
 - (void)setHomeworkJson:(NSString *)json;
 
+- (NSString *)unsyncedEvents;
+- (void)setUnsyncedEvents:(NSString *)e;
+
 @end

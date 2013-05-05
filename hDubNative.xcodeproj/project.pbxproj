@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D38ADAA1734BAA800D16F8E /* NSDate+DateComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D38ADA91734BAA800D16F8E /* NSDate+DateComponents.m */; };
+		7D9871581735D15D004C7E8B /* hdHomeworkSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D9871571735D15D004C7E8B /* hdHomeworkSyncManager.m */; };
 		CD0330DD16EAFB970043AA13 /* orangeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0330D916EAFB970043AA13 /* orangeButton.png */; };
 		CD0330DE16EAFB970043AA13 /* orangeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0330DA16EAFB970043AA13 /* orangeButton@2x.png */; };
 		CD0330DF16EAFB970043AA13 /* orangeButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = CD0330DB16EAFB970043AA13 /* orangeButtonHighlight.png */; };
@@ -41,7 +43,6 @@
 		CD32C07B16C22B9C00AA0569 /* hdTimetableParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C07A16C22B9C00AA0569 /* hdTimetableParser.m */; };
 		CD32C07F16C2338900AA0569 /* hdLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C07D16C2338900AA0569 /* hdLoginViewController.m */; };
 		CD32C08016C2338900AA0569 /* hdLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD32C07E16C2338900AA0569 /* hdLoginViewController.xib */; };
-		CD5489BA16D5D37B00AC291F /* hdHomeworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5489B916D5D37B00AC291F /* hdHomeworkManager.m */; };
 		CD5489BD16D5D91200AC291F /* hdHomeworkDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5489BC16D5D91200AC291F /* hdHomeworkDataStore.m */; };
 		CD54F86416C253BE00529769 /* hdTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD54F86316C253BE00529769 /* hdTabViewController.m */; };
 		CD5F6AAE16CE31ED00D7EEBD /* iPhoneLoginBG~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5F6AAA16CE31ED00D7EEBD /* iPhoneLoginBG~ipad.png */; };
@@ -78,6 +79,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D38ADA81734BAA800D16F8E /* NSDate+DateComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateComponents.h"; sourceTree = "<group>"; };
+		7D38ADA91734BAA800D16F8E /* NSDate+DateComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateComponents.m"; sourceTree = "<group>"; };
+		7D9871561735D15D004C7E8B /* hdHomeworkSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkSyncManager.h; sourceTree = "<group>"; };
+		7D9871571735D15D004C7E8B /* hdHomeworkSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkSyncManager.m; sourceTree = "<group>"; };
 		CD0330D916EAFB970043AA13 /* orangeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeButton.png; sourceTree = "<group>"; };
 		CD0330DA16EAFB970043AA13 /* orangeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orangeButton@2x.png"; sourceTree = "<group>"; };
 		CD0330DB16EAFB970043AA13 /* orangeButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeButtonHighlight.png; sourceTree = "<group>"; };
@@ -126,8 +131,6 @@
 		CD32C07C16C2338800AA0569 /* hdLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdLoginViewController.h; sourceTree = "<group>"; };
 		CD32C07D16C2338900AA0569 /* hdLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdLoginViewController.m; sourceTree = "<group>"; };
 		CD32C07E16C2338900AA0569 /* hdLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = hdLoginViewController.xib; sourceTree = "<group>"; };
-		CD5489B816D5D37B00AC291F /* hdHomeworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkManager.h; sourceTree = "<group>"; };
-		CD5489B916D5D37B00AC291F /* hdHomeworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkManager.m; sourceTree = "<group>"; };
 		CD5489BB16D5D91200AC291F /* hdHomeworkDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkDataStore.h; sourceTree = "<group>"; };
 		CD5489BC16D5D91200AC291F /* hdHomeworkDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkDataStore.m; sourceTree = "<group>"; };
 		CD54F86216C253BE00529769 /* hdTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdTabViewController.h; sourceTree = "<group>"; };
@@ -236,6 +239,8 @@
 		CD1E89DB16BF884A00EF853C /* hDub */ = {
 			isa = PBXGroup;
 			children = (
+				7D38ADA81734BAA800D16F8E /* NSDate+DateComponents.h */,
+				7D38ADA91734BAA800D16F8E /* NSDate+DateComponents.m */,
 				CD1E89E416BF884A00EF853C /* hdAppDelegate.h */,
 				CD1E89E516BF884A00EF853C /* hdAppDelegate.m */,
 				CD32C06916C1F02D00AA0569 /* Wrappers */,
@@ -449,10 +454,10 @@
 				CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */,
 				CD5F6AC916CF7EAB00D7EEBD /* hdHomeworkViewController.h */,
 				CD5F6ACA16CF7EAB00D7EEBD /* hdHomeworkViewController.m */,
+				7D9871561735D15D004C7E8B /* hdHomeworkSyncManager.h */,
+				7D9871571735D15D004C7E8B /* hdHomeworkSyncManager.m */,
 				CD5489BB16D5D91200AC291F /* hdHomeworkDataStore.h */,
 				CD5489BC16D5D91200AC291F /* hdHomeworkDataStore.m */,
-				CD5489B816D5D37B00AC291F /* hdHomeworkManager.h */,
-				CD5489B916D5D37B00AC291F /* hdHomeworkManager.m */,
 				CDCBAE8216CF904500064D0A /* hdHomeworkTask.h */,
 				CDF1BB8F16D71E2700A10129 /* hdHomeworkTask.m */,
 			);
@@ -605,13 +610,14 @@
 				CD8C425116CB7E28007B2186 /* hdWhiteButton.m in Sources */,
 				CD5F6AC816CEED1F00D7EEBD /* hdNotificationApi.m in Sources */,
 				CD5F6ACB16CF7EAB00D7EEBD /* hdHomeworkViewController.m in Sources */,
-				CD5489BA16D5D37B00AC291F /* hdHomeworkManager.m in Sources */,
 				CD5489BD16D5D91200AC291F /* hdHomeworkDataStore.m in Sources */,
 				CDF1BB9016D71E2700A10129 /* hdHomeworkTask.m in Sources */,
 				CDAF246F16E2CF4F003CF9F5 /* hdHomeworkDetailViewController.m in Sources */,
 				CD62780716E2D481003D3C8F /* hdRedButton.m in Sources */,
 				CD0330E416EB20B20043AA13 /* hdHomeworkEditViewController.m in Sources */,
 				CD24DC1116FD503E00D9E56D /* hdHomeworkDatePickerViewController.m in Sources */,
+				7D38ADAA1734BAA800D16F8E /* NSDate+DateComponents.m in Sources */,
+				7D9871581735D15D004C7E8B /* hdHomeworkSyncManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

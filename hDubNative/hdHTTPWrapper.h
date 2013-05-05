@@ -27,6 +27,13 @@
 							success:(void (^) (NSString *))success
 								error:(void (^) (NSString *))error;
 
+- (void)syncWithUser:(int)sid
+            password:(int)pass
+             higheid:(int)higheid
+              events:(NSString *)events
+             success:(void (^) (NSString *))success
+               error:(void (^) (NSString *))error;
+
 - (int)getLastStatusCode;
 
 @end

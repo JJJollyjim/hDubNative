@@ -26,10 +26,11 @@
 	[defaults registerDefaults:@{
 	 @"logged_in" : @NO,
 	 @"sid" : @-1,
-	 @"pass" : @-0,
+	 @"pass" : @0,
 	 @"eid" : @0,
 	 @"timetable" : @"",
-	 @"homework" : @""}];
+	 @"homework" : @"",
+     @"unsynced_events" : @"[]"}];
 	
 	return self;
 }
@@ -98,6 +99,15 @@
 }
 - (void)setHomeworkJson:(NSString *)json {
 	[defaults setObject:json forKey:@"homework"];
+	[defaults synchronize];
+}
+
+- (NSString *)unsyncedEvents {
+	[defaults synchronize];
+	return [defaults stringForKey:@"unsynced_events"];
+}
+- (void)setUnsyncedEvents:(NSString *)e {
+	[defaults setObject:e forKey:@"unsynced_events"];
 	[defaults synchronize];
 }
 

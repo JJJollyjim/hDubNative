@@ -18,13 +18,13 @@
 #import "hdHomeworkDetailViewController.h"
 #import "hdHomeworkEditViewController.h"
 #import "hdDateUtils.h"
+#import "hdHomeworkSyncManager.h"
 
 @implementation hdHomeworkViewController
 
 @synthesize homeworkJsonString, parser;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
+- (id)initWithStyle:(UITableViewStyle)style {
 	self = [super initWithStyle:style];
 	if (self) {
 		
@@ -32,8 +32,7 @@
 	return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
 	[super viewDidLoad];
 	self.tableView.scrollsToTop = NO;
 	UINavigationController *nav = self.navigationController;
@@ -54,8 +53,7 @@
 	[super viewWillAppear:animated];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
 }
@@ -94,8 +92,11 @@
 
 #pragma mark - Table view data source
 
+int sectionCount = 0;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return [self.parser numberOfSectionsInTableView];
+	sectionCount = [self.parser numberOfSectionsInTableView];
+    [self updateBackgroundIfEmpty];
+    return sectionCount;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -103,10 +104,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [self.parser numberOfCellsInSection:section];
+	int rowCount = [self.parser numberOfCellsInSection:section];
+    return rowCount;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	static NSString *CellIdentifier = @"hdHomeworkCell";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
@@ -125,6 +128,21 @@
 	return cell;
 }
 
+- (void)updateBackgroundIfEmpty {
+	sectionCount = [self.parser numberOfSectionsInTableView];
+    if (sectionCount == 0) {
+        UIImage *image = [UIImage imageNamed:@"Kwiius Logo.png"];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        [imageView setFrame:self.tableView.bounds];
+        imageView.contentMode = UIViewContentModeCenter;
+        [self.tableView setBackgroundView:imageView];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    } else {
+        [self.tableView setBackgroundView:nil];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return 65;
 }
@@ -138,6 +156,15 @@
 
 - (void)setHomeworkTask:(hdHomeworkTask *)homeworkTask inSection:(int)section row:(int)row {
 	[self.parser setHomeworkTask:homeworkTask tableView:self.tableView section:section row:row];
+}
+
+- (IBAction)goToToday:(id)sender {
+	int sectionToScrollTo = [self.parser sectionToScrollToWhenTableViewBecomesVisible];
+	if ([self.parser numberOfSectionsInTableView] != 0)
+		[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
+                                                                  inSection:(sectionToScrollTo == -1 ? ([self.parser numberOfSectionsInTableView] - 1) : sectionToScrollTo)]
+                              atScrollPosition:UITableViewScrollPositionTop
+                                      animated:YES];
 }
 
 - (void)deleteHomeworkTaskWithSection:(int)section dayIndex:(int)dayIndex {
@@ -154,7 +181,7 @@
 	[self.tableView endUpdates];
 }
 
- // Override to support editing the table view.
+// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
  forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -168,6 +195,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 		} else {
 			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
 		}
+        [self updateBackgroundIfEmpty];
 		[tableView endUpdates];
 	}
 	else if (editingStyle == UITableViewCellEditingStyleInsert) {

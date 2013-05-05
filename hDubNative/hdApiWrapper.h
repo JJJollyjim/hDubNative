@@ -19,4 +19,10 @@
 								pass:(int)pass
 						callback:(void (^) (BOOL, NSString *, NSString *))callback;
 
++ (void)syncWithUser:(int)sid
+            password:(int)pass
+             higheid:(int)higheid
+              events:(NSString *)events
+            callback:(void (^) (BOOL, NSString *, NSString *))callback;
+
 @end

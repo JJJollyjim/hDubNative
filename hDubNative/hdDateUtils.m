@@ -7,12 +7,19 @@
 //
 
 #import "hdDateUtils.h"
+#import "hdTimetableParser.h"
 
 @implementation hdDateUtils
 
+BOOL initialized = NO;
+NSCalendar *calendar;
+NSRange weekdayRange;
 + (BOOL)isWeekend:(NSDate *)date {
-	NSCalendar *calendar = [NSCalendar currentCalendar];
-	NSRange weekdayRange = [calendar maximumRangeOfUnit:NSWeekdayCalendarUnit];
+	if (!initialized) {
+		calendar = [NSCalendar currentCalendar];
+		weekdayRange = [calendar maximumRangeOfUnit:NSWeekdayCalendarUnit];
+		initialized = YES;
+	}
 	NSDateComponents *components = [calendar components:NSWeekdayCalendarUnit fromDate:date];
 	NSUInteger weekdayOfDate = [components weekday];
 	
@@ -20,6 +27,38 @@
 		return YES;
 	}
 	return NO;
+}
+
+// Any date that the user selects/enters for a timetable view will run through this function, which will return the best day for which a timetable exists
+
++ (NSDate *)correctDate:(NSDate *)date {
+	NSDate *prevDate = date;
+	int iterations = 0;
+	for (;;) {
+		iterations++;
+		if ([hdDateUtils isWeekend:date] || [hdTimetableParser getSubjectForDay:date period:1] == nil) {
+			date = [date dateByAddingTimeInterval:86400];
+			if (iterations >= 366) {
+				date = prevDate;
+				iterations = 0;
+				for (;;) {
+					iterations++;
+					if ([hdDateUtils isWeekend:date] || [hdTimetableParser getSubjectForDay:date period:1] == nil) {
+						date = [date dateByAddingTimeInterval:-86400];
+						if (iterations >= 366) {
+							break;
+						}
+					} else {
+						break;
+					}
+				}
+				break;
+			}
+		} else {
+			break;
+		}
+	}
+	return date;
 }
 
 + (NSString *)formatDate:(NSDate *)date {

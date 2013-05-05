@@ -10,6 +10,7 @@
 #import "hdHomeworkEditViewController.h"
 #import "hdHomeworkDetailViewController.h"
 #import "hdHomeworkDatePickerViewController.h"
+#import "hdDateUtils.h"
 
 @implementation hdHomeworkEditViewController
 
@@ -54,6 +55,9 @@
 			[self.navigationController popViewControllerAnimated:YES];
 		}
 	} else {
+        _homeworkTask.subject = [hdTimetableParser getSubjectForDay:_homeworkTask.date period:_homeworkTask.period - 1];
+        _homeworkTask.room = [hdTimetableParser getRoomForDay:_homeworkTask.date period:_homeworkTask.period - 1];
+        _homeworkTask.teacher = [hdTimetableParser getTeacherForDay:_homeworkTask.date period:_homeworkTask.period - 1];
 		hdHomeworkViewController *pvc = (hdHomeworkViewController *)self.previousViewController;
 		[pvc setHomeworkTask:_homeworkTask inSection:0 row:0];
 		[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
@@ -70,32 +74,63 @@
 
 // Save date from datePickerViewController
 - (void)datePickerViewControllerSetDate:(NSDate *)date {
+	[self.tableView beginUpdates];
+	NSDate *oldDate = _homeworkTask.date;
+	int oldPeriodCount = [self.tableView numberOfRowsInSection:2]-1;
 	_homeworkTask.date = date;
-	
-	if (date.timeIntervalSinceReferenceDate > self.homeworkTask.date.timeIntervalSinceReferenceDate)
-		[self.tableView reloadRowsAtIndexPaths:
-		 @[
-		 [NSIndexPath indexPathForRow:1 inSection:2],
-		 [NSIndexPath indexPathForRow:2 inSection:2],
-		 [NSIndexPath indexPathForRow:3 inSection:2],
-		 [NSIndexPath indexPathForRow:4 inSection:2],
-		 [NSIndexPath indexPathForRow:5 inSection:2],
-		 [NSIndexPath indexPathForRow:6 inSection:2]
-		 ]
-													withRowAnimation:UITableViewRowAnimationLeft];
-	else if (date.timeIntervalSinceReferenceDate == self.homeworkTask.date.timeIntervalSinceReferenceDate)
-		return;
-	else
-		[self.tableView reloadRowsAtIndexPaths:
-		 @[
-		 [NSIndexPath indexPathForRow:1 inSection:2],
-		 [NSIndexPath indexPathForRow:2 inSection:2],
-		 [NSIndexPath indexPathForRow:3 inSection:2],
-		 [NSIndexPath indexPathForRow:4 inSection:2],
-		 [NSIndexPath indexPathForRow:5 inSection:2],
-		 [NSIndexPath indexPathForRow:6 inSection:2]
-		 ]
-													withRowAnimation:UITableViewRowAnimationRight];
+	int newPeriodCount = [self tableView:self.tableView numberOfRowsInSection:2]-1;
+	if (oldPeriodCount == newPeriodCount) {
+		NSMutableArray *rowsToReload = [[NSMutableArray alloc] init];
+		for (int i = 1; i < newPeriodCount+1; ++i)
+			[rowsToReload addObject:[NSIndexPath indexPathForRow:i inSection:2]];
+		
+		if (date.timeIntervalSinceReferenceDate > oldDate.timeIntervalSinceReferenceDate)
+			[self.tableView reloadRowsAtIndexPaths:rowsToReload
+                                  withRowAnimation:UITableViewRowAnimationLeft];
+		else
+			[self.tableView reloadRowsAtIndexPaths:rowsToReload
+                                  withRowAnimation:UITableViewRowAnimationRight];
+	} else {
+		int minPeriodCount = oldPeriodCount < newPeriodCount ? oldPeriodCount : newPeriodCount;
+		NSMutableArray *rowsToReload = [[NSMutableArray alloc] init];
+		for (int i = 1; i < minPeriodCount+1; ++i)
+			[rowsToReload addObject:[NSIndexPath indexPathForRow:i inSection:2]];
+		
+		if (date.timeIntervalSinceReferenceDate > oldDate.timeIntervalSinceReferenceDate)
+			[self.tableView reloadRowsAtIndexPaths:rowsToReload
+                                  withRowAnimation:UITableViewRowAnimationLeft];
+		else
+			[self.tableView reloadRowsAtIndexPaths:rowsToReload
+                                  withRowAnimation:UITableViewRowAnimationRight];
+		if (oldPeriodCount < newPeriodCount) {
+			// new periods added
+			NSMutableArray *rowsToReload = [[NSMutableArray alloc] init];
+			for (int i = 0; i < newPeriodCount - oldPeriodCount; ++i)
+				[rowsToReload addObject:[NSIndexPath indexPathForRow:minPeriodCount + 1 + i inSection:2]];
+			
+			if (date.timeIntervalSinceReferenceDate > oldDate.timeIntervalSinceReferenceDate)
+				[self.tableView insertRowsAtIndexPaths:rowsToReload
+															withRowAnimation:UITableViewRowAnimationRight];
+			else
+				[self.tableView insertRowsAtIndexPaths:rowsToReload
+															withRowAnimation:UITableViewRowAnimationLeft];
+		} else if (oldPeriodCount > newPeriodCount) {
+			// old periods removed
+			NSMutableArray *rowsToReload = [[NSMutableArray alloc] init];
+			for (int i = 0; i < oldPeriodCount - newPeriodCount; ++i)
+				[rowsToReload addObject:[NSIndexPath indexPathForRow:minPeriodCount + 1 + i inSection:2]];
+			
+			if (date.timeIntervalSinceReferenceDate > oldDate.timeIntervalSinceReferenceDate)
+				[self.tableView deleteRowsAtIndexPaths:rowsToReload
+															withRowAnimation:UITableViewRowAnimationLeft];
+			else
+				[self.tableView deleteRowsAtIndexPaths:rowsToReload
+															withRowAnimation:UITableViewRowAnimationRight];
+		}
+	}
+    [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]]
+                          withRowAnimation:UITableViewRowAnimationNone];
+	[self.tableView endUpdates];
 }
 
 #pragma mark - Table view data source
@@ -189,8 +224,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 	return ((NSNumber *)[tableViewIndexToHeightMap objectForKey:[NSNumber numberWithInt:idx]]).integerValue + 1;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell;
 	if (indexPath.section == 1) {
 		static NSString *CellIdentifier = @"hdHomeworkEditViewControllerCell";
@@ -255,6 +289,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 				int numberOfConsecutivePeriods = [self numberOfConsecutivePeriodsAtPeriodIndex:indexPath.row];
 				if (numberOfConsecutivePeriods == 6) {
 					cell.detailTextLabel.text = @"All day";
+					foundCorrectPeriod = YES;
 				} else if (numberOfConsecutivePeriods == 1) {
 					int period = ((NSNumber *)[tableViewIndexToDoublePeriodOffsetMap objectForKey:
 																		 [NSNumber numberWithInt:indexPath.row + 1]]).integerValue;
@@ -307,6 +342,7 @@ UITableViewCell *selectedCell;
 			// Edit date
 			hdHomeworkDatePickerViewController *dpvc = [self.storyboard instantiateViewControllerWithIdentifier:@"hdHomeworkDatePickerViewController"];
 			dpvc.editViewController = self;
+			dpvc.dateToDisplay = _homeworkTask.date;
 			popover = [[UIPopoverController alloc] initWithContentViewController:dpvc];
 			[popover presentPopoverFromRect:[self.tableView cellForRowAtIndexPath:indexPath].frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 		}
@@ -319,8 +355,12 @@ UITableViewCell *selectedCell;
 	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 	cell.accessoryType = UITableViewCellAccessoryCheckmark;
 	selectedCell = cell;
-	_homeworkTask.period = ((NSNumber *)([tableViewIndexToDoublePeriodOffsetMap objectForKey:
-																				[NSNumber numberWithInt:indexPath.row]])).integerValue + 1;
+    if (indexPath.row == 0) {
+        _homeworkTask.period = 0;
+    } else {
+        _homeworkTask.period = ((NSNumber *)([tableViewIndexToDoublePeriodOffsetMap objectForKey:
+                                              [NSNumber numberWithInt:indexPath.row]])).integerValue + 1;
+    }
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

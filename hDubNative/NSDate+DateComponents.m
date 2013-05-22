@@ -2,7 +2,7 @@
 //  NSDate+DateComponents.m
 //  hDubNative
 //
-//  Created by Jamie McClymont on 4/05/13.
+//  Created by printfn on 4/05/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 

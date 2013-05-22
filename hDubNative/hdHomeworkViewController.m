@@ -43,6 +43,8 @@
 - (void)viewWillAppear:(BOOL)animated {
 	self.homeworkJsonString = [hdDataStore sharedStore].homeworkJson;
 	self.parser = [[hdHomeworkDataStore alloc] init];
+    self.syncManager = [[hdHomeworkSyncManager alloc] init];
+    [self.syncManager syncAndPullChanges];
 	[self.tableView reloadData];
 	int sectionToScrollTo = [self.parser sectionToScrollToWhenTableViewBecomesVisible];
 	if ([self.parser numberOfSectionsInTableView] != 0)
@@ -169,7 +171,6 @@ int sectionCount = 0;
 
 - (void)deleteHomeworkTaskWithSection:(int)section dayIndex:(int)dayIndex {
 	BOOL deletedSections = [self.parser deleteCellAtDayIndex:section id:dayIndex];
-	
 	[self.tableView beginUpdates];
 	if (deletedSections) {
 		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:section]

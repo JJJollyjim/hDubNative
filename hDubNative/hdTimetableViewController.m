@@ -10,30 +10,51 @@
 
 #import "hdHTTPWrapper.h"
 
+@interface hdTimetableViewController ()
+
+@end
+
 @implementation hdTimetableViewController
 
-@synthesize timetableTableView, titleNavigationBar;
+@synthesize textView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
 		self.title = NSLocalizedString(@"Timetable", @"Timetable");
 		self.tabBarItem.image = [UIImage imageNamed:@"timetable"];
-	}
-	return self;
+    }
+    return self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
+	
+	
+	/*hdHTTPWrapper *wrapper = [[hdHTTPWrapper alloc] init];
+	
+	[wrapper getTimetableForUser:9079
+															password:9391
+															 success:^void (NSString *response) {
+																 NSLog(@"Response: %@", response);
+																 textView.text = response;
+															 }
+																 error:^void (NSString *errorMsg) {
+																	 NSLog(@"Error Callback! %@", errorMsg);
+																	 UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error!"
+																																								message:errorMsg
+																																							 delegate:nil
+																																			cancelButtonTitle:@"Close"
+																																			otherButtonTitles:nil];
+																	 [av show];
+																 }];*/
 }
 
 							
 - (void)viewDidLoad
 {
-	[super viewDidLoad];
-	dataSource = [[hdTimetableDataSource alloc] init];
-	timetableTableView.dataSource = dataSource;
+    [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 

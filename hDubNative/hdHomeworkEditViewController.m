@@ -284,7 +284,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 				}
 			} else {
 				cell.textLabel.text = [hdTimetableParser getSubjectForDay:self.homeworkTask.date
-																													 period:((NSNumber *)([tableViewIndexToDoublePeriodOffsetMap objectForKey:
+                                                                   period:((NSNumber *)([tableViewIndexToDoublePeriodOffsetMap objectForKey:
 																																	 [NSNumber numberWithInt:indexPath.row]])).integerValue];
 				int numberOfConsecutivePeriods = [self numberOfConsecutivePeriodsAtPeriodIndex:indexPath.row];
 				if (numberOfConsecutivePeriods == 6) {

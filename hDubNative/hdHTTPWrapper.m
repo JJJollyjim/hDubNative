@@ -53,7 +53,7 @@
 	errorCallback = error;
 	
 	[self downloadURL:[NSURL URLWithString:
-                       [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/sync"]]
+                       [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/sync.php"]]
            withMethod:@"POST"
            parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&higheid=%i&events=%@&os=ios&version=2.0", sid, pass, higheid, events]];
     

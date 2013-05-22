@@ -82,7 +82,7 @@
 		// Handle errors
 		// auth, db, io, json, school, kamar
 		NSString *error = [jsonObj objectForKey:@"error"];
-		NSString *errorReport = [NSString stringWithFormat:@"json: {\"error_id\":\"%@\", \"error\":\"%@\"}\n  statusCode: %i", [jsonObj objectForKey:@"error_id"], error, [httpRequest getLastStatusCode]];
+		NSString *errorReport = [NSString stringWithFormat:@"json: %@\n  statusCode: %i", json, [httpRequest getLastStatusCode]];
 		NSString *userError = @"A server error has occured. Please try again later.";
 		if ([error isEqualToString:@"auth"]) {
 			userError = @"Invalid Student ID Number or Login Code!";

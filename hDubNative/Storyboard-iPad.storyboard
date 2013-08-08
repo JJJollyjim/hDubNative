@@ -384,12 +384,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="ZPS-W6-ppo">
-                                <rect key="frame" x="9" y="53" width="751" height="159"/>
+                                <rect key="frame" x="9" y="53" width="751" height="104"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.70497833030000001" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="1nH-Rh-BZU">
-                                <rect key="frame" x="10" y="54" width="749" height="157"/>
+                                <rect key="frame" x="10" y="54" width="749" height="102"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -402,21 +402,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </items>
                             </navigationBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Student ID Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ufQ-Wc-rGx">
-                                <rect key="frame" x="20" y="125" width="231" height="21"/>
+                                <rect key="frame" x="20" y="64" width="231" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1234" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qLB-SQ-zCB">
-                                <rect key="frame" x="574" y="125" width="174" height="21"/>
+                                <rect key="frame" x="574" y="64" width="174" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="99I-1c-ZGv" customClass="hdWhiteButton">
-                                <rect key="frame" x="398" y="154" width="350" height="44"/>
+                                <rect key="frame" x="398" y="103" width="350" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" title="Reload Timetable">
@@ -428,7 +428,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="SmO-Gj-0VE" customClass="hdWhiteButton">
-                                <rect key="frame" x="20" y="154" width="350" height="44"/>
+                                <rect key="frame" x="20" y="103" width="350" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" title="Logout">
@@ -477,43 +477,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <action selector="sendEmail:" destination="RoY-7q-BKy" eventType="touchUpInside" id="VWw-5m-nfU"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KU5-92-sao">
-                                <rect key="frame" x="20" y="67" width="51" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Form Class:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yfv-Os-8uH">
-                                <rect key="frame" x="20" y="96" width="92" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="NAME!!!" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9mp-hz-g5d">
-                                <rect key="frame" x="398" y="67" width="350" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="11JG" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oCN-1R-CCi">
-                                <rect key="frame" x="574" y="96" width="174" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings.png" id="aRX-l1-TPF"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <connections>
-                        <outlet property="formLabel" destination="oCN-1R-CCi" id="rvq-W3-xK8"/>
                         <outlet property="kwiiusButton" destination="VUP-sD-DlX" id="Dhy-8A-E7j"/>
-                        <outlet property="nameLabel" destination="9mp-hz-g5d" id="oM4-KT-Kc6"/>
                         <outlet property="reloadTimetableButton" destination="99I-1c-ZGv" id="zb7-xb-oRO"/>
                         <outlet property="sidLabel" destination="qLB-SQ-zCB" id="KH0-g4-LlO"/>
                     </connections>
@@ -522,7 +492,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="-1230" y="562"/>
         </scene>
-        <!--Hd Homework Edit View Controller - Edit Homework-->
+        <!--Hd Homework Edit View Controller - Edit Task-->
         <scene sceneID="Ev5-Or-SZL">
             <objects>
                 <tableViewController id="gET-tU-O7t" customClass="hdHomeworkEditViewController" sceneMemberID="viewController">
@@ -588,7 +558,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="gET-tU-O7t" id="vED-nM-T6a"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit Homework" id="698-BO-jfY">
+                    <navigationItem key="navigationItem" title="Edit Task" id="698-BO-jfY">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SUO-N0-NoQ">
                             <connections>
                                 <action selector="cancel:" destination="gET-tU-O7t" id="wMG-eL-HnE"/>
@@ -673,6 +643,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkDatePickerViewController.h"/>
             <relationships>
                 <relationship kind="action" name="datePickerValueChanged:"/>
+                <relationship kind="action" name="dismissDatePickerViewController:"/>
                 <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
             </relationships>
         </class>
@@ -714,10 +685,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="openKwiiusWebsite:"/>
                 <relationship kind="action" name="reloadTimetable:"/>
                 <relationship kind="action" name="sendEmail:"/>
-                <relationship kind="outlet" name="formLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="kwiiusButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="logoutButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="nameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="reloadTimetableButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="sidLabel" candidateClass="UILabel"/>
             </relationships>
@@ -731,6 +700,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="action" name="changeDate:"/>
                 <relationship kind="action" name="selectedNewDate:"/>
                 <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="hdTimetableTableViewController" superclassName="UITableViewController">

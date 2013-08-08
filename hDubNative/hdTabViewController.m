@@ -37,7 +37,7 @@
 - (void)updateSubviews {
 	UINavigationController *navController = (UINavigationController *)self.viewControllers[0];
 	hdTimetableTableViewController *tttvc = (hdTimetableTableViewController *)navController.viewControllers[0];
-	[tttvc viewDidAppear:YES];
+	[tttvc viewWillAppear:YES];
 }
 
 - (void)viewDidLoad

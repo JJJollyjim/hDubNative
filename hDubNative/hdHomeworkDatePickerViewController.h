@@ -15,5 +15,6 @@
 @property (nonatomic) NSDate *dateToDisplay;
 
 - (IBAction)datePickerValueChanged:(id)sender;
+- (IBAction)dismissDatePickerViewController:(id)sender;
 
 @end

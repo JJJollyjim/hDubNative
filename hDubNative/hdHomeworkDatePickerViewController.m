@@ -84,4 +84,10 @@
 	[editVC datePickerViewControllerSetDate:self.datePicker.date];
 }
 
+// Only runs on iPhone since iPad uses UIPopoverController
+- (IBAction)dismissDatePickerViewController:(id)sender {
+    hdHomeworkEditViewController *editViewController = (hdHomeworkEditViewController *)self.editViewController;
+    [editViewController dismissModalViewControllerAnimated:YES];
+}
+
 @end

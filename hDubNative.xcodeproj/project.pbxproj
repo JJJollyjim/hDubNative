@@ -76,6 +76,7 @@
 		CD8C425116CB7E28007B2186 /* hdWhiteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8C425016CB7E28007B2186 /* hdWhiteButton.m */; };
 		CDAF246F16E2CF4F003CF9F5 /* hdHomeworkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */; };
 		CDF1BB9016D71E2700A10129 /* hdHomeworkTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF1BB8F16D71E2700A10129 /* hdHomeworkTask.m */; };
+		F3948EDD179B7D27006482BC /* hdTimetableTableDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3948EDC179B7D27006482BC /* hdTimetableTableDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,6 +177,8 @@
 		CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkDetailViewController.m; sourceTree = "<group>"; };
 		CDCBAE8216CF904500064D0A /* hdHomeworkTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkTask.h; sourceTree = "<group>"; };
 		CDF1BB8F16D71E2700A10129 /* hdHomeworkTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkTask.m; sourceTree = "<group>"; };
+		F3948EDB179B7D26006482BC /* hdTimetableTableDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hdTimetableTableDetailViewController.h; path = ../hdTimetableTableDetailViewController.h; sourceTree = "<group>"; };
+		F3948EDC179B7D27006482BC /* hdTimetableTableDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = hdTimetableTableDetailViewController.m; path = ../hdTimetableTableDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,6 +386,8 @@
 		CD32C07816C21D5100AA0569 /* Timetable */ = {
 			isa = PBXGroup;
 			children = (
+				F3948EDB179B7D26006482BC /* hdTimetableTableDetailViewController.h */,
+				F3948EDC179B7D27006482BC /* hdTimetableTableDetailViewController.m */,
 				CD6E918016C7353200BCDCFB /* hdTimetableDatePickerViewController.h */,
 				CD6E918116C7353200BCDCFB /* hdTimetableDatePickerViewController.m */,
 				CD694E4916C3A9E1006264DC /* hdTimetableTableViewController.h */,
@@ -450,8 +455,8 @@
 				CD24DC1016FD503E00D9E56D /* hdHomeworkDatePickerViewController.m */,
 				CD0330E216EB20B20043AA13 /* hdHomeworkEditViewController.h */,
 				CD0330E316EB20B20043AA13 /* hdHomeworkEditViewController.m */,
-				CDAF246D16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.h */,
 				CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */,
+				CDAF246D16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.h */,
 				CD5F6AC916CF7EAB00D7EEBD /* hdHomeworkViewController.h */,
 				CD5F6ACA16CF7EAB00D7EEBD /* hdHomeworkViewController.m */,
 				7D9871561735D15D004C7E8B /* hdHomeworkSyncManager.h */,
@@ -502,6 +507,7 @@
 				CD1E89CE16BF884A00EF853C /* Sources */,
 				CD1E89CF16BF884A00EF853C /* Frameworks */,
 				CD1E89D016BF884A00EF853C /* Resources */,
+				F3AF0A4B179A500000F095AF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -587,6 +593,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		F3AF0A4B179A500000F095AF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#cd ~/Dropbox/hDubNative/hDubNative\n#./objc_dep.py . > graph.dot";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CD1E89CE16BF884A00EF853C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -618,6 +640,7 @@
 				CD24DC1116FD503E00D9E56D /* hdHomeworkDatePickerViewController.m in Sources */,
 				7D38ADAA1734BAA800D16F8E /* NSDate+DateComponents.m in Sources */,
 				7D9871581735D15D004C7E8B /* hdHomeworkSyncManager.m in Sources */,
+				F3948EDD179B7D27006482BC /* hdTimetableTableDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

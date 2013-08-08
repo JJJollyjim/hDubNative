@@ -30,5 +30,6 @@
 - (void)deleteHomeworkTaskWithHwid:(NSString *)hwid;
 - (void)setHomeworkTask:(hdHomeworkTask *)task tableView:(UITableView *)tableView section:(int)section row:(int)row;
 - (int)sectionToScrollToWhenTableViewBecomesVisible;
+- (NSMutableArray *)getHomeworkTasksByDay;
 
 @end

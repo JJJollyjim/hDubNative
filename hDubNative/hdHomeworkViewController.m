@@ -49,7 +49,7 @@
 	int sectionToScrollTo = [self.parser sectionToScrollToWhenTableViewBecomesVisible];
 	if ([self.parser numberOfSectionsInTableView] != 0)
 		[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
-																															inSection:(sectionToScrollTo == -1 ? ([self.parser numberOfSectionsInTableView] - 1) : sectionToScrollTo)]
+                                                                  inSection:(sectionToScrollTo == -1 ? ([self.parser numberOfSectionsInTableView] - 1) : sectionToScrollTo)]
 													atScrollPosition:UITableViewScrollPositionTop
 																	 animated:NO];
 	[super viewWillAppear:animated];
@@ -169,7 +169,9 @@ int sectionCount = 0;
                                       animated:YES];
 }
 
+// Called when server requests deletion of homework task
 - (void)deleteHomeworkTaskWithSection:(int)section dayIndex:(int)dayIndex {
+    //TODO[self.parser ]
 	BOOL deletedSections = [self.parser deleteCellAtDayIndex:section id:dayIndex];
 	[self.tableView beginUpdates];
 	if (deletedSections) {
@@ -177,7 +179,7 @@ int sectionCount = 0;
 									withRowAnimation:UITableViewRowAnimationLeft];
 	} else {
 		[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:dayIndex inSection:section]]
-													withRowAnimation:UITableViewRowAnimationLeft];
+                              withRowAnimation:UITableViewRowAnimationLeft];
 	}
 	[self.tableView endUpdates];
 }
@@ -188,6 +190,9 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
  forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
 		// Delete the row from the data source
+        hdHomeworkTask *task = [self.parser getHomeworkTaskForSection:indexPath.section id:indexPath.row];
+        [self.syncManager deleteHomeworkTask:task];
+        
 		BOOL deletedSections = [self.parser deleteCellAtDayIndex:indexPath.section id:indexPath.row];
 		
 		[tableView beginUpdates];

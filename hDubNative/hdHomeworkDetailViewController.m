@@ -49,7 +49,7 @@
 	[self.tableView reloadData];
 }
 
-// Called when user if finished editing a homework task, just before view returns to this view
+// Called when user is finished editing a homework task, just before view returns to this view
 - (void)updateHomeworkTask:(hdHomeworkTask *)ht {
 	self.updated = YES;
 	self.homeworkTask = ht;
@@ -71,6 +71,7 @@
 	[super viewDidUnload];
 }
 
+// Called when transitioning to hdHomeworkEditViewController
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:@"hdHomeworkEditViewControllerSegueFromDetailView"]) {
 		hdHomeworkEditViewController *editViewController;
@@ -80,7 +81,7 @@
 		} else {
 			editViewController = (hdHomeworkEditViewController *)segue.destinationViewController;
 		}
-		editViewController.homeworkTask = self.homeworkTask;
+		editViewController.homeworkTask = [self.homeworkTask copy];
 		editViewController.previousViewController = self;
 		editViewController.newHomeworkTask = NO;
 	}
@@ -96,7 +97,7 @@
 }
 
 - (IBAction)deleteHomeworkTask:(id)sender {
-	self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete homework?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
+	self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete homework task?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
 	[self.actionSheet showFromRect:self.deleteButton.frame inView:self.view animated:YES];
 }
 

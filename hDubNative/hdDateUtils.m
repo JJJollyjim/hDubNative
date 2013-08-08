@@ -32,19 +32,28 @@ NSRange weekdayRange;
 // Any date that the user selects/enters for a timetable view will run through this function, which will return the best day for which a timetable exists
 
 + (NSDate *)correctDate:(NSDate *)date {
-	NSDate *prevDate = date;
+	return [self correctDate:date inverted:NO];
+}
+
++ (NSDate *)correctDateInverted:(NSDate *)date {
+    return [self correctDate:date inverted:YES];
+}
+
++ (NSDate *)correctDate:(NSDate *)date
+               inverted:(BOOL)inverted {
+    NSDate *prevDate = date;
 	int iterations = 0;
 	for (;;) {
 		iterations++;
 		if ([hdDateUtils isWeekend:date] || [hdTimetableParser getSubjectForDay:date period:1] == nil) {
-			date = [date dateByAddingTimeInterval:86400];
+			date = [date dateByAddingTimeInterval:inverted ? -86400 : 86400];
 			if (iterations >= 366) {
 				date = prevDate;
 				iterations = 0;
 				for (;;) {
 					iterations++;
 					if ([hdDateUtils isWeekend:date] || [hdTimetableParser getSubjectForDay:date period:1] == nil) {
-						date = [date dateByAddingTimeInterval:-86400];
+						date = [date dateByAddingTimeInterval:inverted ? 86400 : -86400];
 						if (iterations >= 366) {
 							break;
 						}

@@ -51,13 +51,16 @@ static hdStudent *sharedStudent;
    },
    timetable: {
      // Same format, but also with room+teacher
-   }
+   },
+   timetableFormat: [
+     "period", "period", "Morning tea", "period", "period", "Lunch", "period", "period"
+   ]
  }
  */
 
-- (void)loginNewUser:(int)sid
-						password:(int)pass
-						callback:(void (^) (BOOL, NSString *, NSString *))callback {
+- (void)loginUser:(int)sid
+         password:(int)pass
+         callback:(void (^) (BOOL, NSString *, NSString *))callback {
 	NSDate *dateBeforeRequest = [NSDate date];
 	[hdApiWrapper loginWithSid:sid pass:pass callback:^(BOOL success, NSString *errorMsg, NSString *errorReport) {
 		if (!success) {
@@ -70,13 +73,10 @@ static hdStudent *sharedStudent;
 			_store.pass = pass;
 			_store.higheid = ((NSString *)[jsonObj objectForKey:@"high_eid"]).integerValue;
 			_store.homeworkJson = [hdJsonWrapper getJson:[jsonObj objectForKey:@"homework"]];
+            _store.timetableFormatString = [hdJsonWrapper getJson:[jsonObj objectForKey:@"timetableFormat"]];
 			if ([_store.homeworkJson isEqualToString:@"[]"])
 				_store.homeworkJson = @"{}";
 			_store.timetableJson = [hdJsonWrapper getJson:[jsonObj objectForKey:@"timetable"]];
-			NSDictionary *details = [jsonObj objectForKey:@"data"];
-			_store.name = [details objectForKey:@"name"];
-			_store.form = [details objectForKey:@"form"];
-			_store.year = ((NSString *)[details objectForKey:@"year"]).integerValue;
 			[_store synchronize];
 			callback(YES, nil, nil);
 		}

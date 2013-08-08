@@ -44,4 +44,16 @@ NSDateFormatter *f = nil;
 	self.date = [midnight dateByAddingTimeInterval:43200];
 }
 
+- (id)copyWithZone:(NSZone *)zone {
+    hdHomeworkTask *copy = [[hdHomeworkTask alloc] init];
+    copy.date = [self.date copyWithZone:zone];
+    copy.details = [self.details copyWithZone:zone];
+    copy.hwid = [self.hwid copyWithZone:zone];
+    copy.name = [self.name copyWithZone:zone];
+    copy.period = self.period;
+    copy.teacher = [self.teacher copyWithZone:zone];
+    copy.room = [self.room copyWithZone:zone];
+    return copy;
+}
+
 @end

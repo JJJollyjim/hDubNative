@@ -12,7 +12,7 @@
 
 @implementation hdSettingsViewController
 
-@synthesize sidLabel, logoutButton, nameLabel, formLabel;
+@synthesize sidLabel, logoutButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,8 +32,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	sidLabel.text = [NSString stringWithFormat:@"%i", [hdDataStore sharedStore].userId];
-	nameLabel.text = [hdDataStore sharedStore].name;
-	formLabel.text = [hdDataStore sharedStore].form;
+
 	[super viewWillAppear:animated];
 }
 
@@ -78,7 +77,7 @@
 		[self.reloadTimetableButton setTitle:@"Reloading timetable…" forState:UIControlStateDisabled];
 	else
 		[self.reloadTimetableButton setTitle:@"Reloading…" forState:UIControlStateDisabled];
-	[[hdStudent sharedStudent] loginNewUser:[hdDataStore sharedStore].userId password:[hdDataStore sharedStore].pass callback:^(BOOL success, NSString *response, NSString *report) {
+	[[hdStudent sharedStudent] loginUser:[hdDataStore sharedStore].userId password:[hdDataStore sharedStore].pass callback:^(BOOL success, NSString *response, NSString *report) {
 		self.reloadTimetableButton.enabled = YES;
 		self.reloadTimetableButton.alpha = 1.0;
 		self.logoutButton.enabled = YES;

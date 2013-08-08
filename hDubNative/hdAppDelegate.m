@@ -4,7 +4,6 @@
 //
 //  Created by printfn on 4/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
-//
 
 #import "hdAppDelegate.h"
 
@@ -15,22 +14,18 @@
 #import "hdTabViewController.h"
 #import "hdStudent.h"
 #import "hdJsonWrapper.h"
-#import "hdNotificationApi.h"
 #import "hdTimetableParser.h"
 
 @implementation hdAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-	if ([[[UIDevice currentDevice] systemVersion] floatValue] < 6.0) {
+{    
+	if ([UIDevice currentDevice].systemVersion.floatValue < 6.0) {
 		[UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleBlackOpaque;
 	}
 	
 	[[hdDataStore sharedStore] synchronize];
 	[hdTimetableParser initializeDateFormatter];
-	
-	[hdNotificationApi setOnLoginScreen:NO];
-	[hdNotificationApi startPolling];
 	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	

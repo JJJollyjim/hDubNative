@@ -17,30 +17,30 @@
 @implementation hdHTTPWrapper
 
 - (void)getMessage:(int)sid
-					password:(int)pass
-	 fromLoginScreen:(BOOL)login
-					 success:(void (^) (NSString *))success
-						 error:(void (^) (NSString *))error {
+          password:(int)pass
+   fromLoginScreen:(BOOL)login
+           success:(void (^) (NSString *))success
+             error:(void (^) (NSString *))error {
 	successCallback = success;
 	errorCallback = error;
 	
 	[self downloadURL:[NSURL URLWithString:
-										 [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/message.php"]]
-				 withMethod:@"POST"
-				 parameters:[[NSString alloc] initWithFormat:@"login=%@&sid=%i&pass=%04i&os=ios&version=2.0", login == YES ? @"true" : @"false", sid, pass]];
+                       [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/message.php"]]
+           withMethod:@"POST"
+           parameters:[[NSString alloc] initWithFormat:@"login=%@&sid=%i&pass=%04i&os=ios&version=2.0", login == YES ? @"true" : @"false", sid, pass]];
 }
 
 - (void)loginWithUser:(int)sid
-						 password:(int)pass
-							success:(void (^) (NSString *))success
-								error:(void (^) (NSString *))error {
+             password:(int)pass
+              success:(void (^) (NSString *))success
+                error:(void (^) (NSString *))error {
 	successCallback = success;
 	errorCallback = error;
 	
 	[self downloadURL:[NSURL URLWithString:
-										 [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/login.php"]]
-				 withMethod:@"POST"
-				 parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&os=ios&version=2.0", sid, pass]];
+                       [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/login.php"]]
+           withMethod:@"POST"
+           parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&os=ios&version=2.0", sid, pass]];
 }
 
 - (void)syncWithUser:(int)sid
@@ -60,13 +60,13 @@
     /*
      
      {
-       "new_events": {
-         "1": {
-           "type":"del",
-           "hwid":"091273"
-         }
-       },
-       "new_high_eid":"191"
+     "new_events": {
+     "1": {
+     "type":"del",
+     "hwid":"091273"
+     }
+     },
+     "new_high_eid":"191"
      }
      
      */
@@ -106,9 +106,9 @@
 	
 	// parameters: "key1=val1&key2=val2
 	
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: url
-																												 cachePolicy: NSURLRequestUseProtocolCachePolicy
-																										 timeoutInterval: 30];
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:30];
 	request.HTTPMethod = method;
 	
 	if ([method isEqual:@"POST"]) {

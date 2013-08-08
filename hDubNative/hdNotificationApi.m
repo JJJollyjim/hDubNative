@@ -24,10 +24,10 @@ static BOOL onLoginScreen;
 + (void)startPolling {
 	sharedInstance = [[hdNotificationApi alloc] init];
 	timer = [NSTimer scheduledTimerWithTimeInterval:5
-																					 target:sharedInstance
-																				 selector:@selector(sendNotification:)
-																				 userInfo:nil
-																					repeats:YES];
+                                             target:sharedInstance
+                                           selector:@selector(sendNotification:)
+                                           userInfo:nil
+                                            repeats:YES];
 	[sharedInstance sendNotification:timer];
 }
 
@@ -40,8 +40,13 @@ static BOOL onLoginScreen;
 }
 
 - (void)sendNotification:(NSTimer *)theTimer {
+    return;
+    NSLog(@"Checking for messages...");
 	NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
-	[hdApiWrapper getMessage:[hdDataStore sharedStore].userId pass:[hdDataStore sharedStore].pass fromLoginScreen:![hdDataStore sharedStore].userLoggedIn callback:^(BOOL success, NSString *response, NSString *detailedError) {
+	[hdApiWrapper getMessage:[hdDataStore sharedStore].userId
+                        pass:[hdDataStore sharedStore].pass
+             fromLoginScreen:![hdDataStore sharedStore].userLoggedIn
+                    callback:^(BOOL success, NSString *response, NSString *detailedError) {
 		if (success) {
 			NSDictionary *dict = [hdJsonWrapper getObj:response];
 			if (dict == nil) {

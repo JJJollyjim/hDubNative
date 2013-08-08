@@ -377,6 +377,10 @@ NSDateFormatter *df = nil;
 	return sortedKeys;
 }
 
+- (NSMutableArray *)getHomeworkTasksByDay {
+    return homeworkTasksByDay;
+}
+
 + (NSString *)formatDate:(NSDate *)date {
 	NSTimeInterval timeInterval =
 	[[self dateAtMidnight:date] timeIntervalSinceReferenceDate]

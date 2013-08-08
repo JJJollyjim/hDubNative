@@ -26,7 +26,6 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
 	self = [super initWithStyle:style];
-	[self updateTimetable:nil];
 	if (self) {
 		self.tableView.delegate = self;
 		self.tableView.dataSource = self;
@@ -34,16 +33,17 @@
 	return self;
 }
 
-- (id)init {
-	self = [super init];
-	[self updateTimetable:nil];
-	return self;
-}
-
-- (void)viewDidLoad {
-	if (!dateShown) {
-		dateShown = [NSDate date];
-	}
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    dateShown = [NSDate date];
+    [self updateTimetable:nil];
+    
+    [hdTimetableParser getSubjectForDay:dateShown period:1 rootObj:[hdJsonWrapper getObj:[[hdDataStore sharedStore] timetableJson]]];
+    
+    dateShown = [hdDateUtils correctDate:[NSDate date]];
+    
+	self.title = [hdDateUtils formatDate:dateShown];
+    self.navigationController.title = @"Timetable";
 	
 	UISwipeGestureRecognizer *swipeGestureObjectImg = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeToNextDay:)];
 	swipeGestureObjectImg.numberOfTouchesRequired = 1;
@@ -60,18 +60,17 @@
 	navBar.tintColor = [UIColor colorWithRed:135/255.0f green:10/255.0f blue:0.0f alpha:1.0f];
 	
 	[self updateTimetable:nil];
-	
-	[super viewDidLoad];
 }
 
 - (IBAction)swipeToNextDay:(id)sender {
+	dateShown = [dateShown dateByAddingTimeInterval:86400];
 	dateShown = [hdDateUtils correctDate:dateShown];
 	[self updateTimetableWithAnimationLeft:nil];
 }
 
 - (IBAction)swipeToPreviousDay:(id)sender {
-	dateShown = [dateShown dateByAddingTimeInterval:86400];
-	dateShown = [hdDateUtils correctDate:dateShown];
+	dateShown = [dateShown dateByAddingTimeInterval:-86400];
+	dateShown = [hdDateUtils correctDateInverted:dateShown];
 	[self updateTimetableWithAnimationRight:nil];
 }
 
@@ -132,10 +131,9 @@ hdTimetableDatePickerViewController *cache = nil;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	dateShown = [hdDateUtils correctDate:dateShown];
 	self.title = [hdDateUtils formatDate:dateShown];
-	self.navigationController.title = @"Timetable";
-	
+    self.navigationController.title = @"Timetable";
+    // Setting self.title will also set self.navigationController.title, so I explicitly have to set it to "Homework" every time.
 	return 6;
 }
 
@@ -156,6 +154,7 @@ hdTimetableDatePickerViewController *cache = nil;
 
 #pragma mark - Table view delegate
 
+// Syncs timetable with hdDataStore
 - (IBAction)updateTimetable:(id)sender {
 	sharedStore = [hdDataStore sharedStore];
 	timetableRootObject = [hdJsonWrapper getObj:sharedStore.timetableJson];
@@ -190,7 +189,7 @@ hdTimetableDatePickerViewController *cache = nil;
 	 [NSIndexPath indexPathForRow:4 inSection:0],
 	 [NSIndexPath indexPathForRow:5 inSection:0]
 	 ]
-																	withRowAnimation:UITableViewRowAnimationLeft];
+                                    withRowAnimation:UITableViewRowAnimationLeft];
 	[self replaceDateWithFadeAnimation:oldTitle];
 }
 
@@ -208,7 +207,7 @@ hdTimetableDatePickerViewController *cache = nil;
 	 [NSIndexPath indexPathForRow:4 inSection:0],
 	 [NSIndexPath indexPathForRow:5 inSection:0]
 	 ]
-																	withRowAnimation:UITableViewRowAnimationRight];
+                                    withRowAnimation:UITableViewRowAnimationRight];
 	[self replaceDateWithFadeAnimation:oldTitle];
 }
 
@@ -227,7 +226,7 @@ hdTimetableDatePickerViewController *cache = nil;
 	[UIView commitAnimations];
 	
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
-    bar = nil;
+        bar = nil;
 	});
 }
 

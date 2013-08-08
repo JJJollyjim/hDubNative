@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface hdHomeworkTask : NSObject
+@interface hdHomeworkTask : NSObject <NSCopying>
 
 @property (nonatomic) NSString *hwid;
 @property (nonatomic) NSString *name;

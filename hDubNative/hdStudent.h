@@ -16,7 +16,7 @@
 
 + (hdStudent *)sharedStudent;
 
-- (void)loginNewUser:(int)sid
+- (void)loginUser:(int)sid
 						password:(int)pass
 						callback:(void (^) (BOOL, NSString *, NSString *))callback;
 

@@ -25,15 +25,6 @@
 - (int)pass;
 - (void)setPass:(int)pass;
 
-- (NSString *)name;
-- (void)setName:(NSString *)name;
-
-- (NSString *)form;
-- (void)setForm:(NSString *)form;
-
-- (int)year;
-- (void)setYear:(int)year;
-
 - (int)higheid;
 - (void)setHigheid:(int)eid;
 
@@ -42,6 +33,13 @@
 
 - (NSString *)homeworkJson;
 - (void)setHomeworkJson:(NSString *)json;
+
+- (void)setTimetableFormatString:(NSString *)s;
+- (NSString *)timetableFormatString;
+- (NSArray *)timetableFormat;
+- (int)periodCount;
+- (NSString *)gapNameAfterPeriod:(int)period;
+- (BOOL)isPeriodFollowedByGap:(int)period;
 
 - (NSString *)unsyncedEvents;
 - (void)setUnsyncedEvents:(NSString *)e;

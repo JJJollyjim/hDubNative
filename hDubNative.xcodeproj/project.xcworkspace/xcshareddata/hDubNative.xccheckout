@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DB8DE4DF-7A89-48D1-A701-A18B20B20254</string>
+	<key>IDESourceControlProjectName</key>
+	<string>hDubNative</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>18075EBF-0073-4287-94F0-2E1B7108D4E5</key>
+		<string>ssh://github.com/jj56/hDubNative.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>hDubNative.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>18075EBF-0073-4287-94F0-2E1B7108D4E5</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/jj56/hDubNative.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>18075EBF-0073-4287-94F0-2E1B7108D4E5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>18075EBF-0073-4287-94F0-2E1B7108D4E5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>hDubNative</string>
+		</dict>
+	</array>
+</dict>
+</plist>

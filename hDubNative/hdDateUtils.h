@@ -11,6 +11,7 @@
 @interface hdDateUtils : NSObject
 
 + (NSDate *)correctDate:(NSDate *)date;
++ (NSDate *)correctDateInverted:(NSDate *)date;
 + (BOOL)isWeekend:(NSDate *)date;
 + (NSString *)formatDate:(NSDate *)date;
 + (NSDate *)dateAtMidnight:(NSDate *)date;

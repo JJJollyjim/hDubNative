@@ -10,6 +10,7 @@
 #import "hdHomeworkEditViewController.h"
 #import "hdHomeworkDetailViewController.h"
 #import "hdHomeworkDatePickerViewController.h"
+#import "hdDataStore.h"
 #import "hdDateUtils.h"
 
 @implementation hdHomeworkEditViewController
@@ -32,6 +33,11 @@
 	UINavigationController *nav = self.navigationController;
 	UINavigationBar *navBar = nav.navigationBar;
 	navBar.tintColor = [UIColor colorWithRed:135/255.0f green:10/255.0f blue:0.0f alpha:1.0f];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.title = self.newHomeworkTask ? @"Add Task" : @"Edit Task";
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,10 +71,12 @@
 }
 
 - (IBAction)cancel:(id)sender {
-	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
-		[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
-	} else {
+	if (!self.newHomeworkTask && [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+        // Called when modifying homework on iPad
 		[self.navigationController popViewControllerAnimated:YES];
+	} else {
+        // Called when adding homework on iPad/iPhone
+		[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
 	}
 }
 
@@ -162,8 +170,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 			int doublePeriodCount = 0;
 			int lastOffsetValue = 0;
 			int doublePeriodCountNegative = 0;
-			for (int i = 0; i < 6; ++i) {
-				nothing();
+			for (int i = 0; i < [hdDataStore sharedStore].periodCount; ++i) {
 				NSString *lastSubject = [hdTimetableParser getSubjectForDay:_homeworkTask.date period:i-1];
 				BOOL incrementedI = NO;
 				while (true) {
@@ -185,7 +192,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 				doublePeriodCountNegative = doublePeriodCount;
 				lastOffsetValue = doublePeriodCount;
 			}
-			return 7 - doublePeriodCount;
+			return [hdDataStore sharedStore].periodCount + 1 - doublePeriodCount;
 	}
 	NSLog(@"ERROR!!!");
 	return 0;
@@ -287,14 +294,14 @@ NSMutableDictionary *tableViewIndexToHeightMap;
                                                                    period:((NSNumber *)([tableViewIndexToDoublePeriodOffsetMap objectForKey:
 																																	 [NSNumber numberWithInt:indexPath.row]])).integerValue];
 				int numberOfConsecutivePeriods = [self numberOfConsecutivePeriodsAtPeriodIndex:indexPath.row];
-				if (numberOfConsecutivePeriods == 6) {
+				if (numberOfConsecutivePeriods == [hdDataStore sharedStore].periodCount) {
 					cell.detailTextLabel.text = @"All day";
 					foundCorrectPeriod = YES;
 				} else if (numberOfConsecutivePeriods == 1) {
 					int period = ((NSNumber *)[tableViewIndexToDoublePeriodOffsetMap objectForKey:
 																		 [NSNumber numberWithInt:indexPath.row + 1]]).integerValue;
 					if (period == 0) {
-						period = 6;
+						period = [hdDataStore sharedStore].periodCount;
 					}
 					cell.detailTextLabel.text = [NSString stringWithFormat:@"Period %i", period];
 					if (_homeworkTask.period == period) {
@@ -343,8 +350,12 @@ UITableViewCell *selectedCell;
 			hdHomeworkDatePickerViewController *dpvc = [self.storyboard instantiateViewControllerWithIdentifier:@"hdHomeworkDatePickerViewController"];
 			dpvc.editViewController = self;
 			dpvc.dateToDisplay = _homeworkTask.date;
-			popover = [[UIPopoverController alloc] initWithContentViewController:dpvc];
-			[popover presentPopoverFromRect:[self.tableView cellForRowAtIndexPath:indexPath].frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+			if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                popover = [[UIPopoverController alloc] initWithContentViewController:dpvc];
+                [popover presentPopoverFromRect:[self.tableView cellForRowAtIndexPath:indexPath].frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            } else {
+                [self presentViewController:dpvc animated:YES completion:nil];
+            }
 		}
 		[tableView deselectRowAtIndexPath:indexPath animated:YES];
 		return;

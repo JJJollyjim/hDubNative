@@ -9,14 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "hdDataStore.h"
 
-@class hdHomeworkTask;
+@class hdHomeworkTask, hdHomeworkDataStore;
 
 @interface hdHomeworkSyncManager : NSObject {
     hdDataStore *sharedStore;
     NSMutableArray *unsyncedChanges;
+    hdHomeworkDataStore *homeworkDataStore;
 }
 
 - (void)deleteHomeworkTask:(hdHomeworkTask *)homeworkTask;
 - (void)syncAndPullChanges;
+
+@property (nonatomic) NSTimer *timer;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "hdDataStore.h"
+#import "hdJsonWrapper.h"
 
 @implementation hdDataStore
 
@@ -60,25 +61,6 @@
 	[defaults setInteger:pass forKey:@"pass"];
 }
 
-- (NSString *)name {
-	return [defaults stringForKey:@"name"];
-}
-- (void)setName:(NSString *)name {
-	[defaults setObject:name forKey:@"name"];
-}
-- (NSString *)form {
-	return [defaults stringForKey:@"form"];
-}
-- (void)setForm:(NSString *)form {
-	[defaults setObject:form forKey:@"form"];
-}
-- (int)year {
-	return [defaults integerForKey:@"year"];
-}
-- (void)setYear:(int)year {
-	[defaults setInteger:year forKey:@"year"];
-}
-
 - (int)higheid {
 	return [defaults integerForKey:@"eid"];
 }
@@ -100,6 +82,57 @@
 - (void)setHomeworkJson:(NSString *)json {
 	[defaults setObject:json forKey:@"homework"];
 	[defaults synchronize];
+}
+
+- (void)setTimetableFormatString:(NSString *)s {
+    [defaults setObject:s forKey:@"timetableFormatString"];
+	[defaults synchronize];
+}
+- (NSString *)timetableFormatString {
+	[defaults synchronize];
+	return [defaults stringForKey:@"timetableFormatString"];
+}
+- (NSArray *)timetableFormat {
+    return [hdJsonWrapper getObj:[self timetableFormatString]];
+}
+- (int)periodCount {
+    NSArray *timetableFormat = [self timetableFormat];
+    int count = 0;
+    for (NSString *s in timetableFormat) {
+        if ([s isEqualToString:@"period"])
+            ++count;
+    }
+    return count;
+}
+- (NSString *)gapNameAfterPeriod:(int)period {
+    NSArray *timetableFormat = [self timetableFormat];
+    int count = 0;
+    for (NSString *s in timetableFormat) {
+        if ([s isEqualToString:@"period"]) {
+            ++count;
+            if (count == period) {
+                // found the correct period
+                int index = count - 1;
+                int nextIndex = index + 1;
+                NSString *nextIndexString;
+                
+                @try {
+                    nextIndexString = [timetableFormat objectAtIndex:nextIndex];
+                }
+                @catch (NSException *exception) {
+                    return nil;
+                }
+                if ([nextIndexString isEqualToString:@"period"])
+                    return nil; // no gap name
+                return nextIndexString;
+            }
+        }
+    }
+    return nil;
+}
+- (BOOL)isPeriodFollowedByGap:(int)period {
+    NSString *nextGapName = [self gapNameAfterPeriod:period];
+    return nextGapName == nil ? false : true;
 }
 
 - (NSString *)unsyncedEvents {

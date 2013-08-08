@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C3103" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="wW6-uB-xjz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="wW6-uB-xjz">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
         <development version="4600" identifier="xcode"/>
@@ -213,7 +213,7 @@
             </objects>
             <point key="canvasLocation" x="2073" y="-149"/>
         </scene>
-        <!--Hd Homework Edit View Controller - Edit Homework-->
+        <!--Hd Homework Edit View Controller - Edit Task-->
         <scene sceneID="wso-gI-0Ro">
             <objects>
                 <tableViewController id="aCh-gg-O8e" customClass="hdHomeworkEditViewController" sceneMemberID="viewController">
@@ -279,7 +279,7 @@
                             <outlet property="delegate" destination="aCh-gg-O8e" id="3Cf-Q5-RZf"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit Homework" id="9DQ-yJ-em0">
+                    <navigationItem key="navigationItem" title="Edit Task" id="9DQ-yJ-em0">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="LHx-6n-bU5">
                             <connections>
                                 <action selector="cancel:" destination="aCh-gg-O8e" id="Hsg-cL-gNa"/>
@@ -299,6 +299,77 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVF-9g-uUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2499" y="-149"/>
+        </scene>
+        <!--Hd Homework Date Picker View Controller-->
+        <scene sceneID="fyU-nM-VzF">
+            <objects>
+                <viewController storyboardIdentifier="hdHomeworkDatePickerViewController" id="32z-R6-Imw" customClass="hdHomeworkDatePickerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PAu-p2-wB8">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="kf2-mj-ati">
+                                <rect key="frame" x="0.0" y="244" width="320" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="395981777.72881198">
+                                    <!--2013-07-20 02:56:17 +0000-->
+                                </date>
+                                <timeZone key="timeZone" name="America/Los_Angeles">
+                                    <data key="data">
+VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+</data>
+                                </timeZone>
+                                <connections>
+                                    <action selector="datePickerValueChanged:" destination="32z-R6-Imw" eventType="valueChanged" id="vfs-5x-Iks"/>
+                                </connections>
+                            </datePicker>
+                            <navigationBar contentMode="scaleToFill" id="YAP-dQ-0w0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.52941176469999995" green="0.039215686270000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="Select Due Date" id="cYq-bS-ltH">
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="yNu-ZJ-e4G">
+                                            <connections>
+                                                <action selector="dismissDatePickerViewController:" destination="32z-R6-Imw" id="tTe-iN-mAo"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Select a due date for the task:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I4h-ce-9FA">
+                                <rect key="frame" x="20" y="62" width="226" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.90949470766129037" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="kf2-mj-ati" id="oKn-hC-WQH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JV4-hx-5iE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2846" y="-149"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QZN-cB-pyJ">
@@ -324,12 +395,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="uaF-ta-mUx">
-                                <rect key="frame" x="9" y="53" width="303" height="159"/>
+                                <rect key="frame" x="9" y="53" width="303" height="106"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.70497833029197088" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="gUN-12-D5J">
-                                <rect key="frame" x="10" y="54" width="301" height="157"/>
+                                <rect key="frame" x="10" y="54" width="301" height="104"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.97999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
@@ -342,21 +413,21 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Student ID Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4Fj-XH-6Im">
-                                <rect key="frame" x="20" y="120" width="231" height="21"/>
+                                <rect key="frame" x="20" y="64" width="231" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="9079" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tgf-85-fKB">
-                                <rect key="frame" x="190" y="120" width="110" height="21"/>
+                                <rect key="frame" x="190" y="64" width="110" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="V6F-Oo-pYf" customClass="hdWhiteButton">
-                                <rect key="frame" x="165" y="154" width="135" height="44"/>
+                                <rect key="frame" x="165" y="105" width="135" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" title="Reload Timetable">
@@ -368,7 +439,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="dRP-JJ-fxR" customClass="hdWhiteButton">
-                                <rect key="frame" x="20" y="154" width="135" height="44"/>
+                                <rect key="frame" x="20" y="105" width="135" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" title="Logout">
@@ -417,42 +488,12 @@
                                     <action selector="sendEmail:" destination="bba-Db-6fG" eventType="touchUpInside" id="kpX-KL-Zqz"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xhu-1e-oht">
-                                <rect key="frame" x="20" y="62" width="51" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Form Class:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="99o-vy-zM4">
-                                <rect key="frame" x="20" y="91" width="92" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Jessica Fenton" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kCp-zS-LCU">
-                                <rect key="frame" x="185" y="62" width="115" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="13SCHE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Knm-uY-4v3">
-                                <rect key="frame" x="233" y="91" width="67" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="settings.png" id="HmK-Nd-SQ2"/>
                     <connections>
-                        <outlet property="formLabel" destination="Knm-uY-4v3" id="lIV-DG-bTt"/>
                         <outlet property="kwiiusButton" destination="Rtb-sV-nwV" id="l37-n3-8pD"/>
-                        <outlet property="nameLabel" destination="kCp-zS-LCU" id="Hbt-md-DnA"/>
                         <outlet property="reloadTimetableButton" destination="V6F-Oo-pYf" id="J0Q-tn-vI5"/>
                         <outlet property="sidLabel" destination="tgf-85-fKB" id="FXv-l1-xhp"/>
                     </connections>
@@ -503,6 +544,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="hpm-lg-CaS" kind="modal" id="Nh7-EF-CpR"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -524,6 +568,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="opm-q6-FsI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="134" y="-716"/>
+        </scene>
+        <!--Table View Controller - Title Text-->
+        <scene sceneID="KfD-id-5iR">
+            <objects>
+                <tableViewController id="V5f-v7-8S2" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="csC-Gt-esh">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections/>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title Text" id="znn-43-blZ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5GN-Xg-s4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="977" y="-716"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qyf-mm-TwG">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="hpm-lg-CaS" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yDP-UP-8lq">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="5YH-qg-Eeh">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="V5f-v7-8S2" kind="relationship" relationship="rootViewController" id="lNL-aq-14c"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q4k-Kj-SqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="551" y="-716"/>
         </scene>
         <!--Hd Timetable Date Picker View Controller - Go to-->
         <scene sceneID="cfD-Th-7h8">
@@ -599,7 +678,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y21-cZ-50H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="542" y="-716"/>
+            <point key="canvasLocation" x="134" y="-1298"/>
         </scene>
         <!--Hd Tab View Controller-->
         <scene sceneID="TRP-Tc-Reo">
@@ -628,6 +707,61 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="settings.png" width="26" height="24"/>
         <image name="timetable.png" width="23" height="25"/>
     </resources>
+    <classes>
+        <class className="hdHomeworkDatePickerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkDatePickerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="datePickerValueChanged:"/>
+                <relationship kind="action" name="dismissDatePickerViewController:"/>
+            </relationships>
+        </class>
+        <class className="hdHomeworkDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="done:"/>
+            </relationships>
+        </class>
+        <class className="hdHomeworkEditViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkEditViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="hdHomeworkViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkViewController.h"/>
+        </class>
+        <class className="hdRedButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdRedButton.h"/>
+        </class>
+        <class className="hdSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:"/>
+                <relationship kind="action" name="openKwiiusWebsite:"/>
+                <relationship kind="action" name="reloadTimetable:"/>
+                <relationship kind="action" name="sendEmail:"/>
+                <relationship kind="outlet" name="kwiiusButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="reloadTimetableButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sidLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="hdTabViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTabViewController.h"/>
+        </class>
+        <class className="hdTimetableDatePickerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTimetableDatePickerViewController.h"/>
+        </class>
+        <class className="hdTimetableTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTimetableTableViewController.h"/>
+        </class>
+        <class className="hdWhiteButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdWhiteButton.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

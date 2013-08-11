@@ -14,11 +14,9 @@
 @interface hdHomeworkViewController : UITableViewController
 
 @property (nonatomic) NSString *homeworkJsonString;
-@property (nonatomic) hdHomeworkDataStore *parser;
+@property (nonatomic) hdHomeworkDataStore *homeworkDataStore;
 @property (nonatomic) hdHomeworkSyncManager *syncManager;
 
-- (void)deleteHomeworkTaskWithSection:(int)section dayIndex:(int)dayIndex;
-- (void)setHomeworkTask:(hdHomeworkTask *)homeworkTask inSection:(int)section row:(int)row;
 - (IBAction)goToToday:(id)sender;
 
 @end

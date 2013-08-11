@@ -146,7 +146,7 @@ hdTimetableDatePickerViewController *cache = nil;
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hdTimetableCell"];
 	}
 	// Configure the cell...
-	NSString *subject = [hdTimetableParser getSubjectForDay:dateShown period:indexPath.row rootObj:timetableRootObject];
+	NSString *subject = [hdTimetableParser getSubjectForDay:dateShown period:(indexPath.row + 1) rootObj:timetableRootObject];
 	cell.textLabel.text = subject;
 	
 	return cell;

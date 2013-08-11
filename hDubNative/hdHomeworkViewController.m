@@ -22,7 +22,7 @@
 
 @implementation hdHomeworkViewController
 
-@synthesize homeworkJsonString, parser;
+@synthesize homeworkJsonString, homeworkDataStore;
 
 - (id)initWithStyle:(UITableViewStyle)style {
 	self = [super initWithStyle:style];
@@ -42,16 +42,17 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	self.homeworkJsonString = [hdDataStore sharedStore].homeworkJson;
-	self.parser = [[hdHomeworkDataStore alloc] init];
+	self.homeworkDataStore = [[hdHomeworkDataStore alloc] init];
+    self.homeworkDataStore.tableView = self.tableView;
     self.syncManager = [[hdHomeworkSyncManager alloc] init];
     [self.syncManager syncAndPullChanges];
 	[self.tableView reloadData];
-	int sectionToScrollTo = [self.parser sectionToScrollToWhenTableViewBecomesVisible];
-	if ([self.parser numberOfSectionsInTableView] != 0)
-		[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
-                                                                  inSection:(sectionToScrollTo == -1 ? ([self.parser numberOfSectionsInTableView] - 1) : sectionToScrollTo)]
-													atScrollPosition:UITableViewScrollPositionTop
-																	 animated:NO];
+	//int sectionToScrollTo = [self.parser sectionToScrollToWhenTableViewBecomesVisible];
+	//if ([self.parser numberOfSectionsInTableView] != 0)
+	//	[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
+    //                                                              inSection:(sectionToScrollTo == -1 ? ([self.parser numberOfSectionsInTableView] - 1) : sectionToScrollTo)]
+	//												atScrollPosition:UITableViewScrollPositionTop
+	//																 animated:NO];
 	[super viewWillAppear:animated];
 }
 
@@ -68,45 +69,38 @@
 		hdHomeworkDetailViewController *detailViewController = (hdHomeworkDetailViewController *)navigationController.topViewController;
 		UITableViewCell *selectedTableViewCell = (UITableViewCell *)sender;
 		NSIndexPath *indexPath = [self.tableView indexPathForCell:selectedTableViewCell];
-		hdHomeworkTask *homeworkTask = [self.parser getHomeworkTaskForSection:indexPath.section id:indexPath.row];
+		hdHomeworkTask *homeworkTask = [self.homeworkDataStore homeworkTaskAtIndexPath:indexPath];
 		detailViewController.homeworkTask = homeworkTask;
 		detailViewController.homeworkViewController = self;
+        detailViewController.homeworkDataStore = self.homeworkDataStore;
 		detailViewController.section = indexPath.section;
-		detailViewController.dayIndex = indexPath.row;
+		detailViewController.row = indexPath.row;
 	} else if ([segue.identifier isEqualToString:@"hdHomeworkEditViewControllerSegueFromHomeworkViewController"]) {
 		// New homework task
 		hdHomeworkEditViewController *editViewController;
 		UINavigationController *navigationController = (UINavigationController *)segue.destinationViewController;
 		editViewController = (hdHomeworkEditViewController *)navigationController.topViewController;
 		editViewController.homeworkTask = [[hdHomeworkTask alloc] init];
-		NSTimeInterval ti = 86400;
-		for (;;) {
-			if ([hdDateUtils isWeekend:editViewController.homeworkTask.date] || [hdTimetableParser getSubjectForDay:editViewController.homeworkTask.date period:1] == nil) {
-				editViewController.homeworkTask.date = [editViewController.homeworkTask.date dateByAddingTimeInterval:ti];
-			} else {
-				break;
-			}
-		}
 		editViewController.previousViewController = self;
+        editViewController.homeworkDataStore = self.homeworkDataStore;
 		editViewController.newHomeworkTask = YES;
 	}
 }
 
 #pragma mark - Table view data source
 
-int sectionCount = 0;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	sectionCount = [self.parser numberOfSectionsInTableView];
+	int sectionCount = [self.homeworkDataStore numberOfSections];
     [self updateBackgroundIfEmpty];
     return sectionCount;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return [self.parser getTableSectionHeadingForDayId:section];
+	return [self.homeworkDataStore titleForHeaderInSection:section];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	int rowCount = [self.parser numberOfCellsInSection:section];
+	int rowCount = [self.homeworkDataStore numberOfRowsInSection:section];
     return rowCount;
 }
 
@@ -119,19 +113,19 @@ int sectionCount = 0;
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hdTimetableCell"];
 	}
 	
-	hdHomeworkTask *hw = [self.parser getHomeworkTaskForSection:indexPath.section id:indexPath.row];
+	hdHomeworkTask *hw = [self.homeworkDataStore homeworkTaskAtIndexPath:indexPath];
 	cell.textLabel.text = hw.name;
 	if (hw.period == 0) {
 		cell.detailTextLabel.text = [NSString stringWithFormat:@"All day"];
-	} else {
-		cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (Period %i)", hw.subject, hw.period];
+    } else {
+		cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ (Period %i)", [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:hw.date] period:hw.period], hw.period];
 	}
 	
 	return cell;
 }
 
 - (void)updateBackgroundIfEmpty {
-	sectionCount = [self.parser numberOfSectionsInTableView];
+	int sectionCount = [self.homeworkDataStore numberOfSections];
     if (sectionCount == 0) {
         UIImage *image = [UIImage imageNamed:@"Kwiius Logo.png"];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
@@ -149,81 +143,27 @@ int sectionCount = 0;
 	return 65;
 }
 
- // Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	// Return NO if you do not want the specified item to be editable.
-	return YES;
-}
-
-- (void)setHomeworkTask:(hdHomeworkTask *)homeworkTask inSection:(int)section row:(int)row {
-	[self.parser setHomeworkTask:homeworkTask tableView:self.tableView section:section row:row];
-}
-
 - (IBAction)goToToday:(id)sender {
-	int sectionToScrollTo = [self.parser sectionToScrollToWhenTableViewBecomesVisible];
-	if ([self.parser numberOfSectionsInTableView] != 0)
-		[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
-                                                                  inSection:(sectionToScrollTo == -1 ? ([self.parser numberOfSectionsInTableView] - 1) : sectionToScrollTo)]
-                              atScrollPosition:UITableViewScrollPositionTop
-                                      animated:YES];
+	//int sectionToScrollTo = [self.parser sectionToScrollToWhenTableViewBecomesVisible];
+	//if ([self.parser numberOfSectionsInTableView] != 0)
+		//[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
+    //  /                      atScrollPosition:UITableViewScrollPositionTop
+    //animated:YES];
 }
 
-// Called when server requests deletion of homework task
-- (void)deleteHomeworkTaskWithSection:(int)section dayIndex:(int)dayIndex {
-    //TODO[self.parser ]
-	BOOL deletedSections = [self.parser deleteCellAtDayIndex:section id:dayIndex];
-	[self.tableView beginUpdates];
-	if (deletedSections) {
-		[self.tableView deleteSections:[NSIndexSet indexSetWithIndex:section]
-									withRowAnimation:UITableViewRowAnimationLeft];
-	} else {
-		[self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:dayIndex inSection:section]]
-                              withRowAnimation:UITableViewRowAnimationLeft];
-	}
-	[self.tableView endUpdates];
-}
-
-// Override to support editing the table view.
+// User is editing the table view
 - (void)tableView:(UITableView *)tableView
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
  forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
 		// Delete the row from the data source
-        hdHomeworkTask *task = [self.parser getHomeworkTaskForSection:indexPath.section id:indexPath.row];
-        [self.syncManager deleteHomeworkTask:task];
-        
-		BOOL deletedSections = [self.parser deleteCellAtDayIndex:indexPath.section id:indexPath.row];
-		
-		[tableView beginUpdates];
-		if (deletedSections) {
-			[tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
-		} else {
-			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-		}
+        [self.homeworkDataStore deleteHomeworkTaskAtIndexPath:indexPath];
         [self updateBackgroundIfEmpty];
-		[tableView endUpdates];
 	}
 	else if (editingStyle == UITableViewCellEditingStyleInsert) {
 		// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 	}
 }
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "hdHomeworkTask.h"
+#import "hdHomeworkDataStore.h"
 
 @interface hdHomeworkDetailViewController : UIViewController
 <UITableViewDataSource,
@@ -21,8 +22,9 @@ UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) hdHomeworkTask *homeworkTask;
 @property (nonatomic) int section;
-@property (nonatomic) int dayIndex;
+@property (nonatomic) int row;
 @property (nonatomic) id homeworkViewController;
+@property (nonatomic) hdHomeworkDataStore *homeworkDataStore;
 @property (nonatomic) UIActionSheet *actionSheet;
 @property (nonatomic) BOOL updated;
 

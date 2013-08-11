@@ -10,10 +10,11 @@
 #import "hdDateUtils.h"
 #import "hdHomeworkViewController.h"
 #import "hdHomeworkEditViewController.h"
+#import "hdTimetableParser.h"
 
 @implementation hdHomeworkDetailViewController
 
-@synthesize homeworkTask, homeworkTitle, homeworkDetailTextView, homeworkDataTableView, homeworkViewController, noDetailsLabel;
+@synthesize homeworkTask, homeworkTitle, homeworkDetailTextView, homeworkDataTableView, homeworkViewController, noDetailsLabel, homeworkDataStore;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,17 +46,14 @@
 		homeworkDetailTextView.hidden = NO;
 		homeworkDetailTextView.text = homeworkTask.details;
 	}
-	self.title = [NSString stringWithFormat:@"%@ Homework", homeworkTask.period == 0 ? @"All Day" : homeworkTask.subject];
+	self.title = [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:homeworkTask.date] period:homeworkTask.period];
 	[self.tableView reloadData];
 }
 
-// Called when user is finished editing a homework task, just before view returns to this view
+// Called when user is finished editing a homework task, just before view returns to this view controller
 - (void)updateHomeworkTask:(hdHomeworkTask *)ht {
 	self.updated = YES;
 	self.homeworkTask = ht;
-    self.homeworkTask.subject = [hdTimetableParser getSubjectForDay:self.homeworkTask.date period:self.homeworkTask.period - 1];
-    self.homeworkTask.room = [hdTimetableParser getRoomForDay:self.homeworkTask.date period:self.homeworkTask.period - 1];
-    self.homeworkTask.teacher = [hdTimetableParser getTeacherForDay:self.homeworkTask.date period:self.homeworkTask.period - 1];
     [self.tableView reloadData];
 }
 
@@ -83,6 +81,7 @@
 		}
 		editViewController.homeworkTask = [self.homeworkTask copy];
 		editViewController.previousViewController = self;
+        editViewController.homeworkDataStore = self.homeworkDataStore;
 		editViewController.newHomeworkTask = NO;
 	}
 }
@@ -90,26 +89,33 @@
 // User dismissed hdHomeworkDetailViewController
 - (IBAction)done:(id)sender {
 	if (self.updated == YES) {
-		[((hdHomeworkViewController *)self.homeworkViewController) setHomeworkTask:self.homeworkTask inSection:self.section row:self.dayIndex];
+		[homeworkDataStore updateHomeworkTaskWithId:self.homeworkTask.hwid withNewHomeworkTask:self.homeworkTask];
 		self.updated = NO;
 	}
 	[homeworkViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)deleteHomeworkTask:(id)sender {
-	self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete homework task?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Delete" otherButtonTitles:nil];
+	self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"Delete homework task?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                     destructiveButtonTitle:@"Delete"
+                                          otherButtonTitles:nil];
 	[self.actionSheet showFromRect:self.deleteButton.frame inView:self.view animated:YES];
 }
 
-// Action sheet containing only the delete button: homework task has been deleted
+// Action sheet containing only the delete button:
+//   homework task has been deleted
 - (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
 	if (buttonIndex == 0) {
-		[(hdHomeworkViewController *)homeworkViewController deleteHomeworkTaskWithSection:self.section dayIndex:self.dayIndex];
+		[homeworkDataStore deleteHomeworkTaskAtIndexPath:[NSIndexPath indexPathForRow:self.row inSection:self.section]];
 		[homeworkViewController dismissViewControllerAnimated:YES completion:nil];
 	}
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSString *room = [hdTimetableParser getRoomForDay:[hdDateUtils jsonDateToDate:homeworkTask.date]
+                                               period:homeworkTask.period];
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         noDetailsLabel.frame = CGRectMake(232, 323, 76, 21);
         homeworkDetailTextView.frame = CGRectMake(55, 299, 415, 186);
@@ -123,7 +129,7 @@
                                               noDetailsLabel.frame.size.width,
                                               noDetailsLabel.frame.size.height);
 		}
-		if (homeworkTask.room.length == 0) {
+		if (room.length == 0) {
 			homeworkDetailTextView.frame = CGRectMake(homeworkDetailTextView.frame.origin.x,
                                                       homeworkDetailTextView.frame.origin.y - 44,
                                                       homeworkDetailTextView.frame.size.width,
@@ -141,7 +147,7 @@
 		if (homeworkTask.period == 0) {
 			return 2;
 		}
-		if (homeworkTask.room.length == 0) {
+		if (room.length == 0) {
 			return 3;
 		} else {
 			return 4;
@@ -164,19 +170,20 @@
 		if (homeworkTask.period == 0)
 			cell.detailTextLabel.text = @"All day";
 		else
-			cell.detailTextLabel.text = homeworkTask.subject;
+			cell.detailTextLabel.text = [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:homeworkTask.date]
+                                                                     period:homeworkTask.period];
 	} else if (indexPath.row == 1) {
 		cell.textLabel.text = @"Due";
 		if (homeworkTask.period == 0)
-			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [hdDateUtils formatDate:homeworkTask.date]];
+			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [hdDateUtils formatDate:[hdDateUtils jsonDateToDate:homeworkTask.date]]];
 		else
-			cell.detailTextLabel.text = [NSString stringWithFormat:@"Period %i, %@", homeworkTask.period, [hdDateUtils formatDate:homeworkTask.date]];
+			cell.detailTextLabel.text = [NSString stringWithFormat:@"Period %i, %@", homeworkTask.period, [hdDateUtils formatDate:[hdDateUtils jsonDateToDate:homeworkTask.date]]];
 	} else if (indexPath.row == 2) {
 		cell.textLabel.text = @"Teacher";
-		cell.detailTextLabel.text = homeworkTask.teacher;
+		cell.detailTextLabel.text = [hdTimetableParser getTeacherForDay:[hdDateUtils jsonDateToDate:homeworkTask.date] period:homeworkTask.period];
 	} else if (indexPath.row == 3) {
 		cell.textLabel.text = @"Room";
-		cell.detailTextLabel.text = homeworkTask.room;
+		cell.detailTextLabel.text = [hdTimetableParser getRoomForDay:[hdDateUtils jsonDateToDate:homeworkTask.date] period:homeworkTask.period];
 	}
 
 	

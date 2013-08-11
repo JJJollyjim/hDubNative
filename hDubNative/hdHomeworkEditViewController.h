@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "hdHomeworkTask.h"
 #import "hdTimetableParser.h"
+#import "hdHomeworkDataStore.h" 
 
 @interface hdHomeworkEditViewController : UITableViewController <UITableViewDelegate> {
 	UITextField *nameTextField;
@@ -18,6 +19,7 @@
 
 @property (nonatomic) hdHomeworkTask *homeworkTask;
 @property (nonatomic) id previousViewController;
+@property (nonatomic) hdHomeworkDataStore *homeworkDataStore;
 @property (nonatomic) BOOL newHomeworkTask;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;

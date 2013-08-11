@@ -13,23 +13,48 @@
 
 @interface hdHomeworkDataStore : NSObject {
 	hdDataStore *sharedStore;
-	NSMutableArray *homeworkTasksByDay;
-	NSMutableDictionary *jsonDateStringToDayIndexMap;
-	NSMutableDictionary *dayIndexToHomeworkIndexMap;
-	NSMutableDictionary *dayIndexToHomeworkCountOnDayMap;
+    NSMutableArray *homeworkTasks; // Sorted array of hdHomeworkTasks
 	int higheid;
-	int totalHomeworkCount;
-	int totalDayCount;
 }
 
-- (int)numberOfSectionsInTableView;
-- (int)numberOfCellsInSection:(int)section;
-- (hdHomeworkTask *)getHomeworkTaskForSection:(int)dayIndex id:(int)hwidx;
-- (NSString *)getTableSectionHeadingForDayId:(int)dayIndex;
-- (BOOL)deleteCellAtDayIndex:(int)dayIndex id:(int)hwidx;
-- (void)deleteHomeworkTaskWithHwid:(NSString *)hwid;
-- (void)setHomeworkTask:(hdHomeworkTask *)task tableView:(UITableView *)tableView section:(int)section row:(int)row;
-- (int)sectionToScrollToWhenTableViewBecomesVisible;
-- (NSMutableArray *)getHomeworkTasksByDay;
+#pragma mark - Properties
+
+@property (nonatomic) UITableView *tableView;
+
+
+
+#pragma mark - Initialization
+
+- (void)initializeHomeworkDataStore;
+- (void)sortHomeworkTasks;
+- (void)storeHomeworkTasks;
+
+
+
+#pragma mark - UITableViewDelegate methods
+
+- (int)numberOfSections;
+- (int)numberOfRowsInSection:(int)section;
+- (NSString *)titleForHeaderInSection:(int)section;
+
+
+#pragma mark - Homework Task and Index Path Conversion Methods
+
+- (NSIndexPath *)indexPathOfHomeworkTask:(hdHomeworkTask *)homeworkTask;
+- (NSIndexPath *)indexPathOfHomeworkTaskWithId:(NSString *)hwid;
+- (hdHomeworkTask *)homeworkTaskAtIndexPath:(NSIndexPath *)indexPath;
+
+
+- (void)deleteHomeworkTaskWithId:(NSString *)hwid
+                       indexPath:(NSIndexPath *)ip;
+- (void)deleteHomeworkTaskWithId:(NSString *)hwid;
+- (void)deleteHomeworkTaskAtIndexPath:(NSIndexPath *)ip;
+
+
+#pragma mark - Homework Task Addition Methods
+
+- (void)addHomeworkTask:(hdHomeworkTask *)homeworkTask;
+- (void)updateHomeworkTaskWithId:(NSString *)hwid
+             withNewHomeworkTask:(hdHomeworkTask *)task;
 
 @end

@@ -24,15 +24,6 @@
 		CD1E8A1516BF89E900EF853C /* timetable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1216BF89E900EF853C /* timetable@2x.png */; };
 		CD1E8A1616BF89E900EF853C /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1316BF89E900EF853C /* settings@2x.png */; };
 		CD1E8A1716BF89E900EF853C /* homework@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1416BF89E900EF853C /* homework@2x.png */; };
-		CD1E8A1A16BF8D0500EF853C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1916BF8D0500EF853C /* Default.png */; };
-		CD1E8A1C16BF8D0900EF853C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1B16BF8D0900EF853C /* Default@2x.png */; };
-		CD1E8A1E16BF8D0B00EF853C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1D16BF8D0B00EF853C /* Default-568h@2x.png */; };
-		CD1E8A2016BF8D2900EF853C /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A1F16BF8D2900EF853C /* Default-Portrait~ipad.png */; };
-		CD1E8A2216BF8D2C00EF853C /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2116BF8D2C00EF853C /* Default-Portrait@2x~ipad.png */; };
-		CD1E8A2616BF8FBE00EF853C /* IconiPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2516BF8FBD00EF853C /* IconiPhone.png */; };
-		CD1E8A2816BF8FC200EF853C /* IconiPhoneR.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2716BF8FC200EF853C /* IconiPhoneR.png */; };
-		CD1E8A2A16BF8FC900EF853C /* IconiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2916BF8FC800EF853C /* IconiPad.png */; };
-		CD1E8A2C16BF8FCB00EF853C /* IconiPadR.png in Resources */ = {isa = PBXBuildFile; fileRef = CD1E8A2B16BF8FCB00EF853C /* IconiPadR.png */; };
 		CD1F4B2616E5A41900743967 /* Storyboard-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD1F4B2516E5A41900743967 /* Storyboard-iPad.storyboard */; };
 		CD24DC1116FD503E00D9E56D /* hdHomeworkDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD24DC1016FD503E00D9E56D /* hdHomeworkDatePickerViewController.m */; };
 		CD32C05116C0C2AB00AA0569 /* hdHTTPWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CD32C05016C0C2AB00AA0569 /* hdHTTPWrapper.m */; };
@@ -51,7 +42,6 @@
 		CD5F6AB116CE31ED00D7EEBD /* iPhoneLoginBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5F6AAD16CE31ED00D7EEBD /* iPhoneLoginBG@2x.png */; };
 		CD5F6AB416CE370600D7EEBD /* LoginIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5F6AB216CE370600D7EEBD /* LoginIcon.png */; };
 		CD5F6AB516CE370600D7EEBD /* LoginIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CD5F6AB316CE370600D7EEBD /* LoginIcon@2x.png */; };
-		CD5F6AC816CEED1F00D7EEBD /* hdNotificationApi.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F6AC716CEED1F00D7EEBD /* hdNotificationApi.m */; };
 		CD5F6ACB16CF7EAB00D7EEBD /* hdHomeworkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD5F6ACA16CF7EAB00D7EEBD /* hdHomeworkViewController.m */; };
 		CD62780716E2D481003D3C8F /* hdRedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD62780616E2D481003D3C8F /* hdRedButton.m */; };
 		CD685A7816C6358200DD4013 /* hdDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CD685A7716C6358200DD4013 /* hdDateUtils.m */; };
@@ -76,7 +66,18 @@
 		CD8C425116CB7E28007B2186 /* hdWhiteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8C425016CB7E28007B2186 /* hdWhiteButton.m */; };
 		CDAF246F16E2CF4F003CF9F5 /* hdHomeworkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */; };
 		CDF1BB9016D71E2700A10129 /* hdHomeworkTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF1BB8F16D71E2700A10129 /* hdHomeworkTask.m */; };
-		F3948EDD179B7D27006482BC /* hdTimetableTableDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3948EDC179B7D27006482BC /* hdTimetableTableDetailViewController.m */; };
+		F393C97B17B77EFB0076BD78 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C97417B77EFB0076BD78 /* Default-568h@2x.png */; };
+		F393C97C17B77EFB0076BD78 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C97517B77EFB0076BD78 /* Default-Landscape@2x~ipad.png */; };
+		F393C97D17B77EFB0076BD78 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C97617B77EFB0076BD78 /* Default-Landscape~ipad.png */; };
+		F393C97E17B77EFB0076BD78 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C97717B77EFB0076BD78 /* Default-Portrait@2x~ipad.png */; };
+		F393C97F17B77EFB0076BD78 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C97817B77EFB0076BD78 /* Default-Portrait~ipad.png */; };
+		F393C98017B77EFB0076BD78 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C97917B77EFB0076BD78 /* Default.png */; };
+		F393C98117B77EFB0076BD78 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C97A17B77EFB0076BD78 /* Default@2x.png */; };
+		F393C98617B77F110076BD78 /* IconiPad.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C98217B77F110076BD78 /* IconiPad.png */; };
+		F393C98717B77F110076BD78 /* IconiPadR.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C98317B77F110076BD78 /* IconiPadR.png */; };
+		F393C98817B77F110076BD78 /* IconiPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C98417B77F110076BD78 /* IconiPhone.png */; };
+		F393C98917B77F110076BD78 /* IconiPhoneR.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C98517B77F110076BD78 /* IconiPhoneR.png */; };
+		F393C98C17B77F750076BD78 /* hdTimetableTableDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F393C98B17B77F750076BD78 /* hdTimetableTableDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,15 +105,6 @@
 		CD1E8A1216BF89E900EF853C /* timetable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timetable@2x.png"; sourceTree = "<group>"; };
 		CD1E8A1316BF89E900EF853C /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		CD1E8A1416BF89E900EF853C /* homework@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homework@2x.png"; sourceTree = "<group>"; };
-		CD1E8A1916BF8D0500EF853C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		CD1E8A1B16BF8D0900EF853C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		CD1E8A1D16BF8D0B00EF853C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		CD1E8A1F16BF8D2900EF853C /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
-		CD1E8A2116BF8D2C00EF853C /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
-		CD1E8A2516BF8FBD00EF853C /* IconiPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPhone.png; sourceTree = "<group>"; };
-		CD1E8A2716BF8FC200EF853C /* IconiPhoneR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPhoneR.png; sourceTree = "<group>"; };
-		CD1E8A2916BF8FC800EF853C /* IconiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPad.png; sourceTree = "<group>"; };
-		CD1E8A2B16BF8FCB00EF853C /* IconiPadR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconiPadR.png; sourceTree = "<group>"; };
 		CD1F4B2516E5A41900743967 /* Storyboard-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Storyboard-iPad.storyboard"; sourceTree = "<group>"; };
 		CD24DC0F16FD503E00D9E56D /* hdHomeworkDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkDatePickerViewController.h; sourceTree = "<group>"; };
 		CD24DC1016FD503E00D9E56D /* hdHomeworkDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkDatePickerViewController.m; sourceTree = "<group>"; };
@@ -142,8 +134,6 @@
 		CD5F6AAD16CE31ED00D7EEBD /* iPhoneLoginBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhoneLoginBG@2x.png"; sourceTree = "<group>"; };
 		CD5F6AB216CE370600D7EEBD /* LoginIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginIcon.png; sourceTree = "<group>"; };
 		CD5F6AB316CE370600D7EEBD /* LoginIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginIcon@2x.png"; sourceTree = "<group>"; };
-		CD5F6AC616CEED1F00D7EEBD /* hdNotificationApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdNotificationApi.h; sourceTree = "<group>"; };
-		CD5F6AC716CEED1F00D7EEBD /* hdNotificationApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdNotificationApi.m; sourceTree = "<group>"; };
 		CD5F6AC916CF7EAB00D7EEBD /* hdHomeworkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkViewController.h; sourceTree = "<group>"; };
 		CD5F6ACA16CF7EAB00D7EEBD /* hdHomeworkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkViewController.m; sourceTree = "<group>"; };
 		CD62780516E2D481003D3C8F /* hdRedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdRedButton.h; sourceTree = "<group>"; };
@@ -177,8 +167,19 @@
 		CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkDetailViewController.m; sourceTree = "<group>"; };
 		CDCBAE8216CF904500064D0A /* hdHomeworkTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkTask.h; sourceTree = "<group>"; };
 		CDF1BB8F16D71E2700A10129 /* hdHomeworkTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkTask.m; sourceTree = "<group>"; };
-		F3948EDB179B7D26006482BC /* hdTimetableTableDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hdTimetableTableDetailViewController.h; path = ../hdTimetableTableDetailViewController.h; sourceTree = "<group>"; };
-		F3948EDC179B7D27006482BC /* hdTimetableTableDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = hdTimetableTableDetailViewController.m; path = ../hdTimetableTableDetailViewController.m; sourceTree = "<group>"; };
+		F393C97417B77EFB0076BD78 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Images/Launch Images/Default-568h@2x.png"; sourceTree = "<group>"; };
+		F393C97517B77EFB0076BD78 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "Images/Launch Images/Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		F393C97617B77EFB0076BD78 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Images/Launch Images/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		F393C97717B77EFB0076BD78 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "Images/Launch Images/Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		F393C97817B77EFB0076BD78 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "Images/Launch Images/Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		F393C97917B77EFB0076BD78 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = "Images/Launch Images/Default.png"; sourceTree = "<group>"; };
+		F393C97A17B77EFB0076BD78 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Images/Launch Images/Default@2x.png"; sourceTree = "<group>"; };
+		F393C98217B77F110076BD78 /* IconiPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IconiPad.png; path = "Images/App Icons/IconiPad.png"; sourceTree = "<group>"; };
+		F393C98317B77F110076BD78 /* IconiPadR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IconiPadR.png; path = "Images/App Icons/IconiPadR.png"; sourceTree = "<group>"; };
+		F393C98417B77F110076BD78 /* IconiPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IconiPhone.png; path = "Images/App Icons/IconiPhone.png"; sourceTree = "<group>"; };
+		F393C98517B77F110076BD78 /* IconiPhoneR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IconiPhoneR.png; path = "Images/App Icons/IconiPhoneR.png"; sourceTree = "<group>"; };
+		F393C98A17B77F750076BD78 /* hdTimetableTableDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdTimetableTableDetailViewController.h; sourceTree = "<group>"; };
+		F393C98B17B77F750076BD78 /* hdTimetableTableDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdTimetableTableDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,16 +292,18 @@
 			name = TabBarIcons;
 			sourceTree = "<group>";
 		};
-		CD1E8A2316BF8F3500EF853C /* Splashscreens */ = {
+		CD1E8A2316BF8F3500EF853C /* Launch Images */ = {
 			isa = PBXGroup;
 			children = (
-				CD1E8A2116BF8D2C00EF853C /* Default-Portrait@2x~ipad.png */,
-				CD1E8A1F16BF8D2900EF853C /* Default-Portrait~ipad.png */,
-				CD1E8A1D16BF8D0B00EF853C /* Default-568h@2x.png */,
-				CD1E8A1B16BF8D0900EF853C /* Default@2x.png */,
-				CD1E8A1916BF8D0500EF853C /* Default.png */,
+				F393C97417B77EFB0076BD78 /* Default-568h@2x.png */,
+				F393C97517B77EFB0076BD78 /* Default-Landscape@2x~ipad.png */,
+				F393C97617B77EFB0076BD78 /* Default-Landscape~ipad.png */,
+				F393C97717B77EFB0076BD78 /* Default-Portrait@2x~ipad.png */,
+				F393C97817B77EFB0076BD78 /* Default-Portrait~ipad.png */,
+				F393C97917B77EFB0076BD78 /* Default.png */,
+				F393C97A17B77EFB0076BD78 /* Default@2x.png */,
 			);
-			name = Splashscreens;
+			name = "Launch Images";
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -337,8 +340,6 @@
 		CD32C06916C1F02D00AA0569 /* Wrappers */ = {
 			isa = PBXGroup;
 			children = (
-				CD5F6AC616CEED1F00D7EEBD /* hdNotificationApi.h */,
-				CD5F6AC716CEED1F00D7EEBD /* hdNotificationApi.m */,
 				CD32C05516C0C2D800AA0569 /* Server Communication */,
 				CD32C06416C1C6F400AA0569 /* NSUserDefaults */,
 				CD32C06D16C1F1FF00AA0569 /* hdStudent.h */,
@@ -350,10 +351,10 @@
 		CD32C06A16C1F0D700AA0569 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				CD1E8A2B16BF8FCB00EF853C /* IconiPadR.png */,
-				CD1E8A2916BF8FC800EF853C /* IconiPad.png */,
-				CD1E8A2716BF8FC200EF853C /* IconiPhoneR.png */,
-				CD1E8A2516BF8FBD00EF853C /* IconiPhone.png */,
+				F393C98217B77F110076BD78 /* IconiPad.png */,
+				F393C98317B77F110076BD78 /* IconiPadR.png */,
+				F393C98417B77F110076BD78 /* IconiPhone.png */,
+				F393C98517B77F110076BD78 /* IconiPhoneR.png */,
 			);
 			name = Icons;
 			path = ..;
@@ -367,7 +368,7 @@
 				CD6E918316C769FB00BCDCFB /* Kwiius Logo.png */,
 				CD32C06A16C1F0D700AA0569 /* Icons */,
 				CD1E8A1816BF89EF00EF853C /* TabBarIcons */,
-				CD1E8A2316BF8F3500EF853C /* Splashscreens */,
+				CD1E8A2316BF8F3500EF853C /* Launch Images */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -386,8 +387,8 @@
 		CD32C07816C21D5100AA0569 /* Timetable */ = {
 			isa = PBXGroup;
 			children = (
-				F3948EDB179B7D26006482BC /* hdTimetableTableDetailViewController.h */,
-				F3948EDC179B7D27006482BC /* hdTimetableTableDetailViewController.m */,
+				F393C98A17B77F750076BD78 /* hdTimetableTableDetailViewController.h */,
+				F393C98B17B77F750076BD78 /* hdTimetableTableDetailViewController.m */,
 				CD6E918016C7353200BCDCFB /* hdTimetableDatePickerViewController.h */,
 				CD6E918116C7353200BCDCFB /* hdTimetableDatePickerViewController.m */,
 				CD694E4916C3A9E1006264DC /* hdTimetableTableViewController.h */,
@@ -455,8 +456,8 @@
 				CD24DC1016FD503E00D9E56D /* hdHomeworkDatePickerViewController.m */,
 				CD0330E216EB20B20043AA13 /* hdHomeworkEditViewController.h */,
 				CD0330E316EB20B20043AA13 /* hdHomeworkEditViewController.m */,
-				CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */,
 				CDAF246D16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.h */,
+				CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */,
 				CD5F6AC916CF7EAB00D7EEBD /* hdHomeworkViewController.h */,
 				CD5F6ACA16CF7EAB00D7EEBD /* hdHomeworkViewController.m */,
 				7D9871561735D15D004C7E8B /* hdHomeworkSyncManager.h */,
@@ -554,15 +555,6 @@
 				CD1E8A1516BF89E900EF853C /* timetable@2x.png in Resources */,
 				CD1E8A1616BF89E900EF853C /* settings@2x.png in Resources */,
 				CD1E8A1716BF89E900EF853C /* homework@2x.png in Resources */,
-				CD1E8A1A16BF8D0500EF853C /* Default.png in Resources */,
-				CD1E8A1C16BF8D0900EF853C /* Default@2x.png in Resources */,
-				CD1E8A1E16BF8D0B00EF853C /* Default-568h@2x.png in Resources */,
-				CD1E8A2016BF8D2900EF853C /* Default-Portrait~ipad.png in Resources */,
-				CD1E8A2216BF8D2C00EF853C /* Default-Portrait@2x~ipad.png in Resources */,
-				CD1E8A2616BF8FBE00EF853C /* IconiPhone.png in Resources */,
-				CD1E8A2816BF8FC200EF853C /* IconiPhoneR.png in Resources */,
-				CD1E8A2A16BF8FC900EF853C /* IconiPad.png in Resources */,
-				CD1E8A2C16BF8FCB00EF853C /* IconiPadR.png in Resources */,
 				CD32C08016C2338900AA0569 /* hdLoginViewController.xib in Resources */,
 				CD694E4D16C4A471006264DC /* Storyboard-iPhone.storyboard in Resources */,
 				CD694E5116C4A7AD006264DC /* homework.png in Resources */,
@@ -588,6 +580,17 @@
 				CD0330DE16EAFB970043AA13 /* orangeButton@2x.png in Resources */,
 				CD0330DF16EAFB970043AA13 /* orangeButtonHighlight.png in Resources */,
 				CD0330E016EAFB970043AA13 /* orangeButtonHighlight@2x.png in Resources */,
+				F393C97B17B77EFB0076BD78 /* Default-568h@2x.png in Resources */,
+				F393C97C17B77EFB0076BD78 /* Default-Landscape@2x~ipad.png in Resources */,
+				F393C97D17B77EFB0076BD78 /* Default-Landscape~ipad.png in Resources */,
+				F393C97E17B77EFB0076BD78 /* Default-Portrait@2x~ipad.png in Resources */,
+				F393C97F17B77EFB0076BD78 /* Default-Portrait~ipad.png in Resources */,
+				F393C98017B77EFB0076BD78 /* Default.png in Resources */,
+				F393C98117B77EFB0076BD78 /* Default@2x.png in Resources */,
+				F393C98617B77F110076BD78 /* IconiPad.png in Resources */,
+				F393C98717B77F110076BD78 /* IconiPadR.png in Resources */,
+				F393C98817B77F110076BD78 /* IconiPhone.png in Resources */,
+				F393C98917B77F110076BD78 /* IconiPhoneR.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,7 +633,6 @@
 				CD6E918216C7353200BCDCFB /* hdTimetableDatePickerViewController.m in Sources */,
 				CD8C424E16CB7BB3007B2186 /* hdBlueButton.m in Sources */,
 				CD8C425116CB7E28007B2186 /* hdWhiteButton.m in Sources */,
-				CD5F6AC816CEED1F00D7EEBD /* hdNotificationApi.m in Sources */,
 				CD5F6ACB16CF7EAB00D7EEBD /* hdHomeworkViewController.m in Sources */,
 				CD5489BD16D5D91200AC291F /* hdHomeworkDataStore.m in Sources */,
 				CDF1BB9016D71E2700A10129 /* hdHomeworkTask.m in Sources */,
@@ -640,7 +642,7 @@
 				CD24DC1116FD503E00D9E56D /* hdHomeworkDatePickerViewController.m in Sources */,
 				7D38ADAA1734BAA800D16F8E /* NSDate+DateComponents.m in Sources */,
 				7D9871581735D15D004C7E8B /* hdHomeworkSyncManager.m in Sources */,
-				F3948EDD179B7D27006482BC /* hdTimetableTableDetailViewController.m in Sources */,
+				F393C98C17B77F750076BD78 /* hdTimetableTableDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

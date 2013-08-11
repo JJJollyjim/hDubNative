@@ -20,10 +20,12 @@ static NSDateFormatter *f;
 }
 
 + (NSString *)getSubjectForDay:(NSDate *)date period:(int)period rootObj:(NSDictionary *)obj {
+    if (period == 0)
+        return @"All Day";
 	lastRootDictionary = obj;
 	NSString *dateStr = [f stringFromDate:date];
 	NSDictionary *timetableDay = [obj valueForKey:dateStr];
-	NSString *periodStr = [NSString stringWithFormat:@"%i", period + 1];
+	NSString *periodStr = [NSString stringWithFormat:@"%i", period];
 	return (NSString *)[[timetableDay valueForKey:periodStr] valueForKey:@"name"];
 }
 
@@ -35,7 +37,7 @@ static NSDateFormatter *f;
 	lastRootDictionary = obj;
 	NSString *dateStr = [f stringFromDate:date];
 	NSDictionary *timetableDay = [obj valueForKey:dateStr];
-	NSString *periodStr = [NSString stringWithFormat:@"%i", period + 1];
+	NSString *periodStr = [NSString stringWithFormat:@"%i", period];
 	return (NSString *)[[timetableDay valueForKey:periodStr] valueForKey:@"room"];
 }
 
@@ -47,7 +49,7 @@ static NSDateFormatter *f;
 	lastRootDictionary = obj;
 	NSString *dateStr = [f stringFromDate:date];
 	NSDictionary *timetableDay = [obj valueForKey:dateStr];
-	NSString *periodStr = [NSString stringWithFormat:@"%i", period + 1];
+	NSString *periodStr = [NSString stringWithFormat:@"%i", period];
 	return (NSString *)[[timetableDay valueForKey:periodStr] valueForKey:@"teacher"];
 }
 

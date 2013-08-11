@@ -47,10 +47,11 @@
 }
 
 - (void)timerCallback:(NSTimer *)timer {
-    [self syncAndPullChanges];
+    //[self syncAndPullChanges];
 }
 
 - (void)syncAndPullChanges {
+    return;
     NSLog(@"Syncing…");
     NSMutableString *events = [[NSMutableString alloc] initWithString:@"{"];
     int i = 1;
@@ -96,7 +97,7 @@
     if ([[change objectForKey:@"type"] isEqualToString:@"add"]) {
         
     } else if ([[change objectForKey:@"type"] isEqualToString:@"del"]) {
-        [homeworkDataStore deleteHomeworkTaskWithHwid:[change objectForKey:@"hwid"]];
+        
     }
 }
 

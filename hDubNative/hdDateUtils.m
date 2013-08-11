@@ -29,6 +29,21 @@ NSRange weekdayRange;
 	return NO;
 }
 
+static NSDateFormatter *f;
++ (void)initializeDateFormatterStuff {
+	f = [[NSDateFormatter alloc] init];
+	f.dateFormat = @"yyyy-MM-dd";
+	f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-NZ"];
+}
+
++ (NSString *)dateToJsonDate:(NSDate *)date {
+    return [f stringFromDate:date];
+}
+
++ (NSDate *)jsonDateToDate:(NSString *)dateString {
+    return [f dateFromString:dateString];
+}
+
 // Any date that the user selects/enters for a timetable view will run through this function, which will return the best day for which a timetable exists
 
 + (NSDate *)correctDate:(NSDate *)date {

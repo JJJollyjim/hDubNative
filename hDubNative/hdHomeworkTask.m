@@ -7,41 +7,56 @@
 //
 
 #import "hdHomeworkTask.h"
+#import "hdDateUtils.h"
 
 @implementation hdHomeworkTask
 
-@synthesize date, details, hwid, name, period, subject, teacher, room;
+@synthesize date, details, hwid, name, period;
 
 - (id)init {
 	if (self = [super init]) {
-		self.date = [NSDate date];
+		self.date = [hdDateUtils dateToJsonDate:[NSDate date]];
 		self.details = @"";
 		self.hwid = [hdHomeworkTask generateUUID];
 		self.name = @"";
 		self.period = 0;
-		self.teacher = @"";
-		self.room = @"";
 	}
 	return self;
 }
 
 + (NSString *)generateUUID {
+    return @"GENERATED UUID";
 	CFUUIDRef uuid = CFUUIDCreate(NULL);
 	NSString *uuidStr = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
 	CFRelease(uuid);
 	return uuidStr;
 }
 
-NSDateFormatter *f = nil;
 - (void)setDateWithJsonDateStr:(NSString *)str {
-	if (f == nil) {
-		f = [[NSDateFormatter alloc] init];
-		f.dateFormat = @"yyyy-MM-dd";
-		f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-US"];
-		f.timeZone = [NSTimeZone timeZoneWithName:@"NZST"];
-	}
-	NSDate *midnight = [f dateFromString:str];
-	self.date = [midnight dateByAddingTimeInterval:43200];
+	self.date = str;
+}
+
+- (NSComparisonResult)compareInteger:(int)i1 andInteger:(int)i2 {
+    if (i1 > i2)
+        return NSOrderedDescending;
+    else if (i1 < i2)
+        return NSOrderedAscending;
+    else
+        return NSOrderedSame;
+}
+
+- (NSComparisonResult)compare:(hdHomeworkTask *)otherTask {
+    NSComparisonResult result;
+    if ((result = [self.date compare:otherTask.date]) != NSOrderedSame) {
+        return result;
+    }
+    if ((result = [self compareInteger:period andInteger:otherTask.period]) != NSOrderedSame) {
+        return result;
+    }
+    if ((result = [self.name compare:otherTask.name]) != NSOrderedSame) {
+        return result;
+    }
+    return NSOrderedSame;
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -51,8 +66,6 @@ NSDateFormatter *f = nil;
     copy.hwid = [self.hwid copyWithZone:zone];
     copy.name = [self.name copyWithZone:zone];
     copy.period = self.period;
-    copy.teacher = [self.teacher copyWithZone:zone];
-    copy.room = [self.room copyWithZone:zone];
     return copy;
 }
 

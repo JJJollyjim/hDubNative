@@ -13,11 +13,8 @@
 @property (nonatomic) NSString *hwid;
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *details;
-@property (nonatomic) NSDate *date;
+@property (nonatomic) NSString *date;
 @property (nonatomic) int period;
-@property (nonatomic) NSString *subject;
-@property (nonatomic) NSString *teacher;
-@property (nonatomic) NSString *room;
 
 + (NSString *)generateUUID;
 - (void)setDateWithJsonDateStr:(NSString *)str;

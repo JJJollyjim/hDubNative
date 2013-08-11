@@ -61,11 +61,7 @@
 			[self.navigationController popViewControllerAnimated:YES];
 		}
 	} else {
-        _homeworkTask.subject = [hdTimetableParser getSubjectForDay:_homeworkTask.date period:_homeworkTask.period - 1];
-        _homeworkTask.room = [hdTimetableParser getRoomForDay:_homeworkTask.date period:_homeworkTask.period - 1];
-        _homeworkTask.teacher = [hdTimetableParser getTeacherForDay:_homeworkTask.date period:_homeworkTask.period - 1];
-		hdHomeworkViewController *pvc = (hdHomeworkViewController *)self.previousViewController;
-		[pvc setHomeworkTask:_homeworkTask inSection:0 row:0];
+		[self.homeworkDataStore addHomeworkTask:self.homeworkTask];
 		[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
 	}
 }
@@ -75,7 +71,7 @@
         // Called when modifying homework on iPad
 		[self.navigationController popViewControllerAnimated:YES];
 	} else {
-        // Called when adding homework on iPad/iPhone
+        // Called when adding homework on iPad and on iPhone
 		[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
 	}
 }
@@ -83,10 +79,11 @@
 // Save date from datePickerViewController
 - (void)datePickerViewControllerSetDate:(NSDate *)date {
 	[self.tableView beginUpdates];
-	NSDate *oldDate = _homeworkTask.date;
+	NSDate *oldDate = [hdDateUtils jsonDateToDate:_homeworkTask.date];
 	int oldPeriodCount = [self.tableView numberOfRowsInSection:2]-1;
-	_homeworkTask.date = date;
-	int newPeriodCount = [self tableView:self.tableView numberOfRowsInSection:2]-1;
+	//_homeworkTask.date = date;
+	int newPeriodCount = [self tableView:self.tableView
+                   numberOfRowsInSection:2]-1;
 	if (oldPeriodCount == newPeriodCount) {
 		NSMutableArray *rowsToReload = [[NSMutableArray alloc] init];
 		for (int i = 1; i < newPeriodCount+1; ++i)
@@ -118,10 +115,10 @@
 			
 			if (date.timeIntervalSinceReferenceDate > oldDate.timeIntervalSinceReferenceDate)
 				[self.tableView insertRowsAtIndexPaths:rowsToReload
-															withRowAnimation:UITableViewRowAnimationRight];
+                                      withRowAnimation:UITableViewRowAnimationRight];
 			else
 				[self.tableView insertRowsAtIndexPaths:rowsToReload
-															withRowAnimation:UITableViewRowAnimationLeft];
+                                      withRowAnimation:UITableViewRowAnimationLeft];
 		} else if (oldPeriodCount > newPeriodCount) {
 			// old periods removed
 			NSMutableArray *rowsToReload = [[NSMutableArray alloc] init];
@@ -130,10 +127,10 @@
 			
 			if (date.timeIntervalSinceReferenceDate > oldDate.timeIntervalSinceReferenceDate)
 				[self.tableView deleteRowsAtIndexPaths:rowsToReload
-															withRowAnimation:UITableViewRowAnimationLeft];
+                                      withRowAnimation:UITableViewRowAnimationLeft];
 			else
 				[self.tableView deleteRowsAtIndexPaths:rowsToReload
-															withRowAnimation:UITableViewRowAnimationRight];
+                                      withRowAnimation:UITableViewRowAnimationRight];
 		}
 	}
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]]
@@ -171,10 +168,10 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 			int lastOffsetValue = 0;
 			int doublePeriodCountNegative = 0;
 			for (int i = 0; i < [hdDataStore sharedStore].periodCount; ++i) {
-				NSString *lastSubject = [hdTimetableParser getSubjectForDay:_homeworkTask.date period:i-1];
+				NSString *lastSubject = [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:_homeworkTask.date] period:i];
 				BOOL incrementedI = NO;
 				while (true) {
-					NSString *subject = [hdTimetableParser getSubjectForDay:_homeworkTask.date period:i];
+					NSString *subject = [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:_homeworkTask.date] period:i+1];
 					if (lastSubject != nil && [subject isEqualToString:lastSubject]) {
 						doublePeriodCount++;
 						doublePeriodCountNegative--;
@@ -238,14 +235,16 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 		cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		
 		if (cell == nil) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                          reuseIdentifier:CellIdentifier];
 		}
 	} else if (indexPath.section == 2) {
 		static NSString *CellIdentifier = @"hdHomeworkEditViewControllerCellCheckbox";
 		cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		
 		if (cell == nil) {
-			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+			cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                          reuseIdentifier:CellIdentifier];
 		}
 	}
 	
@@ -278,7 +277,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 			break;
 		case 1:
 			cell.textLabel.text = @"Date due";
-			cell.detailTextLabel.text = [hdHomeworkEditViewController formatDate:self.homeworkTask.date];
+			cell.detailTextLabel.text = [hdHomeworkEditViewController formatDate:[hdDateUtils jsonDateToDate:self.homeworkTask.date]];
 			break;
 		case 2:
 			nothing();
@@ -290,9 +289,9 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 					foundCorrectPeriod = YES;
 				}
 			} else {
-				cell.textLabel.text = [hdTimetableParser getSubjectForDay:self.homeworkTask.date
+				cell.textLabel.text = [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:self.homeworkTask.date]
                                                                    period:((NSNumber *)([tableViewIndexToDoublePeriodOffsetMap objectForKey:
-																																	 [NSNumber numberWithInt:indexPath.row]])).integerValue];
+                                                                                         [NSNumber numberWithInt:indexPath.row+1]])).integerValue];
 				int numberOfConsecutivePeriods = [self numberOfConsecutivePeriodsAtPeriodIndex:indexPath.row];
 				if (numberOfConsecutivePeriods == [hdDataStore sharedStore].periodCount) {
 					cell.detailTextLabel.text = @"All day";
@@ -349,7 +348,7 @@ UITableViewCell *selectedCell;
 			// Edit date
 			hdHomeworkDatePickerViewController *dpvc = [self.storyboard instantiateViewControllerWithIdentifier:@"hdHomeworkDatePickerViewController"];
 			dpvc.editViewController = self;
-			dpvc.dateToDisplay = _homeworkTask.date;
+			dpvc.dateToDisplay = [hdDateUtils jsonDateToDate:self.homeworkTask.date];
 			if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
                 popover = [[UIPopoverController alloc] initWithContentViewController:dpvc];
                 [popover presentPopoverFromRect:[self.tableView cellForRowAtIndexPath:indexPath].frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];

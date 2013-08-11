@@ -79,7 +79,7 @@
 }
 
 - (IBAction)datePickerValueChanged:(id)sender {
-    [self.datePicker setDate:[hdHomeworkDatePickerViewController correctDate:self.datePicker.date] animated:YES];
+    [self.datePicker setDate:[hdDateUtils correctDate:[self.datePicker.date dateByAddingTimeInterval:43200]] animated:YES];
 	hdHomeworkEditViewController *editVC = (hdHomeworkEditViewController *)self.editViewController;
 	[editVC datePickerViewControllerSetDate:self.datePicker.date];
 }

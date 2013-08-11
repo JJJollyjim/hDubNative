@@ -41,7 +41,7 @@ static NSDateFormatter *f;
 }
 
 + (NSDate *)jsonDateToDate:(NSString *)dateString {
-    return [f dateFromString:dateString];
+    return [[f dateFromString:dateString] dateByAddingTimeInterval:43200];
 }
 
 // Any date that the user selects/enters for a timetable view will run through this function, which will return the best day for which a timetable exists

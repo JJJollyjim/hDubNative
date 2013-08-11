@@ -81,7 +81,7 @@
 	[self.tableView beginUpdates];
 	NSDate *oldDate = [hdDateUtils jsonDateToDate:_homeworkTask.date];
 	int oldPeriodCount = [self.tableView numberOfRowsInSection:2]-1;
-	//_homeworkTask.date = date;
+	_homeworkTask.date = [hdDateUtils dateToJsonDate:date];
 	int newPeriodCount = [self tableView:self.tableView
                    numberOfRowsInSection:2]-1;
 	if (oldPeriodCount == newPeriodCount) {
@@ -291,7 +291,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 			} else {
 				cell.textLabel.text = [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:self.homeworkTask.date]
                                                                    period:((NSNumber *)([tableViewIndexToDoublePeriodOffsetMap objectForKey:
-                                                                                         [NSNumber numberWithInt:indexPath.row+1]])).integerValue];
+                                                                                         [NSNumber numberWithInt:indexPath.row+1]])).integerValue - 0];
 				int numberOfConsecutivePeriods = [self numberOfConsecutivePeriodsAtPeriodIndex:indexPath.row];
 				if (numberOfConsecutivePeriods == [hdDataStore sharedStore].periodCount) {
 					cell.detailTextLabel.text = @"All day";

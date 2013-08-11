@@ -15,7 +15,7 @@
 
 - (id)init {
 	if (self = [super init]) {
-		self.date = [hdDateUtils dateToJsonDate:[NSDate date]];
+		self.date = [hdDateUtils dateToJsonDate:[hdDateUtils correctDate:[NSDate date]]];
 		self.details = @"";
 		self.hwid = [hdHomeworkTask generateUUID];
 		self.name = @"";
@@ -25,7 +25,6 @@
 }
 
 + (NSString *)generateUUID {
-    return @"GENERATED UUID";
 	CFUUIDRef uuid = CFUUIDCreate(NULL);
 	NSString *uuidStr = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
 	CFRelease(uuid);

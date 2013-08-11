@@ -18,6 +18,9 @@
 + (id)getObj:(NSString *)json {
 	NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
 	NSError *error;
+    if (data == nil) {
+        [NSException raise:@"JSON: Data is nil" format:@"[hdJsonWrapper getObj]: data is nil"];
+    }
 	id obj = [NSJSONSerialization JSONObjectWithData:data
                                              options:0
                                                error:&error];

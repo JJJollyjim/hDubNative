@@ -11,7 +11,7 @@
 #import "hdTimetableParser.h"
 #import "hdHomeworkDataStore.h" 
 
-@interface hdHomeworkEditViewController : UITableViewController <UITableViewDelegate> {
+@interface hdHomeworkEditViewController : UITableViewController <UITableViewDelegate, UITextViewDelegate> {
 	UITextField *nameTextField;
 	UITextView *detailsTextView;
 	UIPopoverController *popover;

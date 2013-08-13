@@ -268,16 +268,17 @@
     int sectionCountBeforeInsertion = [self numberOfSections];
     [homeworkTasks addObject:homeworkTask];
     [self sortHomeworkTasks];
-    int sectionAfterInsertion = [self numberOfSections];
+    int sectionCountAfterInsertion = [self numberOfSections];
     NSIndexPath *indexPath = [self indexPathOfHomeworkTask:homeworkTask];
     [tableView beginUpdates];
-    if (sectionCountBeforeInsertion == sectionAfterInsertion) {
+    if (sectionCountBeforeInsertion == sectionCountAfterInsertion) {
         [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
     } else {
         [tableView insertSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationRight];
         [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationRight];
     }
     [tableView endUpdates];
+    [self storeHomeworkTasks];
 }
 
 
@@ -285,44 +286,15 @@
              withNewHomeworkTask:(hdHomeworkTask *)task {
     [self deleteHomeworkTaskWithId:hwid];
     [self addHomeworkTask:task];
-    /*int i = 0;
-    BOOL foundCorrectHomeworkTask = NO;
-    for (hdHomeworkTask *task in homeworkTasks) {
-        if ([task.hwid isEqualToString:hwid]) {
-            foundCorrectHomeworkTask = YES;
-            break;
-        }
-        ++i;
-    }
-    if (!foundCorrectHomeworkTask) {
-        [NSException raise:@"NoHomeworkTaskFound" format:@"Could not find homework task"];
-    }
-    
-    
-    int sectionCountBeforeUpdate = [self numberOfSections];
-    NSIndexPath *oldIndexPath = [self indexPathOfHomeworkTaskWithId:hwid];
-    int rowCountBeforeUpdate = [self numberOfRowsInSection:oldIndexPath.section];
-    
-    [homeworkTasks removeObjectAtIndex:i];
-    
-    int sectionCountDuringUpdate = [self numberOfSections];
-    
-    [homeworkTasks addObject:task];
-    
-    [self sortHomeworkTasks];
-    int sectionCountAfterUpdate = [self numberOfSections];
-    NSIndexPath *newIndexPath = [self indexPathOfHomeworkTaskWithId:task.hwid];
-    
-    
-    [tableView beginUpdates];
-    if (sectionCountBeforeUpdate == sectionCountDuringUpdate
-        && sectionCountDuringUpdate == sectionCountAfterUpdate
-        && oldIndexPath.section == newIndexPath.section
-        && oldIndexPath.row == newIndexPath.row) {
-        [tableView reloadRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationRight];
-    } else {
+}
+
+#pragma mark - Scroll to today
+
+- (void)scrollToTodayAnimated:(BOOL)animated {
+    NSIndexPath *indexPathToScrollTo = nil;
+    for (int i = 0; i < homeworkTasks.count; ++i) {
         
-    }*/
+    }
 }
 
 #pragma mark - Date formatting methods

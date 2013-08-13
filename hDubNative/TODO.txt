@@ -1,0 +1,37 @@
+Homework View Controller:
+ - 'Today' button needs to be finished (major)
+ - Broken animation when editing a homework task (minor)
+ - Weird scrolling when editing the last homework task (very minor)
+
+Homework Detail View Controller:
+
+
+Homework Edit View Controller:
+ - Keyboard needs to be dismissed when opening date picker popover (minor)
+
+
+Synchronisation:
+
+
+HTTP:
+ - Having to reload the timetable every 6 months / every year should be more intuitive
+
+
+JSON:
+
+
+Timetable View Controller:
+
+
+Date Parsing:
+
+
+Data Storage:
+
+
+Icons and Screenshots:
+
+
+General / Miscellaneous:
+ - More testing
+

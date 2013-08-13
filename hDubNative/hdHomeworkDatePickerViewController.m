@@ -35,7 +35,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.datePicker setMinimumDate:[NSDate dateWithYear:2013 month:1 day:1]];
+    [self.datePicker setMinimumDate:[NSDate date]];
     [self.datePicker setMaximumDate:[NSDate dateWithYear:2013 month:12 day:31]];
 }
 

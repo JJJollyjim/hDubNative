@@ -46,19 +46,6 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "hDubNative/hdHomeworkDataStore.m"
-         timestampString = "397877247.857291"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "229"
-         endingLineNumber = "229"
-         landmarkName = "-deleteHomeworkTaskWithId:indexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "hDubNative/hdHomeworkDetailViewController.m"
          timestampString = "397905721.045405"
          startingColumnNumber = "9223372036854775807"

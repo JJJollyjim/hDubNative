@@ -38,6 +38,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.title = self.newHomeworkTask ? @"Add Task" : @"Edit Task";
+    [self updateDoneButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,12 +50,12 @@
 #pragma mark - Actions
 
 - (IBAction)done:(id)sender {
-	_homeworkTask.name = nameTextField.text;
-	_homeworkTask.details = detailsTextView.text;
+	self.homeworkTask.name = nameTextField.text;
+	self.homeworkTask.details = detailsTextView.text;
 	if (!self.newHomeworkTask) {
 		hdHomeworkDetailViewController *pvc = (hdHomeworkDetailViewController *)self.previousViewController;
-		pvc.homeworkTask = _homeworkTask;
-		[pvc updateHomeworkTask:_homeworkTask];
+		pvc.homeworkTask = self.homeworkTask;
+		[pvc updateHomeworkTask:self.homeworkTask];
 		if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
 			[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
 		} else {
@@ -79,9 +80,9 @@
 // Save date from datePickerViewController
 - (void)datePickerViewControllerSetDate:(NSDate *)date {
 	[self.tableView beginUpdates];
-	NSDate *oldDate = [hdDateUtils jsonDateToDate:_homeworkTask.date];
+	NSDate *oldDate = [hdDateUtils jsonDateToDate:self.homeworkTask.date];
 	int oldPeriodCount = [self.tableView numberOfRowsInSection:2]-1;
-	_homeworkTask.date = [hdDateUtils dateToJsonDate:date];
+	self.homeworkTask.date = [hdDateUtils dateToJsonDate:date];
 	int newPeriodCount = [self tableView:self.tableView
                    numberOfRowsInSection:2]-1;
 	if (oldPeriodCount == newPeriodCount) {
@@ -168,10 +169,10 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 			int lastOffsetValue = 0;
 			int doublePeriodCountNegative = 0;
 			for (int i = 0; i < [hdDataStore sharedStore].periodCount; ++i) {
-				NSString *lastSubject = [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:_homeworkTask.date] period:i];
+				NSString *lastSubject = [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:self.homeworkTask.date] period:i];
 				BOOL incrementedI = NO;
 				while (true) {
-					NSString *subject = [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:_homeworkTask.date] period:i+1];
+					NSString *subject = [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:self.homeworkTask.date] period:i+1];
 					if (lastSubject != nil && [subject isEqualToString:lastSubject]) {
 						doublePeriodCount++;
 						doublePeriodCountNegative--;
@@ -259,10 +260,11 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 					nameTextField.placeholder = @"Name";
 					nameTextField.textColor = [UIColor colorWithRed:81.0/255.0 green:102.0/255.0 blue:145.0/255.0 alpha:1.0];
 					nameTextField.text = self.homeworkTask.name;
+                    [nameTextField addTarget:self action:@selector(updateHomeworkNameAndDescription:) forControlEvents:UIControlEventEditingChanged];
 					[cell.contentView addSubview:nameTextField];
 					break;
 				}
-				case 1:
+				case 1: {
 					cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"test2"];
 					cell.accessoryType = UITableViewCellStyleDefault;
 					CGRect textRect = CGRectMake(2, 2, [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad ? 475 : 296, [UIScreen mainScreen].bounds.size.height == 568.0 ? 140 : 100);
@@ -271,8 +273,10 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 					detailsTextView.font = [UIFont fontWithName:@"Arial" size:17];
 					detailsTextView.backgroundColor = [UIColor clearColor];
 					detailsTextView.text = self.homeworkTask.details;
+                    detailsTextView.delegate = self;
 					[cell.contentView addSubview:detailsTextView];
 					break;
+                }
 			}
 			break;
 		case 1:
@@ -285,7 +289,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 			if (indexPath.row == 0) {
 				cell.textLabel.text = @"All day";
 				cell.detailTextLabel.text = @"";
-				if (_homeworkTask.period == 0) {
+				if (self.homeworkTask.period == 0) {
 					foundCorrectPeriod = YES;
 				}
 			} else {
@@ -303,7 +307,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 						period = [hdDataStore sharedStore].periodCount;
 					}
 					cell.detailTextLabel.text = [NSString stringWithFormat:@"Period %i", period];
-					if (_homeworkTask.period == period) {
+					if (self.homeworkTask.period == period) {
 						foundCorrectPeriod = YES;
 					}
 				} else if (numberOfConsecutivePeriods == 0) {
@@ -311,14 +315,14 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 				} else {
 					int period = ((NSNumber *)[tableViewIndexToDoublePeriodOffsetMap objectForKey:
 																		 [NSNumber numberWithInt:indexPath.row]]).integerValue + 1;
-					if (_homeworkTask.period == period) {
+					if (self.homeworkTask.period == period) {
 						foundCorrectPeriod = YES;
 					}
 					NSMutableString *subtitle = [[NSMutableString alloc] initWithFormat:@"%i", period];
 					for (int i = 1; i < numberOfConsecutivePeriods; ++i) {
 						period = ((NSNumber *)[tableViewIndexToDoublePeriodOffsetMap objectForKey:
 																	 [NSNumber numberWithInt:indexPath.row + i - 1]]).integerValue + i + 1;
-						if (_homeworkTask.period == period) {
+						if (self.homeworkTask.period == period) {
 							foundCorrectPeriod = YES;
 						}
 						[subtitle appendFormat:@" & %i", period];
@@ -366,13 +370,43 @@ UITableViewCell *selectedCell;
 	cell.accessoryType = UITableViewCellAccessoryCheckmark;
 	selectedCell = cell;
     if (indexPath.row == 0) {
-        _homeworkTask.period = 0;
+        self.homeworkTask.period = 0;
     } else {
-        _homeworkTask.period = ((NSNumber *)([tableViewIndexToDoublePeriodOffsetMap objectForKey:
+        self.homeworkTask.period = ((NSNumber *)([tableViewIndexToDoublePeriodOffsetMap objectForKey:
                                               [NSNumber numberWithInt:indexPath.row]])).integerValue + 1;
     }
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+#pragma mark - Textfield events
+
+- (IBAction)updateHomeworkNameAndDescription:(id)sender {
+    self.homeworkTask.name = nameTextField.text;
+    self.homeworkTask.details = detailsTextView.text;
+    [self updateDoneButton];
+}
+
+// UITextView delegate method (detailsTextView)
+- (void)textViewDidChange:(UITextView *)textView {
+    [self updateHomeworkNameAndDescription:self];
+}
+
+- (void)updateDoneButton {
+    if (nameTextField.text.length == 0)
+        [self disableDoneButton];
+    else
+        [self enableDoneButton];
+}
+
+- (void)enableDoneButton {
+    doneButton.enabled = YES;
+}
+
+- (void)disableDoneButton {
+    doneButton.enabled = NO;
+}
+
+#pragma mark - Utility methods
 
 + (NSString *)formatDate:(NSDate *)date {
 	NSTimeInterval timeInterval =

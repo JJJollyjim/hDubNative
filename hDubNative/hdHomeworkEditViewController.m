@@ -353,6 +353,11 @@ UITableViewCell *selectedCell;
 			hdHomeworkDatePickerViewController *dpvc = [self.storyboard instantiateViewControllerWithIdentifier:@"hdHomeworkDatePickerViewController"];
 			dpvc.editViewController = self;
 			dpvc.dateToDisplay = [hdDateUtils jsonDateToDate:self.homeworkTask.date];
+            // Hide keyboard
+            [nameTextField resignFirstResponder];
+            [detailsTextView resignFirstResponder];
+            [self.view endEditing:YES];
+            // Show DPVC either in popover or as a modal vc
 			if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
                 popover = [[UIPopoverController alloc] initWithContentViewController:dpvc];
                 [popover presentPopoverFromRect:[self.tableView cellForRowAtIndexPath:indexPath].frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];

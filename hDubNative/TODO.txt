@@ -1,5 +1,4 @@
 Homework View Controller:
- - 'Today' button needs to be finished (major)
  - Broken animation when editing a homework task (minor)
  - Weird scrolling when editing the last homework task (very minor)
 

@@ -47,12 +47,7 @@
     self.syncManager = [[hdHomeworkSyncManager alloc] init];
     [self.syncManager syncAndPullChanges];
 	[self.tableView reloadData];
-	//int sectionToScrollTo = [self.parser sectionToScrollToWhenTableViewBecomesVisible];
-	//if ([self.parser numberOfSectionsInTableView] != 0)
-	//	[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
-    //                                                              inSection:(sectionToScrollTo == -1 ? ([self.parser numberOfSectionsInTableView] - 1) : sectionToScrollTo)]
-	//												atScrollPosition:UITableViewScrollPositionTop
-	//																 animated:NO];
+	[self.homeworkDataStore scrollToTodayAnimated:NO];
 	[super viewWillAppear:animated];
 }
 
@@ -144,11 +139,7 @@
 }
 
 - (IBAction)goToToday:(id)sender {
-	//int sectionToScrollTo = [self.parser sectionToScrollToWhenTableViewBecomesVisible];
-	//if ([self.parser numberOfSectionsInTableView] != 0)
-		//[self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0
-    //  /                      atScrollPosition:UITableViewScrollPositionTop
-    //animated:YES];
+	[self.homeworkDataStore scrollToTodayAnimated:YES];
 }
 
 // User is editing the table view

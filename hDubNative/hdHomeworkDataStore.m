@@ -291,10 +291,20 @@
 #pragma mark - Scroll to today
 
 - (void)scrollToTodayAnimated:(BOOL)animated {
+    if (homeworkTasks.count == 0)
+        return;
     NSIndexPath *indexPathToScrollTo = nil;
+    NSString *today = [hdDateUtils dateToJsonDate:[NSDate date]];
     for (int i = 0; i < homeworkTasks.count; ++i) {
-        
+        if ([((hdHomeworkTask *)[homeworkTasks objectAtIndex:i]).date compare:today] != NSOrderedAscending) {
+            indexPathToScrollTo = [self indexPathOfHomeworkTask:[homeworkTasks objectAtIndex:i]];
+            break;
+        }
     }
+    if (indexPathToScrollTo == nil) {
+        indexPathToScrollTo = [self indexPathOfHomeworkTask:[homeworkTasks objectAtIndex:homeworkTasks.count - 1]];
+    }
+    [tableView scrollToRowAtIndexPath:indexPathToScrollTo atScrollPosition:UITableViewScrollPositionTop animated:animated];
 }
 
 #pragma mark - Date formatting methods

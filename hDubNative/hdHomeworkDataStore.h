@@ -57,4 +57,8 @@
 - (void)updateHomeworkTaskWithId:(NSString *)hwid
              withNewHomeworkTask:(hdHomeworkTask *)task;
 
+#pragma mark - Util Methods
+
+- (void)scrollToTodayAnimated:(BOOL)animated;
+
 @end

@@ -124,7 +124,7 @@
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
         homeworkDetailTextView.frame = CGRectMake(55, 299, 415, 186);
         noDetailsLabel.frame = CGRectMake(232, 323, 76, 21);
-        if (homeworkTask.period == 0) {
+        if (homeworkTask.period == 0) { // All-day homework tasks have no teacher
             homeworkDetailTextView.frame = moveRect(homeworkDetailTextView.frame, 0, -44, 0, 0);
             noDetailsLabel.frame = moveRect(noDetailsLabel.frame, 0, -44, 0, 0);
         }

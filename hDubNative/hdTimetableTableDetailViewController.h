@@ -11,6 +11,10 @@
 
 @interface hdTimetableTableDetailViewController : UITableViewController {
     hdHomeworkDataStore *homeworkDataStore;
+    hdDataStore *sharedStore;
 }
+
+@property (nonatomic) NSString *date;
+@property (nonatomic) int period;
 
 @end

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
-/*
+/* 
  Title: Classical Studies
  
  Section: Details
@@ -34,13 +34,17 @@
     if (self) {
         // Custom initialization
         homeworkDataStore = [[hdHomeworkDataStore alloc] init];
+        sharedStore = [hdDataStore sharedStore];
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:135/255.0f green:10/255.0f blue:0.0f alpha:1.0f];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:135/255.0f
+                                                                        green:10/255.0f
+                                                                         blue:0.0f
+                                                                        alpha:1.0f];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,7 +56,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 0;
+    return 1 + [homeworkDataStore sectionCountOfHomeworkTasksWithDate:self.date];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

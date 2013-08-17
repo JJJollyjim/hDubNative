@@ -98,9 +98,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="iph-ju-ZeM">
-                                <rect key="frame" x="20" y="62" width="280" height="110"/>
+                                <rect key="frame" x="20" y="62" width="280" height="195"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.96078431369999995" green="0.89437269070000003" blue="0.90484616029999998" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.90949470769999996" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="hdHomeworkDetailViewControllerCell" textLabel="txT-nE-Xcy" detailTextLabel="YqI-dZ-u4r" style="IBUITableViewCellStyleValue1" id="bD3-Mw-MAr">
                                         <rect key="frame" x="0.0" y="46" width="280" height="46"/>
@@ -131,7 +131,7 @@
                                 <sections/>
                             </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="wHG-0V-f9A">
-                                <rect key="frame" x="20" y="167" width="280" height="174"/>
+                                <rect key="frame" x="20" y="260" width="280" height="82"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
@@ -168,7 +168,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="No details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OCR-VV-Xtd">
-                                <rect key="frame" x="20" y="167" width="280" height="21"/>
+                                <rect key="frame" x="20" y="260" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                 <color key="textColor" white="0.12691035583941607" alpha="1" colorSpace="calibratedWhite"/>
@@ -545,7 +545,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="hpm-lg-CaS" kind="modal" id="Nh7-EF-CpR"/>
+                                    <segue destination="hpm-lg-CaS" kind="modal" identifier="hdTimetableDetailSegue" id="Nh7-EF-CpR"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -707,89 +707,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="settings.png" width="26" height="24"/>
         <image name="timetable.png" width="23" height="25"/>
     </resources>
-    <classes>
-        <class className="hdHomeworkDatePickerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkDatePickerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="datePickerValueChanged:"/>
-                <relationship kind="action" name="dismissDatePickerViewController:"/>
-                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
-            </relationships>
-        </class>
-        <class className="hdHomeworkDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="deleteHomeworkTask:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="homeworkDataTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="homeworkDetailTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="homeworkTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="noDetailsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="hdHomeworkEditViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkEditViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="done:"/>
-                <relationship kind="action" name="updateHomeworkNameAndDescription:"/>
-                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="hdHomeworkViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="goToToday:"/>
-            </relationships>
-        </class>
-        <class className="hdNavigationController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdNavigationController.h"/>
-        </class>
-        <class className="hdRedButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdRedButton.h"/>
-        </class>
-        <class className="hdSettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdSettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="logout:"/>
-                <relationship kind="action" name="openKwiiusWebsite:"/>
-                <relationship kind="action" name="reloadTimetable:"/>
-                <relationship kind="action" name="sendEmail:"/>
-                <relationship kind="outlet" name="kwiiusButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="logoutButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="reloadTimetableButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="sidLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="hdTabViewController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTabViewController.h"/>
-        </class>
-        <class className="hdTimetableDatePickerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTimetableDatePickerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changeDate:"/>
-                <relationship kind="action" name="selectedNewDate:"/>
-                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="hdTimetableTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTimetableTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showDatePicker:"/>
-                <relationship kind="action" name="swipeToNextDay:"/>
-                <relationship kind="action" name="swipeToPreviousDay:"/>
-                <relationship kind="action" name="updateTimetable:"/>
-                <relationship kind="outlet" name="bbi" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="hdWhiteButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdWhiteButton.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

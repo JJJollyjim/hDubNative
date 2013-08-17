@@ -116,45 +116,43 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSString *room = [hdTimetableParser getRoomForDay:[hdDateUtils jsonDateToDate:homeworkTask.date]
                                                period:homeworkTask.period];
+    
+    CGRect (^moveRect)(CGRect, int, int, int, int) = ^(CGRect r, int dx, int dy, int dw, int dh){
+        return CGRectMake(r.origin.x+dx, r.origin.y+dy, r.size.width+dw, r.size.height+dh);
+    };
+    
     if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        noDetailsLabel.frame = CGRectMake(232, 323, 76, 21);
         homeworkDetailTextView.frame = CGRectMake(55, 299, 415, 186);
-		if (homeworkTask.period == 0) {
-			homeworkDetailTextView.frame = CGRectMake(homeworkDetailTextView.frame.origin.x,
-                                                      homeworkDetailTextView.frame.origin.y - 44,
-                                                      homeworkDetailTextView.frame.size.width,
-                                                      homeworkDetailTextView.frame.size.height);
-			noDetailsLabel.frame = CGRectMake(noDetailsLabel.frame.origin.x,
-                                              noDetailsLabel.frame.origin.y - 44,
-                                              noDetailsLabel.frame.size.width,
-                                              noDetailsLabel.frame.size.height);
-		}
-		if (room.length == 0) {
-			homeworkDetailTextView.frame = CGRectMake(homeworkDetailTextView.frame.origin.x,
-                                                      homeworkDetailTextView.frame.origin.y - 44,
-                                                      homeworkDetailTextView.frame.size.width,
-                                                      homeworkDetailTextView.frame.size.height);
-			noDetailsLabel.frame = CGRectMake(noDetailsLabel.frame.origin.x,
-                                              noDetailsLabel.frame.origin.y - 44,
-                                              noDetailsLabel.frame.size.width,
-                                              noDetailsLabel.frame.size.height);
-		}
+        noDetailsLabel.frame = CGRectMake(232, 323, 76, 21);
+        if (homeworkTask.period == 0) {
+            homeworkDetailTextView.frame = moveRect(homeworkDetailTextView.frame, 0, -44, 0, 0);
+            noDetailsLabel.frame = moveRect(noDetailsLabel.frame, 0, -44, 0, 0);
+        }
+        if (room.length == 0) {
+            homeworkDetailTextView.frame = moveRect(homeworkDetailTextView.frame, 0, -44, 0, 0);
+            noDetailsLabel.frame = moveRect(noDetailsLabel.frame, 0, -44, 0, 0);
+        }
 	} else {
-        noDetailsLabel.frame = CGRectMake(20, 167, 280, 21);
-        homeworkDetailTextView.frame = CGRectMake(20, 167, 280, 174);
+          homeworkDetailTextView.frame = CGRectMake(20, 260, 280, 82);
+          noDetailsLabel.frame = CGRectMake(20, 260, 280, 21);
+		if (homeworkTask.period == 0) {
+            homeworkDetailTextView.frame = moveRect(homeworkDetailTextView.frame, 0, -44, 0, 44);
+            noDetailsLabel.frame = moveRect(noDetailsLabel.frame, 0, -44, 0, 0);
+        }
+        if (room.length == 0) {
+            homeworkDetailTextView.frame = moveRect(homeworkDetailTextView.frame, 0, -44, 0, 44);
+            noDetailsLabel.frame = moveRect(noDetailsLabel.frame, 0, -44, 0, 0);
+        }
     }
-	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-		if (homeworkTask.period == 0) {
-			return 2;
-		}
-		if (room.length == 0) {
-			return 3;
-		} else {
-			return 4;
-		}
-	} else {
-		return 2;
-	}
+    
+    if (homeworkTask.period == 0) {
+        return 2;
+    }
+    if (room.length == 0) {
+        return 3;
+    } else {
+        return 4;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

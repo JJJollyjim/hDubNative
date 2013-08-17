@@ -222,6 +222,27 @@
     return [self indexPathOfHomeworkTaskWithId:homeworkTask.hwid];
 }
 
+- (int)sectionCountOfHomeworkTasksWithDate:(NSString *)jsonDate {
+    // jsonDate format: 2013-08-17
+    BOOL foundDate = NO;
+    int sectionCount = 0;
+    for (hdHomeworkTask *homeworkTask in homeworkTasks) {
+        if (!foundDate) {
+            if ([homeworkTask.date isEqualToString:jsonDate]) {
+                foundDate = YES;
+                sectionCount++;
+            }
+        } else {
+            if ([homeworkTask.date isEqualToString:jsonDate]) {
+                sectionCount++;
+            } else {
+                break;
+            }
+        }
+    }
+    return sectionCount;
+}
+
 #pragma mark - Homework Task Deletion Methods
 
 - (void)deleteHomeworkTaskWithId:(NSString *)hwid

@@ -11,6 +11,7 @@
 #import "hdTimetableParser.h"
 #import "hdDateUtils.h"
 #import "hdTimetableDatePickerViewController.h"
+#import "hdTimetableTableDetailViewController.h"
 
 @implementation hdTimetableTableViewController
 
@@ -111,7 +112,13 @@ hdTimetableDatePickerViewController *cache = nil;
 		hdTimetableDatePickerViewController *target = segue.destinationViewController;
 		[target setTimetableViewController:self];
 		[target setStartingDate:dateShown];
-	}
+	} else if ([segue.identifier isEqualToString:@"hdTimetableDetailSegue"]) {
+        hdTimetableTableDetailViewController *target = segue.destinationViewController;
+        UITableViewCell *cell = (UITableViewCell *)sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        target.date = [hdDateUtils dateToJsonDate:dateShown];
+        target.period = indexPath.row + 1; // row 0 = period 1
+    }
 }
 
 #pragma mark - UIPopoverControllerDelegate
@@ -133,7 +140,7 @@ hdTimetableDatePickerViewController *cache = nil;
 {
 	self.title = [hdDateUtils formatDate:dateShown];
     self.navigationController.title = @"Timetable";
-    // Setting self.title will also set self.navigationController.title, so I explicitly have to set it to "Homework" every time.
+    // Setting self.title will also set self.navigationController.title, so I explicitly have to set it to "Timetable" every time.
 	return 6;
 }
 

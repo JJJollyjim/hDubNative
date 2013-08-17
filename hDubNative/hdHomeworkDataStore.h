@@ -43,6 +43,7 @@
 - (NSIndexPath *)indexPathOfHomeworkTask:(hdHomeworkTask *)homeworkTask;
 - (NSIndexPath *)indexPathOfHomeworkTaskWithId:(NSString *)hwid;
 - (hdHomeworkTask *)homeworkTaskAtIndexPath:(NSIndexPath *)indexPath;
+- (int)sectionCountOfHomeworkTasksWithDate:(NSString *)jsonDate;
 
 
 - (void)deleteHomeworkTaskWithId:(NSString *)hwid

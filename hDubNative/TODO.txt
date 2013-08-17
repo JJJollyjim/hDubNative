@@ -6,7 +6,6 @@ Homework Detail View Controller:
 
 
 Homework Edit View Controller:
- - Keyboard needs to be dismissed when opening date picker popover (minor)
 
 
 Synchronisation:

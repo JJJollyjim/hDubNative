@@ -67,6 +67,7 @@
 		CDAF246F16E2CF4F003CF9F5 /* hdHomeworkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */; };
 		CDF1BB9016D71E2700A10129 /* hdHomeworkTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF1BB8F16D71E2700A10129 /* hdHomeworkTask.m */; };
 		F355B49217BA3162002C4507 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = F355B49117BA3162002C4507 /* TODO.txt */; };
+		F36B898917BF1DBD007CB84E /* hdNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F36B898817BF1DBD007CB84E /* hdNavigationController.m */; };
 		F393C97B17B77EFB0076BD78 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C97417B77EFB0076BD78 /* Default-568h@2x.png */; };
 		F393C97C17B77EFB0076BD78 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C97517B77EFB0076BD78 /* Default-Landscape@2x~ipad.png */; };
 		F393C97D17B77EFB0076BD78 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C97617B77EFB0076BD78 /* Default-Landscape~ipad.png */; };
@@ -169,6 +170,8 @@
 		CDCBAE8216CF904500064D0A /* hdHomeworkTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkTask.h; sourceTree = "<group>"; };
 		CDF1BB8F16D71E2700A10129 /* hdHomeworkTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkTask.m; sourceTree = "<group>"; };
 		F355B49117BA3162002C4507 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
+		F36B898717BF1DBD007CB84E /* hdNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdNavigationController.h; sourceTree = "<group>"; };
+		F36B898817BF1DBD007CB84E /* hdNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdNavigationController.m; sourceTree = "<group>"; };
 		F393C97417B77EFB0076BD78 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Images/Launch Images/Default-568h@2x.png"; sourceTree = "<group>"; };
 		F393C97517B77EFB0076BD78 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "Images/Launch Images/Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
 		F393C97617B77EFB0076BD78 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "Images/Launch Images/Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -455,6 +458,8 @@
 		CD685A7416C5F0AD00DD4013 /* Homework */ = {
 			isa = PBXGroup;
 			children = (
+				F36B898717BF1DBD007CB84E /* hdNavigationController.h */,
+				F36B898817BF1DBD007CB84E /* hdNavigationController.m */,
 				CD24DC0F16FD503E00D9E56D /* hdHomeworkDatePickerViewController.h */,
 				CD24DC1016FD503E00D9E56D /* hdHomeworkDatePickerViewController.m */,
 				CD0330E216EB20B20043AA13 /* hdHomeworkEditViewController.h */,
@@ -647,6 +652,7 @@
 				7D38ADAA1734BAA800D16F8E /* NSDate+DateComponents.m in Sources */,
 				7D9871581735D15D004C7E8B /* hdHomeworkSyncManager.m in Sources */,
 				F393C98C17B77F750076BD78 /* hdTimetableTableDetailViewController.m in Sources */,
+				F36B898917BF1DBD007CB84E /* hdNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

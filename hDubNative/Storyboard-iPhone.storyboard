@@ -197,10 +197,10 @@
             </objects>
             <point key="canvasLocation" x="1487" y="607"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Hd Navigation Controller-->
         <scene sceneID="xaK-nR-Dvx">
             <objects>
-                <navigationController definesPresentationContext="YES" id="R1u-5V-7J5" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="R1u-5V-7J5" customClass="hdNavigationController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="KQn-mv-yYY"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="k4u-zr-28c">
                         <autoresizingMask key="autoresizingMask"/>
@@ -371,10 +371,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2846" y="-149"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Hd Navigation Controller-->
         <scene sceneID="QZN-cB-pyJ">
             <objects>
-                <navigationController definesPresentationContext="YES" id="eP4-zk-LCu" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="eP4-zk-LCu" customClass="hdNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SjV-jC-4pv">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -734,6 +734,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="action" name="cancel:"/>
                 <relationship kind="action" name="done:"/>
+                <relationship kind="action" name="updateHomeworkNameAndDescription:"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
             </relationships>
@@ -743,6 +744,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="action" name="goToToday:"/>
             </relationships>
+        </class>
+        <class className="hdNavigationController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdNavigationController.h"/>
         </class>
         <class className="hdRedButton" superclassName="UIButton">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/hdRedButton.h"/>

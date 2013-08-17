@@ -261,7 +261,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 					nameTextField.textColor = [UIColor colorWithRed:81.0/255.0 green:102.0/255.0 blue:145.0/255.0 alpha:1.0];
 					nameTextField.text = self.homeworkTask.name;
                     [nameTextField addTarget:self action:@selector(updateHomeworkNameAndDescription:) forControlEvents:UIControlEventEditingChanged];
-					[cell.contentView addSubview:nameTextField];
+                    [cell.contentView addSubview:nameTextField];
 					break;
 				}
 				case 1: {
@@ -353,10 +353,10 @@ UITableViewCell *selectedCell;
 			hdHomeworkDatePickerViewController *dpvc = [self.storyboard instantiateViewControllerWithIdentifier:@"hdHomeworkDatePickerViewController"];
 			dpvc.editViewController = self;
 			dpvc.dateToDisplay = [hdDateUtils jsonDateToDate:self.homeworkTask.date];
+            
             // Hide keyboard
-            [nameTextField resignFirstResponder];
-            [detailsTextView resignFirstResponder];
-            [self.view endEditing:YES];
+            [tableView.window endEditing:YES];
+            
             // Show DPVC either in popover or as a modal vc
 			if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
                 popover = [[UIPopoverController alloc] initWithContentViewController:dpvc];
@@ -383,7 +383,7 @@ UITableViewCell *selectedCell;
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-#pragma mark - Textfield events
+#pragma mark - TextField events
 
 - (IBAction)updateHomeworkNameAndDescription:(id)sender {
     self.homeworkTask.name = nameTextField.text;

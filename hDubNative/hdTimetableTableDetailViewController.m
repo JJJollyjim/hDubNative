@@ -108,6 +108,7 @@
             [homeworkTasksFilteredToCorrectPeriod addObject:hwtask];
         }
     }
+    homeworkTasksOnDay = homeworkTasksFilteredToCorrectPeriod;
     return 1 + homeworkTasksFilteredToCorrectPeriod.count;
 }
 

@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller - Homework-->
+        <!--Hd Navigation Controller - Homework-->
         <scene sceneID="zcr-JW-KYt">
             <objects>
-                <navigationController definesPresentationContext="YES" id="bLf-hS-hHw" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="bLf-hS-hHw" customClass="hdNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Homework" image="homework.png" id="iMf-0N-5mk"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3n0-NI-MqF">
@@ -135,10 +135,10 @@
             </objects>
             <point key="canvasLocation" x="1441" y="-1746"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Hd Navigation Controller-->
         <scene sceneID="bU2-kx-gLQ">
             <objects>
-                <navigationController definesPresentationContext="YES" id="WfP-o0-lwB" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="WfP-o0-lwB" customClass="hdNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WG1-fb-bFu">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -302,10 +302,10 @@
             </objects>
             <point key="canvasLocation" x="841" y="-575"/>
         </scene>
-        <!--Navigation Controller - Timetable-->
+        <!--Hd Navigation Controller - Timetable-->
         <scene sceneID="KEP-ua-riE">
             <objects>
-                <navigationController definesPresentationContext="YES" id="fAl-jt-sJ3" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="fAl-jt-sJ3" customClass="hdNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Timetable" image="timetable.png" id="nh1-Q8-c9G"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="S8Z-ou-zl0">
@@ -784,16 +784,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="hdTimetableTableDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTimetableTableDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="close:"/>
-            </relationships>
         </class>
         <class className="hdTimetableTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTimetableTableViewController.h"/>
             <relationships>
                 <relationship kind="action" name="showDatePicker:"/>
-                <relationship kind="action" name="swipeToNextDay:"/>
-                <relationship kind="action" name="swipeToPreviousDay:"/>
                 <relationship kind="action" name="updateTimetable:"/>
                 <relationship kind="outlet" name="bbi" candidateClass="UIBarButtonItem"/>
             </relationships>

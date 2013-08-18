@@ -41,6 +41,11 @@
     [self updateDoneButton];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [nameTextField becomeFirstResponder];
+}
+
 - (void)didReceiveMemoryWarning
 {
 	[super didReceiveMemoryWarning];

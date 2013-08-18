@@ -37,9 +37,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [self.datePicker setMinimumDate:[NSDate date]];
     [self.datePicker setMaximumDate:[NSDate dateWithYear:2013 month:12 day:31]];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
 	[self.datePicker setDate:self.dateToDisplay animated:NO];
 }
 
@@ -79,7 +76,11 @@
 }
 
 - (IBAction)datePickerValueChanged:(id)sender {
-    [self.datePicker setDate:[hdDateUtils correctDate:[self.datePicker.date dateByAddingTimeInterval:43200]] animated:YES];
+    NSDate *date = [self.datePicker.date dateByAddingTimeInterval:0];
+    if ([hdDateUtils isWeekend:date] || [hdTimetableParser getSubjectForDay:date period:1] == nil) {
+        date = [hdDateUtils correctDate:date];
+        [self.datePicker setDate:date animated:YES];
+    }
 	hdHomeworkEditViewController *editVC = (hdHomeworkEditViewController *)self.editViewController;
 	[editVC datePickerViewControllerSetDate:self.datePicker.date];
 }

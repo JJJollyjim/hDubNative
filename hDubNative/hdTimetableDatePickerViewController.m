@@ -42,14 +42,6 @@
 - (IBAction)changeDate:(id)sender {
 	[timetableViewController updateDateByDatePickerWithDate:self.datePicker.date];
 	[timetableViewController dismissViewControllerAnimated:YES completion:nil];
-	/*if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-		UIPopoverController *popoverViewController = [timetableViewController getPopoverController];
-		[popoverViewController dismissPopoverAnimated:YES];
-		[(hdTimetableTableViewController *)timetableViewController popoverControllerDidDismissPopover:popoverViewController];
-	} else {
-		[timetableViewController dismissModalViewControllerAnimated:YES];
-		[timetableViewController popoverControllerDidDismissPopover:nil];
-	}*/
 }
 
 - (void)setTimetableViewController:(id)timetableVC {

@@ -12,9 +12,14 @@
 @interface hdTimetableTableDetailViewController : UITableViewController {
     hdHomeworkDataStore *homeworkDataStore;
     hdDataStore *sharedStore;
+    NSArray *homeworkTasksOnDay;
 }
+
+@property (nonatomic) id timetableTableViewController;
 
 @property (nonatomic) NSString *date;
 @property (nonatomic) int period;
+
+- (void)reloadData;
 
 @end

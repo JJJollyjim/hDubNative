@@ -14,12 +14,21 @@
 BOOL initialized = NO;
 NSCalendar *calendar;
 NSRange weekdayRange;
-+ (BOOL)isWeekend:(NSDate *)date {
+static NSDateFormatter *f;
+
++ (void)initializeStuff {
 	if (!initialized) {
 		calendar = [NSCalendar currentCalendar];
 		weekdayRange = [calendar maximumRangeOfUnit:NSWeekdayCalendarUnit];
+        f = [[NSDateFormatter alloc] init];
+        f.dateFormat = @"yyyy-MM-dd";
+        f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-NZ"];
 		initialized = YES;
 	}
+}
+
++ (BOOL)isWeekend:(NSDate *)date {
+    [hdDateUtils initializeStuff];
 	NSDateComponents *components = [calendar components:NSWeekdayCalendarUnit fromDate:date];
 	NSUInteger weekdayOfDate = [components weekday];
 	
@@ -27,13 +36,6 @@ NSRange weekdayRange;
 		return YES;
 	}
 	return NO;
-}
-
-static NSDateFormatter *f;
-+ (void)initializeDateFormatterStuff {
-	f = [[NSDateFormatter alloc] init];
-	f.dateFormat = @"yyyy-MM-dd";
-	f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en-NZ"];
 }
 
 + (NSString *)dateToJsonDate:(NSDate *)date {

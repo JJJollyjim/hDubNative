@@ -22,6 +22,9 @@
  */
 #import "hdTimetableTableDetailViewController.h"
 #import "hdHomeworkDataStore.h"
+#import "hdTimetableParser.h"
+#import "hdDateUtils.h"
+#import "hdHomeworkEditViewController.h"
 
 @interface hdTimetableTableDetailViewController ()
 
@@ -33,18 +36,24 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        homeworkDataStore = [[hdHomeworkDataStore alloc] init];
-        sharedStore = [hdDataStore sharedStore];
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    homeworkDataStore = [[hdHomeworkDataStore alloc] init];
+    sharedStore = [hdDataStore sharedStore];
+    
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:135/255.0f
                                                                         green:10/255.0f
                                                                          blue:0.0f
                                                                         alpha:1.0f];
+    
+    
+    NSString *subject = [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:self.date] period:self.period];
+    self.title = [NSString stringWithFormat:@"%@, Period %i", subject, self.period];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,23 +61,133 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)close:(id)sender {
+    UIViewController *previousViewController = self.timetableTableViewController;
+    [previousViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"hdHomeworkEditViewControllerSegueFromTimetableDetailViewController"]) {
+		// New homework task
+		hdHomeworkEditViewController *editViewController;
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+            UINavigationController *navigationController = (UINavigationController *)segue.destinationViewController;
+            editViewController = (hdHomeworkEditViewController *)navigationController.topViewController;
+        } else {
+            editViewController = (hdHomeworkEditViewController *)segue.destinationViewController;
+        }
+		editViewController.homeworkTask = [[hdHomeworkTask alloc] init];
+		editViewController.previousViewController = self;
+		editViewController.newHomeworkTask = YES;
+        editViewController.homeworkDataStore = [[hdHomeworkDataStore alloc] init];
+        editViewController.homeworkTask.date = self.date;
+        editViewController.homeworkTask.period = self.period;
+    }
+}
+
+- (void)reloadData {
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1 + [homeworkDataStore sectionCountOfHomeworkTasksWithDate:self.date];
+    [homeworkDataStore initializeHomeworkDataStore]; // Reload is necessary because after adding a homework task the two instances of hdHomeworkDataStore are out of sync
+    homeworkTasksOnDay = [homeworkDataStore homeworkTasksOnDay:self.date];
+    NSMutableArray *homeworkTasksFilteredToCorrectPeriod = [NSMutableArray array];
+    NSString *(^getSubjectForPeriod)(int) = ^(int period) {
+        return [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:self.date] period:period];
+    };
+    for (hdHomeworkTask *hwtask in homeworkTasksOnDay) {
+        if (hwtask.period == self.period) { // correct period
+            [homeworkTasksFilteredToCorrectPeriod addObject:hwtask];
+        } else if (hwtask.period == 0) { // all day homework task
+            [homeworkTasksFilteredToCorrectPeriod addObject:hwtask];
+        } else if ([getSubjectForPeriod(self.period) isEqualToString:getSubjectForPeriod(hwtask.period)]) {
+            [homeworkTasksFilteredToCorrectPeriod addObject:hwtask];
+        }
+    }
+    return 1 + homeworkTasksFilteredToCorrectPeriod.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 0;
+    if (section == 0) {
+        NSDate *nsDate = [hdDateUtils jsonDateToDate:self.date];
+        NSString *room = [hdTimetableParser getRoomForDay:nsDate period:self.period];
+        if (room.length == 0) { // probably a study period
+            return 4;
+        } else {
+            return 5;
+        }
+    } else {
+        return 2;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Details";
+    } else {
+        return [NSString stringWithFormat:@"Homework Task %i", section]; // 1-n instead of 0-n
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"TableViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    if (indexPath.section == 0) {
+        /*
+         Section: Details
+           Subject - Classical Studies
+           Date - Thu 23 May
+           Period - 6
+           Teacher - Mr Adams (AMD)
+           Room - P3C
+        */
+        switch (indexPath.row) {
+            case 0: {
+                cell.textLabel.text = @"Subject";
+                cell.detailTextLabel.text = [hdTimetableParser getSubjectForDay:[hdDateUtils jsonDateToDate:self.date] period:self.period];
+                break;
+            }
+            case 1: {
+                cell.textLabel.text = @"Date";
+                cell.detailTextLabel.text = [hdDateUtils formatDate:[hdDateUtils jsonDateToDate:self.date]];
+                break;
+            }
+            case 2: {
+                cell.textLabel.text = @"Period";
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%i", self.period];
+                break;
+            }
+            case 3: {
+                cell.textLabel.text = @"Teacher";
+                cell.detailTextLabel.text = [hdTimetableParser getTeacherForDay:[hdDateUtils jsonDateToDate:self.date] period:self.period];
+                break;
+            }
+            case 4: {
+                cell.textLabel.text = @"Room";
+                cell.detailTextLabel.text = [hdTimetableParser getRoomForDay:[hdDateUtils jsonDateToDate:self.date] period:self.period];
+                break;
+            }
+        }
+    } else {
+        // Show homework tasks
+        // section 0: date details, section 1-n: hwtasks 0-(n-1)
+        hdHomeworkTask *homeworkTask = [homeworkTasksOnDay objectAtIndex:indexPath.section - 1];
+        if (indexPath.row == 0) {
+            // Show name
+            cell.textLabel.text = @"Name";
+            cell.detailTextLabel.text = homeworkTask.name;
+        } else {
+            // Details
+            cell.textLabel.text = @"Details";
+            cell.detailTextLabel.text = homeworkTask.details;
+        }
+    }
     
     return cell;
 }

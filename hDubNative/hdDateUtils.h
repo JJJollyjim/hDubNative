@@ -16,7 +16,6 @@
 + (NSString *)formatDate:(NSDate *)date;
 + (NSDate *)dateAtMidnight:(NSDate *)date;
 
-+ (void)initializeDateFormatterStuff;
 + (NSString *)dateToJsonDate:(NSDate *)date;
 + (NSDate *)jsonDateToDate:(NSString *)dateString;
 

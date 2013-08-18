@@ -27,7 +27,6 @@
 	
 	[[hdDataStore sharedStore] synchronize];
 	[hdTimetableParser initializeDateFormatter];
-    [hdDateUtils initializeDateFormatterStuff];
 	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	

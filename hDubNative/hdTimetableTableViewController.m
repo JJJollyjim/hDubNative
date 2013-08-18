@@ -113,11 +113,13 @@ hdTimetableDatePickerViewController *cache = nil;
 		[target setTimetableViewController:self];
 		[target setStartingDate:dateShown];
 	} else if ([segue.identifier isEqualToString:@"hdTimetableDetailSegue"]) {
-        hdTimetableTableDetailViewController *target = segue.destinationViewController;
+        hdTimetableTableDetailViewController *target =
+            (hdTimetableTableDetailViewController *)((UINavigationController *)segue.destinationViewController).topViewController;
         UITableViewCell *cell = (UITableViewCell *)sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         target.date = [hdDateUtils dateToJsonDate:dateShown];
         target.period = indexPath.row + 1; // row 0 = period 1
+        target.timetableTableViewController = self;
     }
 }
 

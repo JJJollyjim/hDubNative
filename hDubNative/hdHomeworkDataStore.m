@@ -243,6 +243,27 @@
     return sectionCount;
 }
 
+- (NSArray *)homeworkTasksOnDay:(NSString *)jsonDate {
+    // jsonDate format: 2013-08-17
+    BOOL foundDate = NO;
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (hdHomeworkTask *homeworkTask in homeworkTasks) {
+        if (!foundDate) {
+            if ([homeworkTask.date isEqualToString:jsonDate]) {
+                foundDate = YES;
+                [result addObject:homeworkTask];
+            }
+        } else {
+            if ([homeworkTask.date isEqualToString:jsonDate]) {
+                [result addObject:homeworkTask];
+            } else {
+                break;
+            }
+        }
+    }
+    return [NSArray arrayWithArray:result];
+}
+
 #pragma mark - Homework Task Deletion Methods
 
 - (void)deleteHomeworkTaskWithId:(NSString *)hwid

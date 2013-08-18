@@ -56,25 +56,30 @@
 		hdHomeworkDetailViewController *pvc = (hdHomeworkDetailViewController *)self.previousViewController;
 		pvc.homeworkTask = self.homeworkTask;
 		[pvc updateHomeworkTask:self.homeworkTask];
-		if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
-			[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
-		} else {
-			[self.navigationController popViewControllerAnimated:YES];
-		}
+		[self properlyDismissViewController];
 	} else {
 		[self.homeworkDataStore addHomeworkTask:self.homeworkTask];
+        if ([self.previousViewController respondsToSelector:@selector(reloadData)]) {
+            // If adding a new homework task from timetable vc
+            [self.previousViewController reloadData];
+        }
+		[self properlyDismissViewController];
+	}
+}
+
+- (void)properlyDismissViewController {
+    int viewControllerCount = self.navigationController.viewControllers.count;
+	if (viewControllerCount >= 2) {
+        // Called when (modifying homework or when adding a new homework task from timetable vc) on iPad
+		[self.navigationController popViewControllerAnimated:YES];
+	} else {
+        // iPhone or (adding new hwtask from homework vc on iPad)
 		[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
 	}
 }
 
 - (IBAction)cancel:(id)sender {
-	if (!self.newHomeworkTask && [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
-        // Called when modifying homework on iPad
-		[self.navigationController popViewControllerAnimated:YES];
-	} else {
-        // Called when adding homework on iPad and on iPhone
-		[self.previousViewController dismissViewControllerAnimated:YES completion:nil];
-	}
+    [self properlyDismissViewController];
 }
 
 // Save date from datePickerViewController

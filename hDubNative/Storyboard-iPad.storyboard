@@ -82,6 +82,74 @@
             </objects>
             <point key="canvasLocation" x="-267" y="-575"/>
         </scene>
+        <!--Hd Timetable Table Detail View Controller - Root View Controller-->
+        <scene sceneID="hEk-5d-kSy">
+            <objects>
+                <tableViewController id="Nd5-JS-HYi" customClass="hdTimetableTableDetailViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="icU-GF-wLT">
+                        <rect key="frame" x="0.0" y="64" width="540" height="556"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" textLabel="amL-ja-5j2" detailTextLabel="Bt7-0K-dj5" style="IBUITableViewCellStyleValue1" id="5tx-hb-5qb">
+                                <rect key="frame" x="0.0" y="54" width="540" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="31" y="1" width="478" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="amL-ja-5j2">
+                                            <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bt7-0K-dj5">
+                                            <rect key="frame" x="424" y="11" width="44" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="3RS-4k-3kW">
+                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="iCJ-Ti-lc9">
+                            <connections>
+                                <segue destination="gET-tU-O7t" kind="push" identifier="hdHomeworkEditViewControllerSegueFromTimetableDetailViewController" id="eYk-ik-gt8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="SX0-N8-xVT">
+                            <connections>
+                                <action selector="close:" destination="Nd5-JS-HYi" id="B8G-75-o1D"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pd9-f1-KD2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1441" y="-1746"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bU2-kx-gLQ">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="WfP-o0-lwB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WG1-fb-bFu">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Nd5-JS-HYi" kind="relationship" relationship="rootViewController" id="VUw-HL-Nfw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KRG-vA-6cP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="717" y="-1746"/>
+        </scene>
         <!--Hd Homework Detail View Controller - English Homework-->
         <scene sceneID="RKZ-1h-Cf4">
             <objects>
@@ -277,6 +345,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="WfP-o0-lwB" kind="modal" identifier="hdTimetableDetailSegue" modalPresentationStyle="formSheet" id="p1k-g0-MmJ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -356,7 +427,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12I-FG-DNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="555" y="-1945"/>
+            <point key="canvasLocation" x="-267" y="-3077"/>
         </scene>
         <!--Hd Tab View Controller-->
         <scene sceneID="3r0-6c-2gw">
@@ -582,7 +653,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JZ0-pT-vgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2629" y="-177"/>
+            <point key="canvasLocation" x="2569" y="-537"/>
         </scene>
         <!--Hd Homework Date Picker View Controller-->
         <scene sceneID="Vox-qn-8wW">
@@ -642,12 +713,101 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="settings.png" width="26" height="24"/>
         <image name="timetable.png" width="23" height="25"/>
     </resources>
+    <classes>
+        <class className="hdHomeworkDatePickerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkDatePickerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="datePickerValueChanged:"/>
+                <relationship kind="action" name="dismissDatePickerViewController:"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+            </relationships>
+        </class>
+        <class className="hdHomeworkDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="deleteHomeworkTask:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="homeworkDataTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="homeworkDetailTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="homeworkTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="noDetailsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="hdHomeworkEditViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkEditViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="done:"/>
+                <relationship kind="action" name="updateHomeworkNameAndDescription:"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="hdHomeworkViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdHomeworkViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="goToToday:"/>
+            </relationships>
+        </class>
+        <class className="hdNavigationController" superclassName="UINavigationController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdNavigationController.h"/>
+        </class>
+        <class className="hdRedButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdRedButton.h"/>
+        </class>
+        <class className="hdSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logout:"/>
+                <relationship kind="action" name="openKwiiusWebsite:"/>
+                <relationship kind="action" name="reloadTimetable:"/>
+                <relationship kind="action" name="sendEmail:"/>
+                <relationship kind="outlet" name="kwiiusButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="logoutButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="reloadTimetableButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sidLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="hdTabViewController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTabViewController.h"/>
+        </class>
+        <class className="hdTimetableDatePickerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTimetableDatePickerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="changeDate:"/>
+                <relationship kind="action" name="selectedNewDate:"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="hdTimetableTableDetailViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTimetableTableDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="close:"/>
+            </relationships>
+        </class>
+        <class className="hdTimetableTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTimetableTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showDatePicker:"/>
+                <relationship kind="action" name="swipeToNextDay:"/>
+                <relationship kind="action" name="swipeToPreviousDay:"/>
+                <relationship kind="action" name="updateTimetable:"/>
+                <relationship kind="outlet" name="bbi" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="hdWhiteButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/hdWhiteButton.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2b6-l2-g7C"/>
+        <segue reference="eYk-ik-gt8"/>
     </inferredMetricsTieBreakers>
 </document>

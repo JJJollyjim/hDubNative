@@ -109,7 +109,7 @@
         }
     }
     homeworkTasksOnDay = homeworkTasksFilteredToCorrectPeriod;
-    return 1 + homeworkTasksFilteredToCorrectPeriod.count;
+    return 1 + homeworkTasksOnDay.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -131,7 +131,11 @@
     if (section == 0) {
         return @"Details";
     } else {
-        return [NSString stringWithFormat:@"Homework Task %i", section]; // 1-n instead of 0-n
+        if (((hdHomeworkTask *)[homeworkTasksOnDay objectAtIndex:section - 1]).period == 0) {
+            return [NSString stringWithFormat:@"Homework Task %i (All day)", section]; // 1-n instead of 0-n
+        } else {
+            return [NSString stringWithFormat:@"Homework Task %i", section]; // 1-n instead of 0-n
+        }
     }
 }
 

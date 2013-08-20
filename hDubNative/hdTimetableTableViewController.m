@@ -134,16 +134,56 @@ hdTimetableDatePickerViewController *cache = nil;
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-	return 1;
+{    
+    int sectionCount = 1;
+    for (NSString *timetableFormatEntry in [sharedStore timetableFormat]) {
+        if (![timetableFormatEntry isEqualToString:@"period"])
+            sectionCount++;
+    }
+	return sectionCount;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	self.title = [hdDateUtils formatDate:dateShown];
-    self.navigationController.title = @"Timetable";
     // Setting self.title will also set self.navigationController.title, so I explicitly have to set it to "Timetable" every time.
-	return 6;
+    self.navigationController.title = @"Timetable";
+    
+    int sectionCount = 0;
+    int rowCount = 0;
+    for (NSString *timetableFormatEntry in [sharedStore timetableFormat]) {
+        if (![timetableFormatEntry isEqualToString:@"period"]) {
+            // When not a period
+            sectionCount++;
+        } else if (sectionCount == section) {
+            // Period AND in correct section
+            rowCount++;
+        }
+    }
+	return rowCount;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0)
+        return nil;
+    
+    int sectionCount = 0;
+    NSString *gapName = nil;
+    for (NSString *timetableFormatEntry in [sharedStore timetableFormat]) {
+        if (![timetableFormatEntry isEqualToString:@"period"]) {
+            // When not a period
+            sectionCount++;
+            if (sectionCount == section) {
+                gapName = timetableFormatEntry;
+                break;
+            }
+        }
+    }
+    return gapName;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,11 +192,30 @@ hdTimetableDatePickerViewController *cache = nil;
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	
 	if (cell == nil) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"hdTimetableCell"];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"hdTimetableCell"];
 	}
-	// Configure the cell...
-	NSString *subject = [hdTimetableParser getSubjectForDay:dateShown period:(indexPath.row + 1) rootObj:timetableRootObject];
+    
+    int i = 0;
+    int sectionCount = 0;
+    int rowCount = 0;
+    for (NSString *timetableFormatEntry in [sharedStore timetableFormat]) {
+        if (sectionCount == indexPath.section)
+            if (rowCount == indexPath.row)
+                break;
+        if ([timetableFormatEntry isEqualToString:@"period"]) {
+            rowCount++;
+            i++;
+        } else {
+            // When not a period
+            sectionCount++;
+            rowCount = 0;
+        }
+    }
+    
+    int period = 1 + i; // period are 1-based
+	NSString *subject = [hdTimetableParser getSubjectForDay:dateShown period:period rootObj:timetableRootObject];
 	cell.textLabel.text = subject;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Period %i", period];
 	
 	return cell;
 }
@@ -174,7 +233,10 @@ hdTimetableDatePickerViewController *cache = nil;
 	if (!dateShown) {
 		dateShown = [NSDate date];
 	}
-	dateShown = [hdDateUtils correctDate:dateShown];
+    if ([hdDateUtils isWeekend:dateShown] || [hdTimetableParser getSubjectForDay:dateShown period:1] == nil) {
+        dateShown = [hdDateUtils correctDate:dateShown];
+        //[self.datePicker setDate:date animated:YES];
+    }
 	if (date.timeIntervalSinceReferenceDate > dateShown.timeIntervalSinceReferenceDate)
 		[self updateTimetableWithAnimationLeft:date];
 	else if (date.timeIntervalSinceReferenceDate == dateShown.timeIntervalSinceReferenceDate)
@@ -189,15 +251,7 @@ hdTimetableDatePickerViewController *cache = nil;
 	}
 	dateShown = [hdDateUtils correctDate:dateShown];
 	NSString *oldTitle = self.title;
-	[(UITableView *)self.view reloadRowsAtIndexPaths:
-	 @[
-	 [NSIndexPath indexPathForRow:0 inSection:0],
-	 [NSIndexPath indexPathForRow:1 inSection:0],
-	 [NSIndexPath indexPathForRow:2 inSection:0],
-	 [NSIndexPath indexPathForRow:3 inSection:0],
-	 [NSIndexPath indexPathForRow:4 inSection:0],
-	 [NSIndexPath indexPathForRow:5 inSection:0]
-	 ]
+	[(UITableView *)self.view reloadRowsAtIndexPaths:[self buildCompleteIndexSet]
                                     withRowAnimation:UITableViewRowAnimationLeft];
 	[self replaceDateWithFadeAnimation:oldTitle];
 }
@@ -207,15 +261,7 @@ hdTimetableDatePickerViewController *cache = nil;
 		dateShown = date;
 	}
 	NSString *oldTitle = self.title;
-	[(UITableView *)self.view reloadRowsAtIndexPaths:
-	 @[
-	 [NSIndexPath indexPathForRow:0 inSection:0],
-	 [NSIndexPath indexPathForRow:1 inSection:0],
-	 [NSIndexPath indexPathForRow:2 inSection:0],
-	 [NSIndexPath indexPathForRow:3 inSection:0],
-	 [NSIndexPath indexPathForRow:4 inSection:0],
-	 [NSIndexPath indexPathForRow:5 inSection:0]
-	 ]
+	[(UITableView *)self.view reloadRowsAtIndexPaths:[self buildCompleteIndexSet]
                                     withRowAnimation:UITableViewRowAnimationRight];
 	[self replaceDateWithFadeAnimation:oldTitle];
 }
@@ -239,10 +285,20 @@ hdTimetableDatePickerViewController *cache = nil;
 	});
 }
 
-- (void)validateAndAdjustDate {
-	if (dateShown.timeIntervalSinceReferenceDate == lastValidatedDate.timeIntervalSinceReferenceDate && lastValidatedDate.timeIntervalSinceReferenceDate != 0) {
-		
-	}
+- (NSArray *)buildCompleteIndexSet {
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    int row = 0;
+    int section = 0;
+    for (NSString *timetableFormatEntry in [sharedStore timetableFormat]) {
+        if ([timetableFormatEntry isEqualToString:@"period"]) {
+            [result addObject:[NSIndexPath indexPathForRow:row inSection:section]];
+            row++;
+        } else {
+            section++;
+            row = 0;
+        }
+    }
+    return [NSArray arrayWithArray:result];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

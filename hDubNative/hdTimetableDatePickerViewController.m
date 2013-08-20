@@ -8,6 +8,8 @@
 
 #import "hdTimetableDatePickerViewController.h"
 #import "hdTimetableTableViewController.h"
+#import "hdDateUtils.h"
+#import "hdTimetableParser.h"
 
 @implementation hdTimetableDatePickerViewController
 
@@ -36,9 +38,15 @@
 }
 
 - (IBAction)selectedNewDate:(id)sender {
+    NSDate *date = self.datePicker.date;
+    if ([hdDateUtils isWeekend:date] || [hdTimetableParser getSubjectForDay:date period:1] == nil) {
+        date = [hdDateUtils correctDate:date];
+        [self.datePicker setDate:date animated:YES];
+    }
 	[timetableViewController updateTimetableWithAnimation:self.datePicker.date];
 }
 
+// Called when 'done' button was tapped
 - (IBAction)changeDate:(id)sender {
 	[timetableViewController updateDateByDatePickerWithDate:self.datePicker.date];
 	[timetableViewController dismissViewControllerAnimated:YES completion:nil];

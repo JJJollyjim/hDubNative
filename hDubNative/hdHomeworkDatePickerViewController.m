@@ -76,7 +76,7 @@
 }
 
 - (IBAction)datePickerValueChanged:(id)sender {
-    NSDate *date = [self.datePicker.date dateByAddingTimeInterval:0];
+    NSDate *date = self.datePicker.date;
     if ([hdDateUtils isWeekend:date] || [hdTimetableParser getSubjectForDay:date period:1] == nil) {
         date = [hdDateUtils correctDate:date];
         [self.datePicker setDate:date animated:YES];

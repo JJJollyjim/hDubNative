@@ -118,7 +118,7 @@ hdTimetableDatePickerViewController *cache = nil;
         UITableViewCell *cell = (UITableViewCell *)sender;
         NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         target.date = [hdDateUtils dateToJsonDate:dateShown];
-        target.period = indexPath.row + 1; // row 0 = period 1
+        target.period = [self periodFromIndexPath:indexPath];
         target.timetableTableViewController = self;
     }
 }
@@ -195,12 +195,21 @@ hdTimetableDatePickerViewController *cache = nil;
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"hdTimetableCell"];
 	}
     
+    int period = [self periodFromIndexPath:indexPath];
+	NSString *subject = [hdTimetableParser getSubjectForDay:dateShown period:period rootObj:timetableRootObject];
+	cell.textLabel.text = subject;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Period %i", period];
+	
+	return cell;
+}
+
+- (int)periodFromIndexPath:(NSIndexPath *)ip {
     int i = 0;
     int sectionCount = 0;
     int rowCount = 0;
     for (NSString *timetableFormatEntry in [sharedStore timetableFormat]) {
-        if (sectionCount == indexPath.section)
-            if (rowCount == indexPath.row)
+        if (sectionCount == ip.section)
+            if (rowCount == ip.row)
                 break;
         if ([timetableFormatEntry isEqualToString:@"period"]) {
             rowCount++;
@@ -211,13 +220,7 @@ hdTimetableDatePickerViewController *cache = nil;
             rowCount = 0;
         }
     }
-    
-    int period = 1 + i; // period are 1-based
-	NSString *subject = [hdTimetableParser getSubjectForDay:dateShown period:period rootObj:timetableRootObject];
-	cell.textLabel.text = subject;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Period %i", period];
-	
-	return cell;
+    return 1 + i;
 }
 
 #pragma mark - Table view delegate

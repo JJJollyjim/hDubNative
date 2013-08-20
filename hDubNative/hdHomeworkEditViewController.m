@@ -391,6 +391,7 @@ UITableViewCell *selectedCell;
                                               [NSNumber numberWithInt:indexPath.row]])).integerValue + 1;
     }
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self updateDoneButton];
 }
 
 #pragma mark - TextField events

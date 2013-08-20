@@ -271,6 +271,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 					nameTextField.textColor = [UIColor colorWithRed:81.0/255.0 green:102.0/255.0 blue:145.0/255.0 alpha:1.0];
 					nameTextField.text = self.homeworkTask.name;
                     [nameTextField addTarget:self action:@selector(updateHomeworkNameAndDescription:) forControlEvents:UIControlEventEditingChanged];
+                    nameTextField.returnKeyType = UIReturnKeyDone;
                     [cell.contentView addSubview:nameTextField];
 					break;
 				}
@@ -284,6 +285,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 					detailsTextView.backgroundColor = [UIColor clearColor];
 					detailsTextView.text = self.homeworkTask.details;
                     detailsTextView.delegate = self;
+                    detailsTextView.returnKeyType = UIReturnKeyDone;
 					[cell.contentView addSubview:detailsTextView];
 					break;
                 }

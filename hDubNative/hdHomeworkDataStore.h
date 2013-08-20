@@ -25,6 +25,7 @@
 
 #pragma mark - Initialization
 
++ (hdHomeworkDataStore *)sharedStore;
 - (void)initializeHomeworkDataStore;
 - (void)sortHomeworkTasks;
 - (void)storeHomeworkTasks;

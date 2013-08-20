@@ -41,7 +41,7 @@
 @synthesize tableView;
 
 + (hdHomeworkDataStore *)sharedStore {
-	static hdHomeworkDataStore *sharedStore;
+	static hdHomeworkDataStore *sharedStore = nil;
 	if (!sharedStore) {
 		sharedStore = [[hdHomeworkDataStore alloc] init];
 	}

@@ -43,7 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    homeworkDataStore = [[hdHomeworkDataStore alloc] init];
+    homeworkDataStore = [hdHomeworkDataStore sharedStore];
     sharedStore = [hdDataStore sharedStore];
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:135/255.0f
@@ -79,7 +79,7 @@
 		editViewController.homeworkTask = [[hdHomeworkTask alloc] init];
 		editViewController.previousViewController = self;
 		editViewController.newHomeworkTask = YES;
-        editViewController.homeworkDataStore = [[hdHomeworkDataStore alloc] init];
+        editViewController.homeworkDataStore = [hdHomeworkDataStore sharedStore];
         editViewController.homeworkTask.date = self.date;
         editViewController.homeworkTask.period = self.period;
     }

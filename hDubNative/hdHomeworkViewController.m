@@ -42,7 +42,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	self.homeworkJsonString = [hdDataStore sharedStore].homeworkJson;
-	self.homeworkDataStore = [[hdHomeworkDataStore alloc] init];
+	self.homeworkDataStore = [hdHomeworkDataStore sharedStore];
     self.homeworkDataStore.tableView = self.tableView;
     self.syncManager = [[hdHomeworkSyncManager alloc] init];
     [self.syncManager syncAndPullChanges];

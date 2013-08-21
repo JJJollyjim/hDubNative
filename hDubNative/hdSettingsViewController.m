@@ -73,11 +73,14 @@
 	self.reloadTimetableButton.alpha = 0.5;
 	self.logoutButton.enabled = NO;
 	self.logoutButton.alpha = 0.5;
-	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
+	if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
 		[self.reloadTimetableButton setTitle:@"Reloading timetable…" forState:UIControlStateDisabled];
-	else
+	} else {
 		[self.reloadTimetableButton setTitle:@"Reloading…" forState:UIControlStateDisabled];
-	[[hdStudent sharedStudent] loginUser:[hdDataStore sharedStore].userId password:[hdDataStore sharedStore].pass callback:^(BOOL success, NSString *response, NSString *report) {
+	}
+    [[hdStudent sharedStudent] loginUser:[hdDataStore sharedStore].userId
+                                password:[hdDataStore sharedStore].pass
+                                callback:^(BOOL success, NSString *response, NSString *report) {
 		self.reloadTimetableButton.enabled = YES;
 		self.reloadTimetableButton.alpha = 1.0;
 		self.logoutButton.enabled = YES;
@@ -85,11 +88,9 @@
 		
 		if (!success) {
 			bugReport = report;
-			UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"hDub" message:response delegate:self cancelButtonTitle:@"Close" otherButtonTitles:@"Send Bug Report", nil];
-			[av show];
+			[[[UIAlertView alloc] initWithTitle:@"hDub" message:response delegate:self cancelButtonTitle:@"Close" otherButtonTitles:@"Send Bug Report", nil] show];
 		} else {
-			UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"hDub" message:@"Timetable and homework updated!" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil];
-			[av show];
+			[[[UIAlertView alloc] initWithTitle:@"hDub" message:@"Timetable and homework updated!" delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil] show];
 		}
 	}];
 }

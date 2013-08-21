@@ -13,6 +13,7 @@
 #import "hdHTTPWrapper.h"
 #import "hdJsonWrapper.h"
 #import "hdApiWrapper.h"
+#import "hdHomeworkDataStore.h"
 
 @implementation hdStudent
 
@@ -77,6 +78,7 @@ static hdStudent *sharedStudent;
 			if ([_store.homeworkJson isEqualToString:@"[]"])
 				_store.homeworkJson = @"{}";
 			_store.timetableJson = [hdJsonWrapper getJson:[jsonObj objectForKey:@"timetable"]];
+            [[hdHomeworkDataStore sharedStore] initializeHomeworkDataStore];
 			[_store synchronize];
 			callback(YES, nil, nil);
 		}

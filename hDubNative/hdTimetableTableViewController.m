@@ -208,15 +208,10 @@ hdTimetableDatePickerViewController *cache = nil;
         hdHomeworkDataStore *sharedHomeworkStore = [hdHomeworkDataStore sharedStore];
         NSArray *homeworkTasks = [sharedHomeworkStore homeworkTasksOnDay:[hdDateUtils dateToJsonDate:dateShown]];
         NSMutableArray *filteredTaskNames = [[NSMutableArray alloc] init];
-        NSString *(^getSubjectForPeriod)(int) = ^(int period) {
-            return [hdTimetableParser getSubjectForDay:dateShown period:period];
-        };
         for (hdHomeworkTask *task in homeworkTasks) {
             if (task.period == period) {
                 [filteredTaskNames addObject:task.name];
-            } /*else if ([getSubjectForPeriod(task.period) isEqualToString:getSubjectForPeriod(period)]) {
-                [filteredTaskNames addObject:task.name];
-            }*/
+            }
         }
         int homeworkTaskCount = filteredTaskNames.count;
         cell.textLabel.text = [NSString stringWithFormat:@"%@ %@- %@", subject, [room length] == 0 ? @"" : [NSString stringWithFormat:@"in %@ ", room], teacher];

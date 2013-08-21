@@ -205,18 +205,23 @@ hdTimetableDatePickerViewController *cache = nil;
     } else {
         hdHomeworkDataStore *sharedHomeworkStore = [hdHomeworkDataStore sharedStore];
         NSArray *homeworkTasks = [sharedHomeworkStore homeworkTasksOnDay:[hdDateUtils dateToJsonDate:dateShown]];
-        NSMutableArray *filteredTasks = [[NSMutableArray alloc] init];
+        NSMutableArray *filteredTaskNames = [[NSMutableArray alloc] init];
+        NSString *(^getSubjectForPeriod)(int) = ^(int period) {
+            return [hdTimetableParser getSubjectForDay:dateShown period:period];
+        };
         for (hdHomeworkTask *task in homeworkTasks) {
             if (task.period == period) {
-                [filteredTasks addObject:task];
+                [filteredTaskNames addObject:task.name];
+            } else if ([getSubjectForPeriod(task.period) isEqualToString:getSubjectForPeriod(period)]) {
+                [filteredTaskNames addObject:task.name];
             }
         }
-        int homeworkTaskCount = filteredTasks.count;
+        int homeworkTaskCount = filteredTaskNames.count;
         cell.textLabel.text = [NSString stringWithFormat:@"%@ %@- %@", subject, [room length] == 0 ? @"" : [NSString stringWithFormat:@"in %@ ", room], teacher];
-        cell.detailTextLabel.text = [NSString stringWithFormat:
-                                     @"%i homework task%@",
-                                     homeworkTaskCount,
-                                     homeworkTaskCount == 1 ? @"" : @"s"];
+        if (homeworkTaskCount == 0)
+            cell.detailTextLabel.text = @"";
+        else
+            cell.detailTextLabel.text = [filteredTaskNames componentsJoinedByString:@", "];
     }
 	
 	return cell;

@@ -8,6 +8,7 @@
 
 #import "hdDateUtils.h"
 #import "hdTimetableParser.h"
+#import "hdDataStore.h"
 
 @implementation hdDateUtils
 
@@ -36,6 +37,23 @@ static NSDateFormatter *f;
 		return YES;
 	}
 	return NO;
+}
+
++ (int)calculateFirstOfConsecutivePeriodsOfPeriod:(int)period date:(NSDate *)date {
+    int firstPeriod = 1;
+    for (NSString *timetableFormatItem in [hdDataStore sharedStore].timetableFormat) {
+        if (firstPeriod >= period) {
+            return period;
+        }
+        if ([[hdTimetableParser getSubjectForDay:date period:period]
+             isEqualToString:[hdTimetableParser getSubjectForDay:date period:firstPeriod]]) {
+            return firstPeriod;
+        }
+        if ([timetableFormatItem isEqualToString:@"period"]) {
+            firstPeriod++;
+        }
+    }
+    return period;
 }
 
 + (NSString *)dateToJsonDate:(NSDate *)date {

@@ -2,71 +2,13 @@
 <Bucket
    type = "1"
    version = "1.0">
-   <FileBreakpoints>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "hDubNative/hdDateUtils.m"
-         timestampString = "398484503.601774"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "46"
-         endingLineNumber = "46"
-         landmarkName = "+jsonDateToDate:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "hDubNative/hdDateUtils.m"
-         timestampString = "398484503.601774"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "69"
-         endingLineNumber = "69"
-         landmarkName = "+correctDate:inverted:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "hDubNative/hdHomeworkDetailViewController.m"
-         timestampString = "397905721.045405"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "84"
-         endingLineNumber = "84"
-         landmarkName = "-prepareForSegue:sender:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
+   <ExceptionBreakpoints>
+      <ExceptionBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "hDubNative/hdJsonWrapper.m"
-         timestampString = "397905919.968514"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "22"
-         endingLineNumber = "22"
-         landmarkName = "+getObj:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "hDubNative/hdHomeworkDatePickerViewController.m"
-         timestampString = "398497063.730315"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "80"
-         endingLineNumber = "80"
-         landmarkName = "-datePickerValueChanged:"
-         landmarkType = "5">
-      </FileBreakpoint>
-   </FileBreakpoints>
+         scope = "1"
+         stopOnStyle = "0">
+      </ExceptionBreakpoint>
+   </ExceptionBreakpoints>
 </Bucket>

@@ -136,6 +136,8 @@ hdTimetableDatePickerViewController *cache = nil;
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {    
     int sectionCount = 1;
+    if (!sharedStore.userLoggedIn)
+        return 0;
     for (NSString *timetableFormatEntry in [sharedStore timetableFormat]) {
         if (![timetableFormatEntry isEqualToString:@"period"])
             sectionCount++;
@@ -212,9 +214,9 @@ hdTimetableDatePickerViewController *cache = nil;
         for (hdHomeworkTask *task in homeworkTasks) {
             if (task.period == period) {
                 [filteredTaskNames addObject:task.name];
-            } else if ([getSubjectForPeriod(task.period) isEqualToString:getSubjectForPeriod(period)]) {
+            } /*else if ([getSubjectForPeriod(task.period) isEqualToString:getSubjectForPeriod(period)]) {
                 [filteredTaskNames addObject:task.name];
-            }
+            }*/
         }
         int homeworkTaskCount = filteredTaskNames.count;
         cell.textLabel.text = [NSString stringWithFormat:@"%@ %@- %@", subject, [room length] == 0 ? @"" : [NSString stringWithFormat:@"in %@ ", room], teacher];

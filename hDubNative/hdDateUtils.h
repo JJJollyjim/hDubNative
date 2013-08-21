@@ -15,6 +15,7 @@
 + (BOOL)isWeekend:(NSDate *)date;
 + (NSString *)formatDate:(NSDate *)date;
 + (NSDate *)dateAtMidnight:(NSDate *)date;
++ (int)calculateFirstOfConsecutivePeriodsOfPeriod:(int)period date:(NSDate *)date;
 
 + (NSString *)dateToJsonDate:(NSDate *)date;
 + (NSDate *)jsonDateToDate:(NSString *)dateString;

@@ -71,7 +71,7 @@
                 homeworkTask.hwid = [homeworkTaskDictionary objectForKey:@"hwid"];
                 homeworkTask.name = [homeworkTaskDictionary objectForKey:@"name"];
                 homeworkTask.details = [homeworkTaskDictionary objectForKey:@"details"];
-                homeworkTask.period = period.integerValue;
+                homeworkTask.period = [hdDateUtils calculateFirstOfConsecutivePeriodsOfPeriod:period.integerValue date:[hdDateUtils jsonDateToDate:jsonDate]];
                 [homeworkTask setDateWithJsonDateStr:jsonDate];
                 [homeworkTasks addObject:homeworkTask];
             }

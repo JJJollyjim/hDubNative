@@ -21,6 +21,7 @@
    Description - Lol
  */
 #import "hdTimetableTableDetailViewController.h"
+#import "hdTimetableTableViewController.h"
 #import "hdHomeworkDataStore.h"
 #import "hdTimetableParser.h"
 #import "hdDateUtils.h"
@@ -62,7 +63,8 @@
 }
 
 - (IBAction)close:(id)sender {
-    UIViewController *previousViewController = self.timetableTableViewController;
+    hdTimetableTableViewController *previousViewController = self.timetableTableViewController;
+    [previousViewController.tableView reloadData];
     [previousViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -81,7 +83,7 @@
 		editViewController.newHomeworkTask = YES;
         editViewController.homeworkDataStore = [hdHomeworkDataStore sharedStore];
         editViewController.homeworkTask.date = self.date;
-        editViewController.homeworkTask.period = self.period;
+        editViewController.homeworkTask.period = [hdDateUtils calculateFirstOfConsecutivePeriodsOfPeriod:self.period date:[hdDateUtils jsonDateToDate:self.date]];
     }
 }
 

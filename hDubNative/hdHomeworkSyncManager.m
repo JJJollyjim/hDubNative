@@ -13,7 +13,7 @@
 #import "hdApiWrapper.h"
 #import "hdHomeworkDataStore.h"
 
-#define TIMER_INTERVAL 5
+#define TIMER_INTERVAL 20
 
 /*
  

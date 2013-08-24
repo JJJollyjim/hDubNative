@@ -29,6 +29,14 @@
 
 @synthesize timer;
 
++ (hdHomeworkSyncManager *)sharedInstance {
+	static hdHomeworkSyncManager *sharedInstance = nil;
+	if (!sharedInstance) {
+		sharedInstance = [[hdHomeworkSyncManager alloc] init];
+	}
+	return sharedInstance;
+}
+
 - (id)init {
     self = [super init];
     if (self) {

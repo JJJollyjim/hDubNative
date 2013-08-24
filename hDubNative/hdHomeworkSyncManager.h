@@ -17,6 +17,8 @@
     hdHomeworkDataStore *homeworkDataStore;
 }
 
++ (hdHomeworkSyncManager *)sharedInstance;
+
 - (void)deleteHomeworkTask:(hdHomeworkTask *)homeworkTask;
 - (void)syncAndPullChanges;
 

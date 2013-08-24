@@ -26,6 +26,7 @@
 #import "hdTimetableParser.h"
 #import "hdDateUtils.h"
 #import "hdHomeworkEditViewController.h"
+#import "hdHomeworkSyncManager.h"
 
 @interface hdTimetableTableDetailViewController ()
 
@@ -71,6 +72,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"hdHomeworkEditViewControllerSegueFromTimetableDetailViewController"]) {
 		// New homework task
+        [[hdHomeworkSyncManager sharedInstance] stopTimer];
 		hdHomeworkEditViewController *editViewController;
         if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
             UINavigationController *navigationController = (UINavigationController *)segue.destinationViewController;

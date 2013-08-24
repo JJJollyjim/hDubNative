@@ -59,6 +59,7 @@
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [[hdHomeworkSyncManager sharedInstance] stopTimer];
 	if ([segue.identifier isEqualToString:@"hdHomeworkDetailSegue"]) {
 		UINavigationController *navigationController = (UINavigationController *)segue.destinationViewController;
 		hdHomeworkDetailViewController *detailViewController = (hdHomeworkDetailViewController *)navigationController.topViewController;

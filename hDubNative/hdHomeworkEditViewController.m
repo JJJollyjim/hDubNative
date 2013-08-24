@@ -12,6 +12,7 @@
 #import "hdHomeworkDatePickerViewController.h"
 #import "hdDataStore.h"
 #import "hdDateUtils.h"
+#import "hdHomeworkSyncManager.h"
 
 @implementation hdHomeworkEditViewController
 
@@ -69,6 +70,7 @@
             [self.previousViewController reloadData];
         }
 		[self properlyDismissViewController];
+        [[hdHomeworkSyncManager sharedInstance] startTimer];
 	}
 }
 
@@ -85,6 +87,7 @@
 
 - (IBAction)cancel:(id)sender {
     [self properlyDismissViewController];
+    [[hdHomeworkSyncManager sharedInstance] startTimer];
 }
 
 // Save date from datePickerViewController
@@ -272,6 +275,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 					nameTextField.text = self.homeworkTask.name;
                     [nameTextField addTarget:self action:@selector(updateHomeworkNameAndDescription:) forControlEvents:UIControlEventEditingChanged];
                     nameTextField.returnKeyType = UIReturnKeyDone;
+                    nameTextField.delegate = self;
                     [cell.contentView addSubview:nameTextField];
 					break;
 				}
@@ -285,7 +289,7 @@ NSMutableDictionary *tableViewIndexToHeightMap;
 					detailsTextView.backgroundColor = [UIColor clearColor];
 					detailsTextView.text = self.homeworkTask.details;
                     detailsTextView.delegate = self;
-                    detailsTextView.returnKeyType = UIReturnKeyDone;
+                    detailsTextView.returnKeyType = UIReturnKeyDefault;
 					[cell.contentView addSubview:detailsTextView];
 					break;
                 }
@@ -422,6 +426,11 @@ UITableViewCell *selectedCell;
 
 - (void)disableDoneButton {
     doneButton.enabled = NO;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
 }
 
 #pragma mark - Utility methods

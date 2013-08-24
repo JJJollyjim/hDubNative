@@ -11,6 +11,7 @@
 #import "hdHomeworkViewController.h"
 #import "hdHomeworkEditViewController.h"
 #import "hdTimetableParser.h"
+#import "hdHomeworkSyncManager.h"
 
 @implementation hdHomeworkDetailViewController
 
@@ -93,6 +94,7 @@
 		self.updated = NO;
 	}
 	[homeworkViewController dismissViewControllerAnimated:YES completion:nil];
+    [[hdHomeworkSyncManager sharedInstance] startTimer];
 }
 
 - (IBAction)deleteHomeworkTask:(id)sender {
@@ -110,6 +112,7 @@
 	if (buttonIndex == 0) {
 		[homeworkDataStore deleteHomeworkTaskAtIndexPath:[NSIndexPath indexPathForRow:self.row inSection:self.section]];
 		[homeworkViewController dismissViewControllerAnimated:YES completion:nil];
+        [[hdHomeworkSyncManager sharedInstance] startTimer];
 	}
 }
 

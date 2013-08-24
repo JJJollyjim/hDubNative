@@ -24,6 +24,9 @@
 - (void)addHomeworkTask:(hdHomeworkTask *)hwtask;
 - (void)syncAndPullChanges;
 
+- (void)stopTimer;
+- (void)startTimer;
+
 @property (nonatomic) NSTimer *timer;
 
 @end

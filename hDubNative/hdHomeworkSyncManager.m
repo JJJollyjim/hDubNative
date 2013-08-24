@@ -13,6 +13,8 @@
 #import "hdApiWrapper.h"
 #import "hdHomeworkDataStore.h"
 
+#define TIMER_INTERVAL 5
+
 /*
  
  Dictionary, indexes starting at 1
@@ -48,11 +50,7 @@
             unsyncedChanges = [NSMutableArray arrayWithArray:unsyncedChanges];
         }
         currentlySyncing = NO;
-        timer = [NSTimer scheduledTimerWithTimeInterval:5
-                                                 target:self
-                                               selector:@selector(timerCallback:)
-                                               userInfo:NULL
-                                                repeats:YES];
+        [self startTimer];
     }
     return self;
 }
@@ -147,6 +145,23 @@
                                 @"{\"type\":\"add\", \"hwid\":\"%@\", \"date\":\"%@\", \"period\":\"%i\", \"name\":\"%@\", \"details\":\"%@\"}",
                                 hwtask.hwid, hwtask.date, hwtask.period, hwtask.name, hwtask.details]];
     [self saveChanges];
+}
+
+- (void)stopTimer {
+    NSLog(@"stopTimer");
+    [timer invalidate];
+    timer = nil;
+}
+
+- (void)startTimer {
+    NSLog(@"startTimer");
+    if (timer == nil) {
+        timer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL
+                                                 target:self
+                                               selector:@selector(timerCallback:)
+                                               userInfo:NULL
+                                                repeats:YES];
+    }
 }
 
 @end

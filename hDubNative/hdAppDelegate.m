@@ -16,6 +16,7 @@
 #import "hdJsonWrapper.h"
 #import "hdTimetableParser.h"
 #import "hdDateUtils.h"
+#import "hdHomeworkSyncManager.h"
 
 @implementation hdAppDelegate
 
@@ -27,6 +28,8 @@
 	
 	[[hdDataStore sharedStore] synchronize];
 	[hdTimetableParser initializeDateFormatter];
+    [hdHomeworkSyncManager sharedInstance];
+    NSLog(@"%i", [hdDataStore sharedStore].higheid);
 	
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	

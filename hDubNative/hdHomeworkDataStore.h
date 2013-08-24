@@ -11,10 +11,13 @@
 #import "hdJsonWrapper.h"
 #import "hdHomeworkTask.h"
 
+@class hdHomeworkSyncManager;
+
 @interface hdHomeworkDataStore : NSObject {
 	hdDataStore *sharedStore;
     NSMutableArray *homeworkTasks; // Sorted array of hdHomeworkTasks
 	int higheid;
+    hdHomeworkSyncManager *syncManager;
 }
 
 #pragma mark - Properties

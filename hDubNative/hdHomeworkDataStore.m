@@ -10,6 +10,7 @@
 #import "hdTimetableParser.h"
 #import "hdJsonWrapper.h"
 #import "hdDateUtils.h"
+#import "hdHomeworkSyncManager.h"
 
 /*
  homeworkRootDictionary (from server):
@@ -54,6 +55,7 @@
 	if (self = [super init]) {
         sharedStore = [hdDataStore sharedStore];
         [self initializeHomeworkDataStore];
+        syncManager = [hdHomeworkSyncManager sharedInstance];
     }
 	return self;
 }
@@ -278,7 +280,7 @@
         ++i;
     }
     if (!foundCorrectHomeworkTask) {
-        [NSException raise:@"NoHomeworkTaskFound" format:@"Could not find homework task"];
+        return;
     }
     int sectionCountBeforeDeletions = [self numberOfSections];
     [homeworkTasks removeObjectAtIndex:i];
@@ -291,6 +293,7 @@
     }
     [tableView endUpdates];
     [self storeHomeworkTasks];
+    [syncManager deleteHomeworkTask:hwid];
 }
 
 - (void)deleteHomeworkTaskWithId:(NSString *)hwid {
@@ -321,6 +324,7 @@
     }
     [tableView endUpdates];
     [self storeHomeworkTasks];
+    [syncManager addHomeworkTask:homeworkTask];
 }
 
 

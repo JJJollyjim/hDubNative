@@ -42,10 +42,13 @@
     if (self) {
         sharedStore = [hdDataStore sharedStore];
         unsyncedChanges = [hdJsonWrapper getObj:sharedStore.unsyncedEvents];
-        if (!unsyncedChanges || unsyncedChanges.class != [NSMutableArray class]) {
+        if (!unsyncedChanges) {
             unsyncedChanges = [[NSMutableArray alloc] init];
+        } else {
+            unsyncedChanges = [NSMutableArray arrayWithArray:unsyncedChanges];
         }
-        timer = [NSTimer scheduledTimerWithTimeInterval:60
+        currentlySyncing = NO;
+        timer = [NSTimer scheduledTimerWithTimeInterval:5
                                                  target:self
                                                selector:@selector(timerCallback:)
                                                userInfo:NULL
@@ -55,12 +58,13 @@
 }
 
 - (void)timerCallback:(NSTimer *)timer {
-    //[self syncAndPullChanges];
+    [self syncAndPullChanges];
 }
 
 - (void)syncAndPullChanges {
-    return;
-    NSLog(@"Syncing…");
+    if (currentlySyncing)
+        return;
+    currentlySyncing = YES;
     NSMutableString *events = [[NSMutableString alloc] initWithString:@"{"];
     int i = 1;
     for (NSString *s in unsyncedChanges) {
@@ -70,8 +74,8 @@
         ++i;
     }
     [events appendFormat:@"}"];
-    NSLog(@"Changes to upload: %@", events);
-    //sharedStore.higheid = 60;
+    if (![events isEqualToString:@"{}"])
+        NSLog(@"Changes to upload: %@", events);
     [hdApiWrapper syncWithUser:sharedStore.userId
                       password:sharedStore.pass
                        higheid:sharedStore.higheid
@@ -79,17 +83,22 @@
                       callback:^(BOOL success, NSString *errorMsg, NSString *errorReport) {
                           if (!success) {
                               NSLog(@"Sync error: %@ (%@)", errorMsg, errorReport);
+                              currentlySyncing = NO;
+                              return;
                           }
+                          [unsyncedChanges removeAllObjects];
+                          
                           NSString *response = errorMsg;
                           NSDictionary *result = [hdJsonWrapper getObj:response];
                           sharedStore.higheid = [[result objectForKey:@"new_high_eid"] integerValue];
                           
                           NSDictionary *newEvents = [result objectForKey:@"new_events"];
                           
-                          int newEventsIndex = 1; // because Jamie is weird
+                          int newEventsIndex = 1;
                           int newEventsCount = [newEvents count]+1;
                           
-                          NSLog(@"Changes downloaded: ");
+                          if ([newEvents count] != 0)
+                              NSLog(@"Changes downloaded: ");
                           
                           while (newEventsIndex < newEventsCount) {
                               NSDictionary *change = [newEvents valueForKey:[NSString stringWithFormat:@"%i", newEventsIndex]];
@@ -97,15 +106,23 @@
                               [self applyServerChange:change];
                               newEventsIndex++;
                           }
-                          NSLog(@"Finished sync!");
+                          currentlySyncing = NO;
                       }];
 }
 
 - (void)applyServerChange:(NSDictionary *)change {
     if ([[change objectForKey:@"type"] isEqualToString:@"add"]) {
-        
+        hdHomeworkTask *hwtask = [[hdHomeworkTask alloc] init];
+        hwtask.date = [change objectForKey:@"date"];
+        hwtask.period = [[change objectForKey:@"period"] integerValue];
+        hwtask.hwid = [change objectForKey:@"hwid"];
+        hwtask.name = [change objectForKey:@"name"];
+        hwtask.details = [change objectForKey:@"details"];
+        [[hdHomeworkDataStore sharedStore] addHomeworkTask:hwtask]; // adds change to unsyncedEvents array, which will be removed  |
+        [unsyncedChanges removeLastObject];                         //                                       <---------------------+
     } else if ([[change objectForKey:@"type"] isEqualToString:@"del"]) {
-        
+        [[hdHomeworkDataStore sharedStore] deleteHomeworkTaskWithId:[change objectForKey:@"hwid"]];
+        [unsyncedChanges removeLastObject]; // prev. line added a sync task, has to be removed here
     }
 }
 
@@ -113,14 +130,23 @@
     sharedStore.unsyncedEvents = [hdJsonWrapper getJson:unsyncedChanges];
 }
 
-- (void)deleteHomeworkTask:(hdHomeworkTask *)homeworkTask {
-    NSString *hwid = homeworkTask.hwid;
+// User deleted homework task
+- (void)deleteHomeworkTask:(NSString *)hwid {
     if (!hwid)
-        hwid = [hdHomeworkTask generateUUID];
+        return;
     [unsyncedChanges addObject:[NSString stringWithFormat:@"{\"type\":\"del\", \"hwid\":\"%@\"}", hwid]];
-    NSLog(@"%@", unsyncedChanges);
+    //NSLog(@"%@", unsyncedChanges);
     [self saveChanges];
-    [self syncAndPullChanges];
+}
+
+// User adds hwtask
+- (void)addHomeworkTask:(hdHomeworkTask *)hwtask {
+    if (!hwtask)
+        return;
+    [unsyncedChanges addObject:[NSString stringWithFormat:
+                                @"{\"type\":\"add\", \"hwid\":\"%@\", \"date\":\"%@\", \"period\":\"%i\", \"name\":\"%@\", \"details\":\"%@\"}",
+                                hwtask.hwid, hwtask.date, hwtask.period, hwtask.name, hwtask.details]];
+    [self saveChanges];
 }
 
 @end

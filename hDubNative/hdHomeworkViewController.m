@@ -44,7 +44,7 @@
 	self.homeworkJsonString = [hdDataStore sharedStore].homeworkJson;
 	self.homeworkDataStore = [hdHomeworkDataStore sharedStore];
     self.homeworkDataStore.tableView = self.tableView;
-    self.syncManager = [[hdHomeworkSyncManager alloc] init];
+    self.syncManager = [hdHomeworkSyncManager sharedInstance];
     [self.syncManager syncAndPullChanges];
 	[self.tableView reloadData];
 	[self.homeworkDataStore scrollToTodayAnimated:NO];

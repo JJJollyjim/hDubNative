@@ -15,11 +15,13 @@
     hdDataStore *sharedStore;
     NSMutableArray *unsyncedChanges;
     hdHomeworkDataStore *homeworkDataStore;
+    BOOL currentlySyncing;
 }
 
 + (hdHomeworkSyncManager *)sharedInstance;
 
-- (void)deleteHomeworkTask:(hdHomeworkTask *)homeworkTask;
+- (void)deleteHomeworkTask:(NSString *)hwid;
+- (void)addHomeworkTask:(hdHomeworkTask *)hwtask;
 - (void)syncAndPullChanges;
 
 @property (nonatomic) NSTimer *timer;

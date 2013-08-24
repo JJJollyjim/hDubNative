@@ -65,6 +65,8 @@
 	return [defaults integerForKey:@"eid"];
 }
 - (void)setHigheid:(int)eid {
+    if ([self higheid] != eid)
+        NSLog(@"New version: %i", eid);
 	[defaults setInteger:eid forKey:@"eid"];
 }
 

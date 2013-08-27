@@ -20,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SN8-xn-JDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30" y="33"/>
+            <point key="canvasLocation" x="-174" y="38"/>
         </scene>
         <!--Hd Homework View Controller - Homework-->
         <scene sceneID="inM-6W-Opz">
@@ -80,7 +80,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbR-KY-g6P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="437" y="33"/>
+            <point key="canvasLocation" x="243" y="38"/>
         </scene>
         <!--Hd Homework Detail View Controller - English Homework-->
         <scene sceneID="aMo-JM-KLR">
@@ -195,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nKi-j4-0Z8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1487" y="607"/>
+            <point key="canvasLocation" x="1029" y="545"/>
         </scene>
         <!--Hd Navigation Controller-->
         <scene sceneID="xaK-nR-Dvx">
@@ -211,7 +211,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gtb-xV-XNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2089" y="-149"/>
+            <point key="canvasLocation" x="1451" y="79"/>
         </scene>
         <!--Hd Homework Edit View Controller - Edit Task-->
         <scene sceneID="wso-gI-0Ro">
@@ -298,7 +298,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVF-9g-uUG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2499" y="-149"/>
+            <point key="canvasLocation" x="1861" y="79"/>
         </scene>
         <!--Hd Homework Date Picker View Controller-->
         <scene sceneID="fyU-nM-VzF">
@@ -369,7 +369,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JV4-hx-5iE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2883" y="-149"/>
+            <point key="canvasLocation" x="2245" y="79"/>
         </scene>
         <!--Hd Navigation Controller-->
         <scene sceneID="QZN-cB-pyJ">
@@ -384,7 +384,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ztj-Fl-Wf6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1017" y="607"/>
+            <point key="canvasLocation" x="659" y="545"/>
         </scene>
         <!--Hd Settings View Controller - Settings-->
         <scene sceneID="IZm-Qm-srb">
@@ -500,7 +500,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbB-Mh-SiJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-194" y="746"/>
+            <point key="canvasLocation" x="-174" y="634"/>
         </scene>
         <!--Navigation Controller - Timetable-->
         <scene sceneID="gOg-aI-8vu">
@@ -516,7 +516,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kuv-fu-xK9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-276" y="-716"/>
+            <point key="canvasLocation" x="-168" y="-554"/>
         </scene>
         <!--Hd Timetable Table View Controller - Timetable-->
         <scene sceneID="WJZ-Ng-CM6">
@@ -574,7 +574,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="opm-q6-FsI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="134" y="-716"/>
+            <point key="canvasLocation" x="242" y="-554"/>
         </scene>
         <!--Hd Timetable Table Detail View Controller - Title Text-->
         <scene sceneID="KfD-id-5iR">
@@ -628,7 +628,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5GN-Xg-s4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="-716"/>
+            <point key="canvasLocation" x="1085" y="-554"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qyf-mm-TwG">
@@ -647,7 +647,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q4k-Kj-SqO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="-716"/>
+            <point key="canvasLocation" x="659" y="-554"/>
         </scene>
         <!--Hd Timetable Date Picker View Controller - Go to-->
         <scene sceneID="cfD-Th-7h8">
@@ -723,7 +723,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y21-cZ-50H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="134" y="-1298"/>
+            <point key="canvasLocation" x="242" y="-1136"/>
         </scene>
         <!--Hd Tab View Controller-->
         <scene sceneID="TRP-Tc-Reo">
@@ -779,6 +779,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <relationships>
                 <relationship kind="action" name="cancel:"/>
                 <relationship kind="action" name="done:"/>
+                <relationship kind="action" name="updateHomeworkNameAndDescription:"/>
                 <relationship kind="outlet" name="cancelButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="doneButton" candidateClass="UIBarButtonItem"/>
             </relationships>
@@ -822,6 +823,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </class>
         <class className="hdTimetableTableDetailViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTimetableTableDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="close:"/>
+            </relationships>
         </class>
         <class className="hdTimetableTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/hdTimetableTableViewController.h"/>

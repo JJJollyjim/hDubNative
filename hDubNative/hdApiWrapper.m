@@ -12,22 +12,6 @@
 
 @implementation hdApiWrapper
 
-+ (void)getMessage:(int)sid
-              pass:(int)pass
-   fromLoginScreen:(BOOL)login
-          callback:(void (^) (BOOL, NSString *, NSString *))callback {
-	hdHTTPWrapper *httpRequest = [[hdHTTPWrapper alloc] init];
-	[httpRequest getMessage:sid
-								 password:pass
-					fromLoginScreen:login
-									success:^void (NSString *response) {
-										callback(YES, response, nil);
-									}
-										error:^void (NSString *errorMsg) {
-											callback(NO, @"An error has occured during authentication. Please check your internet connection or try again later.", @"Network error.");
-										}];
-}
-
 + (void)loginWithSid:(int)sid
                 pass:(int)pass
             callback:(void (^) (BOOL, NSString *, NSString *))callback {

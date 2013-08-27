@@ -16,20 +16,6 @@
 
 @implementation hdHTTPWrapper
 
-- (void)getMessage:(int)sid
-          password:(int)pass
-   fromLoginScreen:(BOOL)login
-           success:(void (^) (NSString *))success
-             error:(void (^) (NSString *))error {
-	successCallback = success;
-	errorCallback = error;
-	
-	[self downloadURL:[NSURL URLWithString:
-                       [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/message.php"]]
-           withMethod:@"POST"
-           parameters:[[NSString alloc] initWithFormat:@"login=%@&sid=%i&pass=%04i&os=ios&version=2.0", login == YES ? @"true" : @"false", sid, pass]];
-}
-
 - (void)loginWithUser:(int)sid
              password:(int)pass
               success:(void (^) (NSString *))success

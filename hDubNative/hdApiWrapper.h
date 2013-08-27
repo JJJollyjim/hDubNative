@@ -10,11 +10,6 @@
 
 @interface hdApiWrapper : NSObject
 
-+ (void)getMessage:(int)sid
-							pass:(int)pass
-	 fromLoginScreen:(BOOL)login
-					callback:(void (^) (BOOL, NSString *, NSString *))callback;
-
 + (void)loginWithSid:(int)sid
 								pass:(int)pass
 						callback:(void (^) (BOOL, NSString *, NSString *))callback;

@@ -16,12 +16,6 @@
 	void (^errorCallback) (NSString *errorMsg);
 }
 
-- (void)getMessage:(int)sid
-					password:(int)pass
-	 fromLoginScreen:(BOOL)login
-					 success:(void (^) (NSString *))success
-						 error:(void (^) (NSString *))error;
-
 - (void)loginWithUser:(int)sid
 						 password:(int)pass
 							success:(void (^) (NSString *))success

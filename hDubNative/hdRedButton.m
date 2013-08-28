@@ -29,9 +29,9 @@
 }
 
 - (void)initStuff {
-	UIImage *buttonImage = [[UIImage imageNamed:@"orangeButton"]
+	UIImage *buttonImage = [[[UIImage alloc] initWithContentsOfFile:@"orangeButton"]
 													resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-	UIImage *buttonImageHighlight = [[UIImage imageNamed:@"orangeButtonHighlight"]
+	UIImage *buttonImageHighlight = [[[UIImage alloc] initWithContentsOfFile:@"orangeButtonHighlight"]
 																	 resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
 	// Set the background for any states you plan to use
 	[self setBackgroundImage:buttonImage forState:UIControlStateNormal];

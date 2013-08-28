@@ -28,9 +28,9 @@
 }
 
 - (void)initStuff {
-	UIImage *buttonImage = [[UIImage imageNamed:@"whiteButton.png"]
+	UIImage *buttonImage = [[[UIImage alloc] initWithContentsOfFile:@"whiteButton.png"]
 													resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-	UIImage *buttonImageHighlight = [[UIImage imageNamed:@"whiteButtonHighlight.png"]
+	UIImage *buttonImageHighlight = [[[UIImage alloc] initWithContentsOfFile:@"whiteButtonHighlight.png"]
 																	 resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
 	// Set the background for any states you plan to use
 	[self setBackgroundImage:buttonImage forState:UIControlStateNormal];

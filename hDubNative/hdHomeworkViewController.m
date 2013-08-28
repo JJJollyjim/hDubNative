@@ -123,7 +123,7 @@
 - (void)updateBackgroundIfEmpty {
 	int sectionCount = [self.homeworkDataStore numberOfSections];
     if (sectionCount == 0) {
-        UIImage *image = [UIImage imageNamed:@"Kwiius Logo.png"];
+        UIImage *image = [[UIImage alloc] initWithContentsOfFile:@"Kwiius Logo.png"];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         [imageView setFrame:self.tableView.bounds];
         imageView.contentMode = UIViewContentModeCenter;

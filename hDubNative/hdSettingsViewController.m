@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
+#import "hdGeneralUtilities.h"
 #import "hdSettingsViewController.h"
 #import "hdTabViewController.h"
 #import "hdStudent.h"
@@ -27,7 +28,7 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view from its nib.
+    self.versionLabel.text = [NSString stringWithFormat:@"Version %@", [hdGeneralUtilities currentVersion]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -141,6 +142,7 @@
 }
 
 - (void)viewDidUnload {
+    [self setVersionLabel:nil];
     [super viewDidUnload];
 }
 @end

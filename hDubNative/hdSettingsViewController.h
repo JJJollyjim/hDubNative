@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
 @property (weak, nonatomic) IBOutlet UIButton *reloadTimetableButton;
 @property (weak, nonatomic) IBOutlet UIButton *kwiiusButton;
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
 - (IBAction)logout:(id)sender;
 - (IBAction)reloadTimetable:(id)sender;

@@ -18,7 +18,7 @@ The original hDub is available on the iOS App Store here:
 ## Project Status
 hDubNative is currently being actively developed by [printfn](https://github.com/printfn), and scheduled for release within the next month.
 
-We would be glad to accept any feature requests, bug reports, or pull requests
+We would be glad to accept any feature requests, bug reports, or pull requests.
 
 ## Android App
 hDroidNative, the Android sister project to hDubNative is part-way through development, and is on GitHub [here](https://github.com/jj56/hDroidNative).

@@ -3,7 +3,7 @@
 
 ## About hDub
 > hDub is an iOS/Android app for managing your homework and timetable. <br>
-> It syncronises with KAMAR, New Zealand's main Student Management/Timetabling system, to provide a seamless experience for new users
+> It syncronises with [KAMAR](http://www.kamar.co.nz), New Zealand's main Student Management/Timetabling system, to provide a seamless experience for new users
 
 hDub was released in early 2013 at Wellington Girls' College, but due to the nature of the app (being written with web technologies and running in Phonegap), it was slow and unresponsive, and therefore did not gain many users.
 

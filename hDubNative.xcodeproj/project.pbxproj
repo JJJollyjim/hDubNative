@@ -249,8 +249,6 @@
 			isa = PBXGroup;
 			children = (
 				F355B49117BA3162002C4507 /* TODO.txt */,
-				7D38ADA81734BAA800D16F8E /* NSDate+DateComponents.h */,
-				7D38ADA91734BAA800D16F8E /* NSDate+DateComponents.m */,
 				CD1E89E416BF884A00EF853C /* hdAppDelegate.h */,
 				CD1E89E516BF884A00EF853C /* hdAppDelegate.m */,
 				CD32C06916C1F02D00AA0569 /* Wrappers */,
@@ -346,6 +344,7 @@
 		CD32C06916C1F02D00AA0569 /* Wrappers */ = {
 			isa = PBXGroup;
 			children = (
+				F33B9EA917CF19520029CCC6 /* NSDate Extensions */,
 				CD32C05516C0C2D800AA0569 /* Server Communication */,
 				CD32C06416C1C6F400AA0569 /* NSUserDefaults */,
 				CD32C06D16C1F1FF00AA0569 /* hdStudent.h */,
@@ -504,6 +503,15 @@
 				CD8C424216CB7AB4007B2186 /* whiteButtonHighlight@2x.png */,
 			);
 			name = Buttons;
+			sourceTree = "<group>";
+		};
+		F33B9EA917CF19520029CCC6 /* NSDate Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7D38ADA81734BAA800D16F8E /* NSDate+DateComponents.h */,
+				7D38ADA91734BAA800D16F8E /* NSDate+DateComponents.m */,
+			);
+			name = "NSDate Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

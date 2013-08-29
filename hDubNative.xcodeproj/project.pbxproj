@@ -66,6 +66,7 @@
 		CD8C425116CB7E28007B2186 /* hdWhiteButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD8C425016CB7E28007B2186 /* hdWhiteButton.m */; };
 		CDAF246F16E2CF4F003CF9F5 /* hdHomeworkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */; };
 		CDF1BB9016D71E2700A10129 /* hdHomeworkTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CDF1BB8F16D71E2700A10129 /* hdHomeworkTask.m */; };
+		F33B9EAC17CF1CD40029CCC6 /* hdGeneralUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F33B9EAB17CF1CD40029CCC6 /* hdGeneralUtilities.m */; };
 		F355B49217BA3162002C4507 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = F355B49117BA3162002C4507 /* TODO.txt */; };
 		F36B898917BF1DBD007CB84E /* hdNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F36B898817BF1DBD007CB84E /* hdNavigationController.m */; };
 		F393C97B17B77EFB0076BD78 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F393C97417B77EFB0076BD78 /* Default-568h@2x.png */; };
@@ -169,6 +170,8 @@
 		CDAF246E16E2CF4D003CF9F5 /* hdHomeworkDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkDetailViewController.m; sourceTree = "<group>"; };
 		CDCBAE8216CF904500064D0A /* hdHomeworkTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdHomeworkTask.h; sourceTree = "<group>"; };
 		CDF1BB8F16D71E2700A10129 /* hdHomeworkTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdHomeworkTask.m; sourceTree = "<group>"; };
+		F33B9EAA17CF1CD40029CCC6 /* hdGeneralUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdGeneralUtilities.h; sourceTree = "<group>"; };
+		F33B9EAB17CF1CD40029CCC6 /* hdGeneralUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdGeneralUtilities.m; sourceTree = "<group>"; };
 		F355B49117BA3162002C4507 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		F36B898717BF1DBD007CB84E /* hdNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hdNavigationController.h; sourceTree = "<group>"; };
 		F36B898817BF1DBD007CB84E /* hdNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = hdNavigationController.m; sourceTree = "<group>"; };
@@ -251,6 +254,8 @@
 				F355B49117BA3162002C4507 /* TODO.txt */,
 				CD1E89E416BF884A00EF853C /* hdAppDelegate.h */,
 				CD1E89E516BF884A00EF853C /* hdAppDelegate.m */,
+				F33B9EAA17CF1CD40029CCC6 /* hdGeneralUtilities.h */,
+				F33B9EAB17CF1CD40029CCC6 /* hdGeneralUtilities.m */,
 				CD32C06916C1F02D00AA0569 /* Wrappers */,
 				CD32C06C16C1F13600AA0569 /* UI */,
 				CD1E89DC16BF884A00EF853C /* Supporting Files */,
@@ -661,6 +666,7 @@
 				7D9871581735D15D004C7E8B /* hdHomeworkSyncManager.m in Sources */,
 				F393C98C17B77F750076BD78 /* hdTimetableTableDetailViewController.m in Sources */,
 				F36B898917BF1DBD007CB84E /* hdNavigationController.m in Sources */,
+				F33B9EAC17CF1CD40029CCC6 /* hdGeneralUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@
 #import "hdJsonWrapper.h"
 #import "hdApiWrapper.h"
 #import "hdHomeworkDataStore.h"
+#import "hdGeneralUtilities.h"
 
 @implementation hdStudent
 
@@ -90,20 +91,22 @@ static hdStudent *sharedStudent;
 	f.timeStyle = NSDateFormatterFullStyle;
 	f.dateStyle = NSDateFormatterFullStyle;
 	f.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_NZ"];
-	return [NSString stringWithFormat:@"Put any extra details here:\n\n\n\n\n--- BEGIN ERROR REPORT ---\n\nERROR MESSAGE:\n  %@\n\nAPPLICATION:\n  hDubNative (iOS)\n  Version 2.0\n\nHTTP:\n  %@\n  apiMethod: %@\n  userId: %i\n  duration: %f seconds\n\nLOCAL STORAGE:\n  userLoggedIn: %d\n\nSYSTEM INFO:\n  systemVersion: %@\n  device: %@\n  time: %@\n\n--- END OF ERROR REPORT ---",
-					errorMsg,
-					
-					report,
-					
-					apiMethod,
-					
-					sid,
-					[[NSDate date] timeIntervalSinceDate:startTime],
-					[hdDataStore sharedStore].userLoggedIn,
-					
-					[UIDevice currentDevice].systemVersion,
-					[self deviceName],
-					[f stringFromDate:[NSDate date]]];
+	return [NSString stringWithFormat:@"Put any extra details here:\n\n\n\n\n--- BEGIN ERROR REPORT ---\n\nERROR MESSAGE:\n  %@\n\nAPPLICATION:\n  hDubNative (iOS)\n  Version %@\n\nHTTP:\n  %@\n  apiMethod: %@\n  userId: %i\n  duration: %f seconds\n\nLOCAL STORAGE:\n  userLoggedIn: %d\n\nSYSTEM INFO:\n  systemVersion: %@\n  device: %@\n  time: %@\n\n--- END OF ERROR REPORT ---",
+            errorMsg,
+			
+            [hdGeneralUtilities currentVersion],
+            
+            report,
+            
+            apiMethod,
+            
+            sid,
+            [[NSDate date] timeIntervalSinceDate:startTime],
+            [hdDataStore sharedStore].userLoggedIn,
+            
+            [UIDevice currentDevice].systemVersion,
+            [self deviceName],
+            [f stringFromDate:[NSDate date]]];
 }
 
 - (NSString *)deviceName {

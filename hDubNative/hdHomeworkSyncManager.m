@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
-#import "hdHomeworkSyncManager.h"
-#import "hdDataStore.h"
-#import "hdJsonWrapper.h"
-#import "hdHomeworkTask.h"
 #import "hdApiWrapper.h"
+#import "hdDataStore.h"
 #import "hdHomeworkDataStore.h"
+#import "hdHomeworkSyncManager.h"
+#import "hdHomeworkTask.h"
+#import "hdJsonWrapper.h"
 
 #define TIMER_INTERVAL 20
 

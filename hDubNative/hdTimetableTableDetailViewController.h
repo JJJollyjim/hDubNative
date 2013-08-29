@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+
 #import "hdHomeworkDataStore.h"
 
 @interface hdTimetableTableDetailViewController : UITableViewController {

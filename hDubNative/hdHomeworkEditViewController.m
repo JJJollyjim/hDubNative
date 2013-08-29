@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
-#import "hdHomeworkViewController.h"
-#import "hdHomeworkEditViewController.h"
-#import "hdHomeworkDetailViewController.h"
-#import "hdHomeworkDatePickerViewController.h"
 #import "hdDataStore.h"
 #import "hdDateUtils.h"
+#import "hdHomeworkDatePickerViewController.h"
+#import "hdHomeworkDetailViewController.h"
+#import "hdHomeworkEditViewController.h"
 #import "hdHomeworkSyncManager.h"
+#import "hdHomeworkViewController.h"
 
 @implementation hdHomeworkEditViewController
 

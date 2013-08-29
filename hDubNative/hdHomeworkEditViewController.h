@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#import "hdHomeworkDataStore.h" 
 #import "hdHomeworkTask.h"
 #import "hdTimetableParser.h"
-#import "hdHomeworkDataStore.h" 
 
 @interface hdHomeworkEditViewController : UITableViewController <UITableViewDelegate, UITextViewDelegate, UITextFieldDelegate> {
 	UITextField *nameTextField;

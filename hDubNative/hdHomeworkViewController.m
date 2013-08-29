@@ -6,19 +6,20 @@
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
-#import "hdHomeworkViewController.h"
-#import "hdDataStore.h"
-#import "hdApiWrapper.h"
-#import "hdJsonWrapper.h"
 #import <QuartzCore/QuartzCore.h>
-#import "hdStudent.h"
-#import "hdHomeworkTask.h"
+
+#import "hdApiWrapper.h"
+#import "hdDataStore.h"
+#import "hdDateUtils.h"
 #import "hdHomeworkDataStore.h"
-#import "hdTimetableParser.h"
 #import "hdHomeworkDetailViewController.h"
 #import "hdHomeworkEditViewController.h"
-#import "hdDateUtils.h"
 #import "hdHomeworkSyncManager.h"
+#import "hdHomeworkTask.h"
+#import "hdHomeworkViewController.h"
+#import "hdJsonWrapper.h"
+#import "hdStudent.h"
+#import "hdTimetableParser.h"
 
 @implementation hdHomeworkViewController
 

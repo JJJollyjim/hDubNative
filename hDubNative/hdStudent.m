@@ -8,13 +8,13 @@
 
 #import <sys/utsname.h>
 
-#import "hdStudent.h"
-#import "hdDataStore.h"
-#import "hdHTTPWrapper.h"
-#import "hdJsonWrapper.h"
 #import "hdApiWrapper.h"
-#import "hdHomeworkDataStore.h"
+#import "hdDataStore.h"
 #import "hdGeneralUtilities.h"
+#import "hdHTTPWrapper.h"
+#import "hdHomeworkDataStore.h"
+#import "hdJsonWrapper.h"
+#import "hdStudent.h"
 
 @implementation hdStudent
 

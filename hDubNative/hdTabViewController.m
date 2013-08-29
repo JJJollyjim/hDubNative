@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
-#import "hdTabViewController.h"
 #import "hdDataStore.h"
+#import "hdTabViewController.h"
 #import "hdTimetableTableViewController.h"
 
 @implementation hdTabViewController

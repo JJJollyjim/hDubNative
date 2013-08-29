@@ -6,17 +6,16 @@
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 
 #import "hdAppDelegate.h"
-
-#import "hdTimetableTableViewController.h"
-#import "hdHomeworkViewController.h"
-#import "hdSettingsViewController.h"
-#import "hdLoginViewController.h"
-#import "hdTabViewController.h"
-#import "hdStudent.h"
-#import "hdJsonWrapper.h"
-#import "hdTimetableParser.h"
 #import "hdDateUtils.h"
 #import "hdHomeworkSyncManager.h"
+#import "hdHomeworkViewController.h"
+#import "hdJsonWrapper.h"
+#import "hdLoginViewController.h"
+#import "hdSettingsViewController.h"
+#import "hdStudent.h"
+#import "hdTabViewController.h"
+#import "hdTimetableParser.h"
+#import "hdTimetableTableViewController.h"
 
 @implementation hdAppDelegate
 

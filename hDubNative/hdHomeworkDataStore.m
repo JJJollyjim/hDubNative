@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
-#import "hdHomeworkDataStore.h"
-#import "hdTimetableParser.h"
-#import "hdJsonWrapper.h"
 #import "hdDateUtils.h"
+#import "hdHomeworkDataStore.h"
 #import "hdHomeworkSyncManager.h"
+#import "hdJsonWrapper.h"
+#import "hdTimetableParser.h"
 
 /*
  homeworkRootDictionary (from server):

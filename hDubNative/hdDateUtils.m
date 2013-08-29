@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
+#import "hdDataStore.h"
 #import "hdDateUtils.h"
 #import "hdTimetableParser.h"
-#import "hdDataStore.h"
 
 @implementation hdDateUtils
 

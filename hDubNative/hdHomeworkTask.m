@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
-#import "hdHomeworkTask.h"
 #import "hdDateUtils.h"
+#import "hdHomeworkTask.h"
 
 @implementation hdHomeworkTask
 

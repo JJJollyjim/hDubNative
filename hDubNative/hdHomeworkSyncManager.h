@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+
 #import "hdDataStore.h"
 
 @class hdHomeworkTask, hdHomeworkDataStore;

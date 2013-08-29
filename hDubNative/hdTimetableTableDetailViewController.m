@@ -20,13 +20,13 @@
    Title - Hi
    Description - Lol
  */
-#import "hdTimetableTableDetailViewController.h"
-#import "hdTimetableTableViewController.h"
-#import "hdHomeworkDataStore.h"
-#import "hdTimetableParser.h"
 #import "hdDateUtils.h"
+#import "hdHomeworkDataStore.h"
 #import "hdHomeworkEditViewController.h"
 #import "hdHomeworkSyncManager.h"
+#import "hdTimetableParser.h"
+#import "hdTimetableTableDetailViewController.h"
+#import "hdTimetableTableViewController.h"
 
 @interface hdTimetableTableDetailViewController ()
 

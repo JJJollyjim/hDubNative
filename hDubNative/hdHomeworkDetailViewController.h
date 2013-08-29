@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "hdHomeworkTask.h"
+
 #import "hdHomeworkDataStore.h"
+#import "hdHomeworkTask.h"
 
 @interface hdHomeworkDetailViewController : UIViewController
 <UITableViewDataSource,

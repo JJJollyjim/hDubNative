@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
-#import "hdHomeworkDetailViewController.h"
 #import "hdDateUtils.h"
-#import "hdHomeworkViewController.h"
+#import "hdHomeworkDetailViewController.h"
 #import "hdHomeworkEditViewController.h"
-#import "hdTimetableParser.h"
 #import "hdHomeworkSyncManager.h"
+#import "hdHomeworkViewController.h"
+#import "hdTimetableParser.h"
 
 @implementation hdHomeworkDetailViewController
 

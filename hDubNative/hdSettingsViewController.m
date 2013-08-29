@@ -8,8 +8,8 @@
 
 #import "hdGeneralUtilities.h"
 #import "hdSettingsViewController.h"
-#import "hdTabViewController.h"
 #import "hdStudent.h"
+#import "hdTabViewController.h"
 
 @implementation hdSettingsViewController
 

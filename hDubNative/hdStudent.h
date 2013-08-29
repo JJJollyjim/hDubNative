@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "hdDataStore.h"
+
+@class hdDataStore;
 
 @interface hdStudent : NSObject {
 	hdDataStore *_store;

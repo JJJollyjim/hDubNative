@@ -7,6 +7,7 @@
 //
 
 #import "hdHTTPWrapper.h"
+#import "hdGeneralUtilities.h"
 
 // successCallback:
 //   - (void)successCallback:(NSString *)response
@@ -26,7 +27,7 @@
 	[self downloadURL:[NSURL URLWithString:
                        [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/login.php"]]
            withMethod:@"POST"
-           parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&os=ios&version=2.0", sid, pass]];
+           parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&os=ios&version=%@", sid, pass, [hdGeneralUtilities currentVersion]]];
 }
 
 - (void)syncWithUser:(int)sid
@@ -41,7 +42,8 @@
 	[self downloadURL:[NSURL URLWithString:
                        [[NSString alloc] initWithFormat:@"http://api1.hdubapp.com/sync.php"]]
            withMethod:@"POST"
-           parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&higheid=%i&events=%@&os=ios&version=2.0", sid, pass, higheid, events]];
+           parameters:[[NSString alloc] initWithFormat:@"sid=%i&pass=%04i&higheid=%i&events=%@&os=ios&version=%@",
+                       sid, pass, higheid, events, [hdGeneralUtilities currentVersion]]];
     
     /*
      

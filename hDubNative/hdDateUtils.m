@@ -2,7 +2,7 @@
 //  hdDateUtils.m
 //  hDubNative
 //
-//  Created by printfn on 9/02/13.
+//  Created by Jamie McClymont on 9/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 

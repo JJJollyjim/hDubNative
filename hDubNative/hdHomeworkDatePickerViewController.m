@@ -2,7 +2,7 @@
 //  hdHomeworkDatePickerViewController.m
 //  hDubNative
 //
-//  Created by printfn on 23/03/13.
+//  Created by Jamie McClymont on 23/03/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 

@@ -1,6 +1,8 @@
 # hDubNative
 ### _Homework and Timetable management for iOS_
 
+[![Build Status](https://travis-ci.org/jj56/hDubNative.png?branch=master)](https://travis-ci.org/jj56/hDubNative)
+
 ## About hDub
 > hDub is an iOS/Android app for managing your homework and timetable. <br>
 > It syncronises with [KAMAR](http://www.kamar.co.nz), New Zealand's main Student Management/Timetabling system, to provide a seamless experience for new users

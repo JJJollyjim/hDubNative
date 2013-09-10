@@ -2,7 +2,7 @@
 //  hdHomeworkDataStore.h
 //  hDubNative
 //
-//  Created by printfn on 21/02/13.
+//  Created by Jamie McClymont on 21/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 

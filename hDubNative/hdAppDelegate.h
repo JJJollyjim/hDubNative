@@ -2,7 +2,7 @@
 //  hdAppDelegate.h
 //  hDubNative
 //
-//  Created by printfn on 4/02/13.
+//  Created by Jamie McClymont on 4/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 

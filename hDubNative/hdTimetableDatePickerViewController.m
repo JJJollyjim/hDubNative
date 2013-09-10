@@ -2,7 +2,7 @@
 //  hdTimetableDatePickerViewController.m
 //  hDubNative
 //
-//  Created by printfn on 10/02/13.
+//  Created by Jamie McClymont on 10/02/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 

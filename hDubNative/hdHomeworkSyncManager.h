@@ -2,7 +2,7 @@
 //  hdHomeworkSyncManager.h
 //  hDubNative
 //
-//  Created by printfn on 5/05/13.
+//  Created by Jamie McClymont on 5/05/13.
 //  Copyright (c) 2013 Kwiius. All rights reserved.
 //
 
